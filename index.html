@@ -208,6 +208,56 @@ dialog label{display:block;font-size:13px;color:var(--muted);margin:8px 0 4px}
 dialog input[type=text]{width:100%}
 dialog menu{display:flex;gap:8px;justify-content:flex-end;margin:16px 0 0;padding:0}
 dialog p{margin:6px 0;font-size:14px}
+
+/* пошук: лише свій хрестик, нативний вимикаємо */
+.search input::-webkit-search-cancel-button,.search input::-webkit-search-decoration{-webkit-appearance:none;appearance:none;display:none}
+
+/* навігація: лічильник «на сьогодні», прокрутка на вузьких екранах */
+nav.main a .badge{display:inline-block;min-width:18px;padding:0 5px;margin-left:5px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:11px;font-weight:700;line-height:18px;text-align:center;vertical-align:1px}
+nav.main a .badge[hidden]{display:none}
+@media (max-width:700px){
+  .top .wrap>.spacer{display:none}   /* місце віддаємо навігації */
+  nav.main{flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;gap:0;scroll-behavior:smooth}
+  nav.main::-webkit-scrollbar{display:none}
+  nav.main a{white-space:nowrap;padding:7px 7px}
+  nav.main.more{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 34px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 34px),transparent)}
+  nav.main.more.end{-webkit-mask-image:none;mask-image:none}
+}
+@media (max-width:600px){ .logo{font-size:0;gap:0} .logo .mark{font-size:18px} }
+
+/* сьогодні / прогрес */
+.page-hero{padding:34px 0 14px}
+.page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4.5vw,40px);margin:0 0 10px;line-height:1.1;letter-spacing:-.2px}
+.page-hero p{margin:0;color:var(--muted);max-width:640px;font-size:16px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:18px 0}
+.tile{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
+.tile b{display:block;font-family:var(--serif);font-size:30px;font-weight:500;line-height:1.1}
+.tile span{font-size:13px;color:var(--muted)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.name.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.bars{display:flex;flex-direction:column;gap:10px;max-width:720px}
+.bar{display:grid;grid-template-columns:minmax(110px,190px) 1fr 44px;align-items:center;gap:12px;font-size:14px}
+.bar .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .track{height:10px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .3s}
+.bar .pct{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.bar small{color:var(--muted);font-weight:400;margin-left:6px}
+.heatwrap{display:flex;gap:8px;align-items:flex-start}
+.heat{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,1fr);gap:3px;width:min(100%,440px)}
+.heat div{aspect-ratio:1;border-radius:3px;background:var(--line)}
+.heat div.l1{background:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.heat div.l2{background:color-mix(in srgb,var(--accent) 65%,var(--line))}
+.heat div.l3{background:var(--accent)}
+.heat div.today{outline:2px solid var(--ink);outline-offset:-2px}
+.heat div.future{opacity:.35}
+.heatdays{display:grid;grid-template-rows:repeat(7,1fr);gap:3px;font-size:10px;color:var(--muted);line-height:1}
+.heatdays span{display:flex;align-items:center;height:100%}
+.weak .row{cursor:default}
+.weak .row:hover{background:transparent}
+.weak .num.bad{background:var(--bad);color:#fff}
+.weak .txt small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.weak .row a{flex:none}
 </style>
 </head>
 <body>
@@ -215,8 +265,10 @@ dialog p{margin:6px 0;font-size:14px}
 <header class="top"><div class="wrap">
   <a href="#/" class="logo"><span class="mark">A</span>Anatomia <small>тренажер</small></a>
   <nav class="main" id="nav">
+    <a href="#/today" data-r="today">Сьогодні<span class="badge" id="dueBadge" hidden></span></a>
     <a href="#/" data-r="home">Атлас</a>
     <a href="#/my" data-r="my">Мої схеми</a>
+    <a href="#/progress" data-r="progress">Прогрес</a>
     <a href="#/about" data-r="about">Про сайт</a>
   </nav>
   <span class="spacer"></span>
@@ -226,7 +278,7 @@ dialog p{margin:6px 0;font-size:14px}
 <main id="app"><div class="wrap"></div></main>
 
 <footer><div class="wrap">
-  <span>Anatomia — тренажер анатомічної номенклатури: огляд, прямий і зворотний режими. Прогрес зберігається у цьому браузері.</span>
+  <span>Anatomia — тренажер анатомічної номенклатури: огляд, прямий і зворотний режими, інтервальне повторення. Прогрес зберігається у цьому браузері.</span>
   <span class="spacer"></span>
   <span>Схеми: Wikimedia Commons (Public domain / CC BY / CC BY‑SA), автори вказані на сторінці кожної схеми.</span>
 </div></footer>
@@ -298,6 +350,62 @@ let progress = LS.get('anat.progress', {});
 const saveDecks = () => { LS.set('anat.decks', decks); searchIdx = null; };   // колоди змінились — індекс пошуку перебудувати
 const saveProgress = () => LS.set('anat.progress', progress);
 const progFor = (setId, mode) => { const p = progress[setId] = progress[setId] || {}; return p[mode] = p[mode] || { streak: 0, passes: 0, best: null }; };
+const plural = (n, a, b, c) => { const m10 = n % 10, m100 = n % 100; return (m10 === 1 && m100 !== 11) ? a : (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20)) ? b : c; };
+
+/* ---------- інтервальне повторення (спрощений SM-2) ----------
+   Запис на кожну структуру в кожному режимі: ключ setId|n|mode.
+   ease — множник росту інтервалу, interval — днів до наступного повторення,
+   due — час наступного повторення (ms), lapses — скільки разів забували,
+   reps — правильних відповідей поспіль, seen — скільки разів взагалі бачили. */
+const DAY = 86400000, SRS_STEPS = [1, 3, 7, 14, 30];
+let srs = LS.get('anat.srs', {});
+let days = LS.get('anat.days', {});           // 'YYYY-MM-DD' → кількість відповідей за день
+const saveSrs = () => LS.set('anat.srs', srs);
+const srsKey = (setId, n, mode) => `${setId}|${n}|${mode}`;
+const dayKey = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+function touchDay() { const k = dayKey(); days[k] = (days[k] || 0) + 1; LS.set('anat.days', days); }
+// відповідь по структурі: ok — правильно з першого разу в цьому проході
+function srsReview(setId, n, mode, ok) {
+  const k = srsKey(setId, n, mode), now = Date.now();
+  const r = srs[k] || { ease: 2.5, interval: 0, due: 0, lapses: 0, reps: 0, seen: 0 };
+  if (ok) {
+    r.reps++;
+    r.interval = r.reps <= SRS_STEPS.length ? SRS_STEPS[r.reps - 1] : Math.max(r.interval + 1, Math.round(r.interval * r.ease));
+    r.ease = Math.min(3, +(r.ease + 0.05).toFixed(2));
+  } else {
+    if (r.seen) r.lapses++;                       // перше знайомство не карається
+    r.reps = 0; r.interval = 1; r.ease = Math.max(1.3, +(r.ease - 0.2).toFixed(2));
+  }
+  r.seen++; r.last = now; r.due = now + r.interval * DAY;
+  srs[k] = r; saveSrs(); touchDay(); updateBadge();
+}
+// ключ → структура з набором (null, якщо набір видалили)
+function srsResolve(k) {
+  const [setId, n, mode] = k.split('|');
+  let set = null, href = null;
+  if (setId.startsWith('my:')) { const d = decks.find(x => 'my:' + x.id === setId); if (d && d.hasImage) { set = deckToSet(d); href = '#/my/' + d.id; } }
+  else { set = ATLAS.sets.find(x => x.id === setId); if (set) href = '#/set/' + set.id; }
+  if (!set) return null;
+  const it = set.items.find(i => i.n === +n); if (!it) return null;
+  return { k, set, it, mode, href, r: srs[k] };
+}
+function srsDue(now = Date.now()) { return Object.keys(srs).filter(k => srs[k].due <= now).map(srsResolve).filter(Boolean).sort((a, b) => a.r.due - b.r.due); }
+function srsWeak(limit = 20) { return Object.keys(srs).filter(k => srs[k].lapses > 0).map(srsResolve).filter(Boolean).sort((a, b) => b.r.lapses - a.r.lapses || a.r.due - b.r.due).slice(0, limit); }
+function streakDays() {
+  let n = 0; const d = new Date();
+  if (!days[dayKey(d)]) d.setDate(d.getDate() - 1);   // сьогодні ще не займались — рахуємо серію до вчора
+  while (days[dayKey(d)]) { n++; d.setDate(d.getDate() - 1); }
+  return n;
+}
+function navFit() {
+  const nav = $('#nav'); if (!nav) return;
+  const over = nav.scrollWidth > nav.clientWidth + 2;
+  nav.classList.toggle('more', over);
+  nav.classList.toggle('end', over && nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 2);
+}
+$('#nav').addEventListener('scroll', navFit, { passive: true });
+window.addEventListener('resize', navFit);
+function updateBadge() { const b = $('#dueBadge'); if (!b) return; const n = srsDue().length; b.textContent = n > 99 ? '99+' : n; b.hidden = !n; }
 
 /* ---------- dialogs ---------- */
 function baseDlg(title, msg, withInput, def) {
@@ -507,8 +615,11 @@ const app = $('#app');
 function route() {
   const h = location.hash.replace(/^#\/?/, ''); const parts = h.split('/').filter(Boolean);
   $$('#nav a').forEach(a => a.classList.toggle('active', a.dataset.r === (parts[0] || 'home') || (a.dataset.r === 'my' && parts[0] === 'edit')));
-  Trainer.teardown();
+  Trainer.teardown(); Review.teardown(); updateBadge(); navFit();
+  { const a = $('#nav a.active'); if (a && $('#nav').classList.contains('more')) a.scrollIntoView({ block: 'nearest', inline: 'center' }); }
   if (!parts.length) return renderHome();
+  if (parts[0] === 'today') return parts[1] === 'session' ? Review.begin() : Review.renderStart();
+  if (parts[0] === 'progress') return renderProgress();
   if (parts[0] === 'set' && parts[1]) { const s = ATLAS.sets.find(x => x.id === parts[1]); return s ? renderSet(s, parts[2], parts[3]) : renderHome(); }
   if (parts[0] === 'my' && parts[1]) { const d = decks.find(x => x.id === parts[1]); return d ? renderCustomSet(d, parts[2], parts[3]) : renderMy(); }
   if (parts[0] === 'my') return renderMy();
@@ -608,11 +719,12 @@ function renderHome() {
   const cats = ['Усі', ...ATLAS.categories.filter(c => ATLAS.sets.some(s => s.cat === c))];
   const list = ATLAS.sets.filter(s => homeFilter === 'Усі' || s.cat === homeFilter);
   const my = decks.filter(d => d.pins.length && d.hasImage);
+  const due = srsDue().length;
   app.innerHTML = `<div class="wrap">
     <section class="hero">
       <h1>Анатомія по картинках.<br>Латина, яка запам’ятовується.</h1>
       <p>Оберіть схему з атласу, натискайте на пронумеровані точки й підбирайте правильну латинську назву. Два чисті проходи поспіль — і тема вивчена.</p>
-      <div class="stats"><div><b>${ATLAS.sets.length}</b>схем</div><div><b>${total}</b>структур</div><div><b>${learned}</b>вивчено</div></div>
+      <div class="stats"><div><b>${ATLAS.sets.length}</b>схем</div><div><b>${total}</b>структур</div><div><b>${learned}</b>вивчено</div><a href="#/today" title="Сьогодні"><div><b>${due}</b>до повторення</div></a></div>
     </section>
     <div class="search">
       <span class="ico">⌕</span>
@@ -650,6 +762,10 @@ function renderAbout() {
       <li><b>Зворотний</b> — назва → точка. Вам показують термін, потрібно знайти його місце на схемі. Це складніше за прямий, бо підказки з номера немає.</li>
       <li>Лічильник рахує помилки за прохід. Мета — <b>два проходи поспіль без жодної помилки</b> в кожному режимі; тоді схема вважається вивченою.</li>
     </ul>
+    <h2>Сьогодні: інтервальне повторення</h2>
+    <p>Кожна відповідь у прямому чи зворотному режимі запам’ятовується окремо для кожної структури. Правильна з першого разу — наступне повторення через 1, 3, 7, 14, 30 днів і далі; помилка — вже завтра. Розділ «Сьогодні» збирає те, що пора повторити, у сесії по 20 структур упереміш із різних схем, і показує лічильник у меню.</p>
+    <h2>Мій прогрес</h2>
+    <p>Готовність за розділами атласу, серія днів поспіль, теплова карта активності за 12 тижнів і список слабких структур — тих, де ви помилялись найчастіше, з кнопкою «Тренувати».</p>
     <h2>Пошук по терміну</h2>
     <p>Поле пошуку на головній шукає одразу по всьому атласу — і по латині, і по українських назвах, від двох символів. У списку видно, на якій схемі є структура; клік відкриває цю схему в режимі «Огляд» з підсвіченою точкою.</p>
     <h2>Керування картинкою</h2>
@@ -703,7 +819,7 @@ const Trainer = {
     const set = this.set, ids = set.items.map(i => i.n);
     this.hl = null;
     if (this.mode === 'study') { this.T = null; }
-    else this.T = { order: shuffle(ids), bank: shuffle(ids), queue: shuffle(ids), done: new Set(), selPin: null, selName: null, mistakes: 0, finished: false, hint: false };
+    else this.T = { order: shuffle(ids), bank: shuffle(ids), queue: shuffle(ids), done: new Set(), wrong: new Set(), selPin: null, selName: null, mistakes: 0, finished: false, hint: false };
     const want = this.wantHl; this.wantHl = null;
     if (this.mode === 'study' && want && this.item(want)) this.hl = want;
     this.renderAll();
@@ -736,12 +852,14 @@ const Trainer = {
   solve(n) {
     const T = this.T; T.done.add(n); T.selPin = T.selName = null; T.hint = false;
     T.bank = T.bank.filter(x => x !== n); T.queue = T.queue.filter(x => x !== n);
+    srsReview(this.set.id, n, this.mode, !T.wrong.has(n));   // для інтервального повторення
     if (T.done.size === this.set.items.length) { T.finished = true; const p = progFor(this.set.id, this.mode); p.streak = T.mistakes === 0 ? p.streak + 1 : 0; p.passes++; p.best = p.best == null ? T.mistakes : Math.min(p.best, T.mistakes); saveProgress(); }
     this.renderAll();
     if (T.finished) setTimeout(() => $('#statbar').scrollIntoView({ block: 'nearest' }), 50);
   },
   mistake(pin, name) {
     const T = this.T; T.mistakes++; T.selName = null; T.selPin = this.mode === 'direct' ? pin : null;
+    T.wrong.add(this.mode === 'reverse' ? T.queue[0] : pin);   // яку структуру питали
     this.renderAll();
     Viewer.flash(this.item(pin).pts.map((_, i) => pin + ':' + i), 'bad');
     if (name != null) { const el = $(`#bank .name[data-n="${name}"]`); if (el) { el.classList.add('bad'); setTimeout(() => el.classList.remove('bad'), 600); } }
@@ -815,6 +933,168 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && Trainer.ac
 
 function renderSet(set, mode, hl) { Trainer.open(set, ['study', 'direct', 'reverse'].includes(mode) ? mode : 'study', set.file, hl); }
 async function renderCustomSet(d, mode, hl) { const set = deckToSet(d); const src = d.hasImage ? await IMG.get(d.id) : null; Trainer.open(set, ['study', 'direct', 'reverse'].includes(mode) ? mode : 'study', src, hl); }
+
+/* ---------- сьогодні: сесія повторення ---------- */
+function focusViewerMobile() {
+  if (matchMedia('(max-width:900px)').matches) {
+    const v = $('#viewer');
+    if (v) { window.scrollTo({ top: Math.max(0, v.getBoundingClientRect().top + window.scrollY - 62) }); return; }
+  }
+  window.scrollTo(0, 0);
+}
+function weakList(list) {
+  return `<div class="legend weak">${list.map(x => `<div class="row"><span class="num bad" title="Разів забували">${x.r.lapses}</span>
+    <span class="txt"><i>${esc(x.it.la)}</i>${x.it.uk ? `<span>${esc(x.it.uk)}</span>` : ''}<small>${esc(x.set.title)} · ${x.mode === 'direct' ? 'прямий' : 'зворотний'}</small></span>
+    <a href="${x.href}/${x.mode}"><button class="small">Тренувати</button></a></div>`).join('')}</div>`;
+}
+const Review = {
+  active: false, q: [], i: 0, cur: null, locked: false, picked: null, opts: [], loadedSet: null, results: [],
+  teardown() { this.active = false; this.q = []; this.cur = null; document.documentElement.style.removeProperty('--panelh'); },
+  renderStart() {
+    const due = srsDue(), weak = srsWeak(10), total = Object.keys(srs).length, todayN = days[dayKey()] || 0;
+    const text = due.length ? `Пора повторити ${due.length} ${plural(due.length, 'структуру', 'структури', 'структур')}. Сесія — до 20 за раз, упереміш зі схем, які ви вже тренували, в обох режимах.`
+      : total ? 'На сьогодні все повторено. Загляньте у слабкі структури або відкрийте нову схему в атласі.'
+      : 'Тут з’являтимуться структури, які пора повторити. Спершу пройдіть будь-яку схему в прямому чи зворотному режимі.';
+    app.innerHTML = `<div class="wrap">
+      <section class="page-hero"><h1>Сьогодні</h1><p>${text}</p></section>
+      <div class="tiles"><div class="tile"><b>${due.length}</b><span>до повторення</span></div><div class="tile"><b>${total}</b><span>структур у повторенні</span></div><div class="tile"><b>${todayN}</b><span>відповідей сьогодні</span></div><div class="tile"><b>${streakDays()}</b><span>${plural(streakDays(), 'день', 'дні', 'днів')} поспіль</span></div></div>
+      <div class="actions">${due.length ? `<a href="#/today/session"><button class="primary">Повторити ${Math.min(20, due.length)} →</button></a>` : `<a href="#/"><button class="primary">До атласу →</button></a>`}<a href="#/progress"><button>Мій прогрес</button></a></div>
+      ${!due.length && weak.length ? `<h2 class="section-title">Слабкі структури</h2>${weakList(weak)}` : ''}
+    </div>`;
+    window.scrollTo(0, 0);
+  },
+  async begin() {
+    const due = srsDue().slice(0, 20);
+    if (!due.length) { location.hash = '#/today'; return; }
+    // групуємо за схемою, щоб не перевантажувати картинку на кожне питання; порядок схем випадковий
+    const bySet = new Map(); due.forEach(x => { const a = bySet.get(x.set.id) || []; a.push(x); bySet.set(x.set.id, a); });
+    this.q = shuffle([...bySet.values()]).flatMap(a => shuffle(a));
+    this.i = 0; this.results = []; this.active = true; this.loadedSet = null; this.cur = null;
+    app.innerHTML = `<div class="wrap">
+      <div class="sethead"><a class="back" href="#/today">← Сьогодні</a><h1 id="rvTitle"></h1><span class="chip" id="rvCat"></span><span class="spacer"></span><span class="muted" id="rvCount"></span></div>
+      <div class="trainwrap">
+        <div class="viewcol"><div class="statbar" id="statbar"></div><div id="viewer"></div></div>
+        <div class="legendwrap"><div class="legend" id="legend"></div></div>
+        <aside class="panel" id="panel"><h4 id="panelTitle">Питання</h4><div id="bank"></div></aside>
+      </div></div>`;
+    Viewer.mount($('#viewer'), { mode: 'train', onPinClick: id => this.pinClick(id) });
+    await this.next();
+  },
+  async next() {
+    if (!this.active) return;
+    if (this.i >= this.q.length) return this.finish();
+    const cur = this.cur = this.q[this.i]; this.locked = false; this.picked = null;
+    if (this.loadedSet !== cur.set.id) {
+      const src = cur.set.deckId ? await IMG.get(cur.set.deckId) : cur.set.file;
+      const ok = await Viewer.load(src, cur.set.w, cur.set.h);
+      if (!this.active) return;
+      if (!ok) { this.i++; return this.next(); }
+      this.loadedSet = cur.set.id;
+      $('#viewer').classList.toggle('dense', cur.set.items.length > 20);
+    }
+    $('#rvTitle').textContent = cur.set.title; $('#rvCat').textContent = cur.set.cat;
+    $('#rvCount').textContent = `${this.i + 1} з ${this.q.length}`;
+    if (cur.mode === 'direct') this.opts = shuffle([cur.it, ...shuffle(cur.set.items.filter(x => x.n !== cur.it.n)).slice(0, 5)]);
+    this.renderPins(); this.renderBank(); this.renderStat(); this.renderLog();
+    if (cur.mode === 'direct') Viewer.centerOn(cur.it.pts[0][0], cur.it.pts[0][1]);
+    focusViewerMobile();
+  },
+  renderPins() {
+    const cur = this.cur, list = [];
+    cur.set.items.forEach((it, idx) => it.pts.forEach((p, i) => {
+      let cls = '';
+      if (cur.mode === 'direct') cls = it.n === cur.it.n ? 'sel' : 'dim';
+      if (this.locked) { if (it.n === cur.it.n) cls = 'ok'; else if (this.picked === it.n) cls = 'bad'; else if (cur.mode === 'direct') cls = 'dim'; }
+      list.push({ id: it.n + ':' + i, x: p[0], y: p[1], label: cur.mode === 'direct' && it.n === cur.it.n ? '?' : idx + 1, cls, title: this.locked ? it.la : '' });
+    }));
+    Viewer.renderPins(list);
+  },
+  pinClick(id) { if (!this.cur || this.locked || this.cur.mode !== 'reverse') return; const n = +id.split(':')[0]; this.answer(n === this.cur.it.n, n); },
+  answer(ok, picked) {
+    const cur = this.cur; this.locked = true; this.picked = picked;
+    srsReview(cur.set.id, cur.it.n, cur.mode, ok);
+    this.results.push({ x: cur, ok });
+    if (!ok && navigator.vibrate) navigator.vibrate(60);
+    this.i++;
+    this.renderPins(); this.renderBank(); this.renderStat(); this.renderLog();
+    if (ok) setTimeout(() => { if (this.active && this.locked) this.next(); }, 650);
+    else Viewer.centerOn(cur.it.pts[0][0], cur.it.pts[0][1]);
+  },
+  renderBank() {
+    const cur = this.cur, b = $('#bank'), title = $('#panelTitle');
+    if (cur.mode === 'direct') {
+      title.textContent = 'Що це за структура?';
+      b.innerHTML = `<div class="opts">${this.opts.map(it => { let cls = ''; if (this.locked) { if (it.n === cur.it.n) cls = 'ok'; else if (this.picked === it.n) cls = 'bad'; } return `<button class="name ${cls}" data-n="${it.n}"><i>${esc(it.la)}</i></button>`; }).join('')}</div>
+        ${this.locked && !this.results[this.results.length - 1].ok ? `<div class="question"><div class="p">${esc(cur.it.uk || '')}</div><div style="margin-top:8px"><button class="primary" id="rvNext">Далі →</button></div></div>` : ''}`;
+      $$('#bank .name').forEach(el => el.onclick = () => { if (this.locked) return; this.answer(+el.dataset.n === cur.it.n, +el.dataset.n); });
+    } else {
+      title.textContent = 'Знайдіть на схемі';
+      const last = this.results[this.results.length - 1];
+      b.innerHTML = `<div class="question" style="flex:1"><div class="q">${esc(cur.it.la)}</div>
+        <div class="p">${this.locked ? (last.ok ? 'Правильно ✔' : 'Не туди — правильна точка зелена') + (cur.it.uk ? ' · ' + esc(cur.it.uk) : '') : 'Знайдіть точку на схемі'}</div>
+        ${this.locked && !last.ok ? `<div style="margin-top:8px"><button class="primary" id="rvNext">Далі →</button></div>` : ''}</div>`;
+    }
+    const nx = $('#rvNext'); if (nx) nx.onclick = () => this.next();
+    Trainer.syncPanelHeight();
+  },
+  renderStat() {
+    const ok = this.results.filter(r => r.ok).length, bad = this.results.length - ok;
+    $('#statbar').innerHTML = `<span>Правильно: <b>${ok}</b></span><span>Помилки: <b>${bad}</b></span><span class="muted">${this.cur.mode === 'direct' ? 'Прямий режим' : 'Зворотний режим'}</span>`;
+  },
+  renderLog() {
+    const bad = this.results.filter(r => !r.ok), L = $('#legend');
+    L.innerHTML = bad.length ? `<h4>Помилки цієї сесії · ${bad.length}</h4>` + bad.map(r => `<div class="row"><span class="num">${r.x.set.items.indexOf(r.x.it) + 1}</span><span class="txt"><i>${esc(r.x.it.la)}</i>${r.x.it.uk ? `<span>${esc(r.x.it.uk)}</span>` : ''}<span>· ${esc(r.x.set.title)}</span></span></div>`).join('')
+      : `<div class="muted" style="font-size:14px">${this.cur.mode === 'direct' ? 'Точка зі знаком «?» підсвічена — оберіть її назву в панелі.' : 'Знайдіть на схемі точку, що відповідає назві.'}</div>`;
+  },
+  finish() {
+    const ok = this.results.filter(r => r.ok).length, n = this.results.length, more = srsDue().length;
+    this.active = false;
+    $('#panelTitle').textContent = 'Сесію завершено';
+    $('#bank').innerHTML = `<div class="question" style="flex:1"><div class="q" style="font-style:normal;font-size:18px">${ok} з ${n} правильно</div><div class="p">${more ? `Ще ${more} ${plural(more, 'структура чекає', 'структури чекають', 'структур чекають')} на повторення` : 'На сьогодні все повторено 🎉'}</div>
+      <div style="margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">${more ? `<button class="primary" id="rvMore">Ще ${Math.min(20, more)}</button>` : ''}<a href="#/today"><button>До «Сьогодні»</button></a><a href="#/progress"><button class="ghost">Мій прогрес</button></a></div></div>`;
+    const m = $('#rvMore'); if (m) m.onclick = () => this.begin();
+    $('#rvCount').textContent = `${n} з ${n}`;
+    Trainer.syncPanelHeight();
+    setTimeout(() => $('#statbar').scrollIntoView({ block: 'nearest' }), 50);
+  }
+};
+
+/* ---------- мій прогрес ---------- */
+function renderProgress() {
+  const doneSet = s => progFor(s.id, 'direct').streak >= GOAL && progFor(s.id, 'reverse').streak >= GOAL;
+  const cats = ATLAS.categories.filter(c => ATLAS.sets.some(s => s.cat === c));
+  const rows = cats.map(c => { const l = ATLAS.sets.filter(s => s.cat === c), d = l.filter(doneSet).length; return { c, d, t: l.length, pct: Math.round(d / l.length * 100) }; });
+  const my = decks.filter(d => d.pins.length && d.hasImage).map(deckToSet);
+  if (my.length) { const d = my.filter(doneSet).length; rows.push({ c: 'Мої схеми', d, t: my.length, pct: Math.round(d / my.length * 100) }); }
+  const totalDone = ATLAS.sets.filter(doneSet).length;
+  // теплова карта: 12 тижнів по стовпчиках, рядки — пн…нд, закінчується поточним тижнем
+  const end = new Date(); end.setHours(0, 0, 0, 0);
+  const start = new Date(end); start.setDate(end.getDate() - (end.getDay() + 6) % 7 - 7 * 11);
+  const cells = []; let max = 0;
+  for (let i = 0; i < 84; i++) { const d = new Date(start); d.setDate(start.getDate() + i); const k = dayKey(d), v = days[k] || 0; max = Math.max(max, v); cells.push({ k, v, future: d > end, today: d.getTime() === end.getTime() }); }
+  const lvl = v => !v ? '' : v >= max * 0.66 ? 'l3' : v >= max * 0.33 ? 'l2' : 'l1';
+  const weak = srsWeak(20), totalAns = Object.values(days).reduce((a, b) => a + b, 0), activeDays = Object.keys(days).length, streak = streakDays();
+  const inSrs = Object.keys(srs).length, dueN = srsDue().length;
+  app.innerHTML = `<div class="wrap">
+    <section class="page-hero"><h1>Мій прогрес</h1><p>Готовність за розділами атласу, активність і структури, які варто підтягнути. Усе рахується з проходів у прямому та зворотному режимах.</p></section>
+    <div class="tiles">
+      <div class="tile"><b>${totalDone}<small class="muted" style="font-size:16px"> / ${ATLAS.sets.length}</small></b><span>схем вивчено</span></div>
+      <div class="tile"><b>${streak}</b><span>${plural(streak, 'день', 'дні', 'днів')} поспіль</span></div>
+      <div class="tile"><b>${activeDays}</b><span>активних днів</span></div>
+      <div class="tile"><b>${totalAns}</b><span>відповідей усього</span></div>
+      <div class="tile"><b>${dueN}<small class="muted" style="font-size:16px"> / ${inSrs}</small></b><span>до повторення</span></div>
+    </div>
+    <h2 class="section-title">Готовність за розділами</h2>
+    <div class="bars">${rows.map(r => `<div class="bar"><span class="lbl" title="${esc(r.c)}">${esc(r.c)}</span><div class="track"><div class="fill" style="width:${r.pct}%"></div></div><span class="pct">${r.pct}%<small>${r.d}/${r.t}</small></span></div>`).join('')}</div>
+    <h2 class="section-title">Активність за 12 тижнів</h2>
+    <div class="heatwrap"><div class="heatdays"><span>пн</span><span></span><span>ср</span><span></span><span>пт</span><span></span><span>нд</span></div>
+      <div class="heat">${cells.map(c => `<div class="${lvl(c.v)} ${c.today ? 'today' : ''} ${c.future ? 'future' : ''}" title="${c.k}: ${c.v} ${plural(c.v, 'відповідь', 'відповіді', 'відповідей')}"></div>`).join('')}</div></div>
+    <h2 class="section-title">Слабкі структури</h2>
+    ${weak.length ? `<p class="muted" style="margin:-4px 0 12px;font-size:14px">Топ за кількістю забувань. Кнопка відкриває схему в тому режимі, де були помилки.</p>${weakList(weak)}`
+      : `<div class="empty">${inSrs ? 'Поки без помилок після першого знайомства — так тримати.' : 'Пройдіть кілька схем у прямому чи зворотному режимі — тут з’являться структури, які даються найважче.'}</div>`}
+  </div>`;
+  window.scrollTo(0, 0);
+}
 
 /* ---------- my decks ---------- */
 function renderMy() {
