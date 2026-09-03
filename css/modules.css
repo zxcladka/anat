@@ -1,0 +1,34 @@
+/* ---------- колоди ---------- */
+.atlaspick{display:inline-flex;gap:6px;align-items:center}
+.atlaspick select{max-width:260px;background:var(--paper);border:1px solid var(--line2);border-radius:10px;padding:8px 10px;font:inherit;color:var(--ink)}
+.deckcard{cursor:default}
+.deckcard:hover{transform:none}
+.dkstat{display:flex;gap:14px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.dkstat b{color:var(--ink)}
+.cardlist{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.crow{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14px}
+.crow .cb{color:var(--muted)}
+.crow .cs{font-size:12px;white-space:nowrap}
+.crow img{max-height:120px;border-radius:6px}
+@media (max-width:700px){ .crow{grid-template-columns:1fr;gap:4px} .crow .cs{text-align:left} }
+.learnwrap{max-width:760px}
+.cardbox{margin-top:8px}
+.cardface{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px 24px;box-shadow:var(--shadow);min-height:220px;font-size:20px;line-height:1.45;overflow-wrap:anywhere}
+.cardface .cdeck{font-size:12px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.4px}
+.cardface .cfront{font-family:var(--serif);font-size:26px;line-height:1.3}
+.cardface hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+.cardface img{max-width:100%;max-height:360px;border-radius:10px;display:block;margin:8px auto}
+.cardface .fld{font-size:14px;margin-top:8px}
+.cardface .cloze{color:var(--accent);font-weight:600}
+.cardface .cloze.ans{background:var(--accent-soft);border-radius:6px;padding:0 5px}
+.grades{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.grades .primary{flex:1;padding:14px}
+.grade{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 6px;min-width:72px;position:relative}
+.grade small{font-size:12px;color:var(--muted)}
+.grade kbd{position:absolute;top:4px;right:6px;font-size:10px;color:var(--muted);border:1px solid var(--line2);border-radius:4px;padding:0 4px}
+.grade.bad{border-color:var(--bad);color:var(--bad)}
+.grade.ok{border-color:var(--ok);color:var(--ok)}
+.grade.easy{border-color:var(--accent);color:var(--accent)}
+.grade:hover{background:var(--accent-soft)}
+.lnhint{font-size:13px;margin-top:14px}
+@media (max-width:700px){ .lnhint{display:none} .grade kbd{display:none} .cardface{padding:20px 16px;font-size:18px} .cardface .cfront{font-size:22px} }
