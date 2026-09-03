@@ -123,7 +123,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
 #viewer.dragging{cursor:grabbing}
 #viewer.edit{cursor:crosshair}
 #viewer.over{outline:3px dashed var(--accent);outline-offset:-3px}
-@media (max-width:900px){ #viewer{height:58vh;height:58dvh;border-radius:12px} }
+@media (max-width:900px){ #viewer{height:58vh;height:min(58dvh,calc(100dvh - 58px - var(--panelh,0px) - 14px));min-height:240px;border-radius:12px} }
 #stage{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
 #img{display:block;width:100%;height:100%;-webkit-user-drag:none;pointer-events:none}
 #pins{position:absolute;inset:0}
@@ -145,9 +145,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
 @media (max-width:900px){.hintbar{display:none}}
 
 /* side panel */
-.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px;position:sticky;top:70px;max-height:calc(100vh - 90px);max-height:calc(100dvh - 90px);display:flex;flex-direction:column;gap:10px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px;position:sticky;top:70px;max-height:calc(100vh - 90px);max-height:calc(100dvh - 90px);display:flex;flex-direction:column;gap:10px;min-width:0}
 .panel h4{margin:0;font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600}
-#bank{display:flex;flex-wrap:wrap;gap:8px;overflow:auto;padding:2px}
+#bank{display:flex;flex-wrap:wrap;gap:8px;overflow:auto;padding:2px;min-width:0}
 .name{padding:8px 12px;border-radius:10px;white-space:nowrap;font-size:14px}
 .name.sel{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .name.bad{background:var(--bad);border-color:var(--bad);color:#fff}
@@ -160,7 +160,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
   .panel{position:sticky;top:auto;bottom:0;max-height:none;border-radius:14px 14px 0 0;margin:0 -12px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));z-index:5;border-bottom:0}
   .panel h4{display:none}
   #bank{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
-  .trainwrap{display:flex;flex-direction:column}
+  .trainwrap{display:flex;flex-direction:column;align-items:stretch;min-width:0}
+  .trainwrap>*{min-width:0}
   .trainwrap .panel{order:3}
   .trainwrap .viewcol{order:1}
   .trainwrap .legendwrap{order:2}
@@ -177,9 +178,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
 .legend .txt{flex:1;min-width:0}
 .legend .txt i{font-style:italic}
 .legend .txt span{color:var(--muted);margin-left:6px}
-.legend .cols{columns:2;column-gap:20px}
-@media (max-width:700px){.legend .cols{columns:1}}
-.legend .cols .row{break-inside:avoid}
+.legendwrap{container-type:inline-size}
+.legend .cols{display:grid;grid-auto-flow:row;grid-template-columns:minmax(0,1fr);column-gap:20px}
+@container (min-width:520px){ .legend .cols{grid-auto-flow:column;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(var(--rows,6),auto)} }
+.legend .txt{overflow-wrap:break-word}
 .credit{margin-top:22px;font-size:12px;color:var(--muted)}
 .credit a{text-decoration:underline;text-underline-offset:2px}
 
@@ -293,7 +295,7 @@ const IMG = (() => {
 })();
 let decks = LS.get('anat.decks', []);
 let progress = LS.get('anat.progress', {});
-const saveDecks = () => LS.set('anat.decks', decks);
+const saveDecks = () => { LS.set('anat.decks', decks); searchIdx = null; };   // колоди змінились — індекс пошуку перебудувати
 const saveProgress = () => LS.set('anat.progress', progress);
 const progFor = (setId, mode) => { const p = progress[setId] = progress[setId] || {}; return p[mode] = p[mode] || { streak: 0, passes: 0, best: null }; };
 
@@ -436,6 +438,7 @@ const Viewer = {
     if (!force && sig === this._sig) return;
     this._sig = sig;
     const W = this.sw(), H = this.sh();
+    if (!(W > 1 && H > 1)) { this.leadsEl.innerHTML = ''; return; }   // сцена ще не розкладена
     const gap = this.el.classList.contains('dense') ? 25 : 30;   // діаметр піна + просвіт
     const pts = list.map(p => ({ x: p.x / 100 * W, y: p.y / 100 * H }));
     const n = pts.length, par = [...Array(n).keys()];
@@ -663,7 +666,7 @@ function renderAbout() {
 const deckToSet = d => ({ id: 'my:' + d.id, title: d.name, cat: 'Мої схеми', file: null, deckId: d.id, w: 0, h: 0, items: d.pins.map((p, i) => ({ n: i + 1, la: p.la, uk: p.uk, pts: [[p.x, p.y]] })), credit: null });
 const Trainer = {
   set: null, mode: 'study', T: null, active: false,
-  teardown() { this.active = false; this.set = null; this.T = null; },
+  teardown() { this.active = false; this.set = null; this.T = null; document.documentElement.style.removeProperty('--panelh'); },
   async open(set, mode, src, hl) {
     this.set = set; this.mode = mode; this.active = true;
     this.wantHl = Number(hl) || null;   // точка з пошуку — підсвітити після завантаження
@@ -694,7 +697,7 @@ const Trainer = {
     if (!this.active || this.set !== set) return;
     if (!ok) { $('#legend').innerHTML = '<div class="empty">Не вдалося завантажити картинку.</div>'; return; }
     this.start();
-    window.scrollTo(0, 0);
+    this.focusViewer();
   },
   start() {
     const set = this.set, ids = set.items.map(i => i.n);
@@ -710,6 +713,14 @@ const Trainer = {
       const row = $(`.legend .row[data-n="${this.hl}"]`);
       row && row.scrollIntoView({ block: 'nearest' });
     }
+    this.focusViewer();
+  },
+  focusViewer() {
+    if (this.T && matchMedia('(max-width:900px)').matches) {
+      const v = $('#viewer');
+      if (v) { window.scrollTo({ top: Math.max(0, v.getBoundingClientRect().top + window.scrollY - 62) }); return; }
+    }
+    window.scrollTo(0, 0);
   },
   item(n) { return this.set.items.find(i => i.n === n); },
   numOf(n) { return this.T ? this.T.order.indexOf(n) + 1 : n; },
@@ -737,6 +748,7 @@ const Trainer = {
     if (navigator.vibrate) navigator.vibrate(60);
   },
   renderAll() { this.renderPins(); this.renderBank(); this.renderLegend(); this.renderStat(); },
+  teardownPanelHeight() { document.documentElement.style.removeProperty('--panelh'); },
   renderPins() {
     const T = this.T, list = [];
     for (const it of this.set.items) it.pts.forEach((p, i) => {
@@ -768,18 +780,24 @@ const Trainer = {
         <div class="hint">${T.hint ? `<div class="hintText">${esc(it.uk || '—')}</div>` : (it.uk ? `<button class="small ghost" id="hintBtn">Підказка</button>` : '')}</div></div>`;
       const hb = $('#hintBtn'); if (hb) hb.onclick = () => { T.hint = true; this.renderBank(); };
     }
+    this.syncPanelHeight();
+  },
+  syncPanelHeight() {
+    const panel = $('#panel');
+    const h = (!panel || panel.hidden) ? 0 : Math.round(panel.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--panelh', h + 'px');
   },
   progressText() { const p = progFor(this.set.id, this.mode); return p.streak >= GOAL ? 'Мета досягнута: ' + p.streak + ' чистих проходи поспіль 🎉' : `Чистих проходів поспіль: ${p.streak} з ${GOAL}`; },
   renderLegend() {
     const T = this.T, L = $('#legend'), set = this.set;
     const row = (it, cls) => `<div class="row ${cls}" data-n="${it.n}"><span class="num">${this.numOf(it.n)}</span><span class="txt"><i>${esc(it.la)}</i>${it.uk ? `<span>${esc(it.uk)}</span>` : ''}</span></div>`;
     if (!T) {
-      L.innerHTML = `<h4>Легенда · ${set.items.length}</h4><div class="cols">${set.items.map(it => row(it, this.hl === it.n ? 'hl' : '')).join('')}</div>`;
+      L.innerHTML = `<h4>Легенда · ${set.items.length}</h4><div class="cols" style="--rows:${Math.ceil(set.items.length / 2)}">${set.items.map(it => row(it, this.hl === it.n ? 'hl' : '')).join('')}</div>`;
       $$('.legend .row').forEach(r => r.onclick = () => { const n = +r.dataset.n; this.hl = this.hl === n ? null : n; this.renderPins(); this.renderLegend(); if (this.hl) { const it = this.item(n); Viewer.centerOn(it.pts[0][0], it.pts[0][1], 1.6); } });
       return;
     }
     const done = set.items.filter(it => T.done.has(it.n)).sort((a, b) => this.numOf(a.n) - this.numOf(b.n));
-    L.innerHTML = `<h4>Легенда · ${done.length} з ${set.items.length}</h4>` + (done.length ? `<div class="cols">${done.map(it => row(it, 'ok')).join('')}</div>` : `<div class="muted" style="font-size:14px">${this.mode === 'direct' ? 'Натисніть точку на схемі, потім назву в панелі.' : 'Знайдіть на схемі точку, що відповідає назві.'}</div>`);
+    L.innerHTML = `<h4>Легенда · ${done.length} з ${set.items.length}</h4>` + (done.length ? `<div class="cols" style="--rows:${Math.ceil(done.length / 2)}">${done.map(it => row(it, 'ok')).join('')}</div>` : `<div class="muted" style="font-size:14px">${this.mode === 'direct' ? 'Натисніть точку на схемі, потім назву в панелі.' : 'Знайдіть на схемі точку, що відповідає назві.'}</div>`);
     $$('.legend .row').forEach(r => r.onclick = () => { const it = this.item(+r.dataset.n); Viewer.centerOn(it.pts[0][0], it.pts[0][1]); });
   },
   renderStat() {
