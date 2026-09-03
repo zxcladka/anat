@@ -16,3 +16,7 @@
 `node tools/shots.mjs tasks.json` — запускає headless Chrome через DevTools Protocol, емулює пристрій, виконує JS і робить скріншоти.
 Формат tasks.json: `{"width":390,"height":844,"mobile":true,"dark":true,"steps":[{"url":"http://127.0.0.1:8791/index.html#/today","wait":1000,"shot":"today","full":true},{"eval":"document.title"}]}`.
 Спершу підняти `python3 -m http.server 8791` у корені проєкту. У кінці скрипт друкує помилки консолі.
+
+## Структура коду
+
+`index.html` — розмітка і стилі ядра; `js/app.js` — ядро (атлас, тренажер, пошук, SRS, «Сьогодні», прогрес); `js/decks.js` — колоди карток; `js/blitz.js` — бліц; `css/modules.css` — стилі модулів. Модуль додає маршрут через `ROUTES.name = parts => …`, блок на «Сьогодні» через `EXT.today.push(fn)`, лічильник у бейдж через `EXT.badge.push(fn)`, асинхронну ініціалізацію через `INIT.push(fn)`. Після правок js/css підняти `?v=` у index.html.

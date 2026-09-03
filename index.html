@@ -7,7 +7,7 @@
 <meta name="description" content="Інтерактивний тренажер з анатомії: підписуйте структури на схемах з атласу латиною, повторюйте за інтервалами. Працює офлайн.">
 <meta name="theme-color" content="#f6f4ee" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1a1d21" media="(prefers-color-scheme: dark)">
-<link rel="stylesheet" href="css/modules.css?v=1">
+<link rel="stylesheet" href="css/modules.css?v=2">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f766e'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='700' fill='%23fff'%3EA%3C/text%3E%3C/svg%3E">
 <style>
 :root{
@@ -288,10 +288,10 @@ nav.main a .badge[hidden]{display:none}
   <nav class="main" id="nav">
     <a href="#/today" data-r="today">Сьогодні<span class="badge" id="dueBadge" hidden></span></a>
     <a href="#/" data-r="home">Атлас</a>
+    <a href="#/blitz" data-r="blitz">Бліц</a>
     <a href="#/decks" data-r="decks">Колоди</a>
     <a href="#/my" data-r="my">Мої схеми</a>
     <a href="#/progress" data-r="progress">Прогрес</a>
-    <a href="#/about" data-r="about">Про сайт</a>
   </nav>
   <span class="spacer"></span>
   <button class="ghost" id="themeBtn" title="Тема">◐</button>
@@ -302,7 +302,7 @@ nav.main a .badge[hidden]{display:none}
 <footer><div class="wrap">
   <span>Anatomia — тренажер анатомічної номенклатури: огляд, прямий і зворотний режими, інтервальне повторення. Прогрес зберігається у цьому браузері.</span>
   <span class="spacer"></span>
-  <span>Схеми: Wikimedia Commons (Public domain / CC BY / CC BY‑SA), автори вказані на сторінці кожної схеми.</span>
+  <span><a href="#/about" style="text-decoration:underline;text-underline-offset:2px">Про тренажер</a> · Схеми: Wikimedia Commons (Public domain / CC BY / CC BY‑SA), автори вказані на сторінці кожної схеми.</span>
 </div></footer>
 
 <input type="file" id="fileImg" accept="image/*" hidden>
@@ -336,8 +336,9 @@ nav.main a .badge[hidden]{display:none}
 </dialog>
 
 <script src="atlas/data.js?v=7"></script>
-<script src="js/app.js?v=1"></script>
-<script src="js/decks.js?v=1"></script>
+<script src="js/app.js?v=2"></script>
+<script src="js/decks.js?v=2"></script>
+<script src="js/blitz.js?v=2"></script>
 
 </body>
 </html>
