@@ -110,7 +110,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
 .modes{display:flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:var(--paper)}
 .modes button{border:0;border-radius:0;padding:7px 14px}
 .modes button.active{background:var(--accent);color:var(--accent-ink)}
-.trainwrap{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:start}
+.trainwrap{display:grid;grid-template-columns:minmax(0,1fr) 330px;grid-template-rows:auto auto;gap:16px;align-items:start}
+.trainwrap .viewcol{grid-column:1;grid-row:1}
+.trainwrap .legendwrap{grid-column:1;grid-row:2}
+.trainwrap .panel{grid-column:2;grid-row:1 / span 2}
+.trainwrap:has(.panel[hidden]) .legendwrap{grid-column:2;grid-row:1 / span 2;margin-top:0}
 @media (max-width:900px){.trainwrap{grid-template-columns:minmax(0,1fr)}}
 .viewcol{min-width:0}
 .statbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:14px;padding:0 0 10px}
@@ -147,7 +151,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
 /* side panel */
 .panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px;position:sticky;top:70px;max-height:calc(100vh - 90px);max-height:calc(100dvh - 90px);display:flex;flex-direction:column;gap:10px;min-width:0}
 .panel h4{margin:0;font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600}
-#bank{display:flex;flex-wrap:wrap;gap:8px;overflow:auto;padding:2px;min-width:0}
+#bank{display:flex;flex-wrap:wrap;gap:8px;overflow:auto;padding:2px;min-width:0;scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+#bank::-webkit-scrollbar{height:6px;width:6px}
+#bank::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px}
+#bank::-webkit-scrollbar-track{background:transparent}
 .name{padding:8px 12px;border-radius:10px;white-space:nowrap;font-size:14px}
 .name.sel{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .name.bad{background:var(--bad);border-color:var(--bad);color:#fff}
@@ -243,18 +250,16 @@ nav.main a .badge[hidden]{display:none}
 .bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .3s}
 .bar .pct{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
 .bar small{color:var(--muted);font-weight:400;margin-left:6px}
-.heatwrap{display:flex;gap:8px;align-items:flex-start}
-.heat{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,1fr);gap:3px;width:min(100%,440px)}
+.heat{display:grid;grid-auto-flow:column;grid-template-columns:auto repeat(12,1fr);grid-template-rows:repeat(7,1fr);gap:3px;width:min(100%,460px)}
 .heat div{aspect-ratio:1;border-radius:3px;background:var(--line)}
+.heat span{font-size:10px;color:var(--muted);line-height:1;display:flex;align-items:center;padding-right:4px}
 .heat div.l1{background:color-mix(in srgb,var(--accent) 35%,var(--line))}
 .heat div.l2{background:color-mix(in srgb,var(--accent) 65%,var(--line))}
 .heat div.l3{background:var(--accent)}
 .heat div.today{outline:2px solid var(--ink);outline-offset:-2px}
 .heat div.future{opacity:.35}
-.heatdays{display:grid;grid-template-rows:repeat(7,1fr);gap:3px;font-size:10px;color:var(--muted);line-height:1}
-.heatdays span{display:flex;align-items:center;height:100%}
-.weak .row{cursor:default}
-.weak .row:hover{background:transparent}
+.weak .row,#legend .log .row{cursor:default}
+.weak .row:hover,#legend .log .row:hover{background:transparent}
 .weak .num.bad{background:var(--bad);color:#fff}
 .weak .txt small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
 .weak .row a{flex:none}
@@ -361,6 +366,7 @@ const DAY = 86400000, SRS_STEPS = [1, 3, 7, 14, 30];
 let srs = LS.get('anat.srs', {});
 let days = LS.get('anat.days', {});           // 'YYYY-MM-DD' → кількість відповідей за день
 const saveSrs = () => LS.set('anat.srs', srs);
+const structKey = it => it.pid || it.n;            // для своїх схем — id піна, для атласу — номер
 const srsKey = (setId, n, mode) => `${setId}|${n}|${mode}`;
 const dayKey = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 function touchDay() { const k = dayKey(); days[k] = (days[k] || 0) + 1; LS.set('anat.days', days); }
@@ -386,7 +392,7 @@ function srsResolve(k) {
   if (setId.startsWith('my:')) { const d = decks.find(x => 'my:' + x.id === setId); if (d && d.hasImage) { set = deckToSet(d); href = '#/my/' + d.id; } }
   else { set = ATLAS.sets.find(x => x.id === setId); if (set) href = '#/set/' + set.id; }
   if (!set) return null;
-  const it = set.items.find(i => i.n === +n); if (!it) return null;
+  const it = set.items.find(i => String(structKey(i)) === n); if (!it) return null;
   return { k, set, it, mode, href, r: srs[k] };
 }
 function srsDue(now = Date.now()) { return Object.keys(srs).filter(k => srs[k].due <= now).map(srsResolve).filter(Boolean).sort((a, b) => a.r.due - b.r.due); }
@@ -779,7 +785,7 @@ function renderAbout() {
 }
 
 /* ---------- trainer ---------- */
-const deckToSet = d => ({ id: 'my:' + d.id, title: d.name, cat: 'Мої схеми', file: null, deckId: d.id, w: 0, h: 0, items: d.pins.map((p, i) => ({ n: i + 1, la: p.la, uk: p.uk, pts: [[p.x, p.y]] })), credit: null });
+const deckToSet = d => ({ id: 'my:' + d.id, title: d.name, cat: 'Мої схеми', file: null, deckId: d.id, w: 0, h: 0, items: d.pins.map((p, i) => ({ n: i + 1, pid: p.id, la: p.la, uk: p.uk, pts: [[p.x, p.y]] })), credit: null });
 const Trainer = {
   set: null, mode: 'study', T: null, active: false,
   teardown() { this.active = false; this.set = null; this.T = null; document.documentElement.style.removeProperty('--panelh'); },
@@ -852,7 +858,7 @@ const Trainer = {
   solve(n) {
     const T = this.T; T.done.add(n); T.selPin = T.selName = null; T.hint = false;
     T.bank = T.bank.filter(x => x !== n); T.queue = T.queue.filter(x => x !== n);
-    srsReview(this.set.id, n, this.mode, !T.wrong.has(n));   // для інтервального повторення
+    srsReview(this.set.id, structKey(this.item(n)), this.mode, !T.wrong.has(n));   // для інтервального повторення
     if (T.done.size === this.set.items.length) { T.finished = true; const p = progFor(this.set.id, this.mode); p.streak = T.mistakes === 0 ? p.streak + 1 : 0; p.passes++; p.best = p.best == null ? T.mistakes : Math.min(p.best, T.mistakes); saveProgress(); }
     this.renderAll();
     if (T.finished) setTimeout(() => $('#statbar').scrollIntoView({ block: 'nearest' }), 50);
@@ -960,6 +966,10 @@ const Review = {
       <div class="tiles"><div class="tile"><b>${due.length}</b><span>до повторення</span></div><div class="tile"><b>${total}</b><span>структур у повторенні</span></div><div class="tile"><b>${todayN}</b><span>відповідей сьогодні</span></div><div class="tile"><b>${streakDays()}</b><span>${plural(streakDays(), 'день', 'дні', 'днів')} поспіль</span></div></div>
       <div class="actions">${due.length ? `<a href="#/today/session"><button class="primary">Повторити ${Math.min(20, due.length)} →</button></a>` : `<a href="#/"><button class="primary">До атласу →</button></a>`}<a href="#/progress"><button>Мій прогрес</button></a></div>
       ${!due.length && weak.length ? `<h2 class="section-title">Слабкі структури</h2>${weakList(weak)}` : ''}
+      ${!total ? `<h2 class="section-title">Як це працює</h2><div class="prose" style="padding:0"><ul>
+        <li>Кожна відповідь у прямому чи зворотному режимі запам’ятовується окремо для кожної структури.</li>
+        <li>Правильно з першого разу — наступне повторення через 1, 3, 7, 14, 30 днів; помилка — вже завтра.</li>
+        <li>Тут збирається те, що пора повторити: сесії по 20 структур упереміш із різних схем. Лічильник видно у меню.</li></ul></div>` : ''}
     </div>`;
     window.scrollTo(0, 0);
   },
@@ -1012,7 +1022,7 @@ const Review = {
   pinClick(id) { if (!this.cur || this.locked || this.cur.mode !== 'reverse') return; const n = +id.split(':')[0]; this.answer(n === this.cur.it.n, n); },
   answer(ok, picked) {
     const cur = this.cur; this.locked = true; this.picked = picked;
-    srsReview(cur.set.id, cur.it.n, cur.mode, ok);
+    srsReview(cur.set.id, structKey(cur.it), cur.mode, ok);
     this.results.push({ x: cur, ok });
     if (!ok && navigator.vibrate) navigator.vibrate(60);
     this.i++;
@@ -1043,7 +1053,7 @@ const Review = {
   },
   renderLog() {
     const bad = this.results.filter(r => !r.ok), L = $('#legend');
-    L.innerHTML = bad.length ? `<h4>Помилки цієї сесії · ${bad.length}</h4>` + bad.map(r => `<div class="row"><span class="num">${r.x.set.items.indexOf(r.x.it) + 1}</span><span class="txt"><i>${esc(r.x.it.la)}</i>${r.x.it.uk ? `<span>${esc(r.x.it.uk)}</span>` : ''}<span>· ${esc(r.x.set.title)}</span></span></div>`).join('')
+    L.innerHTML = bad.length ? `<h4>Помилки цієї сесії · ${bad.length}</h4><div class="log">` + bad.map(r => `<div class="row"><span class="num">${r.x.set.items.indexOf(r.x.it) + 1}</span><span class="txt"><i>${esc(r.x.it.la)}</i>${r.x.it.uk ? `<span>${esc(r.x.it.uk)}</span>` : ''}<span>· ${esc(r.x.set.title)}</span></span></div>`).join('') + '</div>'
       : `<div class="muted" style="font-size:14px">${this.cur.mode === 'direct' ? 'Точка зі знаком «?» підсвічена — оберіть її назву в панелі.' : 'Знайдіть на схемі точку, що відповідає назві.'}</div>`;
   },
   finish() {
@@ -1087,8 +1097,7 @@ function renderProgress() {
     <h2 class="section-title">Готовність за розділами</h2>
     <div class="bars">${rows.map(r => `<div class="bar"><span class="lbl" title="${esc(r.c)}">${esc(r.c)}</span><div class="track"><div class="fill" style="width:${r.pct}%"></div></div><span class="pct">${r.pct}%<small>${r.d}/${r.t}</small></span></div>`).join('')}</div>
     <h2 class="section-title">Активність за 12 тижнів</h2>
-    <div class="heatwrap"><div class="heatdays"><span>пн</span><span></span><span>ср</span><span></span><span>пт</span><span></span><span>нд</span></div>
-      <div class="heat">${cells.map(c => `<div class="${lvl(c.v)} ${c.today ? 'today' : ''} ${c.future ? 'future' : ''}" title="${c.k}: ${c.v} ${plural(c.v, 'відповідь', 'відповіді', 'відповідей')}"></div>`).join('')}</div></div>
+    <div class="heat"><span>пн</span><span></span><span>ср</span><span></span><span>пт</span><span></span><span>нд</span>${cells.map(c => `<div class="${lvl(c.v)} ${c.today ? 'today' : ''} ${c.future ? 'future' : ''}" title="${c.k}: ${c.v} ${plural(c.v, 'відповідь', 'відповіді', 'відповідей')}"></div>`).join('')}</div>
     <h2 class="section-title">Слабкі структури</h2>
     ${weak.length ? `<p class="muted" style="margin:-4px 0 12px;font-size:14px">Топ за кількістю забувань. Кнопка відкриває схему в тому режимі, де були помилки.</p>${weakList(weak)}`
       : `<div class="empty">${inSrs ? 'Поки без помилок після першого знайомства — так тримати.' : 'Пройдіть кілька схем у прямому чи зворотному режимі — тут з’являться структури, які даються найважче.'}</div>`}
@@ -1108,7 +1117,7 @@ function renderMy() {
   </div>`;
   $$('img[data-img]').forEach(async im => { const d = decks.find(x => x.id === im.dataset.img); if (d && d.hasImage) im.src = await IMG.get(d.id) || ''; });
   $$('.card[data-id]').forEach(c => c.onclick = e => { if (e.target.closest('button,a')) return; location.hash = '#/edit/' + c.dataset.id; });
-  $$('button[data-del]').forEach(b => b.onclick = async () => { const d = decks.find(x => x.id === b.dataset.del); if (!await confirmDlg('Видалити схему?', `«${d.name}» разом із картинкою та ${d.pins.length} точками.`)) return; await IMG.del(d.id); decks = decks.filter(x => x !== d); delete progress['my:' + d.id]; saveProgress(); saveDecks(); renderMy(); });
+  $$('button[data-del]').forEach(b => b.onclick = async () => { const d = decks.find(x => x.id === b.dataset.del); if (!await confirmDlg('Видалити схему?', `«${d.name}» разом із картинкою та ${d.pins.length} точками.`)) return; await IMG.del(d.id); decks = decks.filter(x => x !== d); delete progress['my:' + d.id]; saveProgress(); Object.keys(srs).filter(k => k.startsWith('my:' + d.id + '|')).forEach(k => delete srs[k]); saveSrs(); updateBadge(); saveDecks(); renderMy(); });
   $('#newDeck').onclick = async () => { const n = await askText('Назва схеми', 'Схема ' + (decks.length + 1)); if (n == null) return; const d = { id: uid(), name: n || ('Схема ' + (decks.length + 1)), pins: [], hasImage: false }; decks.push(d); saveDecks(); location.hash = '#/edit/' + d.id; };
   $('#importBtn').onclick = () => $('#fileJson').click();
   window.scrollTo(0, 0);
