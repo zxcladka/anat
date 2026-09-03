@@ -1,0 +1,1081 @@
+[
+{
+"id": "vert-cervical",
+"title": "Шийний хребець (типовий), вигляд зверху",
+"cat": "Скелет",
+"file": "atlas/vert-cervical.jpg",
+"plate": "5",
+"items": [
+{
+"n": 1,
+"la": "Processus spinosus",
+"uk": "Остистий відросток",
+"pts": [
+[
+62.88,
+5.64
+]
+]
+},
+{
+"n": 2,
+"la": "Arcus vertebrae",
+"uk": "Дуга хребця",
+"pts": [
+[
+64.26,
+26.56
+]
+]
+},
+{
+"n": 3,
+"la": "Processus articularis superior",
+"uk": "Верхній суглобовий відросток",
+"pts": [
+[
+79.92,
+36.96
+]
+]
+},
+{
+"n": 4,
+"la": "Sulcus nervi spinalis",
+"uk": "Борозна спинномозкового нерва",
+"pts": [
+[
+10.66,
+68.72
+]
+]
+},
+{
+"n": 5,
+"la": "Tuberculum anterius processus transversi",
+"uk": "Передній горбок поперечного відростка",
+"pts": [
+[
+86.19,
+75.15
+]
+]
+},
+{
+"n": 6,
+"la": "Tuberculum posterius processus transversi",
+"uk": "Задній горбок поперечного відростка",
+"pts": [
+[
+78.19,
+84.56
+]
+]
+},
+{
+"n": 7,
+"la": "Foramen transversarium",
+"uk": "Отвір поперечного відростка",
+"pts": [
+[
+13.9,
+82.5
+]
+]
+},
+{
+"n": 8,
+"la": "Corpus vertebrae",
+"uk": "Тіло хребця",
+"pts": [
+[
+33.5,
+84.5
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_5.png"
+}
+},
+{
+"id": "vert-atlas",
+"title": "Атлант (C I), вигляд зверху",
+"cat": "Скелет",
+"file": "atlas/vert-atlas.jpg",
+"plate": "7",
+"items": [
+{
+"n": 1,
+"la": "Tuberculum posterius",
+"uk": "Задній горбок",
+"pts": [
+[
+69.78,
+4.93
+]
+]
+},
+{
+"n": 2,
+"la": "Sulcus arteriae vertebralis",
+"uk": "Борозна хребтової артерії",
+"pts": [
+[
+88.2,
+26.09
+]
+]
+},
+{
+"n": 3,
+"la": "Facies articularis superior",
+"uk": "Верхня суглобова поверхня",
+"pts": [
+[
+23.58,
+35.75
+]
+]
+},
+{
+"n": 4,
+"la": "Processus transversus",
+"uk": "Поперечний відросток",
+"pts": [
+[
+11.83,
+71.31
+]
+]
+},
+{
+"n": 5,
+"la": "Foramen transversarium",
+"uk": "Отвір поперечного відростка",
+"pts": [
+[
+24.21,
+76.8
+]
+]
+},
+{
+"n": 6,
+"la": "Fovea dentis",
+"uk": "Ямка зуба",
+"pts": [
+[
+81.23,
+84.46
+]
+]
+},
+{
+"n": 7,
+"la": "Massa lateralis",
+"uk": "Бічна маса",
+"pts": [
+[
+41.84,
+86.5
+]
+]
+},
+{
+"n": 8,
+"la": "Tuberculum anterius",
+"uk": "Передній горбок",
+"pts": [
+[
+65.09,
+91.69
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_7.png"
+}
+},
+{
+"id": "vert-axis",
+"title": "Осьовий хребець (C II), вигляд спереду",
+"cat": "Скелет",
+"file": "atlas/vert-axis.jpg",
+"plate": "8",
+"items": [
+{
+"n": 1,
+"la": "Dens axis (facies articularis anterior)",
+"uk": "Зуб осьового хребця (передня суглобова поверхня)",
+"pts": [
+[
+78.28,
+9.29
+]
+]
+},
+{
+"n": 2,
+"la": "Facies articularis superior",
+"uk": "Верхня суглобова поверхня",
+"pts": [
+[
+78.5,
+23.59
+]
+]
+},
+{
+"n": 3,
+"la": "Processus transversus",
+"uk": "Поперечний відросток",
+"pts": [
+[
+10.34,
+63.97
+]
+]
+},
+{
+"n": 4,
+"la": "Corpus vertebrae",
+"uk": "Тіло хребця",
+"pts": [
+[
+53.49,
+83.37
+]
+]
+},
+{
+"n": 5,
+"la": "Facies articularis inferior",
+"uk": "Нижня суглобова поверхня",
+"pts": [
+[
+36.58,
+88.75
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_8.png"
+}
+},
+{
+"id": "vert-t10-l2",
+"title": "Хребці T X – L II, вигляд збоку",
+"cat": "Скелет",
+"file": "atlas/vert-t10-l2.jpg",
+"plate": "9",
+"items": [
+{
+"n": 1,
+"la": "Fovea costalis superior",
+"uk": "Верхня реброва ямка",
+"pts": [
+[
+23.03,
+3.66
+]
+]
+},
+{
+"n": 2,
+"la": "Processus articularis superior",
+"uk": "Верхній суглобовий відросток",
+"pts": [
+[
+65.37,
+4.01
+]
+]
+},
+{
+"n": 3,
+"la": "Fovea costalis processus transversi",
+"uk": "Реброва ямка поперечного відростка",
+"pts": [
+[
+65.66,
+10.51
+]
+]
+},
+{
+"n": 4,
+"la": "Vertebra thoracica X",
+"uk": "Десятий грудний хребець",
+"pts": [
+[
+10.92,
+18.05
+]
+]
+},
+{
+"n": 5,
+"la": "Vertebra thoracica XII",
+"uk": "Дванадцятий грудний хребець",
+"pts": [
+[
+10.9,
+45.8
+]
+]
+},
+{
+"n": 6,
+"la": "Processus accessorius",
+"uk": "Додатковий відросток",
+"pts": [
+[
+76.64,
+46.55
+],
+[
+40.09,
+96.21
+]
+]
+},
+{
+"n": 7,
+"la": "Vertebra lumbalis I",
+"uk": "Перший поперековий хребець",
+"pts": [
+[
+11.67,
+64.56
+]
+]
+},
+{
+"n": 8,
+"la": "Processus mammillaris",
+"uk": "Соскоподібний відросток",
+"pts": [
+[
+88.88,
+77.71
+]
+]
+},
+{
+"n": 9,
+"la": "Processus costalis (transversus)",
+"uk": "Ребровий (поперечний) відросток",
+"pts": [
+[
+31.27,
+93.75
+]
+]
+},
+{
+"n": 10,
+"la": "Processus articularis inferior",
+"uk": "Нижній суглобовий відросток",
+"pts": [
+[
+77.45,
+96.48
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_9.png"
+}
+},
+{
+"id": "vert-thoracic-sup",
+"title": "Грудний хребець, вигляд зверху",
+"cat": "Скелет",
+"file": "atlas/vert-thoracic-sup.jpg",
+"plate": "10",
+"items": [
+{
+"n": 1,
+"la": "Processus spinosus",
+"uk": "Остистий відросток",
+"pts": [
+[
+62.3,
+7.68
+]
+]
+},
+{
+"n": 2,
+"la": "Processus transversus",
+"uk": "Поперечний відросток",
+"pts": [
+[
+65.85,
+19.11
+]
+]
+},
+{
+"n": 3,
+"la": "Fovea costalis processus transversi",
+"uk": "Реброва ямка поперечного відростка",
+"pts": [
+[
+82.15,
+27.14
+]
+]
+},
+{
+"n": 4,
+"la": "Processus articularis superior",
+"uk": "Верхній суглобовий відросток",
+"pts": [
+[
+79.33,
+53.17
+]
+]
+},
+{
+"n": 5,
+"la": "Fovea costalis superior",
+"uk": "Верхня реброва ямка (для головки ребра)",
+"pts": [
+[
+76.59,
+61.88
+],
+[
+76.9,
+66.9
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_10.png"
+}
+},
+{
+"id": "vert-thoracic-lat",
+"title": "Грудний хребець, вигляд збоку",
+"cat": "Скелет",
+"file": "atlas/vert-thoracic-lat.jpg",
+"plate": "11",
+"items": [
+{
+"n": 1,
+"la": "Fovea costalis superior",
+"uk": "Верхня реброва ямка",
+"pts": [
+[
+43.3,
+9.7
+]
+]
+},
+{
+"n": 2,
+"la": "Fovea costalis inferior",
+"uk": "Нижня реброва ямка",
+"pts": [
+[
+23.59,
+54.6
+]
+]
+},
+{
+"n": 3,
+"la": "Processus articularis inferior",
+"uk": "Нижній суглобовий відросток",
+"pts": [
+[
+58.19,
+71.8
+]
+]
+},
+{
+"n": 4,
+"la": "Incisura vertebralis inferior",
+"uk": "Нижня хребцева вирізка",
+"pts": [
+[
+29.8,
+70.4
+]
+]
+},
+{
+"n": 5,
+"la": "Processus spinosus",
+"uk": "Остистий відросток",
+"pts": [
+[
+74.23,
+96.1
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_11.png"
+}
+},
+{
+"id": "vert-lumbar",
+"title": "Поперековий хребець, вигляд зверху",
+"cat": "Скелет",
+"file": "atlas/vert-lumbar.jpg",
+"plate": "12",
+"items": [
+{
+"n": 1,
+"la": "Processus spinosus",
+"uk": "Остистий відросток",
+"pts": [
+[
+65.09,
+13.24
+]
+]
+},
+{
+"n": 2,
+"la": "Processus mammillaris",
+"uk": "Соскоподібний відросток",
+"pts": [
+[
+11.63,
+27.52
+]
+]
+},
+{
+"n": 3,
+"la": "Processus accessorius",
+"uk": "Додатковий відросток",
+"pts": [
+[
+8.84,
+31.62
+]
+]
+},
+{
+"n": 4,
+"la": "Processus articularis superior",
+"uk": "Верхній суглобовий відросток",
+"pts": [
+[
+82.25,
+35.11
+]
+]
+},
+{
+"n": 5,
+"la": "Processus costalis (transversus)",
+"uk": "Ребровий (поперечний) відросток",
+"pts": [
+[
+76.47,
+54.36
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_12.png"
+}
+},
+{
+"id": "vert-sacrum-dorsal",
+"title": "Крижова кістка, дорсальна поверхня",
+"cat": "Скелет",
+"file": "atlas/vert-sacrum-dorsal.jpg",
+"plate": "13",
+"items": [
+{
+"n": 1,
+"la": "Processus articularis superior",
+"uk": "Верхній суглобовий відросток",
+"pts": [
+[
+21.97,
+2.96
+]
+]
+},
+{
+"n": 2,
+"la": "Canalis sacralis",
+"uk": "Крижовий канал",
+"pts": [
+[
+50.97,
+2.84
+]
+]
+},
+{
+"n": 3,
+"la": "Tuberositas sacralis",
+"uk": "Крижова горбистість",
+"pts": [
+[
+93.28,
+39.79
+]
+]
+},
+{
+"n": 4,
+"la": "Facies auricularis",
+"uk": "Вушкоподібна поверхня",
+"pts": [
+[
+7.0,
+44.47
+]
+]
+},
+{
+"n": 5,
+"la": "Crista sacralis lateralis",
+"uk": "Бічний крижовий гребінь",
+"pts": [
+[
+88.75,
+50.58
+]
+]
+},
+{
+"n": 6,
+"la": "Crista sacralis medialis",
+"uk": "Присередній крижовий гребінь",
+"pts": [
+[
+86.65,
+62.74
+]
+]
+},
+{
+"n": 7,
+"la": "Crista sacralis mediana",
+"uk": "Серединний крижовий гребінь",
+"pts": [
+[
+11.03,
+63.47
+]
+]
+},
+{
+"n": 8,
+"la": "Foramina sacralia posteriora",
+"uk": "Задні крижові отвори",
+"pts": [
+[
+86.96,
+72.47
+]
+]
+},
+{
+"n": 9,
+"la": "Apex ossis sacri",
+"uk": "Верхівка крижової кістки",
+"pts": [
+[
+33.79,
+90.09
+]
+]
+},
+{
+"n": 10,
+"la": "Hiatus sacralis",
+"uk": "Крижовий розтвір",
+"pts": [
+[
+47.73,
+95.35
+]
+]
+},
+{
+"n": 11,
+"la": "Cornu sacrale",
+"uk": "Крижовий ріг",
+"pts": [
+[
+57.34,
+95.72
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_13.png"
+}
+},
+{
+"id": "vert-sacrum-pelvic",
+"title": "Крижова кістка, тазова поверхня",
+"cat": "Скелет",
+"file": "atlas/vert-sacrum-pelvic.jpg",
+"plate": "14",
+"items": [
+{
+"n": 1,
+"la": "Processus articularis superior",
+"uk": "Верхній суглобовий відросток",
+"pts": [
+[
+29.25,
+6.0
+]
+]
+},
+{
+"n": 2,
+"la": "Lineae transversae",
+"uk": "Поперечні лінії",
+"pts": [
+[
+5.81,
+44.55
+]
+]
+},
+{
+"n": 3,
+"la": "Foramina sacralia anteriora",
+"uk": "Передні крижові отвори",
+"pts": [
+[
+11.08,
+63.49
+]
+]
+},
+{
+"n": 4,
+"la": "Apex ossis sacri",
+"uk": "Верхівка крижової кістки",
+"pts": [
+[
+50.45,
+94.94
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_14.png"
+}
+},
+{
+"id": "vert-sacrum-base",
+"title": "Крижова кістка, основа (вигляд зверху)",
+"cat": "Скелет",
+"file": "atlas/vert-sacrum-base.jpg",
+"plate": "15",
+"items": [
+{
+"n": 1,
+"la": "Crista sacralis mediana",
+"uk": "Серединний крижовий гребінь",
+"pts": [
+[
+46.07,
+4.3
+]
+]
+},
+{
+"n": 2,
+"la": "Crista sacralis medialis",
+"uk": "Присередній крижовий гребінь",
+"pts": [
+[
+20.96,
+14.31
+]
+]
+},
+{
+"n": 3,
+"la": "Incisura vertebralis superior",
+"uk": "Верхня хребцева вирізка",
+"pts": [
+[
+11.0,
+22.18
+]
+]
+},
+{
+"n": 4,
+"la": "Canalis sacralis",
+"uk": "Крижовий канал",
+"pts": [
+[
+53.66,
+19.17
+]
+]
+},
+{
+"n": 5,
+"la": "Processus articularis superior",
+"uk": "Верхній суглобовий відросток",
+"pts": [
+[
+80.12,
+21.66
+]
+]
+},
+{
+"n": 6,
+"la": "Pars lateralis",
+"uk": "Бічна частина",
+"pts": [
+[
+89.15,
+28.96
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_15.png"
+}
+},
+{
+"id": "vert-sacrum-sagittal",
+"title": "Крижова кістка, сагітальний розпил",
+"cat": "Скелет",
+"file": "atlas/vert-sacrum-sagittal.jpg",
+"plate": "17",
+"items": [
+{
+"n": 1,
+"la": "Basis ossis sacri",
+"uk": "Основа крижової кістки",
+"pts": [
+[
+36.31,
+3.23
+]
+]
+},
+{
+"n": 2,
+"la": "Processus articularis superior",
+"uk": "Верхній суглобовий відросток",
+"pts": [
+[
+88.59,
+24.3
+]
+]
+},
+{
+"n": 3,
+"la": "Facies pelvica",
+"uk": "Тазова поверхня",
+"pts": [
+[
+18.18,
+45.34
+]
+]
+},
+{
+"n": 4,
+"la": "Canalis sacralis",
+"uk": "Крижовий канал",
+"pts": [
+[
+85.0,
+47.81
+]
+]
+},
+{
+"n": 5,
+"la": "Synchondroses sacrales",
+"uk": "Крижові синхондрози",
+"pts": [
+[
+18.09,
+57.02
+]
+]
+},
+{
+"n": 6,
+"la": "Apex ossis sacri",
+"uk": "Верхівка крижової кістки",
+"pts": [
+[
+10.5,
+85.64
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_17.png"
+}
+},
+{
+"id": "vert-sacrum-coccyx",
+"title": "Крижова кістка і куприк, вигляд збоку",
+"cat": "Скелет",
+"file": "atlas/vert-sacrum-coccyx.jpg",
+"plate": "18",
+"items": [
+{
+"n": 1,
+"la": "Tuberositas sacralis",
+"uk": "Крижова горбистість",
+"pts": [
+[
+82.45,
+5.08
+]
+]
+},
+{
+"n": 2,
+"la": "Os sacrum",
+"uk": "Крижова кістка",
+"pts": [
+[
+14.3,
+33.28
+]
+]
+},
+{
+"n": 3,
+"la": "Crista sacralis mediana",
+"uk": "Серединний крижовий гребінь",
+"pts": [
+[
+10.71,
+43.8
+]
+]
+},
+{
+"n": 4,
+"la": "Facies auricularis",
+"uk": "Вушкоподібна поверхня",
+"pts": [
+[
+72.38,
+45.66
+]
+]
+},
+{
+"n": 5,
+"la": "Cornu sacrale",
+"uk": "Крижовий ріг",
+"pts": [
+[
+14.47,
+71.66
+]
+]
+},
+{
+"n": 6,
+"la": "Cornu coccygeum",
+"uk": "Куприковий ріг",
+"pts": [
+[
+16.35,
+75.27
+]
+]
+},
+{
+"n": 7,
+"la": "Vertebra coccygea I",
+"uk": "Перший куприковий хребець",
+"pts": [
+[
+71.06,
+79.44
+]
+]
+},
+{
+"n": 8,
+"la": "Os coccygis",
+"uk": "Куприк",
+"pts": [
+[
+40.5,
+91.5
+]
+]
+}
+],
+"credit": {
+"artist": "Sobotta, Atlas and Text-book of Human Anatomy (American ed., 1909)",
+"license": "Public domain",
+"licurl": "",
+"source": "https://commons.wikimedia.org/wiki/File:Sobo_1909_18.png"
+}
+}
+]

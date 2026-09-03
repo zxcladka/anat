@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Anatomia — тренажер з анатомії</title>
+<meta name="description" content="Інтерактивний тренажер з анатомії: підписуйте структури на схемах з атласу латиною. Працює офлайн.">
+<style>
+:root{
+  --bg:#f6f4ee; --paper:#ffffff; --ink:#1d1b17; --muted:#6b675e; --line:#e4e0d6; --line2:#cfcabd;
+  --accent:#0f766e; --accent-ink:#ffffff; --accent-soft:#d9efeb; --pin:#e8a800; --pin-ink:#1d1b17;
+  --ok:#15803d; --ok-soft:#dcfce7; --bad:#c62828; --bad-soft:#fde2e2; --canvas:#eceae3; --shadow:0 1px 2px rgba(0,0,0,.06),0 8px 24px rgba(30,25,10,.08);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+}
+html[data-theme="dark"]{
+  --bg:#111315; --paper:#1a1d21; --ink:#ebe8e1; --muted:#9a968d; --line:#2a2e34; --line2:#3a3f47;
+  --accent:#2fb8a9; --accent-ink:#0b1412; --accent-soft:#163b37; --pin:#f2b705; --pin-ink:#1a1a1a;
+  --ok:#3ddc84; --ok-soft:#153a25; --bad:#ff6b6b; --bad-soft:#4a1d1d; --canvas:#0c0e10; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.45;-webkit-tap-highlight-color:transparent;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;overscroll-behavior-y:none}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{background:var(--paper);border:1px solid var(--line2);border-radius:10px;padding:8px 14px;cursor:pointer;line-height:1.2;transition:background .15s,border-color .15s,transform .05s}
+button:hover{border-color:var(--accent)}
+button:active{transform:translateY(1px)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+button.ghost{background:transparent;border-color:transparent;color:var(--muted)}
+button.ghost:hover{color:var(--ink);border-color:var(--line2)}
+button.danger{color:var(--bad)}
+button.small{padding:5px 10px;font-size:13px;border-radius:8px}
+input[type=text]{background:var(--paper);border:1px solid var(--line2);border-radius:10px;padding:8px 10px;min-width:0}
+input[type=text]:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+i,em{font-style:italic}
+.muted{color:var(--muted)}
+.spacer{flex:1}
+.chip{display:inline-block;font-size:12px;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600;letter-spacing:.2px}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 20px}
+@media (max-width:700px){.wrap{padding:0 12px}}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:58px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:21px;letter-spacing:.2px}
+.logo .mark{width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--serif);font-size:18px}
+.logo small{font-family:var(--sans);font-size:12px;color:var(--muted);margin-left:2px;letter-spacing:.4px;text-transform:uppercase}
+nav.main{display:flex;gap:4px}
+nav.main a{padding:7px 12px;border-radius:9px;color:var(--muted);font-weight:500}
+nav.main a.active,nav.main a:hover{color:var(--ink);background:var(--bg)}
+@media (max-width:700px){ .logo small{display:none} nav.main a{padding:7px 9px;font-size:14px} .top .wrap{gap:10px} }
+@media (max-width:430px){ .top .wrap{gap:6px} .logo{font-size:18px} .logo .mark{width:26px;height:26px;font-size:16px;border-radius:8px} nav.main a{padding:7px 7px;font-size:13px} nav.main{gap:0} }
+
+main{flex:1}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;padding:22px 0 30px;margin-top:40px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
+
+/* home */
+.hero{padding:44px 0 26px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,5vw,46px);line-height:1.1;margin:0 0 12px;letter-spacing:-.3px}
+.hero p{margin:0;max-width:620px;color:var(--muted);font-size:17px}
+.hero .stats{display:flex;gap:26px;margin-top:22px;flex-wrap:wrap}
+.hero .stats div{font-size:14px;color:var(--muted)}
+.hero .stats b{display:block;font-family:var(--serif);font-size:26px;color:var(--ink);font-weight:500;line-height:1.1}
+[hidden]{display:none!important}
+.search{position:relative;margin:2px 0 12px}
+.search input{width:100%;background:var(--paper);border:1px solid var(--line2);border-radius:12px;padding:12px 40px 12px 40px;font:inherit;font-size:16px;color:var(--ink)}
+.search input:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+.search .ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:15px}
+.search .clr{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--muted);font-size:20px;line-height:1;padding:4px 8px;cursor:pointer}
+.qres{margin:0 0 18px}
+.qres .qhead{font-size:13px;color:var(--muted);margin:0 0 8px}
+.qres .qlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper)}
+.qrow{display:flex;align-items:baseline;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;flex-wrap:wrap}
+.qrow:last-child{border-bottom:0}
+.qrow:hover,.qrow:focus-visible{background:var(--accent-soft);outline:none}
+.qrow .la{font-family:var(--serif);font-size:16px}
+.qrow .uk{color:var(--muted);font-size:14px}
+.qrow .arw{color:var(--line2);margin:0 2px}
+.qrow .set{font-size:14px}
+.qrow .cat{font-size:12px;color:var(--muted);border:1px solid var(--line2);border-radius:999px;padding:1px 8px}
+.qrow mark{background:var(--pin);color:var(--pin-ink);border-radius:3px;padding:0 1px}
+.qrow .spacer{flex:1}
+@media (max-width:700px){ .qrow{gap:4px 8px} .qrow .arw{display:none} .qrow .set{width:100%;color:var(--muted)} }
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 18px;position:relative}
+.filters button{border-radius:999px;padding:7px 14px;font-size:14px}
+.filters button.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s;cursor:pointer;position:relative}
+.card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(0,0,0,.06),0 14px 34px rgba(30,25,10,.14)}
+.card .thumb{height:190px;background:var(--canvas);display:flex;align-items:center;justify-content:center;padding:14px;border-bottom:1px solid var(--line)}
+.card .thumb img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.08))}
+.card .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{margin:0;font-size:16px;font-weight:600;line-height:1.3}
+.card .meta{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.card .prog{margin-top:auto;display:flex;gap:14px;font-size:12px;color:var(--muted);padding-top:6px}
+.dots{display:inline-flex;gap:3px;vertical-align:middle;margin-left:4px}
+.dots span{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ok);display:inline-block}
+.dots span.f{background:var(--ok)}
+.card .done{position:absolute;top:10px;right:10px;background:var(--ok);color:#fff;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px}
+.section-title{font-family:var(--serif);font-weight:500;font-size:24px;margin:34px 0 12px}
+.empty{padding:40px 20px;text-align:center;color:var(--muted);border:1px dashed var(--line2);border-radius:16px}
+
+/* set page */
+.sethead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:18px 0 12px}
+.sethead h1{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3vw,30px);margin:0;line-height:1.15}
+.back{color:var(--muted);font-size:14px;display:inline-flex;align-items:center;gap:6px}
+.back:hover{color:var(--ink)}
+.modes{display:flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:var(--paper)}
+.modes button{border:0;border-radius:0;padding:7px 14px}
+.modes button.active{background:var(--accent);color:var(--accent-ink)}
+.trainwrap{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:start}
+@media (max-width:900px){.trainwrap{grid-template-columns:minmax(0,1fr)}}
+.viewcol{min-width:0}
+.statbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:14px;padding:0 0 10px}
+.statbar b{font-weight:700}
+.result{padding:5px 10px;border-radius:8px;border:1px solid var(--line2);font-size:13px}
+.result.good{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.result.bad{border-color:var(--bad);color:var(--bad);background:var(--bad-soft)}
+
+#viewer{position:relative;overflow:hidden;background:var(--canvas);border:1px solid var(--line);border-radius:14px;height:calc(100vh - 250px);height:calc(100dvh - 250px);min-height:340px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+#viewer.dragging{cursor:grabbing}
+#viewer.edit{cursor:crosshair}
+#viewer.over{outline:3px dashed var(--accent);outline-offset:-3px}
+@media (max-width:900px){ #viewer{height:58vh;height:58dvh;border-radius:12px} }
+#stage{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+#img{display:block;width:100%;height:100%;-webkit-user-drag:none;pointer-events:none}
+#pins{position:absolute;inset:0}
+.pin{position:absolute;width:26px;height:26px;border-radius:50%;background:var(--pin);color:var(--pin-ink);font-weight:700;font-size:12px;line-height:26px;text-align:center;
+  transform:translate(calc(-50% + var(--dx,0px)),calc(-50% + var(--dy,0px))) scale(var(--inv,1));box-shadow:0 0 0 2px #fff,0 1px 4px rgba(0,0,0,.5);cursor:pointer;touch-action:none;transition:background .15s}
+#leads{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;color:var(--pin)}
+#leads line{stroke:currentColor;stroke-width:1;stroke-dasharray:3 3;opacity:.55;vector-effect:non-scaling-stroke}
+.pin.sel{background:var(--accent);color:var(--accent-ink);box-shadow:0 0 0 2px #fff,0 0 0 6px color-mix(in srgb,var(--accent) 45%,transparent)}
+.pin.ok{background:var(--ok);color:#fff}
+.pin.bad{background:var(--bad);color:#fff;box-shadow:0 0 0 2px #fff,0 0 0 6px color-mix(in srgb,var(--bad) 45%,transparent)}
+.pin.hl{box-shadow:0 0 0 2px #fff,0 0 0 6px color-mix(in srgb,var(--pin) 60%,transparent)}
+.pin.dim{opacity:.35}
+#viewer.dense .pin{width:21px;height:21px;line-height:21px;font-size:11px}
+.zoomctl{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:4px;z-index:2}
+.zoomctl button{width:36px;height:36px;padding:0;font-size:18px;opacity:.92;border-radius:9px}
+#placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);text-align:center;padding:20px;flex-direction:column;gap:10px}
+#placeholder[hidden]{display:none}
+.hintbar{position:absolute;left:10px;bottom:10px;font-size:12px;color:#fff;background:rgba(0,0,0,.55);padding:4px 9px;border-radius:999px;pointer-events:none;z-index:2}
+@media (max-width:900px){.hintbar{display:none}}
+
+/* side panel */
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px;position:sticky;top:70px;max-height:calc(100vh - 90px);max-height:calc(100dvh - 90px);display:flex;flex-direction:column;gap:10px}
+.panel h4{margin:0;font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600}
+#bank{display:flex;flex-wrap:wrap;gap:8px;overflow:auto;padding:2px}
+.name{padding:8px 12px;border-radius:10px;white-space:nowrap;font-size:14px}
+.name.sel{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.name.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.question{padding:10px 4px;text-align:center}
+.question .q{font-size:22px;font-family:var(--serif);font-style:italic;line-height:1.2}
+.question .p{font-size:13px;color:var(--muted);margin-top:6px}
+.question .hint{margin-top:8px}
+.question .hintText{font-size:14px;margin-top:4px}
+@media (max-width:900px){
+  .panel{position:sticky;top:auto;bottom:0;max-height:none;border-radius:14px 14px 0 0;margin:0 -12px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));z-index:5;border-bottom:0}
+  .panel h4{display:none}
+  #bank{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+  .trainwrap{display:flex;flex-direction:column}
+  .trainwrap .panel{order:3}
+  .trainwrap .viewcol{order:1}
+  .trainwrap .legendwrap{order:2}
+}
+
+/* legend */
+.legendwrap{margin-top:14px}
+.legend h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600}
+.legend .row{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:9px;cursor:pointer}
+.legend .row:hover{background:var(--paper)}
+.legend .row.hl{background:var(--accent-soft)}
+.legend .num{width:26px;height:26px;border-radius:50%;background:var(--pin);color:var(--pin-ink);font-weight:700;font-size:12px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.legend .row.ok .num{background:var(--ok);color:#fff}
+.legend .txt{flex:1;min-width:0}
+.legend .txt i{font-style:italic}
+.legend .txt span{color:var(--muted);margin-left:6px}
+.legend .cols{columns:2;column-gap:20px}
+@media (max-width:700px){.legend .cols{columns:1}}
+.legend .cols .row{break-inside:avoid}
+.credit{margin-top:22px;font-size:12px;color:var(--muted)}
+.credit a{text-decoration:underline;text-underline-offset:2px}
+
+/* editor */
+.editbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:0 0 10px}
+.editbar .hint{flex-basis:100%;font-size:13px;color:var(--muted)}
+.pinlist .row{display:flex;align-items:center;gap:10px;padding:6px 8px;border-radius:9px;cursor:pointer}
+.pinlist .row:hover{background:var(--paper)}
+.pinlist .num{width:26px;height:26px;border-radius:50%;background:var(--pin);color:var(--pin-ink);font-weight:700;font-size:12px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.pinlist .txt{flex:1;min-width:0}
+.pinlist .txt span{color:var(--muted);margin-left:6px}
+
+/* about */
+.prose{max-width:720px;padding:26px 0}
+.prose h1{font-family:var(--serif);font-weight:500;font-size:34px;margin:0 0 14px}
+.prose h2{font-family:var(--serif);font-weight:500;font-size:22px;margin:26px 0 8px}
+.prose p,.prose li{color:var(--ink);font-size:16px}
+.prose kbd{background:var(--paper);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;font-size:13px}
+
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);padding:18px;width:min(92vw,400px);box-shadow:0 10px 40px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h3{margin:0 0 10px;font-size:17px;font-family:var(--serif);font-weight:500}
+dialog label{display:block;font-size:13px;color:var(--muted);margin:8px 0 4px}
+dialog input[type=text]{width:100%}
+dialog menu{display:flex;gap:8px;justify-content:flex-end;margin:16px 0 0;padding:0}
+dialog p{margin:6px 0;font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a href="#/" class="logo"><span class="mark">A</span>Anatomia <small>тренажер</small></a>
+  <nav class="main" id="nav">
+    <a href="#/" data-r="home">Атлас</a>
+    <a href="#/my" data-r="my">Мої схеми</a>
+    <a href="#/about" data-r="about">Про сайт</a>
+  </nav>
+  <span class="spacer"></span>
+  <button class="ghost" id="themeBtn" title="Тема">◐</button>
+</div></header>
+
+<main id="app"><div class="wrap"></div></main>
+
+<footer><div class="wrap">
+  <span>Anatomia — тренажер анатомічної номенклатури: огляд, прямий і зворотний режими. Прогрес зберігається у цьому браузері.</span>
+  <span class="spacer"></span>
+  <span>Схеми: Wikimedia Commons (Public domain / CC BY / CC BY‑SA), автори вказані на сторінці кожної схеми.</span>
+</div></footer>
+
+<input type="file" id="fileImg" accept="image/*" hidden>
+<input type="file" id="fileJson" accept="application/json,.json" hidden>
+
+<dialog id="pinDialog">
+  <form method="dialog">
+    <h3 id="pdTitle">Нова структура</h3>
+    <label for="fLa">Латина *</label>
+    <input type="text" id="fLa" required autocomplete="off" placeholder="Arteria carotis communis">
+    <label for="fUk">Українською</label>
+    <input type="text" id="fUk" autocomplete="off" placeholder="Загальна сонна артерія">
+    <menu>
+      <button type="button" class="danger" id="pdDel" onclick="this.closest('dialog').close('del')">Видалити</button>
+      <span class="spacer"></span>
+      <button type="button" onclick="this.closest('dialog').close('cancel')">Скасувати</button>
+      <button value="ok" class="primary">Зберегти</button>
+    </menu>
+  </form>
+</dialog>
+<dialog id="dlg">
+  <form method="dialog">
+    <h3 id="dlgTitle"></h3>
+    <p id="dlgMsg"></p>
+    <input type="text" id="dlgInput" autocomplete="off">
+    <menu>
+      <button type="button" onclick="this.closest('dialog').close('cancel')">Скасувати</button>
+      <button value="ok" class="primary">OK</button>
+    </menu>
+  </form>
+</dialog>
+
+<script src="atlas/data.js?v=7"></script>
+<script>
+'use strict';
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const GOAL = 2;
+const ATLAS = window.ATLAS || { categories: [], sets: [] };
+
+/* ---------- storage ---------- */
+const LS = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { alertDlg('Не вдалося зберегти: сховище переповнене.'); } }
+};
+const IMG = (() => {
+  let dbp = null;
+  const open = () => dbp || (dbp = new Promise((res, rej) => {
+    let r; try { r = indexedDB.open('anat-trainer', 1); } catch (e) { return rej(e); }
+    r.onupgradeneeded = () => r.result.createObjectStore('images');
+    r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+  }));
+  const tx = async (mode, fn) => { const db = await open(); return new Promise((res, rej) => {
+    const t = db.transaction('images', mode); const req = fn(t.objectStore('images'));
+    t.oncomplete = () => res(req && req.result); t.onerror = () => rej(t.error); t.onabort = () => rej(t.error); }); };
+  return {
+    async get(id) { try { return await tx('readonly', s => s.get(id)); } catch (e) { return localStorage.getItem('anat.img.' + id); } },
+    async set(id, data) { try { await tx('readwrite', s => s.put(data, id)); } catch (e) { try { localStorage.setItem('anat.img.' + id, data); } catch (e2) { alertDlg('Картинка завелика для сховища цього браузера.'); } } },
+    async del(id) { try { await tx('readwrite', s => s.delete(id)); } catch (e) {} localStorage.removeItem('anat.img.' + id); }
+  };
+})();
+let decks = LS.get('anat.decks', []);
+let progress = LS.get('anat.progress', {});
+const saveDecks = () => LS.set('anat.decks', decks);
+const saveProgress = () => LS.set('anat.progress', progress);
+const progFor = (setId, mode) => { const p = progress[setId] = progress[setId] || {}; return p[mode] = p[mode] || { streak: 0, passes: 0, best: null }; };
+
+/* ---------- dialogs ---------- */
+function baseDlg(title, msg, withInput, def) {
+  return new Promise(res => {
+    const d = $('#dlg'); $('#dlgTitle').textContent = title; $('#dlgMsg').textContent = msg || ''; $('#dlgMsg').hidden = !msg;
+    const inp = $('#dlgInput'); inp.hidden = !withInput; inp.value = def || ''; inp.required = !!withInput;
+    d.returnValue = ''; d.showModal(); if (withInput) { inp.focus(); inp.select(); }
+    d.onclose = () => res(d.returnValue === 'ok' ? (withInput ? inp.value.trim() : true) : null);
+  });
+}
+const askText = (t, def) => baseDlg(t, '', true, def);
+const confirmDlg = (t, m) => baseDlg(t, m, false);
+const alertDlg = m => baseDlg('Увага', m, false);
+function pinDialog(pin, editing) {
+  return new Promise(res => {
+    const d = $('#pinDialog'); $('#fLa').value = pin.la || ''; $('#fUk').value = pin.uk || '';
+    $('#pdTitle').textContent = editing ? 'Редагувати структуру' : 'Нова структура'; $('#pdDel').hidden = !editing;
+    d.returnValue = ''; d.showModal(); $('#fLa').focus();
+    d.onclose = () => { const v = d.returnValue; if (v === 'ok') { const la = $('#fLa').value.trim(); res(la ? { la, uk: $('#fUk').value.trim() } : null); } else if (v === 'del') res('del'); else res(null); };
+  });
+}
+
+/* ---------- theme ---------- */
+function applyTheme(t) { document.documentElement.dataset.theme = t; LS.set('anat.theme', t); }
+applyTheme(LS.get('anat.theme', matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+$('#themeBtn').onclick = () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+
+/* ---------- viewer engine (zoom / pan / pins) ---------- */
+const Viewer = {
+  el: null, stage: null, img: null, pinsEl: null, leadsEl: null,
+  _pins: [], _sig: '',
+  V: { z: 1, tx: 0, ty: 0, base: 1, iw: 0, ih: 0, ready: false }, ZMIN: 1, ZMAX: 16,
+  handlers: {}, ptrs: new Map(), g: null, ro: null, mode: 'train',
+  mount(container, opts) {
+    this.handlers = opts || {}; this.mode = opts.mode || 'train';
+    container.innerHTML = `<div id="stage"><img id="img" alt=""><svg id="leads" viewBox="0 0 100 100" preserveAspectRatio="none"></svg><div id="pins"></div></div>
+      <div class="zoomctl"><button id="zin" title="Збільшити">＋</button><button id="zout" title="Зменшити">－</button><button id="zfit" title="Вписати">⤢</button></div>
+      <div id="placeholder" hidden><div>Перетягніть сюди картинку (jpg / png)</div><button id="placeholderPick">Вибрати файл</button></div>
+      <div class="hintbar">колесо — зум · перетягування — пан</div>`;
+    this.el = container; this.stage = $('#stage', container); this.img = $('#img', container); this.pinsEl = $('#pins', container); this.leadsEl = $('#leads', container);
+    this._pins = []; this._sig = '';
+    this.V = { z: 1, tx: 0, ty: 0, base: 1, iw: 0, ih: 0, ready: false }; this.ptrs = new Map(); this.g = null;
+    container.classList.toggle('edit', this.mode === 'edit');
+    $('#zin', container).onclick = () => this.zoomAt(1.5, container.clientWidth / 2, container.clientHeight / 2);
+    $('#zout', container).onclick = () => this.zoomAt(1 / 1.5, container.clientWidth / 2, container.clientHeight / 2);
+    $('#zfit', container).onclick = () => this.fit();
+    $('#placeholderPick', container).onclick = () => $('#fileImg').click();
+    $('#placeholder', container).addEventListener('pointerdown', e => e.stopPropagation());
+    container.addEventListener('wheel', e => { e.preventDefault(); if (!this.V.ready) return; const r = container.getBoundingClientRect(); this.zoomAt(Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0022)), e.clientX - r.left, e.clientY - r.top); }, { passive: false });
+    ['gesturestart', 'gesturechange', 'gestureend'].forEach(t => container.addEventListener(t, e => e.preventDefault()));
+    container.addEventListener('pointerdown', e => this.onDown(e));
+    container.addEventListener('pointermove', e => this.onMove(e));
+    container.addEventListener('pointerup', e => this.onEnd(e));
+    container.addEventListener('pointercancel', e => this.onEnd(e));
+    container.addEventListener('contextmenu', e => e.preventDefault());
+    if (this.ro) this.ro.disconnect(); this.ro = new ResizeObserver(() => this.layout()); this.ro.observe(container);
+  },
+  load(src, w, h) {
+    return new Promise(res => {
+      const V = this.V, ph = $('#placeholder', this.el);
+      if (!src) { V.ready = false; this.img.removeAttribute('src'); this.stage.style.display = 'none'; ph.hidden = false; return res(false); }
+      this.img.onload = () => { V.iw = this.img.naturalWidth || w || 1000; V.ih = this.img.naturalHeight || h || 1000; if (w && h && (!this.img.naturalWidth || Math.abs(V.iw / V.ih - w / h) > 0.02)) { V.iw = w; V.ih = h; } V.ready = true; this.stage.style.display = ''; ph.hidden = true; this.fit(); res(true); };
+      this.img.onerror = () => { V.ready = false; ph.hidden = false; res(false); };
+      this.img.src = src;
+    });
+  },
+  sw() { return this.V.iw * this.V.base * this.V.z; }, sh() { return this.V.ih * this.V.base * this.V.z; },
+  layout() { const V = this.V; if (!V.ready || !this.el) return; const cw = this.el.clientWidth, ch = this.el.clientHeight; V.base = Math.min(cw / V.iw, ch / V.ih); this.stage.style.width = (V.iw * V.base) + 'px'; this.stage.style.height = (V.ih * V.base) + 'px'; this.clamp(); this.apply(); },
+  fit() { this.V.z = 1; this.layout(); },
+  clamp() { const V = this.V, cw = this.el.clientWidth, ch = this.el.clientHeight, w = this.sw(), h = this.sh(); V.tx = w <= cw ? (cw - w) / 2 : Math.min(0, Math.max(cw - w, V.tx)); V.ty = h <= ch ? (ch - h) / 2 : Math.min(0, Math.max(ch - h, V.ty)); },
+  apply() { const V = this.V; this.stage.style.transform = `translate(${V.tx}px,${V.ty}px) scale(${V.z})`; this.stage.style.setProperty('--inv', 1 / V.z); this.declutter(false); },
+  zoomAt(f, px, py) { const V = this.V; const z = Math.min(this.ZMAX, Math.max(this.ZMIN, V.z * f)), k = z / V.z; V.tx = px - (px - V.tx) * k; V.ty = py - (py - V.ty) * k; V.z = z; this.clamp(); this.apply(); },
+  centerOn(x, y, zoom) { const V = this.V; if (zoom && V.z < zoom) V.z = zoom; V.tx = this.el.clientWidth / 2 - x / 100 * this.sw(); V.ty = this.el.clientHeight / 2 - y / 100 * this.sh(); this.clamp(); this.apply(); },
+  toPct(cx, cy) { const r = this.stage.getBoundingClientRect(); return { x: (cx - r.left) / r.width * 100, y: (cy - r.top) / r.height * 100 }; },
+  onDown(e) {
+    if (e.target.closest('.zoomctl, #placeholder') || !this.V.ready) return;
+    if (e.button && e.button !== 0) return;
+    e.preventDefault(); this.el.setPointerCapture(e.pointerId);
+    this.ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const V = this.V;
+    if (this.ptrs.size === 1) {
+      const pinEl = e.target.closest('.pin');
+      this.g = { type: pinEl && this.mode === 'edit' ? 'pin' : 'pan', id: e.pointerId, pinEl, sx: e.clientX, sy: e.clientY, tx: V.tx, ty: V.ty, moved: false };
+      this.el.classList.add('dragging');
+    } else if (this.ptrs.size === 2) {
+      const [a, b] = [...this.ptrs.values()];
+      this.g = { type: 'pinch', d0: Math.hypot(a.x - b.x, a.y - b.y), m0: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, z0: V.z, tx0: V.tx, ty0: V.ty, moved: true };
+    }
+  },
+  onMove(e) {
+    const g = this.g, V = this.V; if (!this.ptrs.has(e.pointerId) || !g) return;
+    this.ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (g.type === 'pinch') {
+      if (this.ptrs.size < 2) return;
+      const [a, b] = [...this.ptrs.values()], r = this.el.getBoundingClientRect();
+      const d = Math.hypot(a.x - b.x, a.y - b.y), m = { x: (a.x + b.x) / 2 - r.left, y: (a.y + b.y) / 2 - r.top };
+      const z = Math.min(this.ZMAX, Math.max(this.ZMIN, g.z0 * d / g.d0)); const m0 = { x: g.m0.x - r.left, y: g.m0.y - r.top };
+      V.tx = m.x - (m0.x - g.tx0) * (z / g.z0); V.ty = m.y - (m0.y - g.ty0) * (z / g.z0); V.z = z; this.clamp(); this.apply(); return;
+    }
+    if (e.pointerId !== g.id) return;
+    const dx = e.clientX - g.sx, dy = e.clientY - g.sy;
+    if (!g.moved && Math.hypot(dx, dy) > 5) g.moved = true;
+    if (!g.moved) return;
+    if (g.type === 'pan') { V.tx = g.tx + dx; V.ty = g.ty + dy; this.clamp(); this.apply(); }
+    else if (g.type === 'pin') { const p = this.toPct(e.clientX, e.clientY); const x = +Math.min(100, Math.max(0, p.x)).toFixed(2), y = +Math.min(100, Math.max(0, p.y)).toFixed(2); g.pinEl.style.left = x + '%'; g.pinEl.style.top = y + '%'; g.pos = { x, y }; }
+  },
+  onEnd(e) {
+    if (!this.ptrs.has(e.pointerId)) return; this.ptrs.delete(e.pointerId);
+    const g = this.g; if (!g) return;
+    if (g.type === 'pinch') {
+      if (this.ptrs.size === 1) { const [id, p] = [...this.ptrs.entries()][0]; this.g = { type: 'pan', id, sx: p.x, sy: p.y, tx: this.V.tx, ty: this.V.ty, moved: true }; }
+      else if (!this.ptrs.size) { this.g = null; this.el.classList.remove('dragging'); }
+      return;
+    }
+    if (e.pointerId !== g.id) return;
+    this.g = null; this.el.classList.remove('dragging');
+    if (e.type === 'pointercancel') return;
+    const H = this.handlers;
+    if (g.type === 'pin') { if (g.moved) H.onPinMove && H.onPinMove(g.pinEl.dataset.id, g.pos); else H.onPinClick && H.onPinClick(g.pinEl.dataset.id); return; }
+    if (g.moved) return;
+    if (g.pinEl) H.onPinClick && H.onPinClick(g.pinEl.dataset.id);
+    else if (H.onImageClick) H.onImageClick(e.clientX, e.clientY);
+  },
+  renderPins(list) { // list: [{id, x, y, label, cls}]
+    this.pinsEl.innerHTML = '';
+    for (const p of list) { const el = document.createElement('div'); el.className = 'pin ' + (p.cls || ''); el.dataset.id = p.id; el.style.left = p.x + '%'; el.style.top = p.y + '%'; el.textContent = p.label; if (p.title) el.title = p.title; this.pinsEl.appendChild(el); }
+    this._pins = list;
+    this.declutter(true);
+  },
+  /* Розводить піни, що злиплися на поточному масштабі: кластер розкладається
+     по колу навколо свого центру, від кожного зсунутого піна йде тонка виноска
+     до справжньої точки. Перераховується тільки при зміні масштабу. */
+  declutter(force) {
+    const V = this.V, list = this._pins;
+    if (!this.pinsEl || !this.leadsEl) return;
+    if (this.mode === 'edit' || !V.ready || !list.length) { this.leadsEl.innerHTML = ''; return; }
+    const sig = V.z.toFixed(4) + ':' + V.base.toFixed(4) + ':' + list.length;
+    if (!force && sig === this._sig) return;
+    this._sig = sig;
+    const W = this.sw(), H = this.sh();
+    const gap = this.el.classList.contains('dense') ? 25 : 30;   // діаметр піна + просвіт
+    const pts = list.map(p => ({ x: p.x / 100 * W, y: p.y / 100 * H }));
+    const n = pts.length, par = [...Array(n).keys()];
+    const find = a => { while (par[a] !== a) a = par[a] = par[par[a]]; return a; };
+    for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++)
+      if (Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y) < gap) { const a = find(i), b = find(j); if (a !== b) par[a] = b; }
+    const groups = new Map();
+    for (let i = 0; i < n; i++) { const r = find(i); if (!groups.has(r)) groups.set(r, []); groups.get(r).push(i); }
+    const off = new Array(n).fill(null);
+    for (const g of groups.values()) {
+      if (g.length < 2) continue;
+      const k = g.length;
+      const cx = g.reduce((a, i) => a + pts[i].x, 0) / k, cy = g.reduce((a, i) => a + pts[i].y, 0) / k;
+      const R = Math.min(64, Math.max(gap * 0.6, gap / (2 * Math.sin(Math.PI / k))));
+      // порядок по вихідному куту — піни лишаються з того боку, де стояли
+      const ord = g.slice().sort((a, b) => Math.atan2(pts[a].y - cy, pts[a].x - cx) - Math.atan2(pts[b].y - cy, pts[b].x - cx));
+      ord.forEach((i, t) => {
+        const ang = -Math.PI / 2 + t * 2 * Math.PI / k;
+        off[i] = { dx: cx + R * Math.cos(ang) - pts[i].x, dy: cy + R * Math.sin(ang) - pts[i].y };
+      });
+    }
+    // 2) релаксація: сусідні кластери могли зіткнутись — розштовхуємо залишки,
+    //    слабка пружина тягне пін назад до справжньої точки, щоб не розповзались
+    const pos = pts.map((p, i) => off[i] ? { x: p.x + off[i].dx, y: p.y + off[i].dy } : { x: p.x, y: p.y });
+    const MAXOFF = 72;
+    for (let pass = 0; pass < 24; pass++) {
+      let hit = false;
+      for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
+        let dx = pos[j].x - pos[i].x, dy = pos[j].y - pos[i].y, d = Math.hypot(dx, dy);
+        if (d >= gap) continue;
+        if (d < 0.01) { dx = Math.cos(i * 2.4); dy = Math.sin(i * 2.4); d = 1; }
+        const k2 = (gap - d) / 2 / d;
+        pos[i].x -= dx * k2; pos[i].y -= dy * k2;
+        pos[j].x += dx * k2; pos[j].y += dy * k2;
+        hit = true;
+      }
+      for (let i = 0; i < n; i++) {
+        const bx = pts[i].x - pos[i].x, by = pts[i].y - pos[i].y, dist = Math.hypot(bx, by);
+        if (dist > MAXOFF) { pos[i].x += bx * (1 - MAXOFF / dist); pos[i].y += by * (1 - MAXOFF / dist); }
+        else { pos[i].x += bx * 0.03; pos[i].y += by * 0.03; }
+      }
+      if (!hit) break;
+    }
+    for (let i = 0; i < n; i++) {
+      const dx = pos[i].x - pts[i].x, dy = pos[i].y - pts[i].y;
+      off[i] = Math.hypot(dx, dy) > 1 ? { dx, dy } : null;
+    }
+
+    const kids = this.pinsEl.children, lines = [];
+    for (let i = 0; i < n; i++) {
+      const el = kids[i]; if (!el) continue;
+      const o = off[i];
+      if (!o) { el.style.removeProperty('--dx'); el.style.removeProperty('--dy'); el.classList.remove('moved'); continue; }
+      el.style.setProperty('--dx', (o.dx / V.z) + 'px');   // піни живуть у координатах сцени
+      el.style.setProperty('--dy', (o.dy / V.z) + 'px');
+      el.classList.add('moved');
+      lines.push(`<line x1="${list[i].x}" y1="${list[i].y}" x2="${list[i].x + o.dx / W * 100}" y2="${list[i].y + o.dy / H * 100}"></line>`);
+    }
+    this.leadsEl.innerHTML = lines.join('');
+  },
+  flash(ids, cls) { ids.forEach(id => $$(`.pin[data-id="${CSS.escape(id)}"]`, this.pinsEl).forEach(el => { el.classList.add(cls); setTimeout(() => el.classList.remove(cls), 600); })); }
+};
+
+/* ---------- routing ---------- */
+const app = $('#app');
+function route() {
+  const h = location.hash.replace(/^#\/?/, ''); const parts = h.split('/').filter(Boolean);
+  $$('#nav a').forEach(a => a.classList.toggle('active', a.dataset.r === (parts[0] || 'home') || (a.dataset.r === 'my' && parts[0] === 'edit')));
+  Trainer.teardown();
+  if (!parts.length) return renderHome();
+  if (parts[0] === 'set' && parts[1]) { const s = ATLAS.sets.find(x => x.id === parts[1]); return s ? renderSet(s, parts[2], parts[3]) : renderHome(); }
+  if (parts[0] === 'my' && parts[1]) { const d = decks.find(x => x.id === parts[1]); return d ? renderCustomSet(d, parts[2], parts[3]) : renderMy(); }
+  if (parts[0] === 'my') return renderMy();
+  if (parts[0] === 'edit' && parts[1]) { const d = decks.find(x => x.id === parts[1]); return d ? renderEditor(d) : renderMy(); }
+  if (parts[0] === 'about') return renderAbout();
+  renderHome();
+}
+window.addEventListener('hashchange', route);
+
+/* ---------- home ---------- */
+let homeFilter = LS.get('anat.filter', 'Усі');
+function progDots(setId) {
+  const d = progFor(setId, 'direct').streak, r = progFor(setId, 'reverse').streak;
+  const dots = n => `<span class="dots">${Array.from({ length: GOAL }, (_, i) => `<span class="${i < n ? 'f' : ''}"></span>`).join('')}</span>`;
+  return `<span>Прямий${dots(d)}</span><span>Зворотний${dots(r)}</span>`;
+}
+function cardHtml(s, href, extra) {
+  const done = progFor(s.id, 'direct').streak >= GOAL && progFor(s.id, 'reverse').streak >= GOAL;
+  return `<a class="card" href="${href}">
+    ${done ? '<span class="done">✓ Вивчено</span>' : ''}
+    <div class="thumb"><img src="${esc(s.file)}" alt="" loading="lazy"></div>
+    <div class="body"><h3>${esc(s.title)}</h3>
+      <div class="meta"><span class="chip">${esc(s.cat)}</span><span>${s.items.length} структур</span>${extra || ''}</div>
+      <div class="prog">${progDots(s.id)}</div></div></a>`;
+}
+/* ---------- пошук по терміну ---------- */
+let homeQuery = '';
+let searchIdx = null;
+
+// нормалізує рядок і повертає карту «символ нормалізованого → індекс в оригіналі»,
+// щоб потім точно підсвітити збіг у вихідному тексті
+function normMap(str) {
+  let out = ''; const map = [];
+  for (let i = 0; i < str.length; i++) {
+    const c = str[i].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    out += c; for (let j = 0; j < c.length; j++) map.push(i);
+  }
+  return { out, map };
+}
+const norm = str => normMap(str).out;
+
+function searchIndex() {
+  if (searchIdx) return searchIdx;
+  searchIdx = [];
+  const add = (set, href) => set.items.forEach(it => searchIdx.push({
+    la: it.la || '', uk: it.uk || '', n: it.n, title: set.title, cat: set.cat, href,
+    k: norm((it.la || '') + '|' + (it.uk || ''))
+  }));
+  ATLAS.sets.forEach(x => add(x, '#/set/' + x.id));
+  decks.filter(d => d.pins.length && d.hasImage).forEach(d => add(deckToSet(d), '#/my/' + d.id));
+  return searchIdx;
+}
+
+function searchTerms(q, limit = 40) {
+  const nq = norm(q.trim());
+  if (nq.length < 2) return { rows: [], total: 0 };
+  const hits = [];
+  for (const r of searchIndex()) {
+    const i = r.k.indexOf(nq);
+    if (i < 0) continue;
+    const fromWord = (i === 0 || /[\s|(,.\-]/.test(r.k[i - 1])) ? 0 : 1;   // збіг з початку слова — вище
+    hits.push({ r, rank: fromWord * 1000 + i });
+  }
+  hits.sort((a, b) => a.rank - b.rank || a.r.la.localeCompare(b.r.la, 'uk'));
+  return { rows: hits.slice(0, limit).map(h => h.r), total: hits.length };
+}
+
+function markHit(text, q) {
+  const nq = norm(q.trim());
+  if (!text || nq.length < 2) return esc(text);
+  const nm = normMap(text), i = nm.out.indexOf(nq);
+  if (i < 0) return esc(text);
+  const a = nm.map[i], b = nm.map[i + nq.length - 1] + 1;
+  return esc(text.slice(0, a)) + '<mark>' + esc(text.slice(a, b)) + '</mark>' + esc(text.slice(b));
+}
+
+function renderResults() {
+  const box = $('#qres'); if (!box) return;
+  const q = homeQuery.trim(), on = q.length >= 2;
+  ['.filters', '#atlasGrid', '#myTitle', '#myGrid'].forEach(sel => { const el = $(sel); if (el) el.hidden = on; });
+  const clr = $('#qclr'); if (clr) clr.hidden = !homeQuery;
+  if (!on) { box.hidden = true; box.innerHTML = ''; return; }
+  const { rows, total } = searchTerms(q);
+  box.hidden = false;
+  if (!rows.length) { box.innerHTML = `<div class="empty">За запитом «${esc(q)}» нічого не знайдено.</div>`; return; }
+  box.innerHTML = `<p class="qhead">Знайдено ${total}${total > rows.length ? `, показано перші ${rows.length}` : ''}</p>
+    <div class="qlist">${rows.map(r => `<a class="qrow" href="${r.href}/study/${r.n}">
+      <span class="la">${markHit(r.la, q)}</span>${r.uk ? `<span class="uk">${markHit(r.uk, q)}</span>` : ''}
+      <span class="spacer"></span><span class="arw">→</span>
+      <span class="set">${esc(r.title)}</span><span class="cat">${esc(r.cat)}</span></a>`).join('')}</div>`;
+}
+
+/* ---------- home ---------- */
+function renderHome() {
+  const total = ATLAS.sets.reduce((a, s) => a + s.items.length, 0);
+  const learned = ATLAS.sets.filter(s => progFor(s.id, 'direct').streak >= GOAL && progFor(s.id, 'reverse').streak >= GOAL).length;
+  const cats = ['Усі', ...ATLAS.categories.filter(c => ATLAS.sets.some(s => s.cat === c))];
+  const list = ATLAS.sets.filter(s => homeFilter === 'Усі' || s.cat === homeFilter);
+  const my = decks.filter(d => d.pins.length && d.hasImage);
+  app.innerHTML = `<div class="wrap">
+    <section class="hero">
+      <h1>Анатомія по картинках.<br>Латина, яка запам’ятовується.</h1>
+      <p>Оберіть схему з атласу, натискайте на пронумеровані точки й підбирайте правильну латинську назву. Два чисті проходи поспіль — і тема вивчена.</p>
+      <div class="stats"><div><b>${ATLAS.sets.length}</b>схем</div><div><b>${total}</b>структур</div><div><b>${learned}</b>вивчено</div></div>
+    </section>
+    <div class="search">
+      <span class="ico">⌕</span>
+      <input id="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search"
+             placeholder="Пошук терміну: латина або українська" value="${esc(homeQuery)}">
+      <button class="clr" id="qclr" title="Очистити" ${homeQuery ? '' : 'hidden'}>×</button>
+    </div>
+    <div class="qres" id="qres" hidden></div>
+    <div class="filters">${cats.map(c => `<button class="${c === homeFilter ? 'active' : ''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}</div>
+    <div class="grid" id="atlasGrid">${list.map(s => cardHtml(s, '#/set/' + s.id)).join('')}</div>
+    ${my.length ? `<h2 class="section-title" id="myTitle">Мої схеми</h2><div class="grid" id="myGrid">${my.map(d => cardHtml(deckToSet(d), '#/my/' + d.id)).join('')}</div>` : ''}
+  </div>`;
+  $$('.filters button').forEach(b => b.onclick = () => { homeFilter = b.dataset.cat; LS.set('anat.filter', homeFilter); renderHome(); });
+  const inp = $('#q');
+  inp.oninput = () => { homeQuery = inp.value; renderResults(); };
+  inp.onkeydown = e => {
+    if (e.key === 'Escape') { homeQuery = ''; inp.value = ''; renderResults(); }
+    else if (e.key === 'Enter') { const first = $('.qrow'); if (first) { e.preventDefault(); location.hash = first.getAttribute('href'); } }
+  };
+  $('#qclr').onclick = () => { homeQuery = ''; inp.value = ''; renderResults(); inp.focus(); };
+  renderResults();
+  window.scrollTo(0, 0);
+}
+
+/* ---------- about ---------- */
+function renderAbout() {
+  const nSets = ATLAS.sets.length, nItems = ATLAS.sets.reduce((a, s) => a + s.items.length, 0);
+  app.innerHTML = `<div class="wrap"><div class="prose">
+    <h1>Про тренажер</h1>
+    <p>Anatomia — тренажер анатомічної номенклатури за схемами: ${nSets} схем і ${nItems} структур з відкритих атласів. Відкривається у браузері й працює навіть без інтернету; ваш прогрес поки зберігається у цьому браузері.</p>
+    <h2>Три режими</h2>
+    <ul>
+      <li><b>Огляд</b> — усі точки підписані. Клацніть точку або рядок легенди, щоб зіставити назву й місце. Тут нічого не перевіряється: це читання схеми перед тренуванням.</li>
+      <li><b>Прямий</b> — точка → назва. Натисніть пронумеровану точку на схемі, потім її латинську назву внизу. Правильна відповідь зеленіє й переходить у легенду під картинкою.</li>
+      <li><b>Зворотний</b> — назва → точка. Вам показують термін, потрібно знайти його місце на схемі. Це складніше за прямий, бо підказки з номера немає.</li>
+      <li>Лічильник рахує помилки за прохід. Мета — <b>два проходи поспіль без жодної помилки</b> в кожному режимі; тоді схема вважається вивченою.</li>
+    </ul>
+    <h2>Пошук по терміну</h2>
+    <p>Поле пошуку на головній шукає одразу по всьому атласу — і по латині, і по українських назвах, від двох символів. У списку видно, на якій схемі є структура; клік відкриває цю схему в режимі «Огляд» з підсвіченою точкою.</p>
+    <h2>Керування картинкою</h2>
+    <ul><li>Колесо миші або пінч — масштаб; перетягування — прокрутка.</li><li>Якщо точки на щільній схемі злипаються, вони автоматично розходяться по колу, а тонка пунктирна виноска показує справжнє місце. Наблизьте — і вони повернуться на свої місця.</li><li><kbd>Esc</kbd> знімає виділення.</li></ul>
+    <h2>Свої схеми</h2>
+    <p>У розділі «Мої схеми» можна завантажити власний скан або фото, розставити точки й підписати їх. Набори експортуються в JSON, щоб перенести їх на інший пристрій.</p>
+    <h2>Джерела</h2>
+    <p>Схеми взято з Wikimedia Commons; переважно це роботи LadyofHats (Mariana Ruiz Villarreal), Jmarchn (Jordi March i Nogué) та інших авторів під ліцензіями Public domain, CC BY та CC BY‑SA. Посилання на джерело й автора наведено під кожною схемою. Друковані номери на схемах замінено інтерактивними точками.</p>
+  </div></div>`;
+  window.scrollTo(0, 0);
+}
+
+/* ---------- trainer ---------- */
+const deckToSet = d => ({ id: 'my:' + d.id, title: d.name, cat: 'Мої схеми', file: null, deckId: d.id, w: 0, h: 0, items: d.pins.map((p, i) => ({ n: i + 1, la: p.la, uk: p.uk, pts: [[p.x, p.y]] })), credit: null });
+const Trainer = {
+  set: null, mode: 'study', T: null, active: false,
+  teardown() { this.active = false; this.set = null; this.T = null; },
+  async open(set, mode, src, hl) {
+    this.set = set; this.mode = mode; this.active = true;
+    this.wantHl = Number(hl) || null;   // точка з пошуку — підсвітити після завантаження
+    const n = set.items.length;
+    app.innerHTML = `<div class="wrap">
+      <div class="sethead">
+        <a class="back" href="${set.deckId ? '#/my' : '#/'}">← ${set.deckId ? 'Мої схеми' : 'Атлас'}</a>
+        <h1>${esc(set.title)}</h1><span class="chip">${esc(set.cat)}</span><span class="muted">${n} структур</span>
+        <span class="spacer"></span>
+        ${set.deckId ? `<a href="#/edit/${set.deckId}"><button class="small">✎ Редагувати</button></a>` : ''}
+        <div class="modes"><button data-mode="study">Огляд</button><button data-mode="direct">Прямий</button><button data-mode="reverse">Зворотний</button></div>
+      </div>
+      <div class="trainwrap">
+        <div class="viewcol">
+          <div class="statbar" id="statbar"></div>
+          <div id="viewer"></div>
+        </div>
+        <div class="legendwrap"><div class="legend" id="legend"></div>
+          ${set.credit ? `<div class="credit">Схема: ${esc(set.credit.artist || 'Wikimedia Commons')} · ${set.credit.licurl ? `<a href="${esc(set.credit.licurl)}" target="_blank" rel="noopener">${esc(set.credit.license)}</a>` : esc(set.credit.license)} · <a href="${esc(set.credit.source)}" target="_blank" rel="noopener">джерело</a>. Номери замінено інтерактивними точками.</div>` : ''}
+        </div>
+        <aside class="panel" id="panel"><h4 id="panelTitle">Назви</h4><div id="bank"></div></aside>
+      </div></div>`;
+    $$('.modes button').forEach(b => b.onclick = () => { location.hash = (set.deckId ? '#/my/' + set.deckId : '#/set/' + set.id) + '/' + b.dataset.mode; });
+    $$('.modes button').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+    $('#viewer').classList.toggle('dense', n > 20);
+    Viewer.mount($('#viewer'), { mode: 'train', onPinClick: id => this.pinClick(id), onImageClick: () => { if (this.T && this.mode === 'direct') { this.T.selPin = null; this.renderPins(); } if (this.mode === 'study') { this.hl = null; this.renderPins(); this.renderLegend(); } } });
+    const ok = await Viewer.load(src, set.w, set.h);
+    if (!this.active || this.set !== set) return;
+    if (!ok) { $('#legend').innerHTML = '<div class="empty">Не вдалося завантажити картинку.</div>'; return; }
+    this.start();
+    window.scrollTo(0, 0);
+  },
+  start() {
+    const set = this.set, ids = set.items.map(i => i.n);
+    this.hl = null;
+    if (this.mode === 'study') { this.T = null; }
+    else this.T = { order: shuffle(ids), bank: shuffle(ids), queue: shuffle(ids), done: new Set(), selPin: null, selName: null, mistakes: 0, finished: false, hint: false };
+    const want = this.wantHl; this.wantHl = null;
+    if (this.mode === 'study' && want && this.item(want)) this.hl = want;
+    this.renderAll();
+    if (this.hl) {                                  // прийшли з пошуку: навести й прокрутити легенду
+      const it = this.item(this.hl);
+      if (it && it.pts[0]) Viewer.centerOn(it.pts[0][0], it.pts[0][1], 1.8);
+      const row = $(`.legend .row[data-n="${this.hl}"]`);
+      row && row.scrollIntoView({ block: 'nearest' });
+    }
+  },
+  item(n) { return this.set.items.find(i => i.n === n); },
+  numOf(n) { return this.T ? this.T.order.indexOf(n) + 1 : n; },
+  pinClick(id) {
+    const n = +id.split(':')[0];
+    if (this.mode === 'study') { this.hl = this.hl === n ? null : n; this.renderPins(); this.renderLegend(); if (this.hl) { const row = $(`.legend .row[data-n="${n}"]`); row && row.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } return; }
+    const T = this.T; if (!T || T.finished || T.done.has(n)) return;
+    if (this.mode === 'direct') { if (T.selName) this.check(n, T.selName); else { T.selPin = T.selPin === n ? null : n; this.renderPins(); } }
+    else { if (n === T.queue[0]) this.solve(n); else this.mistake(n, null); }
+  },
+  nameClick(n) { const T = this.T; if (!T || T.finished) return; if (T.selPin) this.check(T.selPin, n); else { T.selName = T.selName === n ? null : n; this.renderBank(); } },
+  check(pin, name) { pin === name ? this.solve(pin) : this.mistake(pin, name); },
+  solve(n) {
+    const T = this.T; T.done.add(n); T.selPin = T.selName = null; T.hint = false;
+    T.bank = T.bank.filter(x => x !== n); T.queue = T.queue.filter(x => x !== n);
+    if (T.done.size === this.set.items.length) { T.finished = true; const p = progFor(this.set.id, this.mode); p.streak = T.mistakes === 0 ? p.streak + 1 : 0; p.passes++; p.best = p.best == null ? T.mistakes : Math.min(p.best, T.mistakes); saveProgress(); }
+    this.renderAll();
+    if (T.finished) setTimeout(() => $('#statbar').scrollIntoView({ block: 'nearest' }), 50);
+  },
+  mistake(pin, name) {
+    const T = this.T; T.mistakes++; T.selName = null; T.selPin = this.mode === 'direct' ? pin : null;
+    this.renderAll();
+    Viewer.flash(this.item(pin).pts.map((_, i) => pin + ':' + i), 'bad');
+    if (name != null) { const el = $(`#bank .name[data-n="${name}"]`); if (el) { el.classList.add('bad'); setTimeout(() => el.classList.remove('bad'), 600); } }
+    if (navigator.vibrate) navigator.vibrate(60);
+  },
+  renderAll() { this.renderPins(); this.renderBank(); this.renderLegend(); this.renderStat(); },
+  renderPins() {
+    const T = this.T, list = [];
+    for (const it of this.set.items) it.pts.forEach((p, i) => {
+      let cls = '';
+      if (T) { if (T.done.has(it.n)) cls = 'ok'; if (T.selPin === it.n) cls += ' sel'; if (this.mode === 'reverse' && !T.finished && T.done.has(it.n)) cls += ' dim'; }
+      else if (this.hl != null) cls = this.hl === it.n ? 'hl' : 'dim';
+      list.push({ id: it.n + ':' + i, x: p[0], y: p[1], label: this.numOf(it.n), cls, title: T && !T.done.has(it.n) ? '' : it.la });
+    });
+    Viewer.renderPins(list);
+  },
+  renderBank() {
+    const T = this.T, panel = $('#panel'), b = $('#bank'), title = $('#panelTitle');
+    if (!T) { panel.hidden = true; return; } panel.hidden = false;
+    if (T.finished) {
+      title.textContent = 'Прохід завершено';
+      b.innerHTML = `<div class="question" style="flex:1"><div class="q" style="font-style:normal;font-size:18px">${T.mistakes ? 'Помилок: ' + T.mistakes : 'Без помилок ✔'}</div><div class="p">${this.progressText()}</div><div style="margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="primary" id="againBtn">Ще раз</button>${this.mode === 'direct' ? `<button id="toReverse">Зворотний режим →</button>` : ''}</div></div>`;
+      $('#againBtn').onclick = () => this.start();
+      const tr = $('#toReverse'); if (tr) tr.onclick = () => $$('.modes button').find(x => x.dataset.mode === 'reverse').click();
+      return;
+    }
+    if (this.mode === 'direct') {
+      title.textContent = `Назви · залишилось ${T.bank.length}`;
+      b.innerHTML = T.bank.map(n => `<button class="name ${T.selName === n ? 'sel' : ''}" data-n="${n}"><i>${esc(this.item(n).la)}</i></button>`).join('');
+      $$('#bank .name').forEach(el => el.onclick = () => this.nameClick(+el.dataset.n));
+    } else {
+      title.textContent = 'Знайдіть на схемі';
+      const it = this.item(T.queue[0]);
+      b.innerHTML = `<div class="question" style="flex:1"><div class="q">${esc(it.la)}</div><div class="p">${T.done.size + 1} з ${this.set.items.length}</div>
+        <div class="hint">${T.hint ? `<div class="hintText">${esc(it.uk || '—')}</div>` : (it.uk ? `<button class="small ghost" id="hintBtn">Підказка</button>` : '')}</div></div>`;
+      const hb = $('#hintBtn'); if (hb) hb.onclick = () => { T.hint = true; this.renderBank(); };
+    }
+  },
+  progressText() { const p = progFor(this.set.id, this.mode); return p.streak >= GOAL ? 'Мета досягнута: ' + p.streak + ' чистих проходи поспіль 🎉' : `Чистих проходів поспіль: ${p.streak} з ${GOAL}`; },
+  renderLegend() {
+    const T = this.T, L = $('#legend'), set = this.set;
+    const row = (it, cls) => `<div class="row ${cls}" data-n="${it.n}"><span class="num">${this.numOf(it.n)}</span><span class="txt"><i>${esc(it.la)}</i>${it.uk ? `<span>${esc(it.uk)}</span>` : ''}</span></div>`;
+    if (!T) {
+      L.innerHTML = `<h4>Легенда · ${set.items.length}</h4><div class="cols">${set.items.map(it => row(it, this.hl === it.n ? 'hl' : '')).join('')}</div>`;
+      $$('.legend .row').forEach(r => r.onclick = () => { const n = +r.dataset.n; this.hl = this.hl === n ? null : n; this.renderPins(); this.renderLegend(); if (this.hl) { const it = this.item(n); Viewer.centerOn(it.pts[0][0], it.pts[0][1], 1.6); } });
+      return;
+    }
+    const done = set.items.filter(it => T.done.has(it.n)).sort((a, b) => this.numOf(a.n) - this.numOf(b.n));
+    L.innerHTML = `<h4>Легенда · ${done.length} з ${set.items.length}</h4>` + (done.length ? `<div class="cols">${done.map(it => row(it, 'ok')).join('')}</div>` : `<div class="muted" style="font-size:14px">${this.mode === 'direct' ? 'Натисніть точку на схемі, потім назву в панелі.' : 'Знайдіть на схемі точку, що відповідає назві.'}</div>`);
+    $$('.legend .row').forEach(r => r.onclick = () => { const it = this.item(+r.dataset.n); Viewer.centerOn(it.pts[0][0], it.pts[0][1]); });
+  },
+  renderStat() {
+    const s = $('#statbar'), T = this.T;
+    if (!T) { s.innerHTML = `<span class="muted">Режим огляду: усі точки підписані. Клацніть точку або рядок легенди.</span><span class="spacer"></span><button class="small primary" id="startDirect">Почати тренування →</button>`; $('#startDirect').onclick = () => $$('.modes button').find(x => x.dataset.mode === 'direct').click(); return; }
+    const p = progFor(this.set.id, this.mode);
+    s.innerHTML = `<span>Помилки: <b>${T.mistakes}</b></span><span>Чисті проходи: <span class="dots">${Array.from({ length: GOAL }, (_, i) => `<span class="${i < p.streak ? 'f' : ''}"></span>`).join('')}</span> <b>${p.streak}</b>/${GOAL}</span>
+      ${T.finished ? `<span class="result ${T.mistakes ? 'bad' : 'good'}">${T.mistakes ? 'Є помилки — серію скинуто' : (p.streak >= GOAL ? 'Чистий прохід! Мета досягнута 🎉' : 'Чистий прохід! Ще ' + (GOAL - p.streak))}</span>` : ''}
+      <span class="spacer"></span><button class="small" id="shuffleBtn">Перемішати</button><button class="small ghost" id="resetStreak" title="Обнулити серію">Скинути серію</button>`;
+    $('#shuffleBtn').onclick = () => this.start();
+    $('#resetStreak').onclick = async () => { if (await confirmDlg('Скинути серію?', 'Лічильник чистих проходів у цьому режимі стане 0.')) { p.streak = 0; saveProgress(); this.renderStat(); } };
+  }
+};
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && Trainer.active && Trainer.T && !$('dialog[open]')) { Trainer.T.selPin = Trainer.T.selName = null; Trainer.renderPins(); Trainer.renderBank(); } });
+
+function renderSet(set, mode, hl) { Trainer.open(set, ['study', 'direct', 'reverse'].includes(mode) ? mode : 'study', set.file, hl); }
+async function renderCustomSet(d, mode, hl) { const set = deckToSet(d); const src = d.hasImage ? await IMG.get(d.id) : null; Trainer.open(set, ['study', 'direct', 'reverse'].includes(mode) ? mode : 'study', src, hl); }
+
+/* ---------- my decks ---------- */
+function renderMy() {
+  app.innerHTML = `<div class="wrap">
+    <div class="sethead"><h1>Мої схеми</h1><span class="muted">${decks.length}</span><span class="spacer"></span><button id="importBtn">Імпорт JSON</button><button class="primary" id="newDeck">＋ Нова схема</button></div>
+    ${decks.length ? `<div class="grid">${decks.map(d => `<div class="card" data-id="${d.id}">
+        <div class="thumb"><img data-img="${d.id}" alt=""></div>
+        <div class="body"><h3>${esc(d.name)}</h3><div class="meta"><span>${d.pins.length} структур</span>${d.hasImage ? '' : '<span class="muted">без картинки</span>'}</div>
+        <div class="prog" style="gap:8px"><a href="#/my/${d.id}/direct"><button class="small primary">Тренувати</button></a><a href="#/edit/${d.id}"><button class="small">Редагувати</button></a><span class="spacer"></span><button class="small ghost" data-del="${d.id}" title="Видалити">🗑</button></div></div></div>`).join('')}</div>`
+      : `<div class="empty">Ще немає жодної схеми. Натисніть «Нова схема», завантажте картинку й розставте точки.</div>`}
+  </div>`;
+  $$('img[data-img]').forEach(async im => { const d = decks.find(x => x.id === im.dataset.img); if (d && d.hasImage) im.src = await IMG.get(d.id) || ''; });
+  $$('.card[data-id]').forEach(c => c.onclick = e => { if (e.target.closest('button,a')) return; location.hash = '#/edit/' + c.dataset.id; });
+  $$('button[data-del]').forEach(b => b.onclick = async () => { const d = decks.find(x => x.id === b.dataset.del); if (!await confirmDlg('Видалити схему?', `«${d.name}» разом із картинкою та ${d.pins.length} точками.`)) return; await IMG.del(d.id); decks = decks.filter(x => x !== d); delete progress['my:' + d.id]; saveProgress(); saveDecks(); renderMy(); });
+  $('#newDeck').onclick = async () => { const n = await askText('Назва схеми', 'Схема ' + (decks.length + 1)); if (n == null) return; const d = { id: uid(), name: n || ('Схема ' + (decks.length + 1)), pins: [], hasImage: false }; decks.push(d); saveDecks(); location.hash = '#/edit/' + d.id; };
+  $('#importBtn').onclick = () => $('#fileJson').click();
+  window.scrollTo(0, 0);
+}
+$('#fileJson').onchange = async e => {
+  const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+  let obj; try { obj = JSON.parse(await f.text()); } catch (err) { return alertDlg('Не вдалося прочитати JSON.'); }
+  const list = Array.isArray(obj.decks) ? obj.decks : (obj.pins ? [obj] : []);
+  if (!list.length) return alertDlg('У файлі немає схем.');
+  let cnt = 0;
+  for (const d of list) {
+    if (!d || !Array.isArray(d.pins)) continue;
+    const id = d.id || uid();
+    const nd = { id, name: String(d.name || 'Імпорт'), hasImage: !!d.image, pins: d.pins.filter(p => p && typeof p.x === 'number' && typeof p.y === 'number' && p.la).map(p => ({ id: p.id || uid(), x: p.x, y: p.y, la: String(p.la), uk: String(p.uk || '') })) };
+    const i = decks.findIndex(x => x.id === id); if (i >= 0) decks[i] = nd; else decks.push(nd);
+    if (d.image) await IMG.set(id, d.image); cnt++;
+  }
+  saveDecks(); renderMy(); alertDlg(`Імпортовано схем: ${cnt}.`);
+};
+
+/* ---------- editor ---------- */
+const Editor = {
+  deck: null, sel: null,
+  async open(d) {
+    this.deck = d; this.sel = null;
+    app.innerHTML = `<div class="wrap">
+      <div class="sethead"><a class="back" href="#/my">← Мої схеми</a><input type="text" id="deckName" value="${esc(d.name)}" style="font-size:18px;min-width:220px"><span class="spacer"></span>
+        <button id="pickImg">Картинка…</button><button id="exportDeck">Експорт</button><a href="#/my/${d.id}/direct"><button class="primary">Тренувати →</button></a></div>
+      <div class="editbar"><span class="hint">Клік по картинці — нова точка. Точку можна тягнути; тап по точці — редагувати назву. Колесо / пінч — зум, перетягування — пан.</span></div>
+      <div class="trainwrap" style="grid-template-columns:minmax(0,1fr)">
+        <div class="viewcol"><div id="viewer"></div></div>
+        <div class="legendwrap"><div class="pinlist legend" id="pinlist"></div></div>
+      </div></div>`;
+    $('#deckName').onchange = e => { d.name = e.target.value.trim() || d.name; e.target.value = d.name; saveDecks(); };
+    $('#pickImg').onclick = () => $('#fileImg').click();
+    $('#exportDeck').onclick = async () => download(`anatomia-${d.name.replace(/[^\p{L}\p{N}_-]+/gu, '_')}.json`, { app: 'anatomia', version: 1, decks: [{ id: d.id, name: d.name, pins: d.pins, image: d.hasImage ? await IMG.get(d.id) : null }] });
+    const v = $('#viewer');
+    Viewer.mount(v, { mode: 'edit', onPinClick: id => this.edit(d.pins.find(p => p.id === id)), onPinMove: (id, pos) => { const p = d.pins.find(x => x.id === id); if (p && pos) { p.x = pos.x; p.y = pos.y; saveDecks(); } }, onImageClick: (cx, cy) => this.add(cx, cy) });
+    v.addEventListener('dragover', e => { e.preventDefault(); v.classList.add('over'); });
+    v.addEventListener('dragleave', () => v.classList.remove('over'));
+    v.addEventListener('drop', e => { e.preventDefault(); v.classList.remove('over'); const f = e.dataTransfer.files[0]; if (f) this.setImage(f); });
+    await Viewer.load(d.hasImage ? await IMG.get(d.id) : null);
+    this.render();
+  },
+  async setImage(file) {
+    if (!file || !file.type.startsWith('image/')) return;
+    const data = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(file); });
+    await IMG.set(this.deck.id, data); this.deck.hasImage = true; saveDecks();
+    await Viewer.load(data); this.render();
+  },
+  async add(cx, cy) {
+    const d = this.deck, p = Viewer.toPct(cx, cy);
+    if (p.x < 0 || p.x > 100 || p.y < 0 || p.y > 100) return;
+    const pin = { id: uid(), x: +p.x.toFixed(2), y: +p.y.toFixed(2), la: '', uk: '' };
+    d.pins.push(pin); this.sel = pin.id; this.renderPins();
+    const r = await pinDialog(pin, false);
+    if (r && r !== 'del') Object.assign(pin, r); else d.pins = d.pins.filter(x => x !== pin);
+    saveDecks(); this.render();
+  },
+  async edit(pin) {
+    if (!pin) return; this.sel = pin.id; this.renderPins();
+    const r = await pinDialog(pin, true);
+    if (r === 'del') this.deck.pins = this.deck.pins.filter(x => x !== pin); else if (r) Object.assign(pin, r);
+    saveDecks(); this.render();
+  },
+  renderPins() { Viewer.renderPins(this.deck.pins.map((p, i) => ({ id: p.id, x: p.x, y: p.y, label: i + 1, cls: this.sel === p.id ? 'hl' : '', title: p.la }))); },
+  render() {
+    this.renderPins(); const d = this.deck, l = $('#pinlist');
+    l.innerHTML = `<h4>Точки · ${d.pins.length}</h4>` + (d.pins.length ? d.pins.map((p, i) => `<div class="row" data-id="${p.id}"><span class="num">${i + 1}</span><span class="txt"><i>${esc(p.la)}</i>${p.uk ? `<span>${esc(p.uk)}</span>` : ''}</span><button class="small" data-act="edit">✎</button><button class="small danger" data-act="del">🗑</button></div>`).join('')
+      : `<div class="muted" style="font-size:14px">${Viewer.V.ready ? 'Клацніть по картинці, щоб додати першу точку.' : 'Спершу завантажте картинку: кнопка «Картинка…» або перетягніть файл на поле.'}</div>`);
+    $$('#pinlist .row').forEach(row => { const pin = d.pins.find(p => p.id === row.dataset.id); row.onclick = e => { const a = e.target.dataset.act; if (a === 'edit') this.edit(pin); else if (a === 'del') { d.pins = d.pins.filter(x => x !== pin); saveDecks(); this.render(); } else { this.sel = pin.id; this.renderPins(); Viewer.centerOn(pin.x, pin.y); } }; });
+  }
+};
+function renderEditor(d) { Editor.open(d); }
+$('#fileImg').onchange = e => { const f = e.target.files[0]; e.target.value = ''; if (f && Editor.deck && location.hash.startsWith('#/edit/')) Editor.setImage(f); };
+function download(name, obj) { const blob = new Blob([JSON.stringify(obj)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000); }
+
+route();
+</script>
+</body>
+</html>
