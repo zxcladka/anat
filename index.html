@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Anatomia — тренажер з анатомії</title>
-<meta name="description" content="Інтерактивний тренажер з анатомії: підписуйте структури на схемах з атласу латиною. Працює офлайн.">
+<meta name="description" content="Інтерактивний тренажер з анатомії: підписуйте структури на схемах з атласу латиною, повторюйте за інтервалами. Працює офлайн.">
+<meta name="theme-color" content="#f6f4ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1d21" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f766e'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='700' fill='%23fff'%3EA%3C/text%3E%3C/svg%3E">
 <style>
 :root{
   --bg:#f6f4ee; --paper:#ffffff; --ink:#1d1b17; --muted:#6b675e; --line:#e4e0d6; --line2:#cfcabd;
@@ -62,7 +65,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
 .hero p{margin:0;max-width:620px;color:var(--muted);font-size:17px}
 .hero .stats{display:flex;gap:26px;margin-top:22px;flex-wrap:wrap}
 .hero .stats div{font-size:14px;color:var(--muted)}
-.hero .stats b{display:block;font-family:var(--serif);font-size:26px;color:var(--ink);font-weight:500;line-height:1.1}
+.hero .stats b{display:block;font-family:var(--serif);font-size:26px;color:var(--ink);font-weight:500;line-height:1.1;transition:color .15s}
+.hero .stats a:hover b{color:var(--accent)}
 [hidden]{display:none!important}
 .search{position:relative;margin:2px 0 12px}
 .search input{width:100%;background:var(--paper);border:1px solid var(--line2);border-radius:12px;padding:12px 40px 12px 40px;font:inherit;font-size:16px;color:var(--ink)}
@@ -227,8 +231,9 @@ nav.main a .badge[hidden]{display:none}
   nav.main{flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;gap:0;scroll-behavior:smooth}
   nav.main::-webkit-scrollbar{display:none}
   nav.main a{white-space:nowrap;padding:7px 7px}
-  nav.main.more{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 34px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 34px),transparent)}
-  nav.main.more.end{-webkit-mask-image:none;mask-image:none}
+  nav.main.more{--l:#000;--r:transparent;-webkit-mask-image:linear-gradient(90deg,var(--l),#000 28px,#000 calc(100% - 34px),var(--r));mask-image:linear-gradient(90deg,var(--l),#000 28px,#000 calc(100% - 34px),var(--r))}
+  nav.main.more.start{--l:transparent}
+  nav.main.more.end{--r:#000}
 }
 @media (max-width:600px){ .logo{font-size:0;gap:0} .logo .mark{font-size:18px} }
 
@@ -241,7 +246,17 @@ nav.main a .badge[hidden]{display:none}
 .tile b{display:block;font-family:var(--serif);font-size:30px;font-weight:500;line-height:1.1}
 .tile span{font-size:13px;color:var(--muted)}
 .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.opts{display:flex;flex-wrap:wrap;gap:8px}
+.rvbank{display:flex;flex-direction:column;gap:8px;flex:1 0 100%;min-width:0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opts .name{white-space:normal;text-align:center;line-height:1.25}
+.rvbank .question{padding:4px 4px 2px}
+.rvbank .question .p{margin-top:0}
+.queue{display:flex;flex-direction:column;gap:6px;max-width:760px}
+.queue a{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:var(--paper);font-size:14px}
+.queue a:hover{border-color:var(--accent)}
+.queue .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.queue .c{color:var(--muted);font-size:13px;white-space:nowrap}
+.weak{max-width:760px}
 .name.ok{background:var(--ok);border-color:var(--ok);color:#fff}
 .bars{display:flex;flex-direction:column;gap:10px;max-width:720px}
 .bar{display:grid;grid-template-columns:minmax(110px,190px) 1fr 44px;align-items:center;gap:12px;font-size:14px}
@@ -408,6 +423,7 @@ function navFit() {
   const over = nav.scrollWidth > nav.clientWidth + 2;
   nav.classList.toggle('more', over);
   nav.classList.toggle('end', over && nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 2);
+  nav.classList.toggle('start', over && nav.scrollLeft > 2);
 }
 $('#nav').addEventListener('scroll', navFit, { passive: true });
 window.addEventListener('resize', navFit);
@@ -618,11 +634,13 @@ const Viewer = {
 
 /* ---------- routing ---------- */
 const app = $('#app');
+const setTitle = t => { document.title = (t ? t + ' — ' : '') + 'Anatomia — тренажер з анатомії'; };
 function route() {
   const h = location.hash.replace(/^#\/?/, ''); const parts = h.split('/').filter(Boolean);
   $$('#nav a').forEach(a => a.classList.toggle('active', a.dataset.r === (parts[0] || 'home') || (a.dataset.r === 'my' && parts[0] === 'edit')));
   Trainer.teardown(); Review.teardown(); updateBadge(); navFit();
   { const a = $('#nav a.active'); if (a && $('#nav').classList.contains('more')) a.scrollIntoView({ block: 'nearest', inline: 'center' }); }
+  setTitle({ today: 'Сьогодні', progress: 'Мій прогрес', my: 'Мої схеми', edit: 'Редагування', about: 'Про тренажер' }[parts[0]] || '');
   if (!parts.length) return renderHome();
   if (parts[0] === 'today') return parts[1] === 'session' ? Review.begin() : Review.renderStart();
   if (parts[0] === 'progress') return renderProgress();
@@ -790,7 +808,7 @@ const Trainer = {
   set: null, mode: 'study', T: null, active: false,
   teardown() { this.active = false; this.set = null; this.T = null; document.documentElement.style.removeProperty('--panelh'); },
   async open(set, mode, src, hl) {
-    this.set = set; this.mode = mode; this.active = true;
+    this.set = set; this.mode = mode; this.active = true; setTitle(set.title);
     this.wantHl = Number(hl) || null;   // точка з пошуку — підсвітити після завантаження
     const n = set.items.length;
     app.innerHTML = `<div class="wrap">
@@ -809,7 +827,7 @@ const Trainer = {
         <div class="legendwrap"><div class="legend" id="legend"></div>
           ${set.credit ? `<div class="credit">Схема: ${esc(set.credit.artist || 'Wikimedia Commons')} · ${set.credit.licurl ? `<a href="${esc(set.credit.licurl)}" target="_blank" rel="noopener">${esc(set.credit.license)}</a>` : esc(set.credit.license)} · <a href="${esc(set.credit.source)}" target="_blank" rel="noopener">джерело</a>. Номери замінено інтерактивними точками.</div>` : ''}
         </div>
-        <aside class="panel" id="panel"><h4 id="panelTitle">Назви</h4><div id="bank"></div></aside>
+        <aside class="panel" id="panel" ${mode === 'study' ? 'hidden' : ''}><h4 id="panelTitle">Назви</h4><div id="bank"></div></aside>
       </div></div>`;
     $$('.modes button').forEach(b => b.onclick = () => { location.hash = (set.deckId ? '#/my/' + set.deckId : '#/set/' + set.id) + '/' + b.dataset.mode; });
     $$('.modes button').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
@@ -948,6 +966,11 @@ function focusViewerMobile() {
   }
   window.scrollTo(0, 0);
 }
+function queueBySet(due) {
+  const m = new Map();
+  for (const x of due) { const k = x.set.id + '|' + x.mode; const q = m.get(k) || { title: x.set.title, href: x.href, mode: x.mode, n: 0, due: x.r.due }; q.n++; m.set(k, q); }
+  return [...m.values()].sort((a, b) => b.n - a.n || a.due - b.due);
+}
 function weakList(list) {
   return `<div class="legend weak">${list.map(x => `<div class="row"><span class="num bad" title="Разів забували">${x.r.lapses}</span>
     <span class="txt"><i>${esc(x.it.la)}</i>${x.it.uk ? `<span>${esc(x.it.uk)}</span>` : ''}<small>${esc(x.set.title)} · ${x.mode === 'direct' ? 'прямий' : 'зворотний'}</small></span>
@@ -965,7 +988,8 @@ const Review = {
       <section class="page-hero"><h1>Сьогодні</h1><p>${text}</p></section>
       <div class="tiles"><div class="tile"><b>${due.length}</b><span>до повторення</span></div><div class="tile"><b>${total}</b><span>структур у повторенні</span></div><div class="tile"><b>${todayN}</b><span>відповідей сьогодні</span></div><div class="tile"><b>${streakDays()}</b><span>${plural(streakDays(), 'день', 'дні', 'днів')} поспіль</span></div></div>
       <div class="actions">${due.length ? `<a href="#/today/session"><button class="primary">Повторити ${Math.min(20, due.length)} →</button></a>` : `<a href="#/"><button class="primary">До атласу →</button></a>`}<a href="#/progress"><button>Мій прогрес</button></a></div>
-      ${!due.length && weak.length ? `<h2 class="section-title">Слабкі структури</h2>${weakList(weak)}` : ''}
+      ${due.length ? `<h2 class="section-title">На черзі</h2><div class="queue">${queueBySet(due).map(q => `<a href="${q.href}/${q.mode}"><span class="t">${esc(q.title)}</span><span class="c">${q.n} · ${q.mode === 'direct' ? 'прямий' : 'зворотний'}</span></a>`).join('')}</div>` : ''}
+      ${weak.length ? `<h2 class="section-title">Слабкі структури</h2>${weakList(weak.slice(0, due.length ? 5 : 10))}${weak.length > 5 && due.length ? `<p style="margin:10px 0 0"><a href="#/progress" class="muted" style="text-decoration:underline;text-underline-offset:3px;font-size:14px">Усі слабкі структури →</a></p>` : ''}` : ''}
       ${!total ? `<h2 class="section-title">Як це працює</h2><div class="prose" style="padding:0"><ul>
         <li>Кожна відповідь у прямому чи зворотному режимі запам’ятовується окремо для кожної структури.</li>
         <li>Правильно з першого разу — наступне повторення через 1, 3, 7, 14, 30 днів; помилка — вже завтра.</li>
@@ -1015,7 +1039,7 @@ const Review = {
       let cls = '';
       if (cur.mode === 'direct') cls = it.n === cur.it.n ? 'sel' : 'dim';
       if (this.locked) { if (it.n === cur.it.n) cls = 'ok'; else if (this.picked === it.n) cls = 'bad'; else if (cur.mode === 'direct') cls = 'dim'; }
-      list.push({ id: it.n + ':' + i, x: p[0], y: p[1], label: cur.mode === 'direct' && it.n === cur.it.n ? '?' : idx + 1, cls, title: this.locked ? it.la : '' });
+      list.push({ id: it.n + ':' + i, x: p[0], y: p[1], label: this.locked && it.n === cur.it.n ? '✓' : (cur.mode === 'direct' && it.n === cur.it.n ? '?' : idx + 1), cls, title: this.locked ? it.la : '' });
     }));
     Viewer.renderPins(list);
   },
@@ -1034,8 +1058,8 @@ const Review = {
     const cur = this.cur, b = $('#bank'), title = $('#panelTitle');
     if (cur.mode === 'direct') {
       title.textContent = 'Що це за структура?';
-      b.innerHTML = `<div class="opts">${this.opts.map(it => { let cls = ''; if (this.locked) { if (it.n === cur.it.n) cls = 'ok'; else if (this.picked === it.n) cls = 'bad'; } return `<button class="name ${cls}" data-n="${it.n}"><i>${esc(it.la)}</i></button>`; }).join('')}</div>
-        ${this.locked && !this.results[this.results.length - 1].ok ? `<div class="question"><div class="p">${esc(cur.it.uk || '')}</div><div style="margin-top:8px"><button class="primary" id="rvNext">Далі →</button></div></div>` : ''}`;
+      b.innerHTML = `<div class="rvbank"><div class="opts">${this.opts.map(it => { let cls = ''; if (this.locked) { if (it.n === cur.it.n) cls = 'ok'; else if (this.picked === it.n) cls = 'bad'; } return `<button class="name ${cls}" data-n="${it.n}"><i>${esc(it.la)}</i></button>`; }).join('')}</div>
+        ${this.locked && !this.results[this.results.length - 1].ok ? `<div class="question" style="display:flex;align-items:center;gap:10px;justify-content:space-between;text-align:left"><div class="p">${esc(cur.it.uk || '')}</div><button class="primary" id="rvNext">Далі →</button></div>` : ''}</div>`;
       $$('#bank .name').forEach(el => el.onclick = () => { if (this.locked) return; this.answer(+el.dataset.n === cur.it.n, +el.dataset.n); });
     } else {
       title.textContent = 'Знайдіть на схемі';
