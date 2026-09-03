@@ -123,16 +123,16 @@ async function importFile(file) {
   return deckId;
 }
 function atlasDeck(catOrSet) {
-  const sets = catOrSet.startsWith('cat:') ? ATLAS.sets.filter(s => s.cat === catOrSet.slice(4)) : ATLAS.sets.filter(s => s.id === catOrSet);
+  const sets = catOrSet.startsWith('cat:') ? ATLAS.sets.filter(s => s.cat === catOrSet.slice(4)) : catOrSet.startsWith('sets:') ? ATLAS.sets.filter(s => catOrSet.slice(5).split(',').includes(s.id)) : ATLAS.sets.filter(s => s.id === catOrSet);
   const deckId = uid(); let ord = 0; const cards = [];
   for (const s of sets) for (const it of s.items) cards.push({ id: `${deckId}:${s.id}:${it.n}`, deck: deckId, ord: ord++, front: `<i>${esc(it.la)}</i>`, back: `${esc(it.uk || '—')}<div class="fld muted">${esc(s.title)}</div>` });
-  return { cards, name: catOrSet.startsWith('cat:') ? catOrSet.slice(4) : sets[0].title };
+  return { cards, name: catOrSet.startsWith('cat:') ? catOrSet.slice(4) : sets.length === 1 ? sets[0].title : sets.map(s => s.title).join(', ') };
 }
-async function createAtlasDeck(catOrSet) {
+async function createAtlasDeck(catOrSet, customName, topic) {
   const { cards, name } = atlasDeck(catOrSet); if (!cards.length) return null;
   const deckId = cards[0].deck;
   await CDB.putCards(cards); cards.forEach(c => CARDS.set(c.id, c));
-  cardDecks.push({ id: deckId, name, n: cards.length, created: Date.now(), newPerDay: 20, src: 'atlas' }); saveCardDecks();
+  cardDecks.push({ id: deckId, name: customName || name, n: cards.length, created: Date.now(), newPerDay: 20, src: 'atlas', topic: topic || null }); saveCardDecks();
   return deckId;
 }
 async function deleteDeck(deckId) {

@@ -92,3 +92,34 @@ button.big{padding:12px 22px;font-size:16px}
 .cardface.pairs .pr.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
 .tfbtn{font-size:18px;padding:14px}
 @media (max-width:900px){ .bztop{position:sticky;top:58px;z-index:6;background:var(--bg)} .cardface.bz .cfront{font-size:24px} }
+
+/* ---------- курс ---------- */
+.courses .coursecard{cursor:pointer}
+.courses .coursecard .body{gap:10px}
+.courses .coursecard.soon{opacity:.75}
+.crow-h{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.crow-h h1{margin:0}
+.chg{font-size:14px;text-decoration:underline;text-underline-offset:3px}
+.module{margin-top:6px}
+.modhead{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;justify-content:space-between;cursor:pointer;list-style:none}
+.modhead::-webkit-details-marker{display:none}
+.modhead .section-title::before{content:'▸';display:inline-block;width:18px;color:var(--muted);font-size:18px;transition:transform .15s}
+details[open]>.modhead .section-title::before{transform:rotate(90deg)}
+.modhead .section-title{margin:26px 0 10px}
+.modstat{display:flex;align-items:center;gap:10px;font-size:13px}
+.modstat .track{width:140px;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.modstat .fill,.topic .fill{height:100%;background:var(--accent);border-radius:999px}
+.topics{display:flex;flex-direction:column;gap:6px}
+.topic{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:12px;padding:10px 12px;background:var(--paper);border:1px solid var(--line);border-radius:12px;font-size:14px}
+.topic:hover{border-color:var(--accent)}
+.topic.nomat{opacity:.6}
+.topic.nomat:hover{opacity:.85}
+.topic.ctrl{background:transparent;border-style:dashed}
+.tnum{width:32px;height:32px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.tnum.big{width:44px;height:44px;font-size:17px}
+.ttitle{line-height:1.35}
+.tmeta{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);white-space:nowrap}
+.tmeta .track.mini{width:70px;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.tmeta b{color:var(--ink);min-width:34px;text-align:right}
+.tclip{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+@media (max-width:700px){ .topic{grid-template-columns:32px 1fr} .tmeta{grid-column:2;justify-content:flex-start;flex-wrap:wrap;white-space:normal} .modstat .track{width:90px} }

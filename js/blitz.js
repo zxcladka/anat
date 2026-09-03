@@ -29,6 +29,7 @@ function poolFor(src) {
     sets = ATLAS.sets.filter(s => started.has(s.id));
     if (!sets.length) sets = ATLAS.sets.filter(s => s.cat === 'Скелет');
   } else if (src.startsWith('cat:')) sets = ATLAS.sets.filter(s => s.cat === src.slice(4));
+  else if (src.startsWith('sets:')) { const ids = src.slice(5).split(','); sets = ATLAS.sets.filter(s => ids.includes(s.id)); }
   else sets = ATLAS.sets.filter(s => s.id === src);
   return sets.flatMap(s => s.items.map(it => ({ set: s, it })));
 }
@@ -38,7 +39,9 @@ const chunks = word => { const out = []; let i = 0; while (i < word.length) { co
 const Blitz = {
   active: false, timer: null, endAt: 0, dur: 300, pool: [], score: 0, combo: 0, best: 0, ok: 0, bad: 0, cur: null, locked: false, lastSet: null, block: 0, src: 'smart',
   renderStart() {
-    const opts = ATLAS.categories.filter(c => ATLAS.sets.some(s => s.cat === c)).map(c => `<optgroup label="${esc(c)}"><option value="cat:${esc(c)}">Увесь розділ: ${esc(c)}</option>${ATLAS.sets.filter(s => s.cat === c).map(s => `<option value="${s.id}">${esc(s.title)}</option>`).join('')}</optgroup>`).join('');
+    const cs = window.Course && Course.course();
+    const topicOpts = cs ? cs.modules.map(m => `<optgroup label="${esc(m.short)}">${m.topics.filter(t => t.sets.length && !t.control).map(t => `<option value="sets:${t.sets.join(',')}">Тема ${t.n}. ${esc(t.title.split('.')[0])}</option>`).join('')}</optgroup>`).join('') : '';
+    const opts = topicOpts + ATLAS.categories.filter(c => ATLAS.sets.some(s => s.cat === c)).map(c => `<optgroup label="${esc(c)}"><option value="cat:${esc(c)}">Увесь розділ: ${esc(c)}</option>${ATLAS.sets.filter(s => s.cat === c).map(s => `<option value="${s.id}">${esc(s.title)}</option>`).join('')}</optgroup>`).join('');
     const xp = xpToday();
     app.innerHTML = `<div class="wrap">
       <section class="page-hero"><h1>Бліц</h1><p>П’ять хвилин швидких вправ упереміш: вибери назву, знайди на схемі, склади слово, з’єднай пари, правда чи ні. Комбо множить очки, помилки не забирають. Усе, що відповіли, іде в повторення.</p></section>
@@ -51,7 +54,7 @@ const Blitz = {
       </div>
       ${(() => { const v = LS.get(XP_KEY, {}); const days = Object.keys(v).sort().slice(-7); return days.length ? `<h2 class="section-title">Останні дні</h2><div class="xpdays">${days.map(d => `<div><b>${v[d]}</b><span>${d.slice(5)}</span></div>`).join('')}</div>` : ''; })()}
     </div>`;
-    $('#bzSrc').value = this.src; $('#bzDur').value = String(this.dur);
+    $('#bzSrc').value = this.src; if ($('#bzSrc').value !== this.src) { $('#bzSrc').value = 'smart'; this.src = 'smart'; } $('#bzDur').value = String(this.dur);
     $('#bzSound').onchange = e => { soundOn = e.target.checked; LS.set(SOUND_KEY, soundOn); };
     $('#bzGo').onclick = () => { this.src = $('#bzSrc').value; this.dur = +$('#bzDur').value; location.hash = '#/blitz/go'; };
     window.scrollTo(0, 0);

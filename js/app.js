@@ -105,7 +105,7 @@ function navFit() {
 }
 $('#nav').addEventListener('scroll', navFit, { passive: true });
 window.addEventListener('resize', navFit);
-const EXT = { today: [], badge: [] };          // хуки для модулів: блоки на «Сьогодні», лічильники в бейдж
+const EXT = { today: [], badge: [], homeHash: null };          // хуки для модулів: блоки на «Сьогодні», лічильники в бейдж
 function updateBadge() { const b = $('#dueBadge'); if (!b) return; const n = srsDue().length + EXT.badge.reduce((a, f) => a + f(), 0); b.textContent = n > 99 ? '99+' : n; b.hidden = !n; }
 
 /* ---------- dialogs ---------- */
@@ -316,11 +316,12 @@ const app = $('#app');
 const setTitle = t => { document.title = (t ? t + ' — ' : '') + 'Anatomia — тренажер з анатомії'; };
 function route() {
   const h = location.hash.replace(/^#\/?/, ''); const parts = h.split('/').filter(Boolean);
-  $$('#nav a').forEach(a => a.classList.toggle('active', a.dataset.r === (parts[0] || 'home') || (a.dataset.r === 'my' && parts[0] === 'edit')));
+  $$('#nav a').forEach(a => a.classList.toggle('active', a.dataset.r === (parts[0] || 'atlas') || (a.dataset.r === 'my' && parts[0] === 'edit') || (a.dataset.r === 'course' && parts[0] === 'choose')));
   Trainer.teardown(); Review.teardown(); updateBadge(); navFit();
   { const a = $('#nav a.active'); if (a && $('#nav').classList.contains('more')) a.scrollIntoView({ block: 'nearest', inline: 'center' }); }
-  setTitle({ today: 'Сьогодні', progress: 'Мій прогрес', my: 'Мої схеми', edit: 'Редагування', about: 'Про тренажер', decks: 'Колоди', blitz: 'Бліц' }[parts[0]] || '');
-  if (!parts.length) return renderHome();
+  setTitle({ today: 'Сьогодні', progress: 'Мій прогрес', my: 'Мої схеми', edit: 'Редагування', about: 'Про тренажер', decks: 'Колоди', blitz: 'Бліц', course: 'Курс', choose: 'Вибір курсу' }[parts[0]] || '');
+  if (!parts.length) { location.replace(EXT.homeHash ? EXT.homeHash() : '#/atlas'); return; }
+  if (parts[0] === 'atlas') return renderHome();
   if (parts[0] === 'today') return parts[1] === 'session' ? Review.begin() : Review.renderStart();
   if (parts[0] === 'progress') return renderProgress();
   if (parts[0] === 'set' && parts[1]) { const s = ATLAS.sets.find(x => x.id === parts[1]); return s ? renderSet(s, parts[2], parts[3]) : renderHome(); }
@@ -499,7 +500,7 @@ const Trainer = {
     const n = set.items.length;
     app.innerHTML = `<div class="wrap">
       <div class="sethead">
-        <a class="back" href="${set.deckId ? '#/my' : '#/'}">← ${set.deckId ? 'Мої схеми' : 'Атлас'}</a>
+        <a class="back" href="${set.deckId ? '#/my' : '#/atlas'}">← ${set.deckId ? 'Мої схеми' : 'Атлас'}</a>
         <h1>${esc(set.title)}</h1><span class="chip">${esc(set.cat)}</span><span class="muted">${n} структур</span>
         <span class="spacer"></span>
         ${set.deckId ? `<a href="#/edit/${set.deckId}"><button class="small">✎ Редагувати</button></a>` : ''}
@@ -673,7 +674,7 @@ const Review = {
     app.innerHTML = `<div class="wrap">
       <section class="page-hero"><h1>Сьогодні</h1><p>${text}</p></section>
       <div class="tiles"><div class="tile"><b>${due.length}</b><span>до повторення</span></div><div class="tile"><b>${total}</b><span>у повторенні</span></div><div class="tile"><b>${todayN}</b><span>відповідей сьогодні</span></div><div class="tile"><b>${streakDays()}</b><span>${plural(streakDays(), 'день', 'дні', 'днів')} поспіль</span></div></div>
-      <div class="actions">${due.length ? `<a href="#/today/session"><button class="primary">Повторити ${Math.min(20, due.length)} →</button></a>` : `<a href="#/"><button class="primary">До атласу →</button></a>`}<a href="#/progress"><button>Мій прогрес</button></a></div>
+      <div class="actions">${due.length ? `<a href="#/today/session"><button class="primary">Повторити ${Math.min(20, due.length)} →</button></a>` : `<a href="#/atlas"><button class="primary">До атласу →</button></a>`}<a href="#/progress"><button>Мій прогрес</button></a></div>
       ${EXT.today.map(f => f(due)).join('')}
       ${due.length ? `<h2 class="section-title">На черзі</h2><div class="queue">${queueBySet(due).map(q => `<a href="${q.href}/${q.mode}"><span class="t">${esc(q.title)}</span><span class="c">${q.n} · ${q.mode === 'direct' ? 'прямий' : 'зворотний'}</span></a>`).join('')}</div>` : ''}
       ${weak.length ? `<h2 class="section-title">Слабкі структури</h2>${weakList(weak.slice(0, due.length ? 5 : 10))}${weak.length > 5 && due.length ? `<p style="margin:10px 0 0"><a href="#/progress" class="muted" style="text-decoration:underline;text-underline-offset:3px;font-size:14px">Усі слабкі структури →</a></p>` : ''}` : ''}
