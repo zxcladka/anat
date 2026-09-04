@@ -123,3 +123,26 @@ details[open]>.modhead .section-title::before{transform:rotate(90deg)}
 .tmeta b{color:var(--ink);min-width:34px;text-align:right}
 .tclip{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
 @media (max-width:700px){ .topic{grid-template-columns:32px 1fr} .tmeta{grid-column:2;justify-content:flex-start;flex-wrap:wrap;white-space:normal} .modstat .track{width:90px} }
+
+/* ---------- пояснення після відповіді, вимова, письмо ---------- */
+.explain{margin-top:10px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--line2);border-radius:12px;padding:10px 14px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.explain.ok{border-left-color:var(--ok)}
+.explain.bad{border-left-color:var(--bad)}
+.explain .ex-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.explain .ex-la{font-family:var(--serif);font-size:18px}
+.explain .ex-uk{font-size:15px}
+.explain .ex-en{color:var(--muted);font-size:13px}
+.ex-et{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13px}
+.ex-et b{font-weight:600}
+.explain .ex-conf{font-size:13px;margin-top:2px}
+.explain .ex-conf i{font-family:var(--serif)}
+.spk{background:transparent;border:1px solid var(--line2);border-radius:999px;padding:2px 8px;font-size:13px;line-height:1.4;cursor:pointer}
+.spk:hover{border-color:var(--accent)}
+.chip.leech{background:var(--bad-soft);color:var(--bad)}
+.typedrow{display:flex;gap:8px;margin-top:8px}
+.typedrow input{flex:1;min-width:0;background:var(--paper);border:1px solid var(--line2);border-radius:10px;padding:10px 12px;font:inherit;font-size:16px;color:var(--ink)}
+.typedrow input:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+#explainBox[hidden],#rvExplain[hidden],#bzExplain[hidden]{display:none}
+.cardface .spk{vertical-align:middle;margin-left:6px}
+#deckTopic{max-width:260px;background:var(--paper);border:1px solid var(--line2);border-radius:10px;padding:8px 10px;font:inherit;color:var(--ink)}
+@media (max-width:900px){ .explain{margin:10px 0 0} }

@@ -10,10 +10,10 @@ const setsOf = t => t.sets.map(id => ATLAS.sets.find(s => s.id === id)).filter(B
 const findTopic = (mid, n) => { const c = course(); const m = c && c.modules.find(x => x.id === mid); const t = m && m.topics.find(x => x.n === +n); return t ? { c, m, t } : null; };
 // відома структура — є запис повторення з хоча б однією правильною відповіддю у будь-якому режимі
 function topicStats(t) {
-  const sets = setsOf(t); let total = 0, known = 0, done = 0;
+  const sets = setsOf(t); let total = 0, known = 0, done = 0, mastered = 0;
   for (const s of sets) { total += s.items.length; if (progFor(s.id, 'direct').streak >= GOAL && progFor(s.id, 'reverse').streak >= GOAL) done++;
-    for (const it of s.items) { const k = structKey(it), a = srs[srsKey(s.id, k, 'direct')], b = srs[srsKey(s.id, k, 'reverse')]; if ((a && a.reps) || (b && b.reps)) known++; } }
-  return { sets: sets.length, total, known, done, pct: total ? Math.round(known / total * 100) : 0 };
+    for (const it of s.items) { const k = structKey(it), a = srs[srsKey(s.id, k, 'direct')], b = srs[srsKey(s.id, k, 'reverse')]; if ((a && (a.reps || a.okDays)) || (b && (b.reps || b.okDays))) known++; if (srsMastered(a) || srsMastered(b)) mastered++; } }
+  return { sets: sets.length, total, known, done, mastered, pct: total ? Math.round(known / total * 100) : 0 };
 }
 function moduleStats(m) { let total = 0, known = 0, withMat = 0; for (const t of m.topics) { if (t.control) continue; const s = topicStats(t); total += s.total; known += s.known; if (s.sets) withMat++; } return { total, known, withMat, topics: m.topics.filter(t => !t.control).length, pct: total ? Math.round(known / total * 100) : 0 }; }
 function nextTopic() { const c = course(); if (!c) return null; for (const m of c.modules) for (const t of m.topics) { if (t.control || !t.sets.length) continue; if (topicStats(t).pct < 100) return { m, t }; } return null; }
@@ -61,16 +61,18 @@ async function renderTopic(mid, n) {
   const { c, m, t } = f, sets = setsOf(t), st = topicStats(t), id = tid(m, t), my = (links()[id] || []);
   const prev = m.topics.find(x => x.n === t.n - 1), next = m.topics.find(x => x.n === t.n + 1);
   const deck = window.Cards ? Cards.cardDecks().find(d => d.topic === id) : null;
+  const myDecks = decks.filter(x => x.topic === id && x.pins.length && x.hasImage);
   const srcSets = 'sets:' + sets.map(s => s.id).join(',');
   app.innerHTML = `<div class="wrap">
     <div class="sethead"><a class="back" href="#/course">← ${esc(c.name)} · ${esc(m.short)}</a><span class="spacer"></span>${prev ? `<a href="#/course/${m.id}/${prev.n}"><button class="small">← ${prev.n}</button></a>` : ''}${next ? `<a href="#/course/${m.id}/${next.n}"><button class="small">${next.n} →</button></a>` : ''}</div>
     <section class="page-hero" style="padding-top:6px"><div class="crow-h"><span class="tnum big">${t.n}</span><h1 style="font-size:clamp(22px,3vw,32px)">${esc(t.title)}</h1></div></section>
-    ${sets.length ? `<div class="tiles"><div class="tile"><b>${st.sets}</b><span>${plural(st.sets, 'схема', 'схеми', 'схем')}</span></div><div class="tile"><b>${st.known}<small class="muted" style="font-size:16px"> / ${st.total}</small></b><span>структур знаєте</span></div><div class="tile"><b>${st.done}<small class="muted" style="font-size:16px"> / ${st.sets}</small></b><span>схем вивчено</span></div><div class="tile"><b>${st.pct}%</b><span>готовність теми</span></div></div>
+    ${sets.length ? `<div class="tiles"><div class="tile"><b>${st.sets}</b><span>${plural(st.sets, 'схема', 'схеми', 'схем')}</span></div><div class="tile"><b>${st.known}<small class="muted" style="font-size:16px"> / ${st.total}</small></b><span>структур знаєте</span></div><div class="tile"><b>${st.mastered}</b><span>засвоєно (3 різні дні правильно)</span></div><div class="tile"><b>${st.done}<small class="muted" style="font-size:16px"> / ${st.sets}</small></b><span>схем вивчено</span></div><div class="tile"><b>${st.pct}%</b><span>готовність теми</span></div></div>
       <div class="actions"><a href="#/set/${sets[0].id}/direct"><button class="primary">Тренувати схеми →</button></a><button id="tpCards">${deck ? 'Картки теми' : 'Створити картки теми'}</button><button id="tpBlitz">Бліц по темі</button></div>
       <h2 class="section-title">Схеми теми</h2><div class="grid">${sets.map(s => cardHtml(s, '#/set/' + s.id)).join('')}</div>`
       : `<div class="empty">Для цієї теми в атласі ще немає схем${t.control ? '' : ' — вони з’являться з наступними оновленнями'}. Ви можете додати свої матеріали нижче або створити власну схему в розділі «Мої схеми».</div>`}
+    ${myDecks.length ? `<h2 class="section-title">Мої препарати і схеми</h2><div class="grid">${myDecks.map(x => cardHtml(deckToSet(x), '#/my/' + x.id)).join('')}</div>` : ''}
     <h2 class="section-title">Мої матеріали</h2>
-    <p class="muted" style="margin:-4px 0 10px;font-size:14px">Посилання на методичку, конспект, відео чи тести з Moodle — щоб усе було в одному місці.</p>
+    <p class="muted" style="margin:-4px 0 10px;font-size:14px">Посилання на методичку, конспект, відео чи тести з Moodle — щоб усе було в одному місці. Фото препарата з кафедри додайте через «Мої схеми» і виберіть цю тему в редакторі.</p>
     ${my.length ? `<div class="queue">${my.map((l, i) => `<a href="${esc(l.url)}" target="_blank" rel="noopener"><span class="t">${esc(l.t)}</span><span class="c">${esc((() => { try { return new URL(l.url).host.replace(/^www\./, ''); } catch (e) { return ''; } })())}</span><button class="small ghost" data-del="${i}" title="Прибрати">✕</button></a>`).join('')}</div>` : ''}
     <div class="actions" style="margin-top:10px"><button id="tpAdd">+ Додати посилання</button></div>
   </div>`;

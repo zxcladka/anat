@@ -66,7 +66,7 @@ const Blitz = {
     this.endAt = Date.now() + this.dur * 1000;
     app.innerHTML = `<div class="wrap blitz">
       <div class="bztop"><a class="back" href="#/blitz" id="bzQuit">✕</a><div class="tbar"><div class="tfill" id="tfill"></div></div><div class="bzscore"><span id="bzCombo" class="combo" hidden></span><b id="bzScore">0</b></div></div>
-      <div class="trainwrap bzwrap"><div class="viewcol"><div id="viewer"></div><div class="bzcard" id="bzcard" hidden></div></div>
+      <div class="trainwrap bzwrap"><div class="viewcol"><div id="viewer"></div><div class="bzcard" id="bzcard" hidden></div><div id="bzExplain" hidden></div></div>
         <aside class="panel" id="panel"><h4 id="panelTitle"></h4><div id="bank"></div></aside></div>
     </div>`;
     Viewer.mount($('#viewer'), { mode: 'train', onPinClick: id => this.pinClick(id) });
@@ -93,6 +93,7 @@ const Blitz = {
     if (!target.it.uk) { const i = types.indexOf('tf'); types.splice(i, 1); }
     const type = types[Math.floor(Math.random() * types.length)];
     this.cur = { type, target, set: this.curSet };
+    { const eb = $('#bzExplain'); if (eb) { eb.hidden = true; eb.innerHTML = ''; } }
     const needImg = type === 'pick' || type === 'find';
     $('#viewer').hidden = !needImg; $('#bzcard').hidden = needImg;
     if (needImg && this.loadedSet !== this.curSet.id) { const ok = await Viewer.load(this.curSet.file, this.curSet.w, this.curSet.h); if (!this.active) return; if (!ok) { this.block = 3; return this.next(); } this.loadedSet = this.curSet.id; $('#viewer').classList.toggle('dense', this.curSet.items.length > 20); }
@@ -165,10 +166,11 @@ const Blitz = {
     const { target } = this.cur;
     srsReview(target.set.id, structKey(target.it), mode, ok);
     if (ok) { this.ok++; this.combo++; this.best = Math.max(this.best, this.combo); const mult = this.combo >= 6 ? 3 : this.combo >= 3 ? 2 : 1; this.score += 10 * mult; addXp(10 * mult); beep(this.combo && this.combo % 3 === 0 ? 'combo' : 'ok'); }
-    else { this.bad++; this.combo = 0; beep('bad'); if (navigator.vibrate) navigator.vibrate(60); this.log.push(target); }
+    else { this.bad++; this.combo = 0; beep('bad'); if (navigator.vibrate) navigator.vibrate(60); this.log.push(target); if (this.picked != null && (this.cur.type === 'pick' || this.cur.type === 'find')) { const p = target.set.items.find(x => x.n === this.picked); if (p) noteConfusion(target.set.id, structKey(target.it), structKey(p)); } }
+    if (!ok) { const eb = $('#bzExplain'); if (eb) { eb.hidden = false; eb.innerHTML = explainHtml(target.set, target.it, { cls: 'bad', mode }); } }
     $('#bzScore').textContent = this.score; const c = $('#bzCombo'); c.hidden = this.combo < 3; c.textContent = `×${this.combo >= 6 ? 3 : 2} · ${this.combo}`;
     $('#bzScore').classList.add('pop'); setTimeout(() => $('#bzScore') && $('#bzScore').classList.remove('pop'), 300);
-    setTimeout(() => this.next(), ok ? 650 : 1400);
+    setTimeout(() => this.next(), ok ? 650 : 2600);
   },
   finish() {
     this.teardown(); clearInterval(this.timer);

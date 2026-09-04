@@ -125,7 +125,7 @@ async function importFile(file) {
 function atlasDeck(catOrSet) {
   const sets = catOrSet.startsWith('cat:') ? ATLAS.sets.filter(s => s.cat === catOrSet.slice(4)) : catOrSet.startsWith('sets:') ? ATLAS.sets.filter(s => catOrSet.slice(5).split(',').includes(s.id)) : ATLAS.sets.filter(s => s.id === catOrSet);
   const deckId = uid(); let ord = 0; const cards = [];
-  for (const s of sets) for (const it of s.items) cards.push({ id: `${deckId}:${s.id}:${it.n}`, deck: deckId, ord: ord++, front: `<i>${esc(it.la)}</i>`, back: `${esc(it.uk || '—')}<div class="fld muted">${esc(s.title)}</div>` });
+  for (const s of sets) for (const it of s.items) cards.push({ id: `${deckId}:${s.id}:${it.n}`, deck: deckId, ord: ord++, la: it.la, front: `<i>${esc(it.la)}</i>`, back: `${esc(it.uk || '—')}${enFor(it.la) ? `<div class="fld">${esc(enFor(it.la))}</div>` : ''}<div class="fld muted">${esc(s.title)}</div>` });
   return { cards, name: catOrSet.startsWith('cat:') ? catOrSet.slice(4) : sets.length === 1 ? sets[0].title : sets.map(s => s.title).join(', ') };
 }
 async function createAtlasDeck(catOrSet, customName, topic) {
@@ -220,7 +220,9 @@ const Learn = {
     const d = deckOf(c.deck), r = srs[cardKey(c.id)];
     $('#lnCount').textContent = `${this.done + 1} з ${this.total + this.again}${this.relearn.length ? ' · ще раз: ' + this.relearn.length : ''}`;
     const front = await cardHtml(c, 'front'); if (this.cur !== c) return;
-    box.innerHTML = `<div class="cardface"><div class="cdeck muted">${esc(d ? d.name : '')}${!r ? ' · <span class="chip">нова</span>' : ''}</div><div class="cfront">${front}</div>${this.side === 'back' ? `<hr><div class="cback">${await cardHtml(c, 'back')}</div>` : ''}</div>`;
+    const la = c.la || (c.front && !/[<>]/.test(c.front.replace(/<\/?i>/g, '')) ? c.front.replace(/<\/?i>/g, '') : '');
+    const et = la ? etymology(la) : [];
+    box.innerHTML = `<div class="cardface"><div class="cdeck muted">${esc(d ? d.name : '')}${!r ? ' · <span class="chip">нова</span>' : ''}</div><div class="cfront">${front}${la ? ` <button class="spk" data-say="${esc(la)}" title="Вимова">🔊</button>` : ''}</div>${this.side === 'back' ? `<hr><div class="cback">${await cardHtml(c, 'back')}</div>${et.length ? `<div class="ex-et" style="margin-top:10px">${et.map(x => x.m ? `<span><b>${esc(x.w)}</b> — ${esc(x.m)}</span>` : `<span class="muted">${esc(x.w)}</span>`).join('')}</div>` : ''}` : ''}</div>`;
     if (this.side === 'front') { g.innerHTML = `<button class="primary" id="lnShow">Показати відповідь</button>`; $('#lnShow').onclick = () => this.flip(); }
     else {
       const base = Object.assign(srsBlank(), r || {}, { mode: 'card' });

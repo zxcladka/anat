@@ -50,26 +50,45 @@ const dayKey = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1
 function touchDay() { const k = dayKey(); days[k] = (days[k] || 0) + 1; LS.set('anat.days', days); }
 // відповідь по структурі: ok — правильно з першого разу в цьому проході
 const srsBlank = () => ({ ease: 2.5, interval: 0, due: 0, lapses: 0, reps: 0, seen: 0 });
-// наступний стан запису після відповіді; grade: again | hard | good | easy (для карток), для схем — good/again за ok
+/* FSRS-4.5 (Free Spaced Repetition Scheduler): стан запису — складність D (1..10), стабільність S (днів),
+   ймовірність пригадування R. Параметри за замовчуванням з open-spaced-repetition. */
+const FSRS_W = [0.4872, 1.4003, 3.7145, 13.8206, 5.1618, 1.2298, 0.8975, 0.031, 1.6474, 0.1367, 1.0461, 2.1072, 0.0793, 0.3246, 1.587, 0.2272, 2.8755];
+const FSRS_RETENTION = 0.9;                       // бажана ймовірність пригадування на момент повторення
+const LEARN_STEP_MS = 10 * 60 * 1000;             // один короткий крок у той самий день
+const LEECH_LAPSES = 8;                           // після стількох забувань структура — «п’явка»
+const GRADE_N = { again: 1, hard: 2, good: 3, easy: 4 };
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const fsrsInitD = g => clamp(FSRS_W[4] - (g - 3) * FSRS_W[5], 1, 10);
+const fsrsR = (t, S) => Math.pow(1 + t / (9 * S), -1);
+const fsrsNextD = (D, g) => clamp(FSRS_W[7] * fsrsInitD(4) + (1 - FSRS_W[7]) * (D - FSRS_W[6] * (g - 3)), 1, 10);
+const fsrsNextS = (D, S, R, g) => S * (Math.exp(FSRS_W[8]) * (11 - D) * Math.pow(S, -FSRS_W[9]) * (Math.exp(FSRS_W[10] * (1 - R)) - 1) * (g === 2 ? FSRS_W[15] : 1) * (g === 4 ? FSRS_W[16] : 1) + 1);
+const fsrsLapseS = (D, S, R) => Math.max(0.1, FSRS_W[11] * Math.pow(D, -FSRS_W[12]) * (Math.pow(S + 1, FSRS_W[13]) - 1) * Math.exp(FSRS_W[14] * (1 - R)));
+const fsrsInterval = S => Math.max(1, Math.round(9 * S * (1 / FSRS_RETENTION - 1)));
+// наступний стан запису після відповіді; grade: again | hard | good | easy
 function srsNext(r0, ok, grade) {
-  const r = Object.assign({}, r0 || srsBlank()), now = Date.now();
-  grade = grade || (ok ? 'good' : 'again');
+  const r = Object.assign({}, r0 || srsBlank()), now = Date.now(), today = dayKey();
+  grade = grade || (ok ? 'good' : 'again'); const g = GRADE_N[grade] || (ok ? 3 : 1);
+  if (r.seen && !r.S) { r.S = Math.max(0.5, r.interval || 1); r.D = clamp(11 - ((r.ease || 2.5) - 1.3) / 1.7 * 9, 1, 10); }   // міграція зі старого SM-2
+  if (!r.seen || !r.S) { r.S = FSRS_W[g - 1]; r.D = fsrsInitD(g); }
+  else {
+    const t = Math.max(0, (now - (r.last || now)) / DAY), R = fsrsR(t, r.S);
+    r.D = fsrsNextD(r.D, g); r.S = ok ? fsrsNextS(r.D, r.S, R, g) : fsrsLapseS(r.D, r.S, R);
+  }
+  r.S = +r.S.toFixed(3); r.D = +r.D.toFixed(2);
   if (ok) {
     r.reps++;
-    let base = r.reps <= SRS_STEPS.length ? SRS_STEPS[r.reps - 1] : Math.max(r.interval + 1, Math.round(r.interval * r.ease));
-    if (grade === 'hard') { base = Math.max(1, Math.round(base * 0.6)); r.ease = Math.max(1.3, +(r.ease - 0.15).toFixed(2)); }
-    else if (grade === 'easy') { base = Math.round(base * 1.4) + 1; r.ease = Math.min(3, +(r.ease + 0.15).toFixed(2)); }
-    else r.ease = Math.min(3, +(r.ease + 0.05).toFixed(2));
-    r.interval = base; r.due = now + r.interval * DAY;
+    if (r.lastOkDay !== today) { r.okDays = (r.okDays || 0) + 1; r.lastOkDay = today; }   // успішні пригадування в різні дні
+    r.interval = fsrsInterval(r.S); r.due = now + r.interval * DAY;
   } else {
     if (r.seen) r.lapses++;                       // перше знайомство не карається
-    r.reps = 0; r.ease = Math.max(1.3, +(r.ease - 0.2).toFixed(2));
-    if (grade === 'again' && r0 && r0.mode === 'card') { r.interval = 0; r.due = now + 10 * 60 * 1000; }   // картка повернеться за 10 хв
-    else { r.interval = 1; r.due = now + DAY; }
+    r.reps = 0; r.interval = 0; r.due = now + LEARN_STEP_MS;   // короткий крок: ще раз сьогодні
+    if (r.lapses >= LEECH_LAPSES) r.leech = true;
   }
+  r.ease = +(1.3 + (11 - r.D) / 9 * 1.7).toFixed(2);   // сумісність зі старими полями
   r.seen++; r.last = now;
   return r;
 }
+const srsMastered = r => !!r && (r.okDays || 0) >= 3;   // «засвоєно»: 3 успішні пригадування в різні дні
 function srsReview(setId, n, mode, ok, grade) {
   const k = srsKey(setId, n, mode);
   const cur = srs[k] ? Object.assign({}, srs[k], { mode }) : Object.assign(srsBlank(), { mode });
@@ -106,6 +125,47 @@ function navFit() {
 $('#nav').addEventListener('scroll', navFit, { passive: true });
 window.addEventListener('resize', navFit);
 const EXT = { today: [], badge: [], homeHash: null };          // хуки для модулів: блоки на «Сьогодні», лічильники в бейдж
+let confuse = LS.get('anat.confuse', {});
+function noteConfusion(setId, tested, picked) {
+  if (tested == null || picked == null || tested === picked) return;
+  const k = setId + '|' + tested, m = confuse[k] = confuse[k] || {}; m[picked] = (m[picked] || 0) + 1; LS.set('anat.confuse', confuse);
+}
+function confusionsFor(set, it) { const m = confuse[set.id + '|' + structKey(it)] || {}; return Object.entries(m).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k, n]) => ({ it: set.items.find(x => String(structKey(x)) === k), n })).filter(x => x.it); }
+
+/* ---------- лексикон: англійська, розбір латинського терміна, вимова ---------- */
+const LEX = window.LEXICON || { en: {}, roots: {} };
+const ROMAN = { i: 'перший', ii: 'другий', iii: 'третій', iv: 'четвертий', v: 'п’ятий', vi: 'шостий', vii: 'сьомий', viii: 'восьмий', ix: 'дев’ятий', x: 'десятий', xi: 'одинадцятий', xii: 'дванадцятий' };
+const rootKeys = Object.keys(LEX.roots).sort((a, b) => b.length - a.length);
+function rootOf(word) {
+  const w = word.toLowerCase();
+  if (ROMAN[w]) return ROMAN[w]; if (w === 'et') return 'і';
+  for (const k of rootKeys) if (w.startsWith(k) && w.length - k.length <= 6) return LEX.roots[k];
+  return null;
+}
+function etymology(la) {
+  const parts = String(la || '').replace(/\(.*?\)/g, ' ').split(/[\s,]+/).filter(Boolean);
+  const out = parts.map(p => ({ w: p, m: rootOf(p) })); return out.some(x => x.m) ? out : [];
+}
+const enFor = la => LEX.en[la] || '';
+function speak(text) {
+  try {
+    if (!('speechSynthesis' in window)) return false;
+    const u = new SpeechSynthesisUtterance(String(text).replace(/\(.*?\)/g, '')); const vs = speechSynthesis.getVoices();
+    const v = vs.find(x => /^la/i.test(x.lang)) || vs.find(x => /^it/i.test(x.lang)) || vs.find(x => /^es/i.test(x.lang)) || null;
+    if (v) u.voice = v; u.lang = v ? v.lang : 'it-IT'; u.rate = 0.85; speechSynthesis.cancel(); speechSynthesis.speak(u); return true;
+  } catch (e) { return false; }
+}
+if ('speechSynthesis' in window) speechSynthesis.getVoices();
+// пояснення після відповіді: термін, вимова, розбір, англійська, українська, з чим плутають
+function explainHtml(set, it, opts = {}) {
+  const et = etymology(it.la), en = enFor(it.la), conf = set ? confusionsFor(set, it) : [];
+  const r = set ? srs[srsKey(set.id, structKey(it), opts.mode || 'direct')] : null;
+  return `<div class="explain ${opts.cls || ''}"><div class="ex-head"><i class="ex-la">${esc(it.la)}</i><button class="spk" data-say="${esc(it.la)}" title="Вимова">🔊</button>${r && r.leech ? '<span class="chip leech" title="Забували 8+ разів — варто розібрати термін і сусідів">п’явка</span>' : ''}</div>
+    ${it.uk ? `<div class="ex-uk">${esc(it.uk)}</div>` : ''}${en ? `<div class="ex-en">${esc(en)}</div>` : ''}
+    ${et.length ? `<div class="ex-et">${et.map(x => x.m ? `<span><b>${esc(x.w)}</b> — ${esc(x.m)}</span>` : `<span class="muted">${esc(x.w)}</span>`).join('')}</div>` : ''}
+    ${conf.length ? `<div class="ex-conf">Не плутайте з: ${conf.map(c => `<i>${esc(c.it.la)}</i>${c.it.uk ? ` <span class="muted">(${esc(c.it.uk)})</span>` : ''}`).join(', ')}</div>` : ''}</div>`;
+}
+document.addEventListener('click', e => { const b = e.target.closest('.spk'); if (b) { e.preventDefault(); e.stopPropagation(); speak(b.dataset.say); } });
 function updateBadge() { const b = $('#dueBadge'); if (!b) return; const n = srsDue().length + EXT.badge.reduce((a, f) => a + f(), 0); b.textContent = n > 99 ? '99+' : n; b.hidden = !n; }
 
 /* ---------- dialogs ---------- */
@@ -477,6 +537,10 @@ function renderAbout() {
     <p>Картки як в Anki: імпорт колод із файлів .apkg (з картинками) і текстових експортів, колоди з будь-якого розділу атласу. Навчання з чотирма оцінками — знову, важко, добре, легко — і лімітом нових карток на день. Картки з’являються на «Сьогодні» разом зі схемами.</p>
     <h2>Бліц</h2>
     <p>Сесія на 2, 5 чи 10 хвилин у дусі Drops: вибери назву, знайди на схемі, склади слово з плиток, з’єднай пари, правда чи ні. Комбо множить очки, денна ціль — 100 очок. Кожна відповідь іде в інтервальне повторення.</p>
+    <h2>Режим «Письмо» і вимова</h2>
+    <p>Четвертий режим тренажера: показується точка, а назву треба надрукувати латиною. Дрібні описки прощаються, підказка зараховує відповідь як «важко». Кнопка 🔊 біля терміна вимовляє його вголос, а після кожної відповіді з’являється розбір: корені слова, українська й англійська назви та структури, з якими ви цей термін плутали.</p>
+    <h2>Планувальник FSRS</h2>
+    <p>Повторення плануються за FSRS — тим самим алгоритмом, що в сучасній Anki: для кожної структури оцінюються складність і стабільність пам’яті, наступний показ призначається так, щоб імовірність пригадати була близько 90 %. Помилка повертає структуру через 10 хвилин того ж дня; «засвоєно» — коли ви пригадали її правильно у три різні дні. Структури, які забували 8 і більше разів, позначаються як «п’явки».</p>
     <h2>Пошук по терміну</h2>
     <p>Поле пошуку на головній шукає одразу по всьому атласу — і по латині, і по українських назвах, від двох символів. У списку видно, на якій схемі є структура; клік відкриває цю схему в режимі «Огляд» з підсвіченою точкою.</p>
     <h2>Керування картинкою</h2>
@@ -504,12 +568,13 @@ const Trainer = {
         <h1>${esc(set.title)}</h1><span class="chip">${esc(set.cat)}</span><span class="muted">${n} структур</span>
         <span class="spacer"></span>
         ${set.deckId ? `<a href="#/edit/${set.deckId}"><button class="small">✎ Редагувати</button></a>` : ''}
-        <div class="modes"><button data-mode="study">Огляд</button><button data-mode="direct">Прямий</button><button data-mode="reverse">Зворотний</button></div>
+        <div class="modes"><button data-mode="study">Огляд</button><button data-mode="direct">Прямий</button><button data-mode="reverse">Зворотний</button><button data-mode="write">Письмо</button></div>
       </div>
       <div class="trainwrap">
         <div class="viewcol">
           <div class="statbar" id="statbar"></div>
           <div id="viewer"></div>
+          <div id="explainBox" hidden></div>
         </div>
         <div class="legendwrap"><div class="legend" id="legend"></div>
           ${set.credit ? `<div class="credit">Схема: ${esc(set.credit.artist || 'Wikimedia Commons')} · ${set.credit.licurl ? `<a href="${esc(set.credit.licurl)}" target="_blank" rel="noopener">${esc(set.credit.license)}</a>` : esc(set.credit.license)} · <a href="${esc(set.credit.source)}" target="_blank" rel="noopener">джерело</a>. Номери замінено інтерактивними точками.</div>` : ''}
@@ -530,7 +595,8 @@ const Trainer = {
     const set = this.set, ids = set.items.map(i => i.n);
     this.hl = null;
     if (this.mode === 'study') { this.T = null; }
-    else this.T = { order: shuffle(ids), bank: shuffle(ids), queue: shuffle(ids), done: new Set(), wrong: new Set(), selPin: null, selName: null, mistakes: 0, finished: false, hint: false };
+    else this.T = { order: shuffle(ids), bank: shuffle(ids), queue: shuffle(ids), done: new Set(), wrong: new Set(), hints: new Set(), selPin: null, selName: null, mistakes: 0, finished: false, hint: false, typed: null };
+    const eb = $('#explainBox'); if (eb) { eb.hidden = true; eb.innerHTML = ''; }
     const want = this.wantHl; this.wantHl = null;
     if (this.mode === 'study' && want && this.item(want)) this.hl = want;
     this.renderAll();
@@ -553,8 +619,9 @@ const Trainer = {
   numOf(n) { return this.T ? this.T.order.indexOf(n) + 1 : n; },
   pinClick(id) {
     const n = +id.split(':')[0];
-    if (this.mode === 'study') { this.hl = this.hl === n ? null : n; this.renderPins(); this.renderLegend(); if (this.hl) { const row = $(`.legend .row[data-n="${n}"]`); row && row.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } return; }
+    if (this.mode === 'study') { this.hl = this.hl === n ? null : n; this.renderPins(); this.renderLegend(); this.showExplain(this.hl ? this.item(this.hl) : null); if (this.hl) { const row = $(`.legend .row[data-n="${n}"]`); row && row.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } return; }
     const T = this.T; if (!T || T.finished || T.done.has(n)) return;
+    if (this.mode === 'write') return;
     if (this.mode === 'direct') { if (T.selName) this.check(n, T.selName); else { T.selPin = T.selPin === n ? null : n; this.renderPins(); } }
     else { if (n === T.queue[0]) this.solve(n); else this.mistake(n, null); }
   },
@@ -563,20 +630,40 @@ const Trainer = {
   solve(n) {
     const T = this.T; T.done.add(n); T.selPin = T.selName = null; T.hint = false;
     T.bank = T.bank.filter(x => x !== n); T.queue = T.queue.filter(x => x !== n);
-    srsReview(this.set.id, structKey(this.item(n)), this.mode, !T.wrong.has(n));   // для інтервального повторення
+    srsReview(this.set.id, structKey(this.item(n)), this.mode === 'write' ? 'reverse' : this.mode, !T.wrong.has(n), T.wrong.has(n) ? 'again' : (T.hints.has(n) ? 'hard' : 'good'));   // підказка = «важко»
+    this.showExplain(this.item(n), 'ok');
     if (T.done.size === this.set.items.length) { T.finished = true; const p = progFor(this.set.id, this.mode); p.streak = T.mistakes === 0 ? p.streak + 1 : 0; p.passes++; p.best = p.best == null ? T.mistakes : Math.min(p.best, T.mistakes); saveProgress(); }
     this.renderAll();
     if (T.finished) setTimeout(() => $('#statbar').scrollIntoView({ block: 'nearest' }), 50);
   },
   mistake(pin, name) {
     const T = this.T; T.mistakes++; T.selName = null; T.selPin = this.mode === 'direct' ? pin : null;
-    T.wrong.add(this.mode === 'reverse' ? T.queue[0] : pin);   // яку структуру питали
+    const tested = this.mode === 'direct' ? pin : T.queue[0]; T.wrong.add(tested);   // яку структуру питали
+    const picked = this.mode === 'direct' ? name : pin; if (picked != null) noteConfusion(this.set.id, structKey(this.item(tested)), structKey(this.item(picked)));
+    this.showExplain(this.item(tested), 'bad');
     this.renderAll();
     Viewer.flash(this.item(pin).pts.map((_, i) => pin + ':' + i), 'bad');
     if (name != null) { const el = $(`#bank .name[data-n="${name}"]`); if (el) { el.classList.add('bad'); setTimeout(() => el.classList.remove('bad'), 600); } }
     if (navigator.vibrate) navigator.vibrate(60);
   },
   renderAll() { this.renderPins(); this.renderBank(); this.renderLegend(); this.renderStat(); },
+  showExplain(it, cls) { const eb = $('#explainBox'); if (!eb) return; if (!it) { eb.hidden = true; eb.innerHTML = ''; return; } eb.hidden = false; eb.innerHTML = explainHtml(this.set, it, { cls: cls || '', mode: this.mode === 'write' ? 'reverse' : this.mode }); },
+  // режим «Письмо»: показуємо точку, просимо надрукувати латинську назву
+  normLa(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\(.*?\)/g, ' ').replace(/[^a-z ]+/g, ' ').replace(/\s+/g, ' ').trim(); },
+  lev(a, b) { const m = a.length, n = b.length, d = Array.from({ length: m + 1 }, (_, i) => [i, ...Array(n).fill(0)]); for (let j = 1; j <= n; j++) d[0][j] = j; for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); return d[m][n]; },
+  checkTyped(typed, it) {
+    const t = this.normLa(typed); if (!t) return false;
+    const variants = [this.normLa(it.la)]; const par = /\((.*?)\)/.exec(it.la); if (par) variants.push(this.normLa(par[1]));
+    return variants.some(v => v && (v === t || this.lev(v, t) <= Math.min(2, Math.floor(v.length / 8))));
+  },
+  submitTyped() {
+    const T = this.T; if (!T || T.finished || T.typed) return; const n = T.queue[0], it = this.item(n); const inp = $('#typedInput'); if (!inp) return;
+    const ok = this.checkTyped(inp.value, it);
+    T.typed = { ok, value: inp.value, exact: this.normLa(inp.value) === this.normLa(it.la), n };
+    if (ok) { this.solve(n); return; }
+    T.mistakes++; T.wrong.add(n); this.renderAll(); this.showExplain(it, 'bad'); if (navigator.vibrate) navigator.vibrate(60);
+  },
+  typedNext() { const T = this.T; if (!T || !T.typed) return; if (!T.typed.ok) T.queue.push(T.queue.shift()); T.typed = null; T.hint = false; this.renderAll(); if (!T.finished) { const i = $('#typedInput'); i && !matchMedia('(max-width:900px)').matches && i.focus(); } },
   teardownPanelHeight() { document.documentElement.style.removeProperty('--panelh'); },
   renderPins() {
     const T = this.T, list = [];
@@ -584,7 +671,9 @@ const Trainer = {
       let cls = '';
       if (T) { if (T.done.has(it.n)) cls = 'ok'; if (T.selPin === it.n) cls += ' sel'; if (this.mode === 'reverse' && !T.finished && T.done.has(it.n)) cls += ' dim'; }
       else if (this.hl != null) cls = this.hl === it.n ? 'hl' : 'dim';
-      list.push({ id: it.n + ':' + i, x: p[0], y: p[1], label: this.numOf(it.n), cls, title: T && !T.done.has(it.n) ? '' : it.la });
+      let label = this.numOf(it.n);
+      if (T && this.mode === 'write' && !T.finished) { const cur = T.typed ? T.typed.n : T.queue[0]; if (it.n === cur) { cls = T.typed ? (T.typed.ok ? 'ok' : 'bad') : 'sel'; label = T.typed ? (T.typed.ok ? '✓' : '✕') : '?'; } else if (!T.done.has(it.n)) cls = 'dim'; }
+      list.push({ id: it.n + ':' + i, x: p[0], y: p[1], label, cls, title: T && !T.done.has(it.n) ? '' : it.la });
     });
     Viewer.renderPins(list);
   },
@@ -592,11 +681,32 @@ const Trainer = {
     const T = this.T, panel = $('#panel'), b = $('#bank'), title = $('#panelTitle');
     if (!T) { panel.hidden = true; return; } panel.hidden = false;
     if (T.finished) {
+      if (T.wrong.size) {
+        title.textContent = 'Прохід завершено';
+        b.innerHTML = `<div class="question" style="flex:1"><div class="q" style="font-style:normal;font-size:18px">${'Помилок: ' + T.mistakes}</div><div class="p">${this.progressText()}</div><div style="margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="primary" id="againWrong">Тільки помилки (${T.wrong.size})</button><button id="againBtn">Усе ще раз</button></div></div>`;
+        $('#againBtn').onclick = () => this.start();
+        $('#againWrong').onclick = () => { const wrong = [...T.wrong]; this.start(); const T2 = this.T; T2.queue = T2.queue.filter(x => wrong.includes(x)); T2.bank = T2.bank.filter(x => wrong.includes(x)); this.set.items.forEach(it => { if (!wrong.includes(it.n)) T2.done.add(it.n); }); this.renderAll(); };
+        this.syncPanelHeight(); return;
+      }
       title.textContent = 'Прохід завершено';
       b.innerHTML = `<div class="question" style="flex:1"><div class="q" style="font-style:normal;font-size:18px">${T.mistakes ? 'Помилок: ' + T.mistakes : 'Без помилок ✔'}</div><div class="p">${this.progressText()}</div><div style="margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="primary" id="againBtn">Ще раз</button>${this.mode === 'direct' ? `<button id="toReverse">Зворотний режим →</button>` : ''}</div></div>`;
       $('#againBtn').onclick = () => this.start();
       const tr = $('#toReverse'); if (tr) tr.onclick = () => $$('.modes button').find(x => x.dataset.mode === 'reverse').click();
       return;
+    }
+    if (this.mode === 'write') {
+      const it = this.item(T.typed ? T.typed.n : T.queue[0]); title.textContent = 'Напишіть латиною';
+      if (T.typed) {
+        b.innerHTML = `<div class="rvbank"><div class="question"><div class="q" style="font-size:19px">${T.typed.ok ? (T.typed.exact ? 'Правильно ✔' : 'Зараховано, правильно: ') : 'Неправильно. Правильно: '}${T.typed.exact ? '' : `<i>${esc(it.la)}</i>`}</div>${T.typed.ok ? '' : `<div class="p">Ви написали: ${esc(T.typed.value || '—')}</div>`}<div style="margin-top:8px"><button class="primary" id="typedNext">Далі →</button></div></div></div>`;
+        $('#typedNext').onclick = () => this.typedNext(); setTimeout(() => { const b = $('#typedNext'); b && b.focus(); }, 30);   // Enter = далі
+      } else {
+        const hint = T.hint ? `<div class="hintText">${esc(it.uk || '')} · ${esc(it.la.split(/\s+/).map(w => w[0] + '…').join(' '))}</div>` : `<button class="small ghost" id="hintBtn">Підказка (зарахується як «важко»)</button>`;
+        b.innerHTML = `<div class="rvbank"><div class="question"><div class="p">${T.done.size + 1} з ${this.set.items.length} · точка зі знаком «?»</div><form id="typedForm" class="typedrow"><input type="text" id="typedInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Латинська назва" enterkeyhint="done"><button class="primary" type="submit">Перевірити</button></form><div class="hint">${hint}</div></div></div>`;
+        $('#typedForm').onsubmit = e => { e.preventDefault(); this.submitTyped(); };
+        const hb = $('#hintBtn'); if (hb) hb.onclick = () => { T.hint = true; T.hints.add(T.queue[0]); this.renderBank(); $('#typedInput').focus(); };
+        if (!matchMedia('(max-width:900px)').matches) setTimeout(() => { const i = $('#typedInput'); i && i.focus(); }, 50);
+      }
+      this.syncPanelHeight(); return;
     }
     if (this.mode === 'direct') {
       title.textContent = `Назви · залишилось ${T.bank.length}`;
@@ -606,8 +716,8 @@ const Trainer = {
       title.textContent = 'Знайдіть на схемі';
       const it = this.item(T.queue[0]);
       b.innerHTML = `<div class="question" style="flex:1"><div class="q">${esc(it.la)}</div><div class="p">${T.done.size + 1} з ${this.set.items.length}</div>
-        <div class="hint">${T.hint ? `<div class="hintText">${esc(it.uk || '—')}</div>` : (it.uk ? `<button class="small ghost" id="hintBtn">Підказка</button>` : '')}</div></div>`;
-      const hb = $('#hintBtn'); if (hb) hb.onclick = () => { T.hint = true; this.renderBank(); };
+        <div class="hint">${T.hint ? `<div class="hintText">${esc(it.uk || '—')}</div>` : (it.uk ? `<button class="small ghost" id="hintBtn">Підказка (зарахується як «важко»)</button>` : '')}</div></div>`;
+      const hb = $('#hintBtn'); if (hb) hb.onclick = () => { T.hint = true; T.hints.add(T.queue[0]); this.renderBank(); };
     }
     this.syncPanelHeight();
   },
@@ -622,7 +732,7 @@ const Trainer = {
     const row = (it, cls) => `<div class="row ${cls}" data-n="${it.n}"><span class="num">${this.numOf(it.n)}</span><span class="txt"><i>${esc(it.la)}</i>${it.uk ? `<span>${esc(it.uk)}</span>` : ''}</span></div>`;
     if (!T) {
       L.innerHTML = `<h4>Легенда · ${set.items.length}</h4><div class="cols" style="--rows:${Math.ceil(set.items.length / 2)}">${set.items.map(it => row(it, this.hl === it.n ? 'hl' : '')).join('')}</div>`;
-      $$('.legend .row').forEach(r => r.onclick = () => { const n = +r.dataset.n; this.hl = this.hl === n ? null : n; this.renderPins(); this.renderLegend(); if (this.hl) { const it = this.item(n); Viewer.centerOn(it.pts[0][0], it.pts[0][1], 1.6); } });
+      $$('.legend .row').forEach(r => r.onclick = () => { const n = +r.dataset.n; this.hl = this.hl === n ? null : n; this.renderPins(); this.renderLegend(); this.showExplain(this.hl ? this.item(n) : null); if (this.hl) { const it = this.item(n); Viewer.centerOn(it.pts[0][0], it.pts[0][1], 1.6); } });
       return;
     }
     const done = set.items.filter(it => T.done.has(it.n)).sort((a, b) => this.numOf(a.n) - this.numOf(b.n));
@@ -642,8 +752,8 @@ const Trainer = {
 };
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && Trainer.active && Trainer.T && !$('dialog[open]')) { Trainer.T.selPin = Trainer.T.selName = null; Trainer.renderPins(); Trainer.renderBank(); } });
 
-function renderSet(set, mode, hl) { Trainer.open(set, ['study', 'direct', 'reverse'].includes(mode) ? mode : 'study', set.file, hl); }
-async function renderCustomSet(d, mode, hl) { const set = deckToSet(d); const src = d.hasImage ? await IMG.get(d.id) : null; Trainer.open(set, ['study', 'direct', 'reverse'].includes(mode) ? mode : 'study', src, hl); }
+function renderSet(set, mode, hl) { Trainer.open(set, ['study', 'direct', 'reverse', 'write'].includes(mode) ? mode : 'study', set.file, hl); }
+async function renderCustomSet(d, mode, hl) { const set = deckToSet(d); const src = d.hasImage ? await IMG.get(d.id) : null; Trainer.open(set, ['study', 'direct', 'reverse', 'write'].includes(mode) ? mode : 'study', src, hl); }
 
 /* ---------- сьогодні: сесія повторення ---------- */
 function focusViewerMobile() {
@@ -659,7 +769,7 @@ function queueBySet(due) {
   return [...m.values()].sort((a, b) => b.n - a.n || a.due - b.due);
 }
 function weakList(list) {
-  return `<div class="legend weak">${list.map(x => `<div class="row"><span class="num bad" title="Разів забували">${x.r.lapses}</span>
+  return `<div class="legend weak">${list.map(x => `<div class="row"><span class="num bad" title="${x.r.leech ? 'П’явка: забували 8+ разів' : 'Разів забували'}">${x.r.leech ? '!' : x.r.lapses}</span>
     <span class="txt"><i>${esc(x.it.la)}</i>${x.it.uk ? `<span>${esc(x.it.uk)}</span>` : ''}<small>${esc(x.set.title)} · ${x.mode === 'direct' ? 'прямий' : 'зворотний'}</small></span>
     <a href="${x.href}/${x.mode}"><button class="small">Тренувати</button></a></div>`).join('')}</div>`;
 }
@@ -688,6 +798,7 @@ const Review = {
   async begin() {
     const due = srsDue().slice(0, 20);
     if (!due.length) { location.hash = '#/today'; return; }
+    this.relearn = [];
     // групуємо за схемою, щоб не перевантажувати картинку на кожне питання; порядок схем випадковий
     const bySet = new Map(); due.forEach(x => { const a = bySet.get(x.set.id) || []; a.push(x); bySet.set(x.set.id, a); });
     this.q = shuffle([...bySet.values()]).flatMap(a => shuffle(a));
@@ -695,7 +806,7 @@ const Review = {
     app.innerHTML = `<div class="wrap">
       <div class="sethead"><a class="back" href="#/today">← Сьогодні</a><h1 id="rvTitle"></h1><span class="chip" id="rvCat"></span><span class="spacer"></span><span class="muted" id="rvCount"></span></div>
       <div class="trainwrap">
-        <div class="viewcol"><div class="statbar" id="statbar"></div><div id="viewer"></div></div>
+        <div class="viewcol"><div class="statbar" id="statbar"></div><div id="viewer"></div><div id="rvExplain" hidden></div></div>
         <div class="legendwrap"><div class="legend" id="legend"></div></div>
         <aside class="panel" id="panel"><h4 id="panelTitle">Питання</h4><div id="bank"></div></aside>
       </div></div>`;
@@ -704,8 +815,9 @@ const Review = {
   },
   async next() {
     if (!this.active) return;
-    if (this.i >= this.q.length) return this.finish();
+    if (this.i >= this.q.length) { if (this.relearn.length) { this.q = this.q.concat(this.relearn); this.relearn = []; } else return this.finish(); }
     const cur = this.cur = this.q[this.i]; this.locked = false; this.picked = null;
+    const eb = $('#rvExplain'); if (eb) { eb.hidden = true; eb.innerHTML = ''; }
     if (this.loadedSet !== cur.set.id) {
       const src = cur.set.deckId ? await IMG.get(cur.set.deckId) : cur.set.file;
       const ok = await Viewer.load(src, cur.set.w, cur.set.h);
@@ -735,6 +847,9 @@ const Review = {
   answer(ok, picked) {
     const cur = this.cur; this.locked = true; this.picked = picked;
     srsReview(cur.set.id, structKey(cur.it), cur.mode, ok);
+    if (!ok && picked != null) { const p = cur.set.items.find(x => x.n === picked); if (p) noteConfusion(cur.set.id, structKey(cur.it), structKey(p)); }
+    if (!ok) this.relearn.push(cur);   // короткий крок: ще раз наприкінці сесії
+    const eb = $('#rvExplain'); if (eb) { eb.hidden = false; eb.innerHTML = explainHtml(cur.set, cur.it, { cls: ok ? 'ok' : 'bad', mode: cur.mode }); }
     this.results.push({ x: cur, ok });
     if (!ok && navigator.vibrate) navigator.vibrate(60);
     this.i++;
@@ -857,6 +972,7 @@ const Editor = {
     this.deck = d; this.sel = null;
     app.innerHTML = `<div class="wrap">
       <div class="sethead"><a class="back" href="#/my">← Мої схеми</a><input type="text" id="deckName" value="${esc(d.name)}" style="font-size:18px;min-width:220px"><span class="spacer"></span>
+        ${(() => { const c = window.Course && Course.course(); if (!c) return ''; return `<select id="deckTopic" title="Тема курсу"><option value="">Без теми курсу</option>${c.modules.map(m => `<optgroup label="${esc(m.short)}">${m.topics.map(t => `<option value="${Course.id}:${m.id}:${t.n}" ${d.topic === `${Course.id}:${m.id}:${t.n}` ? 'selected' : ''}>${t.n}. ${esc(t.title.split('.')[0].slice(0, 60))}</option>`).join('')}</optgroup>`).join('')}</select>`; })()}
         <button id="pickImg">Картинка…</button><button id="exportDeck">Експорт</button><a href="#/my/${d.id}/direct"><button class="primary">Тренувати →</button></a></div>
       <div class="editbar"><span class="hint">Клік по картинці — нова точка. Точку можна тягнути; тап по точці — редагувати назву. Колесо / пінч — зум, перетягування — пан.</span></div>
       <div class="trainwrap" style="grid-template-columns:minmax(0,1fr)">
@@ -864,6 +980,7 @@ const Editor = {
         <div class="legendwrap"><div class="pinlist legend" id="pinlist"></div></div>
       </div></div>`;
     $('#deckName').onchange = e => { d.name = e.target.value.trim() || d.name; e.target.value = d.name; saveDecks(); };
+    const dt = $('#deckTopic'); if (dt) dt.onchange = () => { d.topic = dt.value || null; saveDecks(); };
     $('#pickImg').onclick = () => $('#fileImg').click();
     $('#exportDeck').onclick = async () => download(`anatomia-${d.name.replace(/[^\p{L}\p{N}_-]+/gu, '_')}.json`, { app: 'anatomia', version: 1, decks: [{ id: d.id, name: d.name, pins: d.pins, image: d.hasImage ? await IMG.get(d.id) : null }] });
     const v = $('#viewer');
