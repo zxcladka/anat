@@ -128,7 +128,9 @@ def main():
     pngdir = sys.argv[1]; ids = sys.argv[2:]
     prev = json.load(open(OUT, encoding='utf-8')) if os.path.exists(OUT) else {}
     for st in atlas['sets']:
-        if not st['file'].endswith('.svg') or (ids and st['id'] not in ids): continue
+        if ids: 
+            if st['id'] not in ids: continue
+        elif not st['file'].endswith('.svg'): continue
         png = os.path.join(pngdir, st['id'] + '.png')
         if not os.path.exists(png): print('no png', st['id']); continue
         res, clean = process(st, png, os.path.join(OVER, st['id'] + '.png'))
