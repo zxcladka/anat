@@ -930,7 +930,21 @@ function renderProgress() {
     <h2 class="section-title">Слабкі структури</h2>
     ${weak.length ? `<p class="muted" style="margin:-4px 0 12px;font-size:14px">Топ за кількістю забувань. Кнопка відкриває схему в тому режимі, де були помилки.</p>${weakList(weak)}`
       : `<div class="empty">${inSrs ? 'Поки без помилок після першого знайомства — так тримати.' : 'Пройдіть кілька схем у прямому чи зворотному режимі — тут з’являться структури, які даються найважче.'}</div>`}
+    <h2 class="section-title">Дані та офлайн</h2>
+    <p class="muted" style="margin:-4px 0 12px;font-size:14px">Прогрес зберігається у цьому браузері. Щоб перенести його на інший пристрій або не втратити при чищенні браузера — збережіть резервну копію (JSON) і завантажте її там. Картинки власних схем і колод у копію не входять — їх експортуйте окремо на сторінці схеми чи колоди.</p>
+    <div class="actions"><button id="bkExport">Зберегти резервну копію</button><button id="bkImport">Відновити з копії…</button><button id="bkOffline" ${'serviceWorker' in navigator && navigator.serviceWorker.controller ? '' : 'disabled title="Доступно після встановлення офлайн-режиму (потрібен https або localhost)"'}>Зберегти всі схеми для офлайну</button><span id="bkStatus" class="muted" style="font-size:13px"></span></div>
   </div>`;
+  const bkKeys = () => Object.keys(localStorage).filter(k => k.startsWith('anat.'));
+  $('#bkExport').onclick = () => { const data = {}; for (const k of bkKeys()) data[k] = localStorage.getItem(k); download(`anatomia-backup-${dayKey()}.json`, { app: 'anatomia', kind: 'backup', version: 1, at: new Date().toISOString(), data }); };
+  $('#bkImport').onclick = () => { const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'application/json,.json'; inp.onchange = async () => { const f = inp.files[0]; if (!f) return;
+    let obj; try { obj = JSON.parse(await f.text()); } catch (e) { return alertDlg('Це не файл резервної копії.'); }
+    if (!obj || obj.kind !== 'backup' || !obj.data) return alertDlg('Це не файл резервної копії Anatomia.');
+    const n = Object.keys(obj.data).length; if (!await confirmDlg('Відновити з копії?', `${n} ${plural(n, 'запис', 'записи', 'записів')} від ${obj.at ? new Date(obj.at).toLocaleString('uk-UA') : '—'} замінять поточний прогрес у цьому браузері.`)) return;
+    for (const k of bkKeys()) localStorage.removeItem(k); for (const [k, v] of Object.entries(obj.data)) if (k.startsWith('anat.')) localStorage.setItem(k, v);
+    location.reload(); }; inp.click(); };
+  $('#bkOffline').onclick = () => { const sw = navigator.serviceWorker.controller; if (!sw) return; const urls = [...new Set(ATLAS.sets.map(s => imgUrl(s.file)))]; const ch = new MessageChannel(); const st = $('#bkStatus'); st.textContent = 'Зберігаємо…';
+    ch.port1.onmessage = e => { const d = e.data; st.textContent = d.finished ? `Готово: ${d.done - d.fail} з ${d.total} схем збережено${d.fail ? `, не вдалося ${d.fail}` : ''}.` : `${d.done} / ${d.total}…`; };
+    sw.postMessage({ type: 'precache', urls }, [ch.port2]); };
   window.scrollTo(0, 0);
 }
 

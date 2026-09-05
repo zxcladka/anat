@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Anatomia — тренажер з анатомії</title>
 <meta name="description" content="Інтерактивний тренажер з анатомії: підписуйте структури на схемах з атласу латиною, повторюйте за інтервалами. Працює офлайн.">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Anatomia">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#f6f4ee" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1a1d21" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="css/modules.css?v=6">
@@ -343,12 +348,18 @@ nav.main a .badge[hidden]{display:none}
 <script src="atlas/lexicon.js?v=1"></script>
 <script src="atlas/krok1.js?v=2"></script>
 <script src="atlas/facts.js?v=1"></script>
-<script src="js/app.js?v=5"></script>
+<script src="js/app.js?v=6"></script>
 <script src="js/decks.js?v=4"></script>
 <script src="js/blitz.js?v=5"></script>
 <script src="js/course.js?v=3"></script>
 <script src="js/krok.js?v=1"></script>
 <script src="js/facts.js?v=1"></script>
+<script>
+// PWA: офлайн-кеш і встановлення на телефон (sw.js). На file:// та без HTTPS service worker недоступний — тренажер працює як звичайний сайт.
+if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
 
 </body>
 </html>
