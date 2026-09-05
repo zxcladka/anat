@@ -379,7 +379,7 @@ function route() {
   $$('#nav a').forEach(a => a.classList.toggle('active', a.dataset.r === (parts[0] || 'atlas') || (a.dataset.r === 'my' && parts[0] === 'edit') || (a.dataset.r === 'course' && parts[0] === 'choose')));
   Trainer.teardown(); Review.teardown(); updateBadge(); navFit();
   { const a = $('#nav a.active'); if (a && $('#nav').classList.contains('more')) a.scrollIntoView({ block: 'nearest', inline: 'center' }); }
-  setTitle({ today: 'Сьогодні', progress: 'Мій прогрес', my: 'Мої схеми', edit: 'Редагування', about: 'Про тренажер', decks: 'Колоди', blitz: 'Бліц', course: 'Курс', choose: 'Вибір курсу' }[parts[0]] || '');
+  setTitle({ today: 'Сьогодні', progress: 'Мій прогрес', my: 'Мої схеми', edit: 'Редагування', about: 'Про тренажер', decks: 'Колоди', blitz: 'Бліц', course: 'Курс', choose: 'Вибір курсу', krok: 'Крок 1' }[parts[0]] || '');
   if (!parts.length) { location.replace(EXT.homeHash ? EXT.homeHash() : '#/atlas'); return; }
   if (parts[0] === 'atlas') return renderHome();
   if (parts[0] === 'today') return parts[1] === 'session' ? Review.begin() : Review.renderStart();
