@@ -1,4 +1,6 @@
 'use strict';
+const ATLAS_IMG_V = '12'; // кеш-бастер для atlas/*.png|jpg — підняти після заміни картинок
+function imgUrl(f) { return f && !/[?]/.test(f) && /^atlas\//.test(f) ? f + '?v=' + ATLAS_IMG_V : f; }
 const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => [...r.querySelectorAll(s)];
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
@@ -407,7 +409,7 @@ function cardHtml(s, href, extra) {
   const done = progFor(s.id, 'direct').streak >= GOAL && progFor(s.id, 'reverse').streak >= GOAL;
   return `<a class="card" href="${href}">
     ${done ? '<span class="done">✓ Вивчено</span>' : ''}
-    <div class="thumb"><img src="${esc(s.file)}" alt="" loading="lazy"></div>
+    <div class="thumb"><img src="${esc(imgUrl(s.file))}" alt="" loading="lazy"></div>
     <div class="body"><h3>${esc(s.title)}</h3>
       <div class="meta"><span class="chip">${esc(s.cat)}</span><span>${s.items.length} структур</span>${extra || ''}</div>
       <div class="prog">${progDots(s.id)}</div></div></a>`;
@@ -752,7 +754,7 @@ const Trainer = {
 };
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && Trainer.active && Trainer.T && !$('dialog[open]')) { Trainer.T.selPin = Trainer.T.selName = null; Trainer.renderPins(); Trainer.renderBank(); } });
 
-function renderSet(set, mode, hl) { Trainer.open(set, ['study', 'direct', 'reverse', 'write'].includes(mode) ? mode : 'study', set.file, hl); }
+function renderSet(set, mode, hl) { Trainer.open(set, ['study', 'direct', 'reverse', 'write'].includes(mode) ? mode : 'study', imgUrl(set.file), hl); }
 async function renderCustomSet(d, mode, hl) { const set = deckToSet(d); const src = d.hasImage ? await IMG.get(d.id) : null; Trainer.open(set, ['study', 'direct', 'reverse', 'write'].includes(mode) ? mode : 'study', src, hl); }
 
 /* ---------- сьогодні: сесія повторення ---------- */
@@ -819,7 +821,7 @@ const Review = {
     const cur = this.cur = this.q[this.i]; this.locked = false; this.picked = null;
     const eb = $('#rvExplain'); if (eb) { eb.hidden = true; eb.innerHTML = ''; }
     if (this.loadedSet !== cur.set.id) {
-      const src = cur.set.deckId ? await IMG.get(cur.set.deckId) : cur.set.file;
+      const src = cur.set.deckId ? await IMG.get(cur.set.deckId) : imgUrl(cur.set.file);
       const ok = await Viewer.load(src, cur.set.w, cur.set.h);
       if (!this.active) return;
       if (!ok) { this.i++; return this.next(); }

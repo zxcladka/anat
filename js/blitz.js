@@ -96,7 +96,7 @@ const Blitz = {
     { const eb = $('#bzExplain'); if (eb) { eb.hidden = true; eb.innerHTML = ''; } }
     const needImg = type === 'pick' || type === 'find';
     $('#viewer').hidden = !needImg; $('#bzcard').hidden = needImg;
-    if (needImg && this.loadedSet !== this.curSet.id) { const ok = await Viewer.load(this.curSet.file, this.curSet.w, this.curSet.h); if (!this.active) return; if (!ok) { this.block = 3; return this.next(); } this.loadedSet = this.curSet.id; $('#viewer').classList.toggle('dense', this.curSet.items.length > 20); }
+    if (needImg && this.loadedSet !== this.curSet.id) { const ok = await Viewer.load(imgUrl(this.curSet.file), this.curSet.w, this.curSet.h); if (!this.active) return; if (!ok) { this.block = 3; return this.next(); } this.loadedSet = this.curSet.id; $('#viewer').classList.toggle('dense', this.curSet.items.length > 20); }
     this['ex_' + type]();
     if (this.cur.type === 'pick') Viewer.centerOn(target.it.pts[0][0], target.it.pts[0][1]);
     Trainer.syncPanelHeight();

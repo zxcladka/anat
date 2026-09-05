@@ -1,0 +1,81 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff} img{width:2000px;display:block}</style>
+<div id="host" style="position:absolute;left:-99999px;top:0"></div><img id="out">
+<script>
+async function run(name){
+  const txt = await (await fetch('/svgsrc/'+name+'.svg')).text();
+  const host=document.getElementById('host'); host.innerHTML=txt; const svg=host.querySelector('svg');
+  const vb=(svg.getAttribute('viewBox')||'').split(/[\s,]+/).map(Number); let VW=vb[2]||svg.width.baseVal.value||1000, VH=vb[3]||svg.height.baseVal.value||1000;
+  const sc=Math.min(VW,VH); const removed={};
+  const cs=el=>getComputedStyle(el);
+  const noFill=el=>{const f=cs(el).fill; if(parseFloat(cs(el).fillOpacity)===0) return true; return f==='none'||f==='rgb(255, 255, 255)'||f==='rgba(0, 0, 0, 0)'||f==='transparent';};
+  const protectedEl=el=>!!el.closest('clipPath,mask,defs,pattern,marker,symbol');
+  const kill=(el,why)=>{ if(protectedEl(el)) return; removed[why]=(removed[why]||0)+1; el.remove();};
+  const rootK=(()=>{const m=svg.getCTM(); return m?Math.sqrt(Math.abs(m.a*m.d-m.b*m.c)):1;})();
+  const kOf=el=>{try{const m=el.getCTM(); if(!m) return 1; return Math.sqrt(Math.abs(m.a*m.d-m.b*m.c))/rootK;}catch(e){return 1;}};
+  const bb=el=>{try{const b=el.getBBox(); const k=kOf(el); return {x:b.x*k,y:b.y*k,width:b.width*k,height:b.height*k,k};}catch(e){return null;}};
+  const dark=c=>{const m=c.match(/\d+/g); return m&&m.length>=3&&+m[0]<100&&+m[1]<100&&+m[2]<100;};
+  // 1) явні підписи
+  [...svg.querySelectorAll('text,line,polyline,foreignObject')].forEach(el=>kill(el,el.tagName));
+  // 2) стрілки-маркери
+  [...svg.querySelectorAll('[marker-end],[marker-start],[style*="marker-end"],[style*="marker-start"]')].forEach(el=>{ if(el.tagName!=='g') kill(el,'marker'); });
+  // 3) прямокутники без заливки (рамки легенд)
+  [...svg.querySelectorAll('rect')].forEach(el=>{ if(noFill(el)) kill(el,'rect-frame'); });
+  // 4) bbox рисунка
+  let dx0=1e9,dy0=1e9,dx1=-1e9,dy1=-1e9;
+  [...svg.querySelectorAll('path,ellipse,circle,image')].forEach(el=>{ if(noFill(el)||protectedEl(el)) return; const b=bb(el); if(!b||b.width*b.height<sc*sc*0.0005) return; dx0=Math.min(dx0,b.x);dy0=Math.min(dy0,b.y);dx1=Math.max(dx1,b.x+b.width);dy1=Math.max(dy1,b.y+b.height); });
+  const inside=(b,m=0.03*sc)=> b.x+b.width/2>dx0-m && b.x+b.width/2<dx1+m && b.y+b.height/2>dy0-m && b.y+b.height/2<dy1+m;
+  // 5) кола-номери та точки виносок
+  [...svg.querySelectorAll('circle,ellipse')].forEach(el=>{ const b=bb(el); if(!b) return; const r=Math.max(b.width,b.height)/2;
+    if(noFill(el)&&cs(el).stroke!=='none') kill(el,'circle-frame');
+    else if(r>0.012*sc && !inside(b,-0.01*sc)) kill(el,'circle-outside');
+    else if(r<0.01*sc && dark(cs(el).fill)) kill(el,'dot'); });
+  // 6a) прямі темні відрізки будь-якої заливки (виноски, у т.ч. з fill:#000)
+  const darkish=c=>{const m=c.match(/\d+/g); if(!m||m.length<3) return false; const [r,g,b]=m.map(Number); return (r<110&&g<110&&b<110)||(r===g&&g===b&&r<190);};
+  [...svg.querySelectorAll('path')].forEach(el=>{ if(protectedEl(el)) return; const st=cs(el).stroke; if(st==='none'||!darkish(st)) return; const b=bb(el); if(!b) return; const sw=(parseFloat(cs(el).strokeWidth)||0)*b.k; let L=0; try{L=el.getTotalLength()*b.k;}catch(e){return;}
+    const d=el.getAttribute('d')||''; const cmds=(d.match(/[MLHVCSQTAZmlhvcsqtaz]/g)||[]).length; const diag=Math.hypot(b.width,b.height);
+    if(cmds<=2 && diag>0.02*sc && L<1.35*diag && sw<0.012*sc) kill(el,'path-leader'); });
+  // 6a') специфічні для окремих схем
+  const light=c=>{const m=c.match(/\d+/g); return m&&m.length>=3&&+m[0]>170&&+m[1]>170&&+m[2]>170;};
+  const reddish=c=>{const m=c.match(/\d+/g); return m&&m.length>=3&&+m[0]>150&&+m[1]<90&&+m[2]<90;};
+  if(['abdomen','biliary'].includes(name)) [...svg.querySelectorAll('circle,ellipse,path')].forEach(el=>{ if(protectedEl(el)) return; const b=bb(el); if(!b) return; const mx=Math.max(b.width,b.height), mn=Math.min(b.width,b.height); if(mx<0.12*sc && mx>0.03*sc && mn>0.8*mx && light(cs(el).fill) && cs(el).stroke!=='none' && darkish(cs(el).stroke)) { let L=0; try{L=el.getTotalLength()*b.k;}catch(e){} if(el.tagName!=='path' || Math.abs(L-Math.PI*mx)<0.3*Math.PI*mx) kill(el,'legend-circle'); } });
+  if(['abdomen','biliary'].includes(name)) [...svg.querySelectorAll('path,polygon,rect')].forEach(el=>{ if(protectedEl(el)) return; const b=bb(el); if(!b) return; if(Math.max(b.width,b.height)<0.05*sc && reddish(cs(el).fill)) kill(el,'red-mark'); });
+  if(name==='tooth') [...svg.querySelectorAll('path')].forEach(el=>{ if(protectedEl(el)) return; if(!(cs(el).fill==='none'||parseFloat(cs(el).fillOpacity)===0)) return; if(reddish(cs(el).stroke)) kill(el,'red-leader'); });
+  if(name==='thigh-arteries') [...svg.querySelectorAll('path')].forEach(el=>{ if(protectedEl(el)) return; if(!(cs(el).fill==='none'||parseFloat(cs(el).fillOpacity)===0)) return; if(cs(el).stroke==='rgb(0, 0, 0)') kill(el,'black-stroke'); });
+  // 6) шляхи-виноски та кола-шляхи: без заливки, тонкі; геометрія
+  [...svg.querySelectorAll('path')].forEach(el=>{ if(!noFill(el)||protectedEl(el)) return; if(cs(el).stroke==='none') return; const b=bb(el); if(!b) return; const sw=(parseFloat(cs(el).strokeWidth)||0)*b.k; let L=0; try{L=el.getTotalLength()*b.k;}catch(e){return;}
+    if(sw>=0.006*sc) return; const diag=Math.hypot(b.width,b.height); const mx=Math.max(b.width,b.height), mn=Math.min(b.width,b.height);
+    const d=el.getAttribute('d')||''; const cmds=(d.match(/[MLHVCSQTAZmlhvcsqtaz]/g)||[]).length;
+    const strictNone=(cs(el).fill==='none'||parseFloat(cs(el).fillOpacity)===0);
+    if(strictNone && diag>0.02*sc && L<1.35*diag) { kill(el,'path-leader'); return; }             // майже пряма лінія
+    if(strictNone && cmds<=6 && diag>0.02*sc) { kill(el,'path-leader'); return; }
+    if(name==='thigh-arteries' && strictNone && cs(el).stroke==='rgb(0, 0, 0)') { kill(el,'black-stroke'); return; }
+    if(cmds<=6 && Math.abs(L-2*(b.width+b.height))<0.12*L && mx>0.1*sc) { kill(el,'path-rect'); return; } // прямокутна рамка
+    if(mx<0.08*sc && mn>0.75*mx && Math.abs(L-Math.PI*mx)<0.25*Math.PI*mx && cmds<=8) { kill(el,'path-circle'); return; } // коло-номер
+    const dashed=cs(el).strokeDasharray!=='none'; if(dashed && L<1.6*diag && diag>0.02*sc) kill(el,'path-dashed'); });
+  if(name==='thigh-arteries') [...svg.querySelectorAll('path')].forEach(el=>{ if(cs(el).fill==='rgb(0, 0, 0)' && cs(el).stroke==='none') kill(el,'black-fill'); });
+  if(name==='skeleton') [...svg.querySelectorAll('path,rect')].forEach(el=>{ const b=bb(el); if(b && b.x+b.width<0.2*VW && b.height>0.1*VH) kill(el,'left-bar'); });
+  // 6b) маленькі темні точки-шляхи (не для штрихових рисунків)
+  if(!['peritoneum','colon'].includes(name))
+  [...svg.querySelectorAll('path')].forEach(el=>{ if(noFill(el)||protectedEl(el)) return; const b=bb(el); if(!b) return; const mx=Math.max(b.width,b.height); if(mx<0.014*sc && Math.min(b.width,b.height)>0.6*mx && dark(cs(el).fill)) kill(el,'dot-path'); });
+  if(['labyrinth','digestive'].includes(name)) [...svg.querySelectorAll('rect')].forEach(el=>{ const b=bb(el); if(b && b.width*b.height<0.01*VW*VH) kill(el,'legend-rect'); });
+  if(name==='thigh-arteries') [...svg.querySelectorAll('image')].forEach(el=>kill(el,'image'));
+  // 7) растрові вставки з підписами (малі image) — крім thigh-arteries
+  if(name!=='thigh-arteries') [...svg.querySelectorAll('image')].forEach(el=>{ const b=bb(el); if(!b) return; if(b.width*b.height<0.4*VW*VH) kill(el,'image'); });
+  const ser=new XMLSerializer().serializeToString(svg);
+  const img=document.getElementById('out'); await new Promise(res=>{img.onload=res; img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(ser);});
+  return JSON.stringify({removed, VW, VH});
+}
+</script>
+<script>
+function remaining(){ const svg=document.querySelector('#host svg'); const out=[]; for(const el of svg.querySelectorAll('*')){ const cs=getComputedStyle(el); if(cs.stroke==='rgb(0, 0, 0)'&&(cs.fill==='none')){ let b; try{b=el.getBBox();}catch(e){continue;} out.push([el.tagName,el.id,cs.strokeWidth,b.width|0,b.height|0]); } } return JSON.stringify(out); }
+</script>
+<script>
+function darkfills(){ const svg=document.querySelector('#host svg'); const out=[]; for(const el of svg.querySelectorAll('path,polygon,rect')){ const cs=getComputedStyle(el); const m=cs.fill.match(/\d+/g); if(!m||+m[0]>90||+m[1]>90||+m[2]>90) continue; let b; try{b=el.getBBox();}catch(e){continue;} let L=0; try{L=el.getTotalLength();}catch(e){} const d=el.getAttribute('d')||''; out.push([el.tagName,el.id,cs.fill,cs.stroke,b.width|0,b.height|0,L|0,(d.match(/[MLHVCSQTAZmlhvcsqtaz]/g)||[]).length]); } return JSON.stringify(out); }
+</script>
+<script>
+function cand(){ const svg=document.querySelector('#host svg'); const out=[]; const vb=svg.getAttribute('viewBox').split(/[\s,]+/).map(Number); const sc=Math.min(vb[2],vb[3]);
+ for(const el of svg.querySelectorAll('*')){ if(['g','svg','defs','metadata','title','desc','stop','linearGradient','radialGradient','clipPath','filter','feGaussianBlur','style'].includes(el.tagName)) continue; let b; try{b=el.getBBox();}catch(e){continue;} const cs=getComputedStyle(el); const mx=Math.max(b.width,b.height); if(mx>0.15*sc||mx<0.005*sc) continue;
+   const m=(cs.fill.match(/\d+/g)||[]).map(Number); const isRed=m.length>=3&&m[0]>150&&m[1]<90&&m[2]<90; const isLight=m.length>=3&&m[0]>170&&m[1]>170&&m[2]>170; const sq=Math.min(b.width,b.height)>0.8*mx;
+   if(isRed||(isLight&&sq&&cs.stroke!=='none')) out.push([el.tagName,el.id,cs.fill,cs.stroke,cs.strokeWidth,[b.x|0,b.y|0,b.width|0,b.height|0],el.parentElement.tagName+'#'+el.parentElement.id,!!el.closest('clipPath,mask,defs,pattern,marker,symbol')]); }
+ return JSON.stringify(out); }
+</script>
