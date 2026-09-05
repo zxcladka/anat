@@ -36,7 +36,7 @@ function itemHtml(it, open, hl) {
 /* ---- огляд ---- */
 function renderHub() {
   const s = stat(F.items); const c = (window.Course && Course.course()) || (window.CURRICULUM && CURRICULUM.courses[0]);
-  const groups = {}; for (const tk of topics()) { const info = topicInfo(tk); const mid = info.m ? info.m.id : tk.split(':')[0]; (groups[mid] = groups[mid] || []).push(tk); }
+  const groups = {}; for (const tk of topics().sort((a, b) => { const [ma, na] = a.split(':'), [mb, nb] = b.split(':'); return ma.localeCompare(mb) || (+na - +nb); })) { const info = topicInfo(tk); const mid = info.m ? info.m.id : tk.split(':')[0]; (groups[mid] = groups[mid] || []).push(tk); }
   app.innerHTML = `<div class="wrap">
     <section class="page-hero"><h1>Теорія</h1><p>Картки для тем без схем: м’язи — початок, прикріплення, функція та іннервація; суглоби — форма, поверхні, зв’язки, рухи; черепні нерви — ядра, вихід, гілки, ділянка іннервації. Повторення за тим самим алгоритмом, що й схеми.</p></section>
     <div class="tiles"><div class="tile"><b>${s.total}</b><span>структур</span></div><div class="tile"><b>${s.seen}</b><span>у повторенні</span></div><div class="tile"><b>${s.mastered}</b><span>засвоєно</span></div><div class="tile"><b>${s.due}</b><span>карток до повторення</span></div></div>
