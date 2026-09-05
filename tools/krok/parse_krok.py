@@ -106,9 +106,10 @@ def main():
     allq = []; per = {}
     for f in files:
         b = os.path.basename(f); m = re.search(r'(20\d\d)', b); year = int(m.group(1)) if m else 0
+        prof = 'stom' if b.startswith('E08') else 'med'
         qs = parse(open(f, encoding='utf-8', errors='ignore').read())
         per[b] = len(qs)
-        for q in qs: q['year'] = year; q['src'] = b; allq.append(q)
+        for q in qs: q['year'] = year; q['src'] = b; q['prof'] = prof; allq.append(q)
     anat = []; seen = {}
     for q in allq:
         sc, pos, neg, lat = score(q)
@@ -117,14 +118,14 @@ def main():
         if cyr < 2 * lat_ch: continue
         key = re.sub(r'[^а-яіїєґa-z0-9]+', '', q['q'].lower())[:120]
         if key in seen: seen[key]['years'].add(q['year']); continue
-        qq = {'id': hashlib.md5(key.encode()).hexdigest()[:10], 'year': q['year'], 'years': {q['year']}, 'n': q['n'], 'q': q['q'], 'options': q['options'], 'answer': 'A', 'score': round(sc, 1)}
+        qq = {'id': hashlib.md5(key.encode()).hexdigest()[:10], 'year': q['year'], 'years': {q['year']}, 'n': q['n'], 'q': q['q'], 'options': q['options'], 'answer': 'A', 'score': round(sc, 1), 'prof': q['prof']}
         tg = tag_of(q); t = topic_of(q)
         if tg == 'angio' and not (t and t.startswith('c1:m2')): qq['tag'] = 'angio'; t = None
         if t: qq['topic'] = t
         seen[key] = qq; anat.append(qq)
     for qq in anat: qq['years'] = sorted(y for y in qq['years'] if y)
     anat.sort(key=lambda x: (-max(x['years'] or [0]), x['n']))
-    out = {'source': 'Центр тестування МОЗ України, офіційні буклети Крок 1 «Медицина» 2007–2024 (укр.); правильна відповідь у буклетах — A', 'updated': '2026-09-05', 'questions': anat}
+    out = {'source': 'Центр тестування МОЗ України, офіційні збірники Крок 1 «Медицина» 2007–2024 і «Стоматологія» 2015–2017 (укр.); правильна відповідь у збірниках — A', 'updated': '2026-09-05', 'questions': anat}
     open(os.path.join(ROOT, 'atlas', 'krok1.js'), 'w', encoding='utf-8').write('// Питання Крок 1 з анатомії, відібрані з офіційних буклетів. Генерується tools/krok/parse_krok.py\nwindow.KROK1=' + json.dumps(out, ensure_ascii=False) + ';\n')
     json.dump(per, open(os.path.join(HERE, 'parsed_counts.json'), 'w'), indent=1)
     print('booklets', len(files), 'questions total', len(allq), 'anatomy unique', len(anat), 'with topic', sum(1 for q in anat if q.get('topic')))
