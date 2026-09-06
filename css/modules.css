@@ -196,3 +196,7 @@ details[open]>.modhead .section-title::before{transform:rotate(90deg)}
 .okc{color:var(--ok)}.badc{color:var(--bad)}
 .factsum{max-width:820px}
 .queue .tnum{flex:0 0 auto}
+
+/* Telegram Mini App: верхня панель Telegram уже є, ховаємо зайве */
+html.tg .logo small{display:none}
+html.tg footer{padding-bottom:24px}

@@ -343,6 +343,7 @@ nav.main a .badge[hidden]{display:none}
   </form>
 </dialog>
 
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="atlas/data.js?v=18"></script>
 <script src="atlas/curriculum.js?v=4"></script>
 <script src="atlas/lexicon.js?v=2"></script>
@@ -355,6 +356,19 @@ nav.main a .badge[hidden]{display:none}
 <script src="js/krok.js?v=1"></script>
 <script src="js/facts.js?v=3"></script>
 <script>
+// Telegram Mini App: якщо відкрито всередині Telegram — розгорнути на весь екран, підхопити тему, кнопка «Назад», запам'ятати користувача.
+(function () {
+  const tg = window.Telegram && window.Telegram.WebApp; if (!tg || !tg.initData) return;
+  document.documentElement.classList.add('tg');
+  try { tg.ready(); tg.expand(); if (tg.disableVerticalSwipes) tg.disableVerticalSwipes(); } catch (e) {}
+  const applyTheme = () => { try { document.documentElement.dataset.theme = tg.colorScheme === 'dark' ? 'dark' : 'light'; } catch (e) {} };
+  applyTheme(); tg.onEvent && tg.onEvent('themeChanged', applyTheme);
+  const u = tg.initDataUnsafe && tg.initDataUnsafe.user; if (u) { try { localStorage.setItem('anat.tgUser', JSON.stringify({ id: u.id, name: [u.first_name, u.last_name].filter(Boolean).join(' '), username: u.username || '' })); } catch (e) {} }
+  const back = () => { const home = !location.hash || location.hash === '#/' || location.hash === '#/today' || location.hash === '#/course'; try { home ? tg.BackButton.hide() : tg.BackButton.show(); } catch (e) {} };
+  try { tg.BackButton.onClick(() => history.back()); } catch (e) {}
+  window.addEventListener('hashchange', back); back();
+  const sp = (tg.initDataUnsafe && tg.initDataUnsafe.start_param) || ''; if (sp && !location.hash.slice(2)) location.hash = '#/' + sp.replace(/__/g, '/').replace(/_/g, ':');
+})();
 // PWA: офлайн-кеш і встановлення на телефон (sw.js). На file:// та без HTTPS service worker недоступний — тренажер працює як звичайний сайт.
 if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));

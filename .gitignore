@@ -4,3 +4,6 @@ __pycache__/
 tools/overlay/
 tools/krok/src/
 tools/krok/tessdata/
+bot/bot_token.txt
+bot/*.log
+bot/users.json
