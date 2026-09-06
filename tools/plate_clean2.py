@@ -13,7 +13,7 @@ def clean(src,dst,W=2000,inpaint_leaders=True,use_mask=True):
     n,lab,st,_=cv2.connectedComponentsWithStats(core,8)
     keep=np.zeros_like(core)
     for i in range(1,n):
-        if st[i][4]>0.003*h*w: keep[lab==i]=1
+        if st[i][4]>0.01*h*w: keep[lab==i]=1
     filled=fillholes(keep); r=2
     mask=cv2.dilate(filled,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(2*r+1,2*r+1)))
     out=im.copy()

@@ -196,7 +196,8 @@ window.CURRICULUM={
        "n": 19,
        "title": "Міологія. Анатомічна будова м’язів. М’язи та фасції спини.",
        "sets": [
-        "musc-back-sup"
+        "musc-back-sup",
+        "musc-back-deep"
        ],
        "control": false
       },
@@ -205,7 +206,8 @@ window.CURRICULUM={
        "title": "М’язи та фасції грудної клітки. Діафрагма. Жувальні та мімічні м’язи.",
        "sets": [
         "musc-thorax-abd",
-        "musc-face"
+        "musc-face",
+        "musc-abd-deep"
        ],
        "control": false
       },
@@ -213,7 +215,8 @@ window.CURRICULUM={
        "n": 21,
        "title": "М’язи та фасції живота. Піхва прямого м’яза живота. Пахвинний канал.",
        "sets": [
-        "musc-thorax-abd"
+        "musc-thorax-abd",
+        "musc-abd-deep"
        ],
        "control": false
       },
