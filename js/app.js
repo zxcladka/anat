@@ -1,5 +1,5 @@
 'use strict';
-const ATLAS_IMG_V = '13'; // кеш-бастер для atlas/*.png|jpg — підняти після заміни картинок
+const ATLAS_IMG_V = '14'; // кеш-бастер для atlas/*.png|jpg — підняти після заміни картинок
 function imgUrl(f) { return f && !/[?]/.test(f) && /^atlas\//.test(f) ? f + '?v=' + ATLAS_IMG_V : f; }
 const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => [...r.querySelectorAll(s)];
@@ -439,6 +439,7 @@ function searchIndex() {
   }));
   ATLAS.sets.forEach(x => add(x, '#/set/' + x.id));
   decks.filter(d => d.pins.length && d.hasImage).forEach(d => add(deckToSet(d), '#/my/' + d.id));
+  if (window.FACTS) for (const it of FACTS.items) searchIdx.push({ la: it.la, uk: it.uk, n: '', title: 'Теорія · ' + it.group, cat: (FACTS.types[it.type] || {}).name || 'Теорія', href: '#/facts/' + it.topic, url: '#/facts/' + it.topic, k: norm(it.la + '|' + it.uk) });
   return searchIdx;
 }
 
@@ -475,7 +476,7 @@ function renderResults() {
   box.hidden = false;
   if (!rows.length) { box.innerHTML = `<div class="empty">За запитом «${esc(q)}» нічого не знайдено.</div>`; return; }
   box.innerHTML = `<p class="qhead">Знайдено ${total}${total > rows.length ? `, показано перші ${rows.length}` : ''}</p>
-    <div class="qlist">${rows.map(r => `<a class="qrow" href="${r.href}/study/${r.n}">
+    <div class="qlist">${rows.map(r => `<a class="qrow" href="${r.url || (r.href + '/study/' + r.n)}">
       <span class="la">${markHit(r.la, q)}</span>${r.uk ? `<span class="uk">${markHit(r.uk, q)}</span>` : ''}
       <span class="spacer"></span><span class="arw">→</span>
       <span class="set">${esc(r.title)}</span><span class="cat">${esc(r.cat)}</span></a>`).join('')}</div>`;
@@ -549,6 +550,10 @@ function renderAbout() {
     <ul><li>Колесо миші або пінч — масштаб; перетягування — прокрутка.</li><li>Якщо точки на щільній схемі злипаються, вони автоматично розходяться по колу, а тонка пунктирна виноска показує справжнє місце. Наблизьте — і вони повернуться на свої місця.</li><li><kbd>Esc</kbd> знімає виділення.</li></ul>
     <h2>Свої схеми</h2>
     <p>У розділі «Мої схеми» можна завантажити власний скан або фото, розставити точки й підписати їх. Набори експортуються в JSON, щоб перенести їх на інший пристрій.</p>
+    <h2>Теорія</h2>
+    <p>Для тем без схем — картки фактів: м’язи (початок, прикріплення, функція, іннервація), суглоби (форма, поверхні, зв’язки, рухи), черепні нерви, кістки черепа, органи, провідні шляхи. Кожне поле повторюється окремо за FSRS; є тест із чотирма варіантами. Блок «Теорія» видно на сторінці теми курсу, черга — на «Сьогодні». Пошук на головній знаходить і ці картки.</p>
+    <h2>Офлайн і резервна копія</h2>
+    <p>Тренажер можна встановити на телефон як застосунок (меню браузера → «Додати на головний екран»). Відкриті схеми зберігаються для роботи без мережі; кнопка «Зберегти всі схеми для офлайну» на «Прогрес» завантажує весь атлас. Там само — резервна копія прогресу (JSON), щоб перенести його на інший пристрій.</p>
     <h2>Джерела</h2>
     <p>Схеми взято з Wikimedia Commons; переважно це роботи LadyofHats (Mariana Ruiz Villarreal), Jmarchn (Jordi March i Nogué) та інших авторів під ліцензіями Public domain, CC BY та CC BY‑SA. Посилання на джерело й автора наведено під кожною схемою. Друковані номери на схемах замінено інтерактивними точками.</p>
   </div></div>`;

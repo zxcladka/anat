@@ -19,11 +19,12 @@ def erase_boxes(im,boxes):
         opened=cv2.morphologyEx((reg<200).astype(np.uint8),cv2.MORPH_OPEN,np.ones((9,9),np.uint8)) if reg.size else np.zeros((1,1),np.uint8)
         if reg.size and opened.mean()<0.02:      # підпис на білому полі (після відкриття штрихи зникають): прибрати все не-біле
             sub=(reg<246).astype(np.uint8)*255
-        else:                                        # підпис поверх рисунка: лише тонкі темні штрихи
-            sub=((bh[Y0:Y1,X0:X1]>10)&(reg<215)).astype(np.uint8)*255
+        else:                                        # підпис поверх рисунка: чорні/сірі штрихи (низька насиченість і яскравість)
+            c=im[Y0:Y1,X0:X1].astype(int)
+            sub=((c[:,:,2]<125)&(np.maximum(c[:,:,0],c[:,:,1])<125)).astype(np.uint8)*255   # чорнило: темне в усіх каналах, м'яз має високий R
         m[Y0:Y1,X0:X1]=sub
-    m=cv2.dilate(m,np.ones((7,7),np.uint8))
-    return cv2.inpaint(im,m,5,cv2.INPAINT_TELEA)
+    m=cv2.dilate(m,np.ones((5,5),np.uint8))
+    return cv2.inpaint(im,m,4,cv2.INPAINT_TELEA)
 SETS={
  'Sobo_1906_528':('heart','Серце: фронтальний розріз (камери, клапани, судини)','Серце і судини',[
   ('Aorta','Аорта',45,12),('Valva aortae','Аортальний клапан (півмісяцеві заслінки)',47,26),('Atrium sinistrum','Ліве передсердя',67,22),('Ostium venae pulmonalis','Отвір легеневої вени',77,22),
@@ -51,11 +52,12 @@ def erase_boxes(im,boxes):
         opened=cv2.morphologyEx((reg<200).astype(np.uint8),cv2.MORPH_OPEN,np.ones((9,9),np.uint8)) if reg.size else np.zeros((1,1),np.uint8)
         if reg.size and opened.mean()<0.02:      # підпис на білому полі (після відкриття штрихи зникають): прибрати все не-біле
             sub=(reg<246).astype(np.uint8)*255
-        else:                                        # підпис поверх рисунка: лише тонкі темні штрихи
-            sub=((bh[Y0:Y1,X0:X1]>10)&(reg<215)).astype(np.uint8)*255
+        else:                                        # підпис поверх рисунка: чорні/сірі штрихи (низька насиченість і яскравість)
+            c=im[Y0:Y1,X0:X1].astype(int)
+            sub=((c[:,:,2]<125)&(np.maximum(c[:,:,0],c[:,:,1])<125)).astype(np.uint8)*255   # чорнило: темне в усіх каналах, м'яз має високий R
         m[Y0:Y1,X0:X1]=sub
-    m=cv2.dilate(m,np.ones((7,7),np.uint8))
-    return cv2.inpaint(im,m,5,cv2.INPAINT_TELEA)
+    m=cv2.dilate(m,np.ones((5,5),np.uint8))
+    return cv2.inpaint(im,m,4,cv2.INPAINT_TELEA)
 SETS={
  'Sobo_1906_528':('heart','Серце: фронтальний розріз (камери, клапани, судини)','Серце і судини',[
   ('Aorta','Аорта',45,12),('Valva aortae','Аортальний клапан (півмісяцеві заслінки)',47,26),('Atrium sinistrum','Ліве передсердя',67,22),('Ostium venae pulmonalis','Отвір легеневої вени',77,22),
