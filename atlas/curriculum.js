@@ -267,7 +267,8 @@ window.CURRICULUM={
        "title": "М’язи гомілки. Підколінна ямка. Гомілково-підколінний канал. М’язи стопи. Фасції та синовіальні піхви сухожилків м’язів нижньої кінцівки.",
        "sets": [
         "musc-leg-ant",
-        "musc-leg-lat"
+        "musc-leg-lat",
+        "musc-planta"
        ],
        "control": false
       },
