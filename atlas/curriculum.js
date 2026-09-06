@@ -31,7 +31,9 @@ window.CURRICULUM={
         "vert-thoracic-sup",
         "vert-thoracic-lat",
         "vert-lumbar",
-        "vert-t10-l2"
+        "vert-t10-l2",
+        "vert-c7",
+        "vert-cervical-ant"
        ],
        "control": false
       },
