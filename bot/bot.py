@@ -100,14 +100,11 @@ def handle(msg, users):
     chat = msg["chat"]["id"]
     uid = str(msg["from"]["id"])
     text = (msg.get("text") or "").strip()
-    u = users.setdefault(uid, {"chat": chat, "name": msg["from"].get("first_name", ""), "remind": "20:00", "since": datetime.now(KYIV).isoformat()})
+    u = users.setdefault(uid, {"chat": chat, "name": msg["from"].get("first_name", ""), "remind": "", "since": datetime.now(KYIV).isoformat()})
     u["chat"] = chat
     cmd = text.split()[0].lower().split("@")[0] if text.startswith("/") else ""
     if cmd == "/start":
-        send(chat, f"Привіт, {u['name'] or 'колего'}! Це тренажер анатомії Anatomia.\n\n"
-                   "Натисни кнопку нижче — відкриється атлас зі схемами, картками теорії та повторенням. "
-                   "Щоденне нагадування о 20:00 уже ввімкнене, змінити: /remind 21:30, вимкнути: /remind off.",
-             app_button("Відкрити тренажер"))
+        send(chat, "Тренажер анатомії:", app_button("Відкрити тренажер"))
     elif cmd in ("/app", "/atlas"):
         send(chat, "Тренажер:", app_button("Відкрити тренажер"))
     elif cmd == "/today":
