@@ -34,14 +34,14 @@ const V3 = {
     if (this.controls) this.controls.dispose();
     this.controls = new OrbitControls(this.camera, this.canvas);
     this.controls.enableDamping = true; this.controls.dampingFactor = 0.12; this.controls.enablePan = false;
-    this.controls.minDistance = 0.9; this.controls.maxDistance = 6; this.controls.rotateSpeed = 0.8;
+    this.controls.minDistance = 0.5; this.controls.maxDistance = 6; this.controls.rotateSpeed = 0.8;
     this.controls.addEventListener('change', () => { this.dirty = true; });
-    this.canvas.addEventListener('pointerdown', e => e.stopPropagation(), true);   // не віддавати жест 2D-в’юверу
-    this.canvas.addEventListener('wheel', e => { e.preventDefault(); e.stopPropagation(); }, { passive: false, capture: true });
+    // 2D-в’ювер ігнорує жести, поки V.ready=false, тож перехоплювати події не потрібно (capture+stopPropagation блокував OrbitControls)
     if (this.ro) this.ro.disconnect(); this.ro = new ResizeObserver(() => this.resize()); this.ro.observe(container);
     this.resize();
     const zc = container.querySelector('.zoomctl');
-    if (zc) { zc.querySelector('#zin').onclick = () => this.zoom(0.75); zc.querySelector('#zout').onclick = () => this.zoom(1.33); zc.querySelector('#zfit').onclick = () => this.fit(); }
+    if (zc) { zc.querySelector('#zin').onclick = () => this.zoom(0.75); zc.querySelector('#zout').onclick = () => this.zoom(1.33); zc.querySelector('#zfit').onclick = () => this.fit();
+      if (!zc.querySelector('#zxray')) { const b = document.createElement('button'); b.id = 'zxray'; b.title = 'Прозорість: побачити приховані точки'; b.textContent = '◐'; b.onclick = () => this.xray(!this.xrayOn); zc.appendChild(b); } }
     const hb = container.querySelector('.hintbar'); if (hb) hb.style.display = 'none';
   },
   resize() {
@@ -50,7 +50,15 @@ const V3 = {
     this.renderer.setSize(w, h, false); this.camera.aspect = w / h; this.camera.updateProjectionMatrix(); this.dirty = true;
   },
   zoom(f) { const c = this.controls; const d = Math.min(c.maxDistance, Math.max(c.minDistance, this.camera.position.length() * f)); this.camera.position.setLength(d); this.dirty = true; },
-  fit() { this.camera.position.set(0.55, 0.9, 1.0).normalize().multiplyScalar(this.dist); this.controls.target.set(0, 0, 0); this.controls.update(); this.dirty = true; },   // косий вид зверху-спереду
+  fit() {   // косий вид зверху-спереду; відстань — щоб описана сфера моделі вписалась у вужчий кут огляду
+    const r = this.radius || 0.6, fovV = this.camera.fov * Math.PI / 180, fovH = 2 * Math.atan(Math.tan(fovV / 2) * this.camera.aspect);
+    const d = Math.max(this.controls.minDistance, r / Math.sin(Math.min(fovV, fovH) / 2) * 1.04);
+    this.camera.position.set(0.55, 0.9, 1.0).normalize().multiplyScalar(d); this.controls.target.set(0, 0, 0); this.controls.update(); this.dirty = true; },
+  xray(on) {
+    this.xrayOn = on; const zc = this.container && this.container.querySelector('#zxray'); if (zc) zc.classList.toggle('active', on);
+    for (const m of this.meshes) { m.material = on ? (m.userData.xm || (m.userData.xm = m.material.clone())) : (m.userData.om || m.material); if (!m.userData.om) m.userData.om = on ? (m.userData.om || m.material) : m.material; if (on) { m.material.transparent = true; m.material.opacity = 0.28; m.material.depthWrite = false; } }
+    this.dirty = true;
+  },
   bg() { const c = this.css.getPropertyValue('--canvas').trim() || '#f6f4ee'; try { this.scene.background = new THREE.Color(c); } catch (e) { this.scene.background = null; } },
 
   async load(src, container) {
@@ -62,11 +70,12 @@ const V3 = {
     let gltf; try { gltf = await this.loader.loadAsync(src); } catch (e) { console.error('glb', e); this.active = false; return false; }
     const root = gltf.scene; const bone = new THREE.MeshStandardMaterial({ color: 0xe9e2d1, roughness: 0.78, metalness: 0.0 });
     const colored = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.72, metalness: 0.0 });
-    root.traverse(o => { if (o.isMesh) { o.material = o.geometry.getAttribute('color') ? colored : bone; o.geometry.computeVertexNormals(); this.meshes.push(o); } });   // колір із GLB: кістка / м'яз / сухожилок
+    root.traverse(o => { if (o.isMesh) { o.material = o.geometry.getAttribute('color') ? colored : bone; o.userData.om = o.material; o.geometry.computeVertexNormals(); this.meshes.push(o); } });   // колір із GLB: кістка / м'яз / сухожилок
+    this.xrayOn = false; const zx = container.querySelector('#zxray'); if (zx) zx.classList.remove('active');
     // центр і масштаб уже нормалізовані при експорті (найбільший розмір = 1), але про всяк випадок
     const box = new THREE.Box3().setFromObject(root); const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
     root.position.sub(c); const k = 1 / Math.max(size.x, size.y, size.z); root.scale.setScalar(k); root.position.multiplyScalar(k);
-    this.scene.add(root); this.root = root; this.box = box;
+    this.scene.add(root); this.root = root; this.box = box; this.radius = new THREE.Box3().setFromObject(root).getBoundingSphere(new THREE.Sphere()).radius;
     this.active = true; this.bg(); this.fit();
     if (!this.raf) this.loop();
     return true;
@@ -117,7 +126,7 @@ const V3 = {
       const dir = p.clone().sub(camPos); const dist = dir.length(); dir.normalize();
       this.ray.set(camPos, dir); this.ray.far = dist - 0.004;
       const hit = this.ray.intersectObjects(this.meshes, false);
-      el.classList.toggle('occ', hit.length > 0);
+      el.classList.toggle('occ', hit.length > 0 && !this.xrayOn);
     }
   }
 };
