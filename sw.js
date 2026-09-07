@@ -2,9 +2,10 @@
    Оболонка (index.html, js, css, vendor, дані атласу) — network-first із запасом у кеші, тож оновлення доходять одразу;
    картинки схем — cache-first із фоновим оновленням: раз відкрита схема лишається доступною без мережі.
    Версію CACHE піднімати разом із ?v= в index.html, щоб старий кеш прибрався. */
-const CACHE = 'anat-v22';
+const CACHE = 'anat-v23';
 const SHELL = ['./', './index.html', './manifest.json', './css/modules.css', './js/app.js', './js/decks.js', './js/blitz.js', './js/course.js', './js/krok.js', './js/facts.js',
-  './atlas/data.js', './atlas/curriculum.js', './atlas/lexicon.js', './atlas/krok1.js', './atlas/facts.js', './icons/icon-192.png', './icons/icon-512.png'];
+  './atlas/data.js', './atlas/curriculum.js', './atlas/lexicon.js', './atlas/krok1.js', './atlas/facts.js', './icons/icon-192.png', './icons/icon-512.png',
+  './js/model3d.js', './vendor/three/three.module.min.js', './vendor/three/addons/loaders/GLTFLoader.js', './vendor/three/addons/controls/OrbitControls.js', './vendor/three/addons/utils/BufferGeometryUtils.js'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.allSettled(SHELL.map(u => c.add(u)))).then(() => self.skipWaiting()));

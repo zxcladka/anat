@@ -200,3 +200,13 @@ details[open]>.modhead .section-title::before{transform:rotate(90deg)}
 /* Telegram Mini App: верхня панель Telegram уже є, ховаємо зайве */
 html.tg .logo small{display:none}
 html.tg footer{padding-bottom:24px}
+
+/* ---- 3D-схеми (js/model3d.js) ---- */
+#stage3d{position:absolute;inset:0;overflow:hidden}
+#stage3d canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#stage3d canvas:active{cursor:grabbing}
+#pins3d{position:absolute;inset:0;pointer-events:none}
+#pins3d .pin{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;transition:opacity .15s}
+#pins3d .pin.occ{opacity:.18;pointer-events:none}
+.hint3d{position:absolute;left:10px;bottom:8px;font-size:11px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 9px;pointer-events:none;opacity:.85}
+.card .thumb .badge3d{position:absolute;right:8px;top:8px;font-size:11px;font-weight:700;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:2px 8px}

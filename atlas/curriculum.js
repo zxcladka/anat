@@ -33,7 +33,13 @@ window.CURRICULUM={
         "vert-lumbar",
         "vert-t10-l2",
         "vert-c7",
-        "vert-cervical-ant"
+        "vert-cervical-ant",
+        "v3-atlas",
+        "v3-axis",
+        "v3-c4",
+        "v3-c7",
+        "v3-t8",
+        "v3-l3"
        ],
        "control": false
       },
@@ -56,7 +62,9 @@ window.CURRICULUM={
         "th-33",
         "th-34",
         "th-35",
-        "th-36"
+        "th-36",
+        "v3-sacrum",
+        "v3-coccyx"
        ],
        "control": false
       },

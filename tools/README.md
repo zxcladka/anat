@@ -68,3 +68,7 @@
 ## Telegram і хостинг
 
 Сайт: https://zxcladka.github.io/anat/ (GitHub Pages, гілка main репозиторію github.com/zxcladka/anat; оновлення — `git push`). Бот @sllonikkbot — `bot/bot.py` (стандартна бібліотека, long polling): кнопка меню відкриває тренажер як Mini App, команди /app /today /blitz /theory /krok /remind; щоденні нагадування (users.json). Токен — `bot/bot_token.txt` (не в git). Запуск на Mac — launchd `com.anatomia.tgbot` (`bot/com.anatomia.tgbot.plist`); після зміни адресу — `python3 bot.py --setup`. У застосунку Telegram-режим вмикається скриптом у index.html (тема, кнопка «Назад», `anat.tgUser` у localStorage, start_param → маршрут).
+
+## 3D-схеми (Z-Anatomy)
+
+Джерело — FBX з github.com/LluisV/Z-Anatomy (гілка PC-Version, Resources/Models/FBX; CC BY-SA 4.0, за BodyParts3D). Конвертація `assimp export X.fbx X.glb -f glb2` (brew install assimp). `tools/z3d_export.py <glb> "<група>"…` — вирізає групу (наприклад `Atlas (C1)`, `Vertebra L3`, `Sacrum`), нормалізує (центр 0, найбільший розмір 1) і пише `glb/<id>.glb` + `.json` з пінами: у Z-Anatomy кожна підписана структура має маркер-вузол `*.j` (24 вершини), його центр — готова точка. `tools/z3d_build.py` — словник англ. → латина/українська, шаблонні точки загальних частин хребця (з L3, з прив’язкою до поверхні), збирає набори (`model: true`, `items[].p3`) у data.js і копіює GLB у `models/`. Мініатюри — скриншот канвасу через shots (крок `save`). У застосунку `js/model3d.js` підміняє Viewer.load/renderPins/centerOn для `.glb`; потрібен WebGL.

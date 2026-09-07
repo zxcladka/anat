@@ -1,6 +1,6 @@
 'use strict';
-const ATLAS_IMG_V = '18'; // кеш-бастер для atlas/*.png|jpg — підняти після заміни картинок
-function imgUrl(f) { return f && !/[?]/.test(f) && /^atlas\//.test(f) ? f + '?v=' + ATLAS_IMG_V : f; }
+const ATLAS_IMG_V = '19'; // кеш-бастер для atlas/*.png|jpg — підняти після заміни картинок
+function imgUrl(f) { return f && !/[?]/.test(f) && /^(atlas|models)\//.test(f) ? f + '?v=' + ATLAS_IMG_V : f; }
 const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => [...r.querySelectorAll(s)];
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
@@ -409,7 +409,7 @@ function cardHtml(s, href, extra) {
   const done = progFor(s.id, 'direct').streak >= GOAL && progFor(s.id, 'reverse').streak >= GOAL;
   return `<a class="card" href="${href}">
     ${done ? '<span class="done">✓ Вивчено</span>' : ''}
-    <div class="thumb"><img src="${esc(imgUrl(s.file))}" alt="" loading="lazy"></div>
+    <div class="thumb" style="position:relative"><img src="${esc(imgUrl(s.thumb || s.file))}" alt="" loading="lazy">${s.model ? '<span class="badge3d">3D</span>' : ''}</div>
     <div class="body"><h3>${esc(s.title)}</h3>
       <div class="meta"><span class="chip">${esc(s.cat)}</span><span>${s.items.length} структур</span>${extra || ''}</div>
       <div class="prog">${progDots(s.id)}</div></div></a>`;
