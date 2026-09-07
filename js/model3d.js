@@ -60,8 +60,9 @@ const V3 = {
     if (this.root) { this.scene.remove(this.root); this.root.traverse(o => { if (o.geometry) o.geometry.dispose(); if (o.material) o.material.dispose(); }); this.root = null; }
     this.meshes = []; this.pins = []; this.pinsEl.innerHTML = '';
     let gltf; try { gltf = await this.loader.loadAsync(src); } catch (e) { console.error('glb', e); this.active = false; return false; }
-    const root = gltf.scene; const bone = new THREE.MeshStandardMaterial({ color: 0xe9e2d1, roughness: 0.78, metalness: 0.0, flatShading: false });
-    root.traverse(o => { if (o.isMesh) { o.material = bone; o.geometry.computeVertexNormals(); this.meshes.push(o); } });
+    const root = gltf.scene; const bone = new THREE.MeshStandardMaterial({ color: 0xe9e2d1, roughness: 0.78, metalness: 0.0 });
+    const colored = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.72, metalness: 0.0 });
+    root.traverse(o => { if (o.isMesh) { o.material = o.geometry.getAttribute('color') ? colored : bone; o.geometry.computeVertexNormals(); this.meshes.push(o); } });   // колір із GLB: кістка / м'яз / сухожилок
     // центр і масштаб уже нормалізовані при експорті (найбільший розмір = 1), але про всяк випадок
     const box = new THREE.Box3().setFromObject(root); const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
     root.position.sub(c); const k = 1 / Math.max(size.x, size.y, size.z); root.scale.setScalar(k); root.position.multiplyScalar(k);

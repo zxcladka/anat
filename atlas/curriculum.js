@@ -207,7 +207,8 @@ window.CURRICULUM={
        "title": "Міологія. Анатомічна будова м’язів. М’язи та фасції спини.",
        "sets": [
         "musc-back-sup",
-        "musc-back-deep"
+        "musc-back-deep",
+        "v3-musc-back"
        ],
        "control": false
       },
@@ -217,7 +218,9 @@ window.CURRICULUM={
        "sets": [
         "musc-thorax-abd",
         "musc-face",
-        "musc-abd-deep"
+        "musc-abd-deep",
+        "v3-musc-thorax-abd",
+        "v3-musc-head-neck"
        ],
        "control": false
       },
@@ -226,7 +229,8 @@ window.CURRICULUM={
        "title": "М’язи та фасції живота. Піхва прямого м’яза живота. Пахвинний канал.",
        "sets": [
         "musc-thorax-abd",
-        "musc-abd-deep"
+        "musc-abd-deep",
+        "v3-musc-thorax-abd"
        ],
        "control": false
       },
@@ -234,7 +238,8 @@ window.CURRICULUM={
        "n": 22,
        "title": "Поверхневі м’язи шиї. Трикутники шиї. Глибокі м’язи шиї. Фасції шиї.",
        "sets": [
-        "musc-neck"
+        "musc-neck",
+        "v3-musc-head-neck"
        ],
        "control": false
       },
@@ -243,7 +248,8 @@ window.CURRICULUM={
        "title": "М’язи та фасції плечового поясу і плеча. Пахвова порожнина. Передня група м’язів передпліччя.",
        "sets": [
         "musc-arm-lat",
-        "musc-forearm-ant"
+        "musc-forearm-ant",
+        "v3-musc-arm"
        ],
        "control": false
       },
@@ -251,7 +257,8 @@ window.CURRICULUM={
        "n": 24,
        "title": "Задня група м’язів передпліччя. М’язи кисті. Фасції та синовіальні піхви сухожилків м’язів верхньої кінцівки.",
        "sets": [
-        "musc-forearm-post"
+        "musc-forearm-post",
+        "v3-musc-arm"
        ],
        "control": false
       },
@@ -261,7 +268,8 @@ window.CURRICULUM={
        "sets": [
         "musc-thigh-ant",
         "musc-thigh-med",
-        "musc-gluteal"
+        "musc-gluteal",
+        "v3-musc-leg"
        ],
        "control": false
       },
@@ -271,7 +279,8 @@ window.CURRICULUM={
        "sets": [
         "musc-thigh-ant",
         "musc-thigh-med",
-        "musc-gluteal"
+        "musc-gluteal",
+        "v3-musc-leg"
        ],
        "control": false
       },
@@ -281,7 +290,8 @@ window.CURRICULUM={
        "sets": [
         "musc-leg-ant",
         "musc-leg-lat",
-        "musc-planta"
+        "musc-planta",
+        "v3-musc-leg"
        ],
        "control": false
       },
