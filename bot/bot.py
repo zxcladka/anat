@@ -91,6 +91,7 @@ HELP = (
     "/blitz — бліц на 5 хвилин\n"
     "/theory — картки теорії\n"
     "/krok — питання Крок 1\n"
+    "/3d — 3D-моделі хребців і м’язів\n"
     "/remind 20:30 — щоденне нагадування; /remind off — вимкнути\n\n"
     "Прогрес зберігається на пристрої, де відкрито тренажер. Резервна копія — на сторінці «Прогрес»."
 )
@@ -113,6 +114,13 @@ def handle(msg, users):
         send(chat, "Бліц на 5 хвилин:", app_button("Грати →", "blitz"))
     elif cmd == "/theory":
         send(chat, "Картки теорії: м’язи, суглоби, нерви, кістки черепа, органи, провідні шляхи.", app_button("Теорія →", "facts"))
+    elif cmd == "/3d":
+        rows = [[("Атлант C I", "set/v3-atlas/study"), ("Осьовий C II", "set/v3-axis/study")], [("Шийний C IV", "set/v3-c4/study"), ("C VII (prominens)", "set/v3-c7/study")],
+                [("Грудний T VIII", "set/v3-t8/study"), ("Поперековий L III", "set/v3-l3/study")], [("Крижова кістка", "set/v3-sacrum/study"), ("Куприк", "set/v3-coccyx/study")],
+                [("М’язи руки", "set/v3-musc-arm/study"), ("М’язи ноги", "set/v3-musc-leg/study")], [("М’язи спини", "set/v3-musc-back/study"), ("Груди й живіт", "set/v3-musc-thorax-abd/study")],
+                [("Голова й шия", "set/v3-musc-head-neck/study")]]
+        kb = {"inline_keyboard": [[{"text": t, "web_app": {"url": APP_URL + "#/" + path}} for t, path in row] for row in rows]}
+        send(chat, "3D-моделі: крутіть пальцем, наближайте щипком, кнопка ◐ робить модель прозорою, щоб побачити глибокі структури.", kb)
     elif cmd == "/krok":
         send(chat, "Питання з буклетів Крок 1 (анатомія):", app_button("Крок 1 →", "krok"))
     elif cmd == "/remind":
@@ -167,6 +175,7 @@ def setup():
         {"command": "blitz", "description": "Бліц на 5 хвилин"},
         {"command": "theory", "description": "Картки теорії"},
         {"command": "krok", "description": "Питання Крок 1"},
+        {"command": "3d", "description": "3D-моделі хребців і м’язів"},
         {"command": "remind", "description": "Час нагадування, напр. /remind 20:30"},
         {"command": "help", "description": "Довідка"},
     ])
