@@ -149,13 +149,54 @@ function etymology(la) {
   const out = parts.map(p => ({ w: p, m: rootOf(p) })); return out.some(x => x.m) ? out : [];
 }
 const enFor = la => LEX.en[la] || '';
+/* Латина → українська фонетика (традиційна вимова кафедр). Дзеркало tools/latin_uk.py. */
+function latinToUk(term) {
+  const SOFT = { a: 'я', e: 'е', i: 'і', o: 'о', u: 'ю', y: 'і', E: 'е' }, PLAIN = { a: 'а', e: 'е', i: 'і', o: 'о', u: 'у', y: 'і' };
+  const ROMAN = { I: 'перший', II: 'другий', III: 'третій', IV: 'четвертий', V: 'п’ятий', VI: 'шостий', VII: 'сьомий', VIII: 'восьмий', IX: 'дев’ятий', X: 'десятий', XI: 'одинадцятий', XII: 'дванадцятий' };
+  const vow = c => 'aeiouyE'.includes(c);
+  const word = w0 => {
+    const w = w0.toLowerCase().replace(/ae|oe/g, 'E').replace(/ph/g, 'F').replace(/th/g, 'T').replace(/rh/g, 'R').replace(/ch/g, 'X');
+    let out = ''; const n = w.length;
+    for (let i = 0; i < n;) {
+      const ch = w[i], nx = w[i + 1] || '', nx2 = w[i + 2] || '', pv = i ? w[i - 1] : '';
+      if (ch === 'E') { out += 'е'; i++; continue; } if (ch === 'F') { out += 'ф'; i++; continue; } if (ch === 'T') { out += 'т'; i++; continue; } if (ch === 'R') { out += 'р'; i++; continue; } if (ch === 'X') { out += 'х'; i++; continue; }
+      if (ch === 'q' && nx === 'u') { out += 'кв'; i += 2; continue; }
+      if (ch === 'n' && nx === 'g' && nx2 === 'u' && vow(w[i + 3] || '')) { out += 'нгв'; i += 3; continue; }
+      if (ch === 'c') { out += 'eiyE'.includes(nx) && nx ? 'ц' : 'к'; i++; continue; }
+      if (ch === 't' && nx === 'i' && nx2 && vow(nx2) && !'stx'.includes(pv || '-')) { out += 'ц'; i++; continue; }
+      if (ch === 's') { out += (pv && vow(pv) && nx && vow(nx)) ? 'з' : 'с'; i++; continue; }
+      if (ch === 'x') { out += 'кс'; i++; continue; } if (ch === 'z') { out += 'з'; i++; continue; } if (ch === 'h') { out += 'г'; i++; continue; } if (ch === 'g') { out += 'ґ'; i++; continue; }
+      if (ch === 'j') { if (nx && vow(nx)) { out += SOFT[nx] || ('й' + (PLAIN[nx] || '')); i += 2; } else { out += 'й'; i++; } continue; }
+      if (ch === 'l') { if (nx === 'l') { out += 'л'; i++; } else if (nx && vow(nx)) { out += 'л' + SOFT[nx]; i += 2; } else { out += 'ль'; i++; } continue; }
+      if (ch === 'i' && 'ae'.includes(pv || '-') && (!nx || !vow(nx))) { out += 'й'; i++; continue; }
+      if (ch === 'i' && pv && vow(pv) && pv !== 'i' && nx && vow(nx)) { out += 'й'; i++; continue; }
+      if (PLAIN[ch]) { out += PLAIN[ch]; i++; continue; }
+      out += ({ b: 'б', d: 'д', f: 'ф', k: 'к', m: 'м', n: 'н', p: 'п', r: 'р', t: 'т', v: 'в', w: 'в' })[ch] || ch; i++;
+    }
+    return out.replace(/лья/g, 'ля').replace(/льі/g, 'лі').replace(/лью/g, 'лю').replace(/іі$/, 'ії');
+  };
+  return String(term).replace(/\(.*?\)/g, ' ').replace(/[-–]/g, ' ').match(/[A-Za-z]+/g)?.map(w => /^[IVXLC]{1,5}$/.test(w) ? (ROMAN[w] || w) : word(w)).join(' ') || '';
+}
+const audioSlug = t => String(t).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80);
+let _audio = null;
 function speak(text) {
+  const term = String(text).replace(/\(.*?\)/g, '').trim();
+  // 1) готовий запис (audio/<slug>.m4a, голос uk_UA), 2) запасний варіант — синтез у браузері українським голосом за транскрипцією
+  const fallback = () => {
+    try {
+      if (!('speechSynthesis' in window)) return false;
+      const u = new SpeechSynthesisUtterance(latinToUk(term)); const vs = speechSynthesis.getVoices();
+      const v = vs.find(x => /^uk/i.test(x.lang)) || vs.find(x => /^ru/i.test(x.lang)) || null;
+      if (v) u.voice = v; u.lang = v ? v.lang : 'uk-UA'; u.rate = 0.9; speechSynthesis.cancel(); speechSynthesis.speak(u); return true;
+    } catch (e) { return false; }
+  };
   try {
-    if (!('speechSynthesis' in window)) return false;
-    const u = new SpeechSynthesisUtterance(String(text).replace(/\(.*?\)/g, '')); const vs = speechSynthesis.getVoices();
-    const v = vs.find(x => /^la/i.test(x.lang)) || vs.find(x => /^it/i.test(x.lang)) || vs.find(x => /^es/i.test(x.lang)) || null;
-    if (v) u.voice = v; u.lang = v ? v.lang : 'it-IT'; u.rate = 0.85; speechSynthesis.cancel(); speechSynthesis.speak(u); return true;
-  } catch (e) { return false; }
+    if (_audio) { _audio.pause(); _audio = null; }
+    const a = new Audio('audio/' + audioSlug(term) + '.m4a'); _audio = a;
+    a.onerror = () => { _audio = null; fallback(); };
+    a.play().catch(() => fallback());
+    return true;
+  } catch (e) { return fallback(); }
 }
 if ('speechSynthesis' in window) speechSynthesis.getVoices();
 // пояснення після відповіді: термін, вимова, розбір, англійська, українська, з чим плутають
@@ -541,7 +582,7 @@ function renderAbout() {
     <h2>Бліц</h2>
     <p>Сесія на 2, 5 чи 10 хвилин у дусі Drops: вибери назву, знайди на схемі, склади слово з плиток, з’єднай пари, правда чи ні. Комбо множить очки, денна ціль — 100 очок. Кожна відповідь іде в інтервальне повторення.</p>
     <h2>Режим «Письмо» і вимова</h2>
-    <p>Четвертий режим тренажера: показується точка, а назву треба надрукувати латиною. Дрібні описки прощаються, підказка зараховує відповідь як «важко». Кнопка 🔊 біля терміна вимовляє його вголос, а після кожної відповіді з’являється розбір: корені слова, українська й англійська назви та структури, з якими ви цей термін плутали.</p>
+    <p>Четвертий режим тренажера: показується точка, а назву треба надрукувати латиною. Дрібні описки прощаються, підказка зараховує відповідь як «важко». Кнопка 🔊 біля терміна вимовляє його вголос українським голосом за правилами медичної латини (c перед e/i — «ц», ae — «е», ti — «ці», qu — «кв»), а після кожної відповіді з’являється розбір: корені слова, українська й англійська назви та структури, з якими ви цей термін плутали.</p>
     <h2>Планувальник FSRS</h2>
     <p>Повторення плануються за FSRS — тим самим алгоритмом, що в сучасній Anki: для кожної структури оцінюються складність і стабільність пам’яті, наступний показ призначається так, щоб імовірність пригадати була близько 90 %. Помилка повертає структуру через 10 хвилин того ж дня; «засвоєно» — коли ви пригадали її правильно у три різні дні. Структури, які забували 8 і більше разів, позначаються як «п’явки».</p>
     <h2>Пошук по терміну</h2>

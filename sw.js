@@ -2,7 +2,7 @@
    Оболонка (index.html, js, css, vendor, дані атласу) — network-first із запасом у кеші, тож оновлення доходять одразу;
    картинки схем — cache-first із фоновим оновленням: раз відкрита схема лишається доступною без мережі.
    Версію CACHE піднімати разом із ?v= в index.html, щоб старий кеш прибрався. */
-const CACHE = 'anat-v26';
+const CACHE = 'anat-v27';
 const SHELL = ['./', './index.html', './manifest.json', './css/modules.css', './js/app.js', './js/decks.js', './js/blitz.js', './js/course.js', './js/krok.js', './js/facts.js',
   './atlas/data.js', './atlas/curriculum.js', './atlas/lexicon.js', './atlas/krok1.js', './atlas/facts.js', './icons/icon-192.png', './icons/icon-512.png',
   './js/model3d.js', './vendor/three/three.module.min.js', './vendor/three/addons/loaders/GLTFLoader.js', './vendor/three/addons/controls/OrbitControls.js', './vendor/three/addons/utils/BufferGeometryUtils.js'];
@@ -18,7 +18,7 @@ self.addEventListener('fetch', e => {
   const req = e.request; if (req.method !== 'GET') return;
   const url = new URL(req.url); if (url.origin !== location.origin) return;
   const key = stripV(req.url);
-  const isImage = /\.(png|jpe?g|webp|svg)$/i.test(url.pathname);
+  const isImage = /\.(png|jpe?g|webp|svg|m4a|glb)$/i.test(url.pathname);   // картинки, аудіо й моделі — cache-first
   if (isImage) {
     e.respondWith(caches.open(CACHE).then(async c => {
       const hit = await c.match(key);
