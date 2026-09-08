@@ -486,8 +486,8 @@ function renderResults() {
 function renderHome() {
   const total = ATLAS.sets.reduce((a, s) => a + s.items.length, 0);
   const learned = ATLAS.sets.filter(s => progFor(s.id, 'direct').streak >= GOAL && progFor(s.id, 'reverse').streak >= GOAL).length;
-  const cats = ['Усі', ...ATLAS.categories.filter(c => ATLAS.sets.some(s => s.cat === c))];
-  const list = ATLAS.sets.filter(s => homeFilter === 'Усі' || s.cat === homeFilter);
+  const cats = ['Усі', '3D', ...ATLAS.categories.filter(c => ATLAS.sets.some(s => s.cat === c))];
+  const list = ATLAS.sets.filter(s => homeFilter === 'Усі' || (homeFilter === '3D' ? !!s.model : s.cat === homeFilter));
   const my = decks.filter(d => d.pins.length && d.hasImage);
   const due = srsDue().length;
   app.innerHTML = `<div class="wrap">
@@ -577,6 +577,8 @@ const Trainer = {
         <h1>${esc(set.title)}</h1><span class="chip">${esc(set.cat)}</span><span class="muted">${n} структур</span>
         <span class="spacer"></span>
         ${set.deckId ? `<a href="#/edit/${set.deckId}"><button class="small">✎ Редагувати</button></a>` : ''}
+        ${set.rel3d && ATLAS.sets.some(x => x.id === set.rel3d) ? `<a href="#/set/${set.rel3d}/${mode}"><button class="small primary btn3d">⬡ Відкрити в 3D</button></a>` : ''}
+        ${set.rel2d && ATLAS.sets.some(x => x.id === set.rel2d) ? `<a href="#/set/${set.rel2d}/${mode}"><button class="small btn3d">▤ Схема</button></a>` : ''}
         <div class="modes"><button data-mode="study">Огляд</button><button data-mode="direct">Прямий</button><button data-mode="reverse">Зворотний</button><button data-mode="write">Письмо</button></div>
       </div>
       <div class="trainwrap">

@@ -213,3 +213,6 @@ html.tg footer{padding-bottom:24px}
 .zoomctl #zxray.active{background:var(--accent);color:var(--accent-ink)}
 .hint3d{position:absolute;left:10px;bottom:8px;font-size:11px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 9px;pointer-events:none;opacity:.85}
 .card .thumb .badge3d{position:absolute;right:8px;top:8px;font-size:11px;font-weight:700;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:2px 8px}
+
+.btn3d{white-space:nowrap}
+@media(max-width:600px){.sethead .btn3d{order:5;flex:1 1 100%;margin-top:6px}}
