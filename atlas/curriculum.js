@@ -77,7 +77,10 @@ window.CURRICULUM={
         "ul-113",
         "ul-114",
         "ul-115",
-        "ul-116"
+        "ul-116",
+        "v3-clavicle",
+        "v3-scapula",
+        "v3-humerus"
        ],
        "control": false
       },
@@ -95,7 +98,9 @@ window.CURRICULUM={
         "hand-128",
         "hand-129",
         "hand-130",
-        "hand-131"
+        "hand-131",
+        "v3-hand",
+        "v3-radius-ulna"
        ],
        "control": false
       },
@@ -112,7 +117,9 @@ window.CURRICULUM={
         "ll-138",
         "ll-139",
         "ll-140",
-        "ll-141"
+        "ll-141",
+        "v3-femur",
+        "v3-hip"
        ],
        "control": false
       },
@@ -126,7 +133,9 @@ window.CURRICULUM={
         "ll-154",
         "ll-155",
         "ll-156",
-        "ll-157"
+        "ll-157",
+        "v3-foot",
+        "v3-tibia-fibula"
        ],
        "control": false
       },
