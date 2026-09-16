@@ -46,7 +46,7 @@ function renderCourse() {
   app.innerHTML = `<div class="wrap">
     <section class="page-hero"><div class="crow-h"><h1>${esc(c.name)}</h1><a href="#/choose" class="muted chg">змінити курс</a></div><p>${esc(c.full)}. ${esc(c.note)}</p></section>
     ${!c.modules.length ? `<div class="empty">Тем для цього курсу ще немає. Поки що вся база доступна в <a href="#/atlas" style="text-decoration:underline">атласі</a>.</div>` : ''}
-    ${nx ? `<div class="actions" style="margin:-4px 0 10px"><a href="#/course/${nx.m.id}/${nx.t.n}"><button class="primary">Продовжити: тема ${nx.t.n} →</button></a><a href="#/atlas"><button>Увесь атлас</button></a></div>` : ''}
+    <div class="actions" style="margin:-4px 0 10px">${nx ? `<a href="#/course/${nx.m.id}/${nx.t.n}"><button class="primary">Продовжити: тема ${nx.t.n} →</button></a>` : ''}<a href="#/plan"><button>${window.Plan && Plan.plan() ? 'План до модуля' : 'Скласти план до модуля'}</button></a><a href="#/exam"><button>Контроль</button></a><a href="#/atlas"><button>Увесь атлас</button></a></div>
     ${c.modules.map((m, mi) => { const ms = moduleStats(m); const open = LS.get('anat.modOpen', {})[m.id] ?? (mi === 0 || (nx && nx.m === m)); return `<details class="module" data-m="${m.id}" ${open ? 'open' : ''}>
       <summary class="modhead"><h2 class="section-title">${esc(m.title)}</h2><div class="modstat"><span class="muted">${ms.withMat} з ${ms.topics} тем із матеріалами · ${ms.known}/${ms.total} структур</span>${bar(ms.pct)}<b>${ms.pct}%</b></div></summary>
       <div class="topics">${m.topics.map(t => { const st = topicStats(t); const has = st.sets > 0 || !!(window.Facts && Facts.byTopic(tid(m, t)).length); return `<a class="topic ${has ? '' : 'nomat'} ${t.control ? 'ctrl' : ''}" href="#/course/${m.id}/${t.n}">

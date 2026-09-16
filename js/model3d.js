@@ -98,12 +98,21 @@ const V3 = {
     }
     this.dirty = true;
   },
-  centerOn(x, y) {
-    // x,y — відсотки з pts[0]; знаходимо пін з такими ж pts і повертаємо камеру до нього
+  centerOn(x, y, jitter) {
+    // x,y — відсотки з pts[0]; знаходимо пін з такими ж pts і повертаємо камеру до нього.
+    // jitter (0..1) — випадковий ракурс навколо точки (режим «Контроль»: як на препараті з іншого боку); точка має лишатись видимою
     if (!this.set) return; const it = this.set.items.find(i => i.pts && i.pts[0] && Math.abs(i.pts[0][0] - x) < 0.01 && Math.abs(i.pts[0][1] - y) < 0.01);
     const v = it && it.p3 ? new THREE.Vector3(...it.p3) : null; if (!v) return;
-    const dir = v.clone().normalize(); if (dir.length() < 1e-3) return;
-    const d = this.camera.position.length(); this.camera.position.copy(dir.multiplyScalar(d)); this.controls.update(); this.dirty = true;
+    const base = v.clone().normalize(); if (base.length() < 1e-3) return;
+    const d = this.camera.position.length();
+    let dir = base;
+    if (jitter) for (let t = 0; t < 6; t++) {
+      const r = new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize().multiplyScalar(jitter);
+      const cand = base.clone().add(r).normalize(), pos = cand.clone().multiplyScalar(d);
+      const rd = v.clone().sub(pos), dist = rd.length(); rd.normalize(); this.ray.set(pos, rd); this.ray.far = dist - 0.004;
+      if (!this.ray.intersectObjects(this.meshes, false).length) { dir = cand; break; }
+    }
+    this.camera.position.copy(dir.multiplyScalar(d)); this.controls.update(); this.dirty = true;
   },
   loop() {
     this.raf = requestAnimationFrame(() => this.loop());
@@ -140,7 +149,7 @@ window.Viewer3D = V3;
   V.mount = (container, opts) => { V3.active = false; mount(container, opts); };
   V.load = async (src, w, h) => { if (is3d(src)) { V.V.ready = false; return V3.load(src, V.el); } V3.deactivate(); return load(src, w, h); };
   V.renderPins = list => V3.active ? V3.renderPins(list) : renderPins(list);
-  V.centerOn = (x, y, zoom) => V3.active ? V3.centerOn(x, y) : centerOn(x, y, zoom);
+  V.centerOn = (x, y, zoom, jitter) => V3.active ? V3.centerOn(x, y, jitter) : centerOn(x, y, zoom);
   V.fit = () => V3.active ? V3.fit() : fit();
   V.layout = () => V3.active ? V3.resize() : layout();
   new MutationObserver(() => { if (V3.active) V3.bg(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });

@@ -13,7 +13,7 @@ function renderHub() {
   const due = Facts.dueCards(FACTS.items.filter(i => i.topic.startsWith('bio:'))).length + seqDue().length;
   app.innerHTML = `<div class="wrap">
     <section class="page-hero"><h1>Медична біологія</h1><p>Перший курс: клітина, генетика, паразити. Картки з полями (як у теорії з анатомії), послідовності «розстав по порядку» і генератор генетичних задач із розв’язком. Усе йде в те саме повторення, що й анатомія.</p></section>
-    <div class="actions">${due ? `<a href="#/facts/all/learn"><button class="primary">Повторити ${due} →</button></a>` : ''}<a href="#/bio/gen"><button class="${due ? '' : 'primary'}">Генетичні задачі</button></a></div>
+    <div class="actions">${due ? `<a href="#/facts/all/learn"><button class="primary">Повторити ${due} →</button></a>` : ''}<a href="#/bio/gen"><button class="${due ? '' : 'primary'}">Генетичні задачі</button></a><a href="#/bio/ped"><button>Родоводи</button></a></div>
     <h2 class="section-title">Теми</h2>
     <div class="queue">${B.topics.map(t => { const items = Facts.byTopic(t.id), st = Facts.stat(items), sq = B.sequences.filter(s => s.topic === t.id); return `<a href="#/bio/${t.n}"><span class="tnum">${t.n}</span><span class="t">${esc(t.title)}<small class="muted"> · ${st.total} ${plural(st.total, 'картка', 'картки', 'карток')}${sq.length ? `, ${sq.length} ${plural(sq.length, 'послідовність', 'послідовності', 'послідовностей')}` : ''}</small></span><span class="c">${st.due ? `<b>${st.due}</b> до повторення` : st.seen ? `${st.mastered}/${st.total} засвоєно` : 'нова тема'}</span></a>`; }).join('')}</div>
     <h2 class="section-title">Послідовності</h2>
@@ -29,7 +29,7 @@ function renderTopic(n) {
     <div class="sethead"><a class="back" href="#/bio">← Біологія</a></div>
     <section class="page-hero" style="padding-top:6px"><div class="crow-h"><span class="tnum big">${t.n}</span><h1 style="font-size:clamp(22px,3vw,32px)">${esc(t.title)}</h1></div><p>${esc(t.desc)}</p></section>
     <div class="tiles"><div class="tile"><b>${st.seen}<small class="muted" style="font-size:16px"> / ${st.total}</small></b><span>у повторенні</span></div><div class="tile"><b>${st.mastered}</b><span>засвоєно</span></div><div class="tile"><b>${st.due}</b><span>до повторення</span></div></div>
-    <div class="actions"><a href="#/facts/${t.id}/learn"><button class="primary">${st.due ? `Повторити ${st.due}` : 'Вчити картки'} →</button></a><a href="#/facts/${t.id}"><button>Переглянути картки</button></a><a href="#/facts/${t.id}/quiz"><button>Тест</button></a>${t.id === 'bio:2' ? '<a href="#/bio/gen"><button>Генетичні задачі</button></a>' : ''}</div>
+    <div class="actions"><a href="#/facts/${t.id}/learn"><button class="primary">${st.due ? `Повторити ${st.due}` : 'Вчити картки'} →</button></a><a href="#/facts/${t.id}"><button>Переглянути картки</button></a><a href="#/facts/${t.id}/quiz"><button>Тест</button></a>${t.id === 'bio:2' ? '<a href="#/bio/gen"><button>Генетичні задачі</button></a><a href="#/bio/ped"><button>Родоводи</button></a>' : ''}</div>
     <p class="muted" style="font-size:14px;margin:12px 0 0">${groups.map(g => esc(g)).join(' · ')}</p>
     ${sq.length ? `<h2 class="section-title">Послідовності</h2><div class="queue">${sq.map(s => `<a href="#/bio/seq/${s.id}"><span class="t">${esc(s.title)}</span><span class="c">${s.steps.length} етапів</span></a>`).join('')}</div>` : ''}
   </div>`;
@@ -137,7 +137,7 @@ const Gen = {
   render() {
     const t = this.task, kinds = [['mono', 'Моногібридне'], ['di', 'Дигібридне'], ['xlinked', 'Зчеплене з X'], ['abo', 'Групи крові']];
     app.innerHTML = `<div class="wrap learnwrap">
-      <div class="sethead"><a class="back" href="#/bio">← Біологія</a><h1 style="font-size:22px">Генетичні задачі</h1></div>
+      <div class="sethead"><a class="back" href="#/bio">← Біологія</a><h1 style="font-size:22px">Генетичні задачі</h1><span class="spacer"></span><a href="#/bio/ped"><button class="small">Родоводи →</button></a></div>
       <div class="filters" style="margin:8px 0 14px">${kinds.map(([k, n]) => `<button class="${k === this.kind ? 'active' : ''}" data-kind="${k}">${n}</button>`).join('')}</div>
       <div class="cardbox"><div class="cardface" style="font-size:17px">${esc(t.text)}</div></div>
       ${!this.answered ? `<div class="actions" style="margin-top:12px"><input id="genAns" type="text" inputmode="decimal" placeholder="Відповідь: 3/4, 0.75 або 75 %" style="flex:1;min-width:200px;font-size:16px;padding:10px 12px;border:1px solid var(--line2);border-radius:10px;background:var(--paper);color:var(--ink)"><button class="primary" id="genCheck">Перевірити</button></div>`
@@ -161,6 +161,147 @@ const Gen = {
   }
 };
 
+/* ---------- родоводи: генератор + розбір через спростування типів успадкування ---------- */
+const MODES = { AD: 'Аутосомно-домінантний', AR: 'Аутосомно-рецесивний', XD: 'X-зчеплений домінантний', XR: 'X-зчеплений рецесивний', Y: 'Y-зчеплений (голандричний)' };
+const TRAITS = { AD: ['полідактилія', 'ахондроплазія', 'хорея Гентінгтона', 'синдром Марфана', 'брахідактилія'], AR: ['фенілкетонурія', 'альбінізм', 'муковісцидоз', 'галактоземія', 'серпоподібноклітинна анемія'], XD: ['гіпофосфатемічний рахіт', 'темна емаль зубів'], XR: ['гемофілія', 'дальтонізм', 'міодистрофія Дюшенна'], Y: ['гіпертрихоз вушних раковин', 'іхтіоз (Y-зчеплена форма)'] };
+const rnd = n => Math.floor(Math.random() * n), pick = a => a[rnd(a.length)];
+function affectedOf(mode, p) {
+  const g = p.g;
+  if (mode === 'AD' || mode === 'XD') return g.includes('A');
+  if (mode === 'AR') return g[0] === 'a' && g[1] === 'a';
+  if (mode === 'XR') return p.sex === 'm' ? g[0] === 'a' : (g[0] === 'a' && g[1] === 'a');
+  return p.sex === 'm' && g[0] === 'Y';
+}
+function child(mode, f, m) {
+  const sex = Math.random() < 0.5 ? 'm' : 'f'; let g;
+  if (mode === 'AD' || mode === 'AR') g = [pick(f.g), pick(m.g)];
+  else if (mode === 'XD' || mode === 'XR') g = sex === 'm' ? [pick(m.g)] : [f.g[0], pick(m.g)];
+  else g = sex === 'm' ? [f.g[0]] : ['-'];
+  return { sex, g, father: f, mother: m };
+}
+function spouse(mode, sex) {
+  const g = mode === 'AD' || mode === 'XD' ? (sex === 'm' && mode === 'XD' ? ['a'] : ['a', 'a'])
+    : mode === 'AR' ? (Math.random() < 0.55 ? ['A', 'a'] : ['A', 'A'])
+    : mode === 'XR' ? (sex === 'm' ? ['A'] : (Math.random() < 0.4 ? ['A', 'a'] : ['A', 'A']))
+    : (sex === 'm' ? ['y'] : ['-']);
+  return { sex, g };
+}
+function founders(mode) {
+  const f = { sex: 'm' }, m = { sex: 'f' };
+  if (mode === 'AD') { if (Math.random() < 0.5) { f.g = ['A', 'a']; m.g = ['a', 'a']; } else { f.g = ['a', 'a']; m.g = ['A', 'a']; } }
+  else if (mode === 'AR') { f.g = ['A', 'a']; m.g = Math.random() < 0.6 ? ['A', 'a'] : ['a', 'a']; if (Math.random() < 0.3) f.g = ['a', 'a']; }
+  else if (mode === 'XD') { if (Math.random() < 0.5) { f.g = ['A']; m.g = ['a', 'a']; } else { f.g = ['a']; m.g = ['A', 'a']; } }
+  else if (mode === 'XR') { f.g = Math.random() < 0.4 ? ['a'] : ['A']; m.g = ['A', 'a']; }
+  else { f.g = ['Y']; m.g = ['-']; }
+  return [f, m];
+}
+function generate(mode) {
+  const [f0, m0] = founders(mode); const people = [f0, m0]; f0.gen = 1; m0.gen = 1; f0.spouse = m0; m0.spouse = f0;
+  const n2 = 3 + rnd(3); f0.kids = [];
+  for (let i = 0; i < n2; i++) { const c = child(mode, f0, m0); c.gen = 2; f0.kids.push(c); people.push(c);
+    if (Math.random() < 0.75) { const s = spouse(mode, c.sex === 'm' ? 'f' : 'm'); s.gen = 2; s.spouse = c; c.spouse = s; people.push(s);
+      const n3 = 2 + rnd(3); c.kids = []; const fa = c.sex === 'm' ? c : s, mo = c.sex === 'm' ? s : c;
+      for (let j = 0; j < n3; j++) { const k = child(mode, fa, mo); k.gen = 3; c.kids.push(k); people.push(k); } } }
+  people.forEach(p => { p.aff = affectedOf(mode, p); });
+  // нумерація: покоління римськими, зліва направо
+  const order = []; const push = p => { p.id = `${['', 'I', 'II', 'III'][p.gen]}-${order.filter(x => x.gen === p.gen).length + 1}`; order.push(p); };
+  push(f0); push(m0);
+  for (const c of f0.kids) { if (c.spouse && c.sex === 'f') { push(c.spouse); push(c); } else { push(c); if (c.spouse) push(c.spouse); } }
+  for (const c of f0.kids) if (c.kids) for (const k of c.kids) push(k);
+  return { mode, people, root: f0 };
+}
+// спростування: які факти виключають кожен тип
+function analyze(P) {
+  const ps = P.people, ex = { AD: [], AR: [], XD: [], XR: [], Y: [] };
+  const kids = ps.filter(p => p.father);
+  for (const k of kids) {
+    if (k.aff && !k.father.aff && !k.mother.aff) { ex.AD.push(`${k.id} ${k.sex === 'm' ? 'хворий' : 'хвора'}, а батьки ${k.father.id} і ${k.mother.id} здорові — домінантна ознака не може «перескочити» покоління`); ex.XD.push(`${k.id} з хворобою при здорових батьках — для X-домінантного типу теж неможливо`); }
+    if (!k.aff && k.father.aff && k.mother.aff) ex.AR.push(`у двох хворих батьків ${k.father.id} і ${k.mother.id} народилась здорова дитина ${k.id} — при рецесивному типі обоє батьків aa і всі діти мали б бути хворі`);
+    if (k.sex === 'f' && k.aff && !k.father.aff) ex.XR.push(`хвора дочка ${k.id} має здорового батька ${k.father.id} — X-рецесивна хвора жінка отримує рецесивну X і від батька, тож він мав би бути хворим`);
+    if (k.sex === 'm' && !k.aff && k.mother.aff) ex.XR.push(`у хворої матері ${k.mother.id} є здоровий син ${k.id} — при X-рецесивному типі всі сини хворої матері хворі`);
+    if (k.sex === 'f' && !k.aff && k.father.aff) ex.XD.push(`хворий батько ${k.father.id} має здорову дочку ${k.id} — при X-домінантному типі всі дочки хворого батька хворі`);
+    if (k.sex === 'm' && k.aff && !k.mother.aff) ex.XD.push(`хворий син ${k.id} має здорову матір ${k.mother.id} — син отримує X лише від матері`);
+    if (k.sex === 'm' && k.aff && !k.father.aff) ex.Y.push(`хворий чоловік ${k.id} має здорового батька ${k.father.id}`);
+    if (k.sex === 'm' && !k.aff && k.father.aff) ex.Y.push(`у хворого батька ${k.father.id} є здоровий син ${k.id} — Y передається всім синам`);
+  }
+  const affF = ps.filter(p => p.aff && p.sex === 'f'); if (affF.length) ex.Y.push(`є ${affF.length > 1 ? 'хворі жінки' : 'хвора жінка'} (${affF.map(p => p.id).join(', ')}) — Y-хромосоми в жінок немає`);
+  const R = Object.keys(ex).filter(m => !ex[m].length);
+  const affected = ps.filter(p => p.aff);
+  const skipping = kids.some(k => k.aff && !k.father.aff && !k.mother.aff);
+  let answer = null, why = [];
+  if (R.length === 1) answer = R[0];
+  else if (R.includes('Y') && affected.every(p => p.sex === 'm') && affected.filter(p => p.father).every(p => p.father.aff) && affected.length >= 3 && kids.some(k => k.sex === 'f' && !k.aff && k.father.aff)) { answer = 'Y'; why.push('хворіють лише чоловіки, кожен хворий син має хворого батька, усі сини хворих батьків хворі, а дочки — здорові'); }
+  else if (!skipping) {
+    if (R.includes('XD') && R.includes('AD')) {
+      const informative = ps.filter(p => p.sex === 'm' && p.aff && p.kids && p.kids.some(k => k.sex === 'f') && p.kids.some(k => k.sex === 'm') && p.kids.every(k => k.sex === 'f' ? k.aff : !k.aff));
+      if (informative.length) { answer = 'XD'; why.push(`у хворого батька ${informative[0].id} всі дочки хворі, а всі сини здорові — так передається X-домінантна ознака`); }
+      else { const dad = ps.find(p => p.sex === 'm' && p.aff && p.kids && p.kids.some(k => k.sex === 'm' && k.aff)); if (dad) { answer = 'AD'; why.push(`хворий батько ${dad.id} передав ознаку синові — через X це неможливо`); } }
+    } else if (R.includes('AD')) { answer = 'AD'; why.push('ознака в кожному поколінні, у кожного хворого є хворий батько чи мати; X-домінантний виключено'); }
+    else if (R.includes('XD')) { answer = 'XD'; why.push('ознака в кожному поколінні, аутосомно-домінантний виключено'); }
+  } else {
+    if (R.includes('XR') && R.includes('AR')) {
+      if (affected.every(p => p.sex === 'm') && affected.length >= 2) { answer = 'XR'; why.push('хворіють лише чоловіки, ознака передається через здорових матерів (носійок) — типова картина X-рецесивного успадкування'); }
+      else { answer = 'AR'; why.push('серед хворих є жінки, обидві статі уражаються, батьки хворих здорові — аутосомно-рецесивний тип'); }
+    } else if (R.includes('AR')) { answer = 'AR'; why.push('ознака «перескакує» покоління, X-рецесивний виключено'); }
+    else if (R.includes('XR')) { answer = 'XR'; why.push('ознака «перескакує» покоління, аутосомно-рецесивний виключено'); }
+  }
+  return { ex, R, answer, why, skipping, affected };
+}
+function makePedigree() {
+  const modes = shuffle(Object.keys(MODES));   // спершу випадковий тип, і лише якщо не вдалось згенерувати однозначний родовід — наступний
+  for (let t = 0; t < 600; t++) {
+    const mode = modes[Math.floor(t / 120) % modes.length]; const P = generate(mode); const A = analyze(P);
+    if (A.answer !== mode || A.affected.length < 2 || A.affected.length > P.people.length * 0.6) continue;
+    if (A.affected.every(p => p.gen === 1)) continue;
+    if (mode === 'AR' && A.affected.every(p => p.sex === 'm')) continue;
+    if (mode === 'XR' && A.affected.some(p => p.sex === 'f')) continue;
+    return { P, A, trait: pick(TRAITS[mode]) };
+  }
+  return null;
+}
+function svgPedigree(P) {
+  const U = 46, GY = 96, S = 13; const root = P.root;
+  const widthOf = c => c.spouse ? Math.max(2, (c.kids || []).length) : 1;
+  const w2 = root.kids.reduce((a, c) => a + widthOf(c), 0); const W = Math.max(w2, 2) * U + 40, H = 3 * GY + 30;
+  let x = 20; const el = []; const pos = new Map();
+  const sym = (p, cx, cy) => { pos.set(p, [cx, cy]); el.push(p.sex === 'm' ? `<rect x="${cx - S}" y="${cy - S}" width="${2 * S}" height="${2 * S}" class="${p.aff ? 'aff' : ''}"/>` : `<circle cx="${cx}" cy="${cy}" r="${S}" class="${p.aff ? 'aff' : ''}"/>`); el.push(`<text x="${cx}" y="${cy + S + 13}">${p.id}</text>`); };
+  const couple = (a, b, cx, cy) => { const ax = cx - U / 2, bx = cx + U / 2; el.push(`<line x1="${ax + S}" y1="${cy}" x2="${bx - S}" y2="${cy}"/>`); sym(a.sex === 'm' ? a : b, ax, cy); sym(a.sex === 'm' ? b : a, bx, cy); };
+  const sibs = (cx, cy, xs, ky) => { el.push(`<line x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy + 26}"/>`); if (xs.length > 1) el.push(`<line x1="${xs[0]}" y1="${cy + 26}" x2="${xs[xs.length - 1]}" y2="${cy + 26}"/>`); xs.forEach(kx => el.push(`<line x1="${kx}" y1="${cy + 26}" x2="${kx}" y2="${ky - S}"/>`)); };
+  const y1 = 24, y2 = y1 + GY, y3 = y2 + GY; const xs2 = [];
+  for (const c of root.kids) {
+    const w = widthOf(c) * U; const cx = x + w / 2;
+    if (c.spouse) { couple(c, c.spouse, cx, y2); xs2.push(cx + (c.sex === 'm' ? -U / 2 : U / 2));
+      const kids = c.kids || []; const kxs = kids.map((k, i) => x + w / 2 - (kids.length - 1) * U / 2 + i * U); kids.forEach((k, i) => sym(k, kxs[i], y3)); if (kids.length) sibs(cx, y2, kxs, y3); }
+    else { sym(c, cx, y2); xs2.push(cx); }
+    x += w;
+  }
+  const cx1 = (xs2[0] + xs2[xs2.length - 1]) / 2; couple(root, root.spouse, cx1, y1); sibs(cx1, y1, xs2, y2);
+  return `<svg class="pedigree" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Родовід">${el.join('')}</svg>`;
+}
+const Ped = {
+  cur: null, answered: false, picked: null,
+  start() { const t = makePedigree(); if (!t) return renderHub(); this.cur = t; this.answered = false; this.picked = null; this.render(); },
+  render() {
+    const { P, A, trait } = this.cur; const modes = Object.keys(MODES);
+    app.innerHTML = `<div class="wrap learnwrap">
+      <div class="sethead"><a class="back" href="#/bio">← Біологія</a><h1 style="font-size:22px">Родоводи</h1></div>
+      <p class="muted" style="margin:6px 0 10px;font-size:14px">Ознака: <b>${esc(trait)}</b>. Зафарбовані — хворі; квадрат — чоловік, коло — жінка. Визначте тип успадкування. Порада: не «вгадуйте» тип — по черзі спростовуйте кожен: знайдіть сім’ю, де він неможливий.</p>
+      <div class="cardbox" style="overflow-x:auto;text-align:center"><div style="display:inline-block;min-width:100%">${svgPedigree(P)}</div></div>
+      <div class="fopts" style="margin-top:12px">${modes.map((m, i) => { let cls = ''; if (this.answered) { if (m === A.answer) cls = 'ok'; else if (this.picked === m) cls = 'bad'; } return `<button class="fopt ${cls}" data-m="${m}"><kbd>${i + 1}</kbd>${MODES[m]}</button>`; }).join('')}</div>
+      ${this.answered ? `<div class="explain ${this.ok ? 'ok' : 'bad'}" style="margin-top:14px"><div><b class="${this.ok ? 'okc' : 'badc'}">${this.ok ? 'Правильно.' : 'Неправильно.'}</b> Відповідь: ${MODES[A.answer].toLowerCase()}.</div>
+        <div style="margin-top:8px;font-size:14px;line-height:1.5"><b>Спростування по черзі:</b><ol style="margin:4px 0 0 18px;padding:0">${modes.filter(m => m !== A.answer && A.ex[m].length).map(m => `<li>${MODES[m]} — <b>ні</b>: ${esc(A.ex[m][0])}.</li>`).join('')}</ol>
+        ${(() => { const rest = modes.filter(m => m !== A.answer && !A.ex[m].length); return rest.length ? `<p style="margin:6px 0 0">${rest.map(m => MODES[m].toLowerCase()).join(', ')} — формально не суперечить, але ${esc(A.why[0] || 'менш імовірно')}.</p>` : `<p style="margin:6px 0 0">Лишається один тип — <b>${MODES[A.answer].toLowerCase()}</b>${A.why.length ? ': ' + esc(A.why[0]) : ''}.</p>`; })()}</div></div>
+        <div class="actions" style="margin-top:12px"><button class="primary" id="pdNext">Наступний родовід</button></div>` : ''}
+    </div>`;
+    $$('.fopt[data-m]').forEach(b => b.onclick = () => this.pick(b.dataset.m));
+    const n = $('#pdNext'); if (n) n.onclick = () => this.start();
+    window.scrollTo(0, 0);
+  },
+  pick(m) { if (this.answered) return; this.picked = m; this.ok = m === this.cur.A.answer; this.answered = true; srsReview('bio:ped', 'all', 'q', this.ok, this.ok ? 'good' : 'again'); this.render(); },
+  key(e) { if (!this.cur || location.hash !== '#/bio/ped' || $('dialog[open]')) return; if (!this.answered && /^[1-5]$/.test(e.key)) { e.preventDefault(); this.pick(Object.keys(MODES)[+e.key - 1]); } else if (this.answered && e.key === 'Enter') { e.preventDefault(); this.start(); } }
+};
+document.addEventListener('keydown', e => Ped.key(e));
+
 EXT.today.push(() => {
   const d = seqDue(); if (!d.length) return '';
   return `<h2 class="section-title">Біологія: послідовності</h2><div class="queue">${d.map(s => `<a href="#/bio/seq/${s.id}"><span class="t">${esc(s.title)}</span><span class="c">повторити</span></a>`).join('')}</div>`;
@@ -171,7 +312,8 @@ ROUTES.bio = parts => {
   if (!parts[0]) return renderHub();
   if (parts[0] === 'seq') return Seq.start(parts[1]);
   if (parts[0] === 'gen') return Gen.start(parts[1]);
+  if (parts[0] === 'ped') return Ped.start();
   return renderTopic(parts[0]);
 };
-window.Bio = { Seq, Gen };
+window.Bio = { Seq, Gen, Ped };
 })();

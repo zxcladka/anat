@@ -225,3 +225,45 @@ html.tg footer{padding-bottom:24px}
 .seqpool{display:flex;flex-direction:column;gap:8px;margin-top:14px}
 .seqopt{text-align:left;white-space:normal;padding:10px 12px;line-height:1.35;font-size:15px;border-radius:10px}
 .punnett{border-collapse:collapse;font-size:14px}.punnett th,.punnett td{border:1px solid var(--line2);padding:4px 10px;text-align:center}.punnett th{background:var(--accent-soft)}
+
+/* ---- Контроль (js/exam.js) ---- */
+.extimer{font-variant-numeric:tabular-nums;font-weight:700;font-size:15px;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.extimer.low{background:var(--bad-soft);color:var(--bad)}
+.extimer:empty{display:none}
+#bank .name kbd{font-size:10px;color:var(--muted);border:1px solid var(--line2);border-radius:4px;padding:0 4px;margin-right:2px}
+@media(max-width:900px){#bank .name kbd{display:none}}
+
+/* ---- План до модуля, «Як вчити» (js/plan.js) ---- */
+.plbar{display:inline-block;width:70px;height:6px;border-radius:999px;background:var(--line);overflow:hidden;vertical-align:middle;margin-right:6px}
+.plbar .fill{display:block;height:100%;background:var(--ok)}
+.guidecta .tnum{background:var(--accent-soft);color:var(--accent)}
+.opts-row input[type=date]{font:inherit;padding:8px 10px;border:1px solid var(--line2);border-radius:10px;background:var(--paper);color:var(--ink)}
+
+/* ---- Родоводи (js/bio.js) ---- */
+.pedigree{max-width:100%;height:auto;font-family:var(--sans);font-size:11px;fill:var(--muted)}
+.pedigree rect,.pedigree circle{fill:var(--paper);stroke:var(--ink);stroke-width:1.6}
+.pedigree rect.aff,.pedigree circle.aff{fill:var(--ink)}
+.pedigree line{stroke:var(--ink);stroke-width:1.3}
+.pedigree text{text-anchor:middle;fill:var(--muted)}
+
+/* ---- З’єднай пари (js/facts.js) ---- */
+.matchgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:10px 16px;align-items:stretch}
+.mcol{display:flex;flex-direction:column;gap:8px}
+.mitem{text-align:left;white-space:normal;padding:10px 12px;line-height:1.35;font-size:14px;border-radius:12px;display:flex;flex-direction:column;gap:2px;min-height:52px;justify-content:center}
+.mitem i{font-family:var(--serif);font-size:16px}
+.mitem.sel{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.mitem.sel .muted{color:var(--accent-ink);opacity:.8}
+.mitem.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);pointer-events:none}
+.mitem.ok.err{border-style:dashed}
+.mitem.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+@media(max-width:600px){.matchgrid{grid-template-columns:1fr 1fr;gap:8px}.mitem{font-size:13px;padding:8px 9px}.mitem i{font-size:14px}}
+
+/* ---- Закономірності іннервації (js/rules.js) ---- */
+.rules{display:flex;flex-direction:column;gap:8px;max-width:860px}
+.rule{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:0 16px}
+.rule summary{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 0;cursor:pointer;list-style:none;font-size:15px}
+.rule summary::-webkit-details-marker{display:none}
+.rule .rg{font-weight:600}.rule .rn{color:var(--accent);font-style:italic}
+.rbody{padding:0 0 14px;font-size:14px;line-height:1.5}.rbody p{margin:0 0 6px}.rbody ul{margin:0 0 6px 18px;padding:0}
+.mnemo{background:var(--accent-soft);border-radius:10px;padding:8px 12px;font-size:14px}
+@media(max-width:900px){.extimer{position:fixed;top:64px;right:12px;z-index:6;box-shadow:0 2px 8px rgba(0,0,0,.25)}}

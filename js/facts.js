@@ -41,7 +41,7 @@ function renderHub() {
   app.innerHTML = `<div class="wrap">
     <section class="page-hero"><h1>Теорія</h1><p>Картки для тем без схем: м’язи — початок, прикріплення, функція та іннервація; суглоби — форма, поверхні, зв’язки, рухи; черепні нерви — ядра, вихід, гілки, ділянка іннервації. Повторення за тим самим алгоритмом, що й схеми.</p></section>
     <div class="tiles"><div class="tile"><b>${s.total}</b><span>структур</span></div><div class="tile"><b>${s.seen}</b><span>у повторенні</span></div><div class="tile"><b>${s.mastered}</b><span>засвоєно</span></div><div class="tile"><b>${s.due}</b><span>карток до повторення</span></div></div>
-    <div class="actions">${s.due ? `<a href="#/facts/all/learn"><button class="primary">Повторити ${s.due} →</button></a>` : ''}<a href="#/facts/all/quiz"><button>Тест по всьому</button></a></div>
+    <div class="actions">${s.due ? `<a href="#/facts/all/learn"><button class="primary">Повторити ${s.due} →</button></a>` : ''}<a href="#/facts/all/quiz"><button>Тест по всьому</button></a><a href="#/facts/all/match"><button>З’єднай пари</button></a><a href="#/rules"><button>Закономірності іннервації</button></a></div>
     ${Object.entries(groups).map(([mid, tks]) => { const m = (c && c.modules.find(x => x.id === mid)) || (mid === 'bio' ? { title: 'Медична біологія' } : null); return `<h2 class="section-title">${esc(m ? m.title : mid)}</h2><div class="queue">${tks.map(tk => { const info = topicInfo(tk), st = stat(byTopic(tk)); return `<a href="#/facts/${tk}"><span class="tnum">${info.n}</span><span class="t">${esc(info.title)}<small class="muted"> · ${st.total} ${esc(typeName(byTopic(tk)))}</small></span><span class="c">${st.due ? `<b>${st.due}</b> до повторення` : st.seen ? `${st.mastered}/${st.total} засвоєно` : 'нова тема'}</span></a>`; }).join('')}</div>`; }).join('')}
   </div>`;
   window.scrollTo(0, 0);
@@ -56,7 +56,7 @@ function renderTopic(tk) {
     <div class="sethead"><a class="back" href="#/facts">← Теорія</a><span class="spacer"></span><a href="${info.href}"><button class="small">Тема курсу →</button></a></div>
     <section class="page-hero" style="padding-top:6px"><div class="crow-h">${info.n ? `<span class="tnum big">${info.n}</span>` : ''}<h1 style="font-size:clamp(22px,3vw,32px)">${esc(info.title)}</h1></div><p>${s.total} ${esc(typeName(items))}: ${groups.length} ${plural(groups.length, 'група', 'групи', 'груп')}. Розгорніть картку, щоб прочитати, або одразу вчіть — кожне поле повторюється окремо.</p></section>
     <div class="tiles"><div class="tile"><b>${s.seen}<small class="muted" style="font-size:16px"> / ${s.total}</small></b><span>у повторенні</span></div><div class="tile"><b>${s.mastered}</b><span>засвоєно</span></div><div class="tile"><b>${s.due}</b><span>до повторення</span></div><div class="tile"><b>${s.nw}</b><span>нових карток</span></div></div>
-    <div class="actions"><a href="#/facts/${tk}/learn"><button class="primary">${s.due ? `Повторити ${s.due}` : s.nw ? 'Вчити картки' : 'Повторити'} →</button></a><a href="#/facts/${tk}/quiz"><button>Тест</button></a><button id="fxAll">Розгорнути все</button></div>
+    <div class="actions"><a href="#/facts/${tk}/learn"><button class="primary">${s.due ? `Повторити ${s.due}` : s.nw ? 'Вчити картки' : 'Повторити'} →</button></a><a href="#/facts/${tk}/quiz"><button>Тест</button></a>${items.length >= 3 ? `<a href="#/facts/${tk}/match"><button>З’єднай пари</button></a>` : ''}<button id="fxAll">Розгорнути все</button></div>
     ${groups.map(g => `<h2 class="section-title">${esc(g)}</h2><div class="factlist">${items.filter(i => i.group === g).map(i => itemHtml(i)).join('')}</div>`).join('')}
   </div>`;
   $('#fxAll').onclick = () => { const all = $$('details.fact'); const open = all.some(d => !d.open); all.forEach(d => d.open = open); $('#fxAll').textContent = open ? 'Згорнути все' : 'Розгорнути все'; };
@@ -163,6 +163,48 @@ const Quiz = {
     else if (this.locked && e.key === 'Enter') { e.preventDefault(); this.next(); }
   }
 };
+/* ---- «З’єднай пари»: термін ↔ значення поля; помилка на парі = «не знаю» для цього поля ---- */
+const MATCH_FIELD = { muscle: 'innervatio', joint: 'typ', nerve: 'exitus', bone: 'foramina', organ: 'situs', tract: 'decussatio', parasite: 'infectio', gendis: 'genetica', organelle: 'functio' };
+const Match = {
+  active: false, tk: 'all', pairs: [], left: [], right: [], selL: null, done: new Set(), errs: new Set(), mistakes: 0, round: 0,
+  start(tk) { this.tk = tk; this.round = 0; this.active = true; if (!this.make()) return renderHub(); this.render(); },
+  make() {
+    const items = byTopic(this.tk); if (items.length < 3) return false;
+    const types = [...new Set(items.map(i => i.type))]; const type = types[Math.floor(Math.random() * types.length)];
+    const pool = items.filter(i => i.type === type); const fk0 = MATCH_FIELD[type] || fieldsOf(pool[0])[0].k;
+    const fk = Math.random() < 0.7 ? fk0 : fieldsOf(pool[0])[Math.floor(Math.random() * fieldsOf(pool[0]).length)].k;
+    const f = fieldsOf(pool[0]).find(x => x.k === fk);
+    const due = shuffle(pool.filter(i => isDue(i, fk))), rest = shuffle(pool.filter(i => !isDue(i, fk)));
+    const seen = new Set(); const chosen = [];
+    for (const it of due.concat(rest)) { const v = it.f[fk]; if (!v || seen.has(v)) continue; seen.add(v); chosen.push(it); if (chosen.length === 5) break; }
+    if (chosen.length < 3) return false;
+    this.pairs = chosen.map(it => ({ it, v: it.f[fk] })); this.f = f; this.type = type;
+    this.left = shuffle(this.pairs); this.right = shuffle(this.pairs); this.selL = null; this.done = new Set(); this.errs = new Set(); this.mistakes = 0;
+    return true;
+  },
+  render() {
+    const info = topicInfo(this.tk === 'all' ? this.pairs[0].it.topic : this.tk); const fin = this.done.size === this.pairs.length;
+    app.innerHTML = `<div class="wrap learnwrap" style="max-width:900px">
+      <div class="sethead"><a class="back" href="#/facts/${this.tk === 'all' ? '' : this.tk}">← ${this.tk === 'all' ? 'Теорія' : esc(info.title)}</a><span class="spacer"></span><span class="muted" style="font-size:13px">помилок: ${this.mistakes}</span></div>
+      <h1 style="font-size:22px;margin:6px 0">З’єднайте пари: ${esc(T[this.type].one)} → ${esc(this.f.uk.toLowerCase())}</h1>
+      <p class="muted" style="margin:0 0 12px;font-size:14px">Натисніть термін зліва, потім його ${esc(this.f.uk.toLowerCase())} справа. Не знаєте — спробуйте методом виключення: це теж пригадування.</p>
+      <div class="matchgrid">
+        <div class="mcol">${this.left.map(p => { const i = this.pairs.indexOf(p); const cls = this.done.has(i) ? (this.errs.has(i) ? 'ok err' : 'ok') : (this.selL === i ? 'sel' : ''); return `<button class="mitem ${cls}" data-l="${i}"><i>${esc(p.it.la)}</i><span class="muted">${esc(p.it.uk)}</span></button>`; }).join('')}</div>
+        <div class="mcol">${this.right.map(p => { const i = this.pairs.indexOf(p); const cls = this.done.has(i) ? (this.errs.has(i) ? 'ok err' : 'ok') : ''; return `<button class="mitem val ${cls}" data-r="${i}">${esc(p.v)}</button>`; }).join('')}</div>
+      </div>
+      ${fin ? `<div class="explain ${this.mistakes ? 'bad' : 'ok'}" style="margin-top:14px"><b class="${this.mistakes ? 'badc' : 'okc'}">${this.mistakes ? `Готово, помилок: ${this.mistakes}.` : 'Усе з першої спроби.'}</b> ${this.errs.size ? 'Поля, де помилялись, повернуться у повторення.' : 'Записано як «знаю».'}</div><div class="actions" style="margin-top:12px"><button class="primary" id="mtNext">Ще п’ять пар</button><a href="#/facts/${this.tk}/learn"><button>Картки</button></a></div>` : ''}
+    </div>`;
+    $$('.mitem[data-l]').forEach(b => b.onclick = () => { const i = +b.dataset.l; if (this.done.has(i)) return; this.selL = this.selL === i ? null : i; this.render(); });
+    $$('.mitem[data-r]').forEach(b => b.onclick = () => { const i = +b.dataset.r; if (this.done.has(i) || this.selL == null) return; this.pickR(i, b); });
+    const n = $('#mtNext'); if (n) n.onclick = () => { this.round++; if (this.make()) this.render(); };
+  },
+  pickR(i, el) {
+    const l = this.selL;
+    if (i === l) { this.done.add(i); this.selL = null; record(this.pairs[i].it, this.f.k, !this.errs.has(i), this.errs.has(i) ? 'again' : 'good'); this.render(); }
+    else { this.mistakes++; this.errs.add(l); el.classList.add('bad'); setTimeout(() => el.classList.remove('bad'), 500); if (navigator.vibrate) navigator.vibrate(50); if (window.noteConfusion) try { noteConfusion('fact:' + this.pairs[l].it.id, this.pairs[l].it.id, this.pairs[i].it.id); } catch (e) {} }
+  }
+};
+
 document.addEventListener('keydown', e => { Learn.key(e); Quiz.key(e); });
 
 /* ---- блок на сторінці теми курсу ---- */
@@ -171,7 +213,7 @@ function topicHtml(id) {
   const s = stat(items), tk = topicKey(id); const groups = [...new Set(items.map(i => i.group))];
   return `<h2 class="section-title">Теорія: ${esc(typeName(items))}</h2>
     <div class="factsum"><p class="muted" style="margin:0 0 8px;font-size:14px">${s.total} ${plural(s.total, 'картка', 'картки', 'карток')} · ${groups.map(g => esc(g)).join(' · ')}</p>
-    <div class="actions"><a href="#/facts/${tk}/learn"><button class="primary">${s.due ? `Повторити ${s.due}` : s.seen ? 'Вчити далі' : 'Вчити картки'} →</button></a><a href="#/facts/${tk}"><button>Переглянути</button></a><a href="#/facts/${tk}/quiz"><button>Тест</button></a>${s.seen ? `<span class="muted" style="font-size:13px">${s.mastered}/${s.total} засвоєно</span>` : ''}</div></div>`;
+    <div class="actions"><a href="#/facts/${tk}/learn"><button class="primary">${s.due ? `Повторити ${s.due}` : s.seen ? 'Вчити далі' : 'Вчити картки'} →</button></a><a href="#/facts/${tk}"><button>Переглянути</button></a><a href="#/facts/${tk}/quiz"><button>Тест</button></a>${items.length >= 3 ? `<a href="#/facts/${tk}/match"><button>З’єднай пари</button></a>` : ''}${s.seen ? `<span class="muted" style="font-size:13px">${s.mastered}/${s.total} засвоєно</span>` : ''}</div></div>`;
 }
 
 /* ---- «Сьогодні» і бейдж ---- */
@@ -190,6 +232,7 @@ ROUTES.facts = parts => {
   const tk = parts[0]; if (!tk) return renderHub();
   if (parts[1] === 'learn') return Learn.start(tk);
   if (parts[1] === 'quiz') return Quiz.start(tk);
+  if (parts[1] === 'match') return Match.start(tk);
   return renderTopic(tk);
 };
 window.Facts = { byTopic, topicHtml, stat, dueCards, topicKey };
