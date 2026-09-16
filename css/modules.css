@@ -216,3 +216,12 @@ html.tg footer{padding-bottom:24px}
 
 .btn3d{white-space:nowrap}
 @media(max-width:600px){.sethead .btn3d{order:5;flex:1 1 100%;margin-top:6px}}
+
+/* ---- Біологія (js/bio.js) ---- */
+.seqpicked{display:flex;flex-direction:column;gap:6px;min-height:40px}
+.seqstep{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font-size:15px;line-height:1.35}
+.seqstep .num{flex:0 0 24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+.seqstep.ok{border-color:var(--ok);background:var(--ok-soft)}.seqstep.bad{border-color:var(--bad);background:var(--bad-soft)}
+.seqpool{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.seqopt{text-align:left;white-space:normal;padding:10px 12px;line-height:1.35;font-size:15px;border-radius:10px}
+.punnett{border-collapse:collapse;font-size:14px}.punnett th,.punnett td{border:1px solid var(--line2);padding:4px 10px;text-align:center}.punnett th{background:var(--accent-soft)}

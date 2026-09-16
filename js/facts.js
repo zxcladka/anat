@@ -19,6 +19,7 @@ const seenItem = it => fieldsOf(it).some(f => !isNew(it, f.k));
 const masteredItem = it => fieldsOf(it).every(f => srsMastered(rec(it, f.k)));
 const topics = () => [...new Set(F.items.map(i => i.topic))];
 function topicInfo(tk) {
+  if (tk.startsWith('bio:') && window.BIO) { const t = BIO.topics.find(x => x.id === tk); return { title: t ? t.title : tk, n: t ? t.n : '', href: t ? '#/bio/' + t.n : '#/bio', m: { id: 'bio', title: 'Медична біологія' } }; }
   const c = (window.Course && Course.course()) || (window.CURRICULUM && CURRICULUM.courses[0]); const [mid, n] = tk.split(':');
   const m = c && c.modules.find(x => x.id === mid); const t = m && m.topics.find(x => x.n === +n);
   return { title: t ? t.title.split('.')[0] : tk, n: t ? t.n : '', href: t ? `#/course/${m.id}/${t.n}` : '#/course', m };
@@ -36,12 +37,12 @@ function itemHtml(it, open, hl) {
 /* ---- огляд ---- */
 function renderHub() {
   const s = stat(F.items); const c = (window.Course && Course.course()) || (window.CURRICULUM && CURRICULUM.courses[0]);
-  const groups = {}; for (const tk of topics().sort((a, b) => { const [ma, na] = a.split(':'), [mb, nb] = b.split(':'); return ma.localeCompare(mb) || (+na - +nb); })) { const info = topicInfo(tk); const mid = info.m ? info.m.id : tk.split(':')[0]; (groups[mid] = groups[mid] || []).push(tk); }
+  const groups = {}; for (const tk of topics().sort((a, b) => { const [ma, na] = a.split(':'), [mb, nb] = b.split(':'); const w = x => x === 'bio' ? 'zz' : x; return w(ma).localeCompare(w(mb)) || (+na - +nb); })) { const info = topicInfo(tk); const mid = info.m ? info.m.id : tk.split(':')[0]; (groups[mid] = groups[mid] || []).push(tk); }
   app.innerHTML = `<div class="wrap">
     <section class="page-hero"><h1>Теорія</h1><p>Картки для тем без схем: м’язи — початок, прикріплення, функція та іннервація; суглоби — форма, поверхні, зв’язки, рухи; черепні нерви — ядра, вихід, гілки, ділянка іннервації. Повторення за тим самим алгоритмом, що й схеми.</p></section>
     <div class="tiles"><div class="tile"><b>${s.total}</b><span>структур</span></div><div class="tile"><b>${s.seen}</b><span>у повторенні</span></div><div class="tile"><b>${s.mastered}</b><span>засвоєно</span></div><div class="tile"><b>${s.due}</b><span>карток до повторення</span></div></div>
     <div class="actions">${s.due ? `<a href="#/facts/all/learn"><button class="primary">Повторити ${s.due} →</button></a>` : ''}<a href="#/facts/all/quiz"><button>Тест по всьому</button></a></div>
-    ${Object.entries(groups).map(([mid, tks]) => { const m = c && c.modules.find(x => x.id === mid); return `<h2 class="section-title">${esc(m ? m.title : mid)}</h2><div class="queue">${tks.map(tk => { const info = topicInfo(tk), st = stat(byTopic(tk)); return `<a href="#/facts/${tk}"><span class="tnum">${info.n}</span><span class="t">${esc(info.title)}<small class="muted"> · ${st.total} ${esc(typeName(byTopic(tk)))}</small></span><span class="c">${st.due ? `<b>${st.due}</b> до повторення` : st.seen ? `${st.mastered}/${st.total} засвоєно` : 'нова тема'}</span></a>`; }).join('')}</div>`; }).join('')}
+    ${Object.entries(groups).map(([mid, tks]) => { const m = (c && c.modules.find(x => x.id === mid)) || (mid === 'bio' ? { title: 'Медична біологія' } : null); return `<h2 class="section-title">${esc(m ? m.title : mid)}</h2><div class="queue">${tks.map(tk => { const info = topicInfo(tk), st = stat(byTopic(tk)); return `<a href="#/facts/${tk}"><span class="tnum">${info.n}</span><span class="t">${esc(info.title)}<small class="muted"> · ${st.total} ${esc(typeName(byTopic(tk)))}</small></span><span class="c">${st.due ? `<b>${st.due}</b> до повторення` : st.seen ? `${st.mastered}/${st.total} засвоєно` : 'нова тема'}</span></a>`; }).join('')}</div>`; }).join('')}
   </div>`;
   window.scrollTo(0, 0);
 }
