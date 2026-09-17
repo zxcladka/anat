@@ -1,0 +1,317 @@
+{
+ "ascaris-egg": {
+  "title": "File:A lumbricoides fertilized egg.jpg",
+  "artist": "Microrao",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:A_lumbricoides_fertilized_egg.jpg"
+ },
+ "ascaris-egg-unfert": {
+  "title": "File:Ascaris egg unfert2 200x.jpg",
+  "artist": "Centers for Disease Control and Prevention",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Ascaris_egg_unfert2_200x.jpg"
+ },
+ "trichuris-egg": {
+  "title": "File:Trichuris trichiura egg.tif",
+  "artist": "CDC/ B.G. Partin",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Trichuris_trichiura_egg.tif"
+ },
+ "enterobius-egg": {
+  "title": "File:Enterobius vermicularis (01).tif",
+  "artist": "Courtesy: Public Health Image Library",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Enterobius_vermicularis_(01).tif"
+ },
+ "hookworm-egg": {
+  "title": "File:Necator americanus, Ancylostoma duodenale egg.jpg",
+  "artist": "CDC, Courtesy: Public Health Image Library",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Necator_americanus,_Ancylostoma_duodenale_egg.jpg"
+ },
+ "trichinella-larva": {
+  "title": "File:Trichinella spiralis cysts.tif",
+  "artist": "CDC/Courtesy: Public Health Image Library",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Trichinella_spiralis_cysts.tif"
+ },
+ "taenia-egg": {
+  "title": "File:T.saginata-egg.jpg",
+  "artist": "Stefan Walkowski",
+  "license": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:T.saginata-egg.jpg"
+ },
+ "taenia-solium-scolex": {
+  "title": "File:Taenia solium tapeworm scolex with its four suckers and two rows of hooks 5262 lores.jpg",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Taenia_solium_tapeworm_scolex_with_its_four_suckers_and_two_rows_of_hooks_5262_lores.jpg"
+ },
+ "taenia-saginata-proglottid": {
+  "title": "File:Gravid proglottid from the cestode Taenia saginata 5259 lores.jpg",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Gravid_proglottid_from_the_cestode_Taenia_saginata_5259_lores.jpg"
+ },
+ "hymenolepis-egg": {
+  "title": "File:H nana eggB.JPG",
+  "artist": "Image contributed by Georgia Department of Public Health.",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:H_nana_eggB.JPG"
+ },
+ "diphyllobothrium-egg": {
+  "title": "File:Diphyl eggA.jpg",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Diphyl_eggA.jpg"
+ },
+ "echinococcus-hydatid": {
+  "title": "File:E.granulosus-protoscolex.jpg",
+  "artist": "Stefan Walkowski",
+  "license": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:E.granulosus-protoscolex.jpg"
+ },
+ "echinococcus-cyst": {
+  "title": "File:Echinococcus (hydatid) cyst involving liver and lung.jpg",
+  "artist": "Yale Rosen",
+  "license": "CC BY-SA 2.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Echinococcus_(hydatid)_cyst_involving_liver_and_lung.jpg"
+ },
+ "fasciola-egg": {
+  "title": "File:Egg of Fasciola hepatica 08G0041 lores.jpg",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Egg_of_Fasciola_hepatica_08G0041_lores.jpg"
+ },
+ "opisthorchis-egg": {
+  "title": "File:Opisthorchis viverrini egg.png",
+  "artist": "DPDx, a Web site developed and maintained by CDC’s Division of Parasitic Disease",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Opisthorchis_viverrini_egg.png"
+ },
+ "clonorchis-egg": {
+  "title": "File:Clonorchis sinensis egg 06G0049 jpg lores.jpg",
+  "artist": "Photo Credit:\nContent Providers(s): CDC/Dr. Mae Melvin",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Clonorchis_sinensis_egg_06G0049_jpg_lores.jpg"
+ },
+ "paragonimus-egg": {
+  "title": "File:Paragonimus westermani 01.jpg",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Paragonimus_westermani_01.jpg"
+ },
+ "schistosoma-mansoni-egg": {
+  "title": "File:Schistosoma mansoni egg 4841 lores.jpg",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Schistosoma_mansoni_egg_4841_lores.jpg"
+ },
+ "schistosoma-haematobium-egg": {
+  "title": "File:Schistosoma haematobium egg 4843 lores.jpg",
+  "artist": "CDC, Public Health Image Library (PHIL)",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Schistosoma_haematobium_egg_4843_lores.jpg"
+ },
+ "dicrocoelium-egg": {
+  "title": "File:Dicrocoelium dendriticum (YPM IZ 094337).jpeg",
+  "artist": "Daniel J. Drew",
+  "license": "CC0",
+  "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Dicrocoelium_dendriticum_(YPM_IZ_094337).jpeg"
+ },
+ "giardia-troph": {
+  "title": "File:Giardia lamblia in a late stage of cell division.jpg",
+  "artist": "Dr. Stan Erlandsen",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Giardia_lamblia_in_a_late_stage_of_cell_division.jpg"
+ },
+ "entamoeba-cyst": {
+  "title": "File:Entamoeba histolytica mature cyst.jpg",
+  "artist": "Stefan Walkowski",
+  "license": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_mature_cyst.jpg"
+ },
+ "entamoeba-troph": {
+  "title": "File:Trophozoites of Entamoeba histolytica with ingested erythrocytes.JPG",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Trophozoites_of_Entamoeba_histolytica_with_ingested_erythrocytes.JPG"
+ },
+ "balantidium": {
+  "title": "File:Balantidium coli trophozoite.jpg",
+  "artist": "Roland Yao Wa Kouassi, Scott William McGraw, Patrick Kouassi Yao, Ahmed Abou-Bac",
+  "license": "CC BY 4.0",
+  "licurl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Balantidium_coli_trophozoite.jpg"
+ },
+ "trichomonas": {
+  "title": "File:Trichomonas Giemsa DPDx.JPG",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Trichomonas_Giemsa_DPDx.JPG"
+ },
+ "toxoplasma": {
+  "title": "File:Toxoplasma gondii tachy.jpg",
+  "artist": "DPDx Image Library",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Toxoplasma_gondii_tachy.jpg"
+ },
+ "plasmodium-falciparum": {
+  "title": "File:P. falciparum thin smear ring forms and gametocyte.jpg",
+  "artist": "Jenkayaks",
+  "license": "CC BY-SA 3.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:P._falciparum_thin_smear_ring_forms_and_gametocyte.jpg"
+ },
+ "plasmodium-vivax": {
+  "title": "File:Immature and mature trophozoites of the Plasmodium vivax parasite PHIL 2720 lores.jpg",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Immature_and_mature_trophozoites_of_the_Plasmodium_vivax_parasite_PHIL_2720_lores.jpg"
+ },
+ "leishmania": {
+  "title": "File:Leishmania donovani amastigotes in Giemsa stained smear of FNAC.jpg",
+  "artist": "Ajay Kumar Chaurasiya",
+  "license": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Leishmania_donovani_amastigotes_in_Giemsa_stained_smear_of_FNAC.jpg"
+ },
+ "trypanosoma-brucei": {
+  "title": "File:Trypanosoma sp. PHIL 613 lores.jpg",
+  "artist": "Photo Credit:\nContent Providers: CDC/Dr. Myron G. Schultz",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Trypanosoma_sp._PHIL_613_lores.jpg"
+ },
+ "trypanosoma-cruzi": {
+  "title": "File:T. cruzi trypomastigotes in peripheral blood smear.jpg",
+  "artist": "CDC",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:T._cruzi_trypomastigotes_in_peripheral_blood_smear.jpg"
+ },
+ "cryptosporidium": {
+  "title": "File:Oocists de Cryptosporidium parvum 2.jpg",
+  "artist": "CDC - DPDx - Laboratory Identification of Parasites of Public Health Concern",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Oocists_de_Cryptosporidium_parvum_2.jpg"
+ },
+ "sarcoptes": {
+  "title": "File:Itch mite (247 32A).jpg",
+  "artist": "Doc. RNDr. Josef Reischig, CSc.",
+  "license": "CC BY-SA 3.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Itch_mite_(247_32A).jpg"
+ },
+ "demodex": {
+  "title": "File:Demodex mite 1.JPG",
+  "artist": "Joel Mills",
+  "license": "CC BY-SA 3.0",
+  "licurl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Demodex_mite_1.JPG"
+ },
+ "pediculus": {
+  "title": "File:Male human head louse.jpg",
+  "artist": "Gilles San Martin",
+  "license": "CC BY-SA 2.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Male_human_head_louse.jpg"
+ },
+ "phthirus": {
+  "title": "File:Pthirus pubis - crab louse.jpg",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Pthirus_pubis_-_crab_louse.jpg"
+ },
+ "ixodes": {
+  "title": "File:Ixodes ricinus on dry grass.jpg",
+  "artist": "W.alter",
+  "license": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ixodes_ricinus_on_dry_grass.jpg"
+ },
+ "anopheles": {
+  "title": "File:Anopheles stephensi.jpeg",
+  "artist": "Jim Gathany",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Anopheles_stephensi.jpeg"
+ },
+ "culex": {
+  "title": "File:Diptera - Mosquito - Culex cf pipiens (3470380619).jpg",
+  "artist": "Mick Talbot from Lincoln (U.K.), England",
+  "license": "CC BY 2.0",
+  "licurl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Diptera_-_Mosquito_-_Culex_cf_pipiens_(3470380619).jpg"
+ },
+ "cimex": {
+  "title": "File:Bed bug, Cimex lectularius.jpg",
+  "artist": "Content Providers(s): CDC/ Harvard University, Dr. Gary Alpert; Dr. Harold Harla",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Bed_bug,_Cimex_lectularius.jpg"
+ },
+ "musca": {
+  "title": "File:Musca domestica September 2007-1.jpg",
+  "artist": "Alvesgaspar",
+  "license": "CC BY-SA 3.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Musca_domestica_September_2007-1.jpg"
+ },
+ "ascaris-adult": {
+  "title": "File:Ascaris lumbricoides.jpeg",
+  "artist": "Wikimedia Commons",
+  "license": "Public domain",
+  "licurl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Ascaris_lumbricoides.jpeg"
+ },
+ "taenia-cysticercus": {
+  "title": "File:Cysticercus cellulosae.jpg",
+  "artist": "Bansal S, Suri A, Sharma MC, Kakkar A.",
+  "license": "CC BY-SA 3.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cysticercus_cellulosae.jpg"
+ },
+ "toxocara-egg": {
+  "title": "File:Toxocara canis.JPG",
+  "artist": "Joel Mills",
+  "license": "CC BY-SA 3.0",
+  "licurl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Toxocara_canis.JPG"
+ },
+ "giardia-cyst": {
+  "title": "File:Cyst of Giardia lamblia in Methylene blue stain.jpg",
+  "artist": "Ajay Kumar Chaurasiya",
+  "license": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cyst_of_Giardia_lamblia_in_Methylene_blue_stain.jpg"
+ }
+}

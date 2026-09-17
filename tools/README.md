@@ -84,3 +84,6 @@
 ## Біологія
 
 `atlas/bio.js` — картки трьох типів (organelle, gendis, parasite) додаються у FACTS з темами `bio:1`–`bio:4`; `BIO.topics`, `BIO.sequences` (етапи по порядку, підказка). `js/bio.js` — хаб `#/bio`, тема `#/bio/<n>`, послідовність `#/bio/seq/<id>` (SRS-ключ `bio:seq|<id>|q`), генератор задач `#/bio/gen/<mono|di|xlinked|abo>` (ключ `bio:gen|<kind>|q`); картки вчить js/facts.js (topicInfo знає `bio:*`).
+
+## Мікроскоп (tools/micro/)
+`targets.json` — цілі (id + пошуковий запит), `fetch_commons.py` — пошук на Commons через API (curl; лише PD/CC BY/CC BY-SA), `download_cands.py` — прев'ю перших 3 кандидатів і контактні аркуші `sheet_*.jpg` для відбору очима, `select.json` — обраний індекс для кожної цілі, далі скрипт копіює фото в `atlas/micro/<id>.jpg` (≤900 px) і пише `credits.json`; `build_micro.py` — описи (ознаки, «не плутати», матеріал, розмір) + кредити → `atlas/micro.js`. CDC DPDx напряму блокує curl (403) — брати через Commons.

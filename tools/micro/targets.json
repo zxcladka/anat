@@ -1,0 +1,194 @@
+[
+{
+"id": "ascaris-egg",
+"q": "Ascaris lumbricoides fertilized egg"
+},
+{
+"id": "ascaris-egg-unfert",
+"q": "Ascaris lumbricoides unfertilized egg"
+},
+{
+"id": "trichuris-egg",
+"q": "Trichuris trichiura egg"
+},
+{
+"id": "enterobius-egg",
+"q": "Enterobius vermicularis eggs"
+},
+{
+"id": "hookworm-egg",
+"q": "hookworm egg Ancylostoma duodenale"
+},
+{
+"id": "trichinella-larva",
+"q": "Trichinella spiralis larvae muscle"
+},
+{
+"id": "taenia-egg",
+"q": "Taenia egg oncosphere"
+},
+{
+"id": "taenia-solium-scolex",
+"q": "Taenia solium scolex hooks"
+},
+{
+"id": "taenia-saginata-proglottid",
+"q": "Taenia saginata gravid proglottid"
+},
+{
+"id": "hymenolepis-egg",
+"q": "Hymenolepis nana egg"
+},
+{
+"id": "diphyllobothrium-egg",
+"q": "Diphyllobothrium latum egg"
+},
+{
+"id": "fasciola-egg",
+"q": "Fasciola hepatica egg"
+},
+{
+"id": "opisthorchis-egg",
+"q": "Opisthorchis egg"
+},
+{
+"id": "clonorchis-egg",
+"q": "Clonorchis sinensis egg"
+},
+{
+"id": "paragonimus-egg",
+"q": "Paragonimus westermani egg"
+},
+{
+"id": "schistosoma-mansoni-egg",
+"q": "Schistosoma mansoni egg lateral spine"
+},
+{
+"id": "schistosoma-haematobium-egg",
+"q": "Schistosoma haematobium egg terminal spine"
+},
+{
+"id": "dicrocoelium-egg",
+"q": "Dicrocoelium dendriticum egg"
+},
+{
+"id": "giardia-troph",
+"q": "Giardia lamblia trophozoite"
+},
+{
+"id": "entamoeba-cyst",
+"q": "Entamoeba histolytica cyst"
+},
+{
+"id": "entamoeba-troph",
+"q": "Entamoeba histolytica trophozoite erythrocytes"
+},
+{
+"id": "balantidium",
+"q": "Balantidium coli trophozoite"
+},
+{
+"id": "trichomonas",
+"q": "Trichomonas vaginalis trophozoite"
+},
+{
+"id": "toxoplasma",
+"q": "Toxoplasma gondii tachyzoites"
+},
+{
+"id": "plasmodium-falciparum",
+"q": "Plasmodium falciparum ring forms blood smear"
+},
+{
+"id": "plasmodium-vivax",
+"q": "Plasmodium vivax trophozoite blood smear"
+},
+{
+"id": "leishmania",
+"q": "Leishmania amastigotes"
+},
+{
+"id": "trypanosoma-brucei",
+"q": "Trypanosoma brucei blood smear"
+},
+{
+"id": "cryptosporidium",
+"q": "Cryptosporidium oocysts acid-fast stain"
+},
+{
+"id": "sarcoptes",
+"q": "Sarcoptes scabiei mite"
+},
+{
+"id": "pediculus",
+"q": "Pediculus humanus capitis louse"
+},
+{
+"id": "phthirus",
+"q": "Pthirus pubis"
+},
+{
+"id": "ixodes",
+"q": "Ixodes ricinus tick"
+},
+{
+"id": "anopheles",
+"q": "Anopheles mosquito female"
+},
+{
+"id": "culex",
+"q": "Culex pipiens mosquito"
+},
+{
+"id": "cimex",
+"q": "Cimex lectularius bed bug"
+},
+{
+"id": "musca",
+"q": "Musca domestica housefly"
+},
+{
+"id": "ascaris-adult",
+"q": "Ascaris lumbricoides adult worms"
+},
+{
+"id": "echinococcus-hydatid",
+"q": "Echinococcus granulosus protoscolex"
+},
+{
+"id": "echinococcus-cyst",
+"q": "hydatid cyst Echinococcus liver"
+},
+{
+"id": "strongyloides-larva",
+"q": "Strongyloides stercoralis larva stool"
+},
+{
+"id": "trypanosoma-cruzi",
+"q": "Trypanosoma cruzi blood smear trypomastigotes"
+},
+{
+"id": "demodex",
+"q": "Demodex mite microscope"
+},
+{
+"id": "giardia-cyst",
+"q": "Giardia lamblia cyst"
+},
+{
+"id": "enterobius-adult",
+"q": "Enterobius vermicularis pinworm female microscope"
+},
+{
+"id": "taenia-cysticercus",
+"q": "cysticercus Taenia solium"
+},
+{
+"id": "toxocara-egg",
+"q": "Toxocara egg"
+},
+{
+"id": "anopheles-culex-larva",
+"q": "Anopheles Culex larvae comparison"
+}
+]

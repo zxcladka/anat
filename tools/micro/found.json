@@ -1,0 +1,3047 @@
+{
+ "ascaris-egg": {
+  "q": "Ascaris lumbricoides fertilized egg",
+  "cands": [
+   {
+    "title": "File:Fertilized egg of Ascaris lumbricoides PHIL 410 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC/ Dr. Mae Melvin",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Fertilized_egg_of_Ascaris_lumbricoides_PHIL_410_lores.jpg/960px-Fertilized_egg_of_Ascaris_lumbricoides_PHIL_410_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2896,
+    "h": 1976,
+    "desc": "ID#:\t410\nDescription:\tThis micrograph reveals a fertilized egg of the round worm Ascaris lumbricoides; Mag. 400X.\nFertilized eggs are rounded, have a thick shell. While unfertilized eggs are elongated",
+    "src": "https://commons.wikimedia.org/wiki/File:Fertilized_egg_of_Ascaris_lumbricoides_PHIL_410_lores.jpg"
+   },
+   {
+    "title": "File:Egg of Ascaris lumbricoides.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Egg_of_Ascaris_lumbricoides.jpg/960px-Egg_of_Ascaris_lumbricoides.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3264,
+    "h": 2448,
+    "desc": "Ascaris lumbricoides eggs are characterized by the following features:\nSize: They are relatively large compared to many other intestinal parasites, typically measuring around 35 to 75 micrometers in l",
+    "src": "https://commons.wikimedia.org/wiki/File:Egg_of_Ascaris_lumbricoides.jpg"
+   },
+   {
+    "title": "File:A lumbricoides fertilized egg.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Microrao",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f5/A_lumbricoides_fertilized_egg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 616,
+    "h": 436,
+    "desc": "Saline wet mount of feces showing fertilized egg of Ascaris lumbricoides",
+    "src": "https://commons.wikimedia.org/wiki/File:A_lumbricoides_fertilized_egg.jpg"
+   },
+   {
+    "title": "File:Wiki A lumbricoides decorticated egg.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Microrao",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/90/Wiki_A_lumbricoides_decorticated_egg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 552,
+    "h": 378,
+    "desc": "Saline wet mount preparation of feces showing fertilized but decorticated egg of Ascaris lumbricoides (roundworm)",
+    "src": "https://commons.wikimedia.org/wiki/File:Wiki_A_lumbricoides_decorticated_egg.jpg"
+   }
+  ]
+ },
+ "ascaris-egg-unfert": {
+  "q": "Ascaris lumbricoides unfertilized egg",
+  "cands": [
+   {
+    "title": "File:Unfertilized Ascariasis Egg.jpeg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Centers for Disease Control and Prevention",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/69/Unfertilized_Ascariasis_Egg.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 300,
+    "h": 300,
+    "desc": "Figure A: Unfertilized egg of A. lumbricoides. Note the prominent mammillations on the outer layer.",
+    "src": "https://commons.wikimedia.org/wiki/File:Unfertilized_Ascariasis_Egg.jpeg"
+   },
+   {
+    "title": "File:Fertilized egg of Ascaris lumbricoides PHIL 410 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC/ Dr. Mae Melvin",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Fertilized_egg_of_Ascaris_lumbricoides_PHIL_410_lores.jpg/960px-Fertilized_egg_of_Ascaris_lumbricoides_PHIL_410_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2896,
+    "h": 1976,
+    "desc": "ID#:\t410\nDescription:\tThis micrograph reveals a fertilized egg of the round worm Ascaris lumbricoides; Mag. 400X.\nFertilized eggs are rounded, have a thick shell. While unfertilized eggs are elongated",
+    "src": "https://commons.wikimedia.org/wiki/File:Fertilized_egg_of_Ascaris_lumbricoides_PHIL_410_lores.jpg"
+   },
+   {
+    "title": "File:Ascaris egg unfert2 200x.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Centers for Disease Control and Prevention",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Ascaris_egg_unfert2_200x.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 300,
+    "h": 300,
+    "desc": "Figure B: Unfertilized egg of A. lumbricoides in an unstained wet mount, 200x magnification.",
+    "src": "https://commons.wikimedia.org/wiki/File:Ascaris_egg_unfert2_200x.jpg"
+   },
+   {
+    "title": "File:Ascaris egg unfert decort 200x.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Centers for Disease Control and Prevention",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Ascaris_egg_unfert_decort_200x.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 300,
+    "h": 300,
+    "desc": "Figure D: Unfertilized egg of A. lumbricoides in a wet mount of stool. Note this specimen lacks the mammillated layer (decorticated).",
+    "src": "https://commons.wikimedia.org/wiki/File:Ascaris_egg_unfert_decort_200x.jpg"
+   },
+   {
+    "title": "File:Ascaris lumbrcoides infertile BAM1.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Centers for Disease Control and Prevention",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Ascaris_lumbrcoides_infertile_BAM1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 300,
+    "h": 300,
+    "desc": "Figure C: Unfertilized egg of A. lumbricoides in an unstained wet mount of stool.",
+    "src": "https://commons.wikimedia.org/wiki/File:Ascaris_lumbrcoides_infertile_BAM1.jpg"
+   },
+   {
+    "title": "File:Ascariasis LifeCycle lg.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "DPDx is an educational resource designed for health professionals and laboratory",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Ascariasis_LifeCycle_lg.jpg/960px-Ascariasis_LifeCycle_lg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2000,
+    "h": 1838,
+    "desc": "This is an illustration of the life cycle of Ascaris lumbricoides, the causal agent of ascariasis. Adult worms image live in the lumen of the small intestine. A female may produce approximately 200,00",
+    "src": "https://commons.wikimedia.org/wiki/File:Ascariasis_LifeCycle_lg.jpg"
+   }
+  ]
+ },
+ "trichuris-egg": {
+  "q": "Trichuris trichiura egg",
+  "cands": [
+   {
+    "title": "File:Trichuris trichiura eggs, including HE stain.jpg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Mikael Häggström, M.D. Author info - Reusing images- Conflicts of interest:  Non",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Trichuris_trichiura_eggs%2C_including_HE_stain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 401,
+    "h": 265,
+    "desc": "Trichuris trichiura eggs, with C showing HE stain",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichuris_trichiura_eggs,_including_HE_stain.jpg"
+   },
+   {
+    "title": "File:Trichuris trichiura egg (01).tif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC/ Dr. Mae Melvin, Courtesy: Public Health Image Library",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Trichuris_trichiura_egg_%2801%29.tif/lossy-page1-960px-Trichuris_trichiura_egg_%2801%29.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2967,
+    "h": 1929,
+    "desc": "This photomicrograph reveals an egg from the nematode Trichuris trichiura; Mag. 400X.",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichuris_trichiura_egg_(01).tif"
+   },
+   {
+    "title": "File:Trichuris trichiura egg.tif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC/ B.G. Partin",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Trichuris_trichiura_egg.tif/lossy-page1-960px-Trichuris_trichiura_egg.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3042,
+    "h": 2010,
+    "desc": "This micrograph depicts an egg from the “human whipworm”, Trichuris trichiura, the causal agent of “Trichuriasis”. Source: Public Health Image Library (PHIL)",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichuris_trichiura_egg.tif"
+   },
+   {
+    "title": "File:Trichuris trichiura eggs.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Kerstin Fischer, Abakar Gankpala, Lincoln Gankpala, Fatorma K. Bolay, Kurt C. Cu",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/67/Trichuris_trichiura_eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 276,
+    "h": 265,
+    "desc": "Trichuris trichiura eggs found in stool samples from persons in Lofa County, Liberia, in samples positive for T. trichiura by Kato-Katz smear and by qPCR.",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichuris_trichiura_eggs.jpg"
+   },
+   {
+    "title": "File:Eggs of Trichuris trichiura and Trichuris vulpis 06G0018 jpg lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Unknown photographer/CDC",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Eggs_of_Trichuris_trichiura_and_Trichuris_vulpis_06G0018_jpg_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 697,
+    "h": 461,
+    "desc": "ID#:\t630\nDescription:\tEggs of Trichuris trichiura and Trichuris vulpis.\nEggs of Trichuris trichiura and Trichuris vulpis. The T. vulpis egg is the larger of the two. Parasite.\nContent Providers(s):\tCD",
+    "src": "https://commons.wikimedia.org/wiki/File:Eggs_of_Trichuris_trichiura_and_Trichuris_vulpis_06G0018_jpg_lores.jpg"
+   },
+   {
+    "title": "File:Egg of Trichuris trichiura.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Microrao",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Egg_of_Trichuris_trichiura.jpg/960px-Egg_of_Trichuris_trichiura.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1276,
+    "h": 744,
+    "desc": "Egg of Trichuris trichiura",
+    "src": "https://commons.wikimedia.org/wiki/File:Egg_of_Trichuris_trichiura.jpg"
+   },
+   {
+    "title": "File:Trichuris trichura egg.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Netha Hussain",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Trichuris_trichura_egg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 286,
+    "h": 469,
+    "desc": "Egg of Trichuris trichura",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichuris_trichura_egg.jpg"
+   },
+   {
+    "title": "File:Trichuris trichiura (YPM IZ 095167).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Trichuris_trichiura_%28YPM_IZ_095167%29.jpeg/960px-Trichuris_trichiura_%28YPM_IZ_095167%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1423,
+    "desc": "\nPRESERVED_SPECIMEN; ; ; microslide; ; IZ number 95167; lot count 1; Microslide 01, glycerin, whole mount; egg; other number N-4:III-2;",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichuris_trichiura_(YPM_IZ_095167).jpeg"
+   }
+  ]
+ },
+ "enterobius-egg": {
+  "q": "Enterobius vermicularis eggs",
+  "cands": [
+   {
+    "title": "File:Antonio e Biagio e Cesare Arrigo Enterobius vermicularis Eggs 1.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ufficio Comunicazione, Azienda Ospedaliera SS. Antonio e Biagio e Cesare Arrigo,",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Antonio_e_Biagio_e_Cesare_Arrigo_Enterobius_vermicularis_Eggs_1.jpg/960px-Antonio_e_Biagio_e_Cesare_Arrigo_Enterobius_vermicularis_Eggs_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2560,
+    "h": 1920,
+    "desc": "Eggs of enterobius vermicularis",
+    "src": "https://commons.wikimedia.org/wiki/File:Antonio_e_Biagio_e_Cesare_Arrigo_Enterobius_vermicularis_Eggs_1.jpg"
+   },
+   {
+    "title": "File:Enterobius vermicularis (01).tif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Courtesy: Public Health Image Library",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Enterobius_vermicularis_%2801%29.tif/lossy-page1-960px-Enterobius_vermicularis_%2801%29.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1795,
+    "h": 1216,
+    "desc": "This photomicrograph depicts the eggs of the nematode, or round worm Enterobius vermicularis mounted on cellulose tape.",
+    "src": "https://commons.wikimedia.org/wiki/File:Enterobius_vermicularis_(01).tif"
+   },
+   {
+    "title": "File:Egg of Enterobius vermicularis.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Egg_of_Enterobius_vermicularis.jpg/960px-Egg_of_Enterobius_vermicularis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4000,
+    "h": 2250,
+    "desc": "The egg of Enterobius vermicularis observed in urine microscopy is oval, with one flattened side, and contains a visible larva. Its presence in urine is atypical and usually suggests accidental contam",
+    "src": "https://commons.wikimedia.org/wiki/File:Egg_of_Enterobius_vermicularis.jpg"
+   },
+   {
+    "title": "File:Antonio e Biagio e Cesare Arrigo Enterobius vermicularis Eggs.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ufficio Comunicazione, Azienda Ospedaliera SS. Antonio e Biagio e Cesare Arrigo,",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Antonio_e_Biagio_e_Cesare_Arrigo_Enterobius_vermicularis_Eggs.jpg/960px-Antonio_e_Biagio_e_Cesare_Arrigo_Enterobius_vermicularis_Eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1280,
+    "h": 960,
+    "desc": "Full growt enterobius vermicularis and eggs",
+    "src": "https://commons.wikimedia.org/wiki/File:Antonio_e_Biagio_e_Cesare_Arrigo_Enterobius_vermicularis_Eggs.jpg"
+   },
+   {
+    "title": "File:Enterobius vermicularis art2t.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "J3D3",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Enterobius_vermicularis_art2t.jpg/960px-Enterobius_vermicularis_art2t.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1000,
+    "h": 875,
+    "desc": "egg of Enterobius vermicularis",
+    "src": "https://commons.wikimedia.org/wiki/File:Enterobius_vermicularis_art2t.jpg"
+   },
+   {
+    "title": "File:Histopathology of enterobius vermicularis eggs, HE stain.jpg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Mikael Häggström, M.D. Author info - Reusing images- Conflicts of interest:  Non",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/5/54/Histopathology_of_enterobius_vermicularis_eggs%2C_HE_stain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 787,
+    "h": 827,
+    "desc": "Cross-section of enterobius vermicularis egg. HE stain.",
+    "src": "https://commons.wikimedia.org/wiki/File:Histopathology_of_enterobius_vermicularis_eggs,_HE_stain.jpg"
+   },
+   {
+    "title": "File:Enterobius vermicularis Art.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "J3D3",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Enterobius_vermicularis_Art.jpg/960px-Enterobius_vermicularis_Art.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1161,
+    "h": 960,
+    "desc": "Egg of Enterobius vermicularis, color digitally enhanced",
+    "src": "https://commons.wikimedia.org/wiki/File:Enterobius_vermicularis_Art.jpg"
+   },
+   {
+    "title": "File:Enterobius vermicularis egg.jpg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Mikael Häggström, M.D. Author info - Reusing images- Conflicts of interest:  Non",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Enterobius_vermicularis_egg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 603,
+    "h": 417,
+    "desc": "Cross-section of enterobius vermicularis egg HE stain. It measures 50μm.",
+    "src": "https://commons.wikimedia.org/wiki/File:Enterobius_vermicularis_egg.jpg"
+   }
+  ]
+ },
+ "hookworm-egg": {
+  "q": "hookworm egg Ancylostoma duodenale",
+  "cands": [
+   {
+    "title": "File:Necator americanus, Ancylostoma duodenale egg.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC, Courtesy: Public Health Image Library",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Necator_americanus%2C_Ancylostoma_duodenale_egg.jpg/960px-Necator_americanus%2C_Ancylostoma_duodenale_egg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1788,
+    "h": 1194,
+    "desc": "This embryonated egg is indistinguishable between the Ancylostoma duodenale or Necator americanus hookworm.",
+    "src": "https://commons.wikimedia.org/wiki/File:Necator_americanus,_Ancylostoma_duodenale_egg.jpg"
+   }
+  ]
+ },
+ "trichinella-larva": {
+  "q": "Trichinella spiralis larvae muscle",
+  "cands": [
+   {
+    "title": "File:Trichinella spiralis larvae within muscle.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Self",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Trichinella_spiralis_larvae_within_muscle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 640,
+    "h": 480,
+    "desc": "Trichinella spiralis larvae within the diaphragm muscle of a pig (at pointer tip). Trichinella were historically transmitted to humans by eating undercooked pork.",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichinella_spiralis_larvae_within_muscle.jpg"
+   },
+   {
+    "title": "File:Trichinella spiralis cysts.tif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC/Courtesy: Public Health Image Library",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Trichinella_spiralis_cysts.tif/lossy-page1-960px-Trichinella_spiralis_cysts.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3000,
+    "h": 2355,
+    "desc": "This is a photomicrograph depicting numbers of Trichinella spiralis cysts seen embedded in a muscle tissue specimen, in a case of trichinellosis.Trichinellosis is acquired by ingesting meat containing",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichinella_spiralis_cysts.tif"
+   },
+   {
+    "title": "File:Trichinella spiralis (01).jpg",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "MostlyDross",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Trichinella_spiralis_%2801%29.jpg/960px-Trichinella_spiralis_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3872,
+    "h": 2592,
+    "desc": "Trichinella spiralis. Nikon 1 V1, FT1, NDPL-1(2X) microscope adapter, Swift M3200 series microscope, 40X objective. Magnification about 96X on the sensor.\n\nPrepared Konus slide #4918 No.3 showing musc",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichinella_spiralis_(01).jpg"
+   },
+   {
+    "title": "File:Trichinella larvaeD.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/4/42/Trichinella_larvaeD.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 200,
+    "h": 200,
+    "desc": "Trichinella spiralis larvae in muscle tissue.",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichinella_larvaeD.jpg"
+   },
+   {
+    "title": "File:Trichinella LifeCycle.gif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Trichinella_LifeCycle.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 551,
+    "h": 548,
+    "desc": "Trichinellosis  [Trichinella spiralis] [T. pseudospiralis]\n[T. nativa] [T. nelsoni] [T. britovi] \t\nLife cycle of Trichinella spp.\n\nTrichinellosis is acquired by ingesting meat containing cysts (encyst",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichinella_LifeCycle.gif"
+   },
+   {
+    "title": "File:Trichinella LifeCycle(French version).GIF",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/69/Trichinella_LifeCycle%28French_version%29.GIF?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 435,
+    "h": 501,
+    "desc": "Trichinellosis  [Trichinella spiralis] [T. pseudospiralis]\n[T. nativa] [T. nelsoni] [T. britovi] \t\nTraduction en français de l’image suivante :\nTrichinella_LifeCycle.GIF\nLife cycle of Trichinella spp.",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichinella_LifeCycle(French_version).GIF"
+   },
+   {
+    "title": "File:Compound microscope used to examine meat, France, 1851-1900 Wellcome L0057251.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Compound_microscope_used_to_examine_meat%2C_France%2C_1851-1900_Wellcome_L0057251.jpg/960px-Compound_microscope_used_to_examine_meat%2C_France%2C_1851-1900_Wellcome_L0057251.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2832,
+    "h": 4256,
+    "desc": "\nThe inspection of meat was important due to the potential dangers associated with the product. For example, there have been numerous outbreaks of trichinosis due to poor meat hygiene. Trichinosis is ",
+    "src": "https://commons.wikimedia.org/wiki/File:Compound_microscope_used_to_examine_meat,_France,_1851-1900_Wellcome_L0057251.jpg"
+   }
+  ]
+ },
+ "taenia-egg": {
+  "q": "Taenia egg oncosphere",
+  "cands": [
+   {
+    "title": "File:T.saginata-egg.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Stefan Walkowski",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/T.saginata-egg.jpg/960px-T.saginata-egg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1200,
+    "h": 900,
+    "desc": "Taenia saginata - the inner embryophore is radially striated, with a visible embryo (oncosphere) in the centre.",
+    "src": "https://commons.wikimedia.org/wiki/File:T.saginata-egg.jpg"
+   },
+   {
+    "title": "File:Cysticercosis(French version).jpeg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cysticercosis%28French_version%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 533,
+    "desc": "Taenia soliumPlatyhelminthes Cestoda\nTaenia\nCysticercosis(French_version).GIF\t\nTraduction en français de l’image suivante :\nCysticercosis.GIF\nLife cycle of Taenia solium\n\nTaeniasis is the infection of",
+    "src": "https://commons.wikimedia.org/wiki/File:Cysticercosis(French_version).jpeg"
+   }
+  ]
+ },
+ "taenia-solium-scolex": {
+  "q": "Taenia solium scolex hooks",
+  "cands": [
+   {
+    "title": "File:Taenia solium tapeworm scolex with its four suckers and two rows of hooks 5262 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/36/Taenia_solium_tapeworm_scolex_with_its_four_suckers_and_two_rows_of_hooks_5262_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 688,
+    "h": 464,
+    "desc": "ID#:\t5262\nDescription:\tThis micrograph reveals the morphology of a Taenia solium tapeworm scolex with its four suckers, and two rows of hooks.\nIn the human intestine, the cysticercus, i.e. larval stag",
+    "src": "https://commons.wikimedia.org/wiki/File:Taenia_solium_tapeworm_scolex_with_its_four_suckers_and_two_rows_of_hooks_5262_lores.jpg"
+   },
+   {
+    "title": "File:Tapeworm scolex examples.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "커뷰, CDC and Hubert Ludwig",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/7/78/Tapeworm_scolex_examples.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 816,
+    "h": 777,
+    "desc": "Tapeworm scoleces:\nA: Taenia solium scolex – illustrated\nB: Taenia saginata scolex – illustrated\nC: Taenia solium scolex – 4 suckers, rostellum, one row of hooks\nD: Diphyllobothrium spp. scolex – with",
+    "src": "https://commons.wikimedia.org/wiki/File:Tapeworm_scolex_examples.jpg"
+   }
+  ]
+ },
+ "taenia-saginata-proglottid": {
+  "q": "Taenia saginata gravid proglottid",
+  "cands": [
+   {
+    "title": "File:Gravid proglottid from the cestode Taenia saginata 5259 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Gravid_proglottid_from_the_cestode_Taenia_saginata_5259_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 463,
+    "desc": "ID#:\t5259\nDescription:\tThis micrograph reveals the morphology of a gravid proglottid from the cestode Taenia saginata, a tapeworm.\nThe number of primary lateral uterine branches, i.e. the dark India i",
+    "src": "https://commons.wikimedia.org/wiki/File:Gravid_proglottid_from_the_cestode_Taenia_saginata_5259_lores.jpg"
+   },
+   {
+    "title": "File:Taenia Gravid Proglottid.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "The Other 95%",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Taenia_Gravid_Proglottid.jpg/960px-Taenia_Gravid_Proglottid.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2381,
+    "h": 1197,
+    "desc": "Gravid proglottid of Taenia taken under a dissecting scope.",
+    "src": "https://commons.wikimedia.org/wiki/File:Taenia_Gravid_Proglottid.jpg"
+   },
+   {
+    "title": "File:Taenia solium-detailed morphology.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC/ Dr. Mae Melvin",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/64/Taenia_solium-detailed_morphology.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 463,
+    "desc": "Under a very low magnification of only 8X; this photomicrograph revealed some of the ultrastructural morphology exhibited by three Taenia solium proglottids. Proglottids of Taenia spp. Gravid proglott",
+    "src": "https://commons.wikimedia.org/wiki/File:Taenia_solium-detailed_morphology.jpg"
+   },
+   {
+    "title": "File:Cysticercosis(French version).jpeg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cysticercosis%28French_version%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 533,
+    "desc": "Taenia soliumPlatyhelminthes Cestoda\nTaenia\nCysticercosis(French_version).GIF\t\nTraduction en français de l’image suivante :\nCysticercosis.GIF\nLife cycle of Taenia solium\n\nTaeniasis is the infection of",
+    "src": "https://commons.wikimedia.org/wiki/File:Cysticercosis(French_version).jpeg"
+   }
+  ]
+ },
+ "hymenolepis-egg": {
+  "q": "Hymenolepis nana egg",
+  "cands": [
+   {
+    "title": "File:Egg of Hymenolepis nana.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Egg_of_Hymenolepis_nana.jpg/960px-Egg_of_Hymenolepis_nana.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3264,
+    "h": 2448,
+    "desc": "Hymenolepis nana, commonly known as the dwarf tapeworm, is a parasitic worm that can infect the human digestive system, particularly the small intestine. It is one of the smallest tapeworms that can i",
+    "src": "https://commons.wikimedia.org/wiki/File:Egg_of_Hymenolepis_nana.jpg"
+   },
+   {
+    "title": "File:H nana eggB.JPG",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Image contributed by Georgia Department of Public Health.",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/93/H_nana_eggB.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 199,
+    "h": 200,
+    "desc": "Egg of Hymenolepis nana.  These eggs are oval and smaller than those of H. diminuta, their size being 30 to 55 µm.  On the inner membrane are two poles, from which 4 to 8 polar filaments spread out be",
+    "src": "https://commons.wikimedia.org/wiki/File:H_nana_eggB.JPG"
+   },
+   {
+    "title": "File:4836 lores.jpg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "CDC",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e5/4836_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 469,
+    "desc": "This photomicrograph reveals ultrastructural details exhibited by a single Hymenolepis nana tapeworm ovum. H. nana eggs are oval, or subspherical in shape, and are 40µm-60µm X 30µm-50µm in size, which",
+    "src": "https://commons.wikimedia.org/wiki/File:4836_lores.jpg"
+   },
+   {
+    "title": "File:Collage of various helminth eggs.png",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "SusanA Secretariat Catalina Maya Rendón",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/4/45/Collage_of_various_helminth_eggs.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 602,
+    "h": 500,
+    "desc": "Collage of various helminth eggs: Ascaris fertile (roundworm), Trichuris (whipworm), Hymenolepis diminuta (rat tapeworm), Hymenolepis nana (Dwarf tapeworm), Taenia (tapeworm), Toxocara (roundworm), Ne",
+    "src": "https://commons.wikimedia.org/wiki/File:Collage_of_various_helminth_eggs.png"
+   },
+   {
+    "title": "File:H nana LifeCycle.gif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/9f/H_nana_LifeCycle.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 520,
+    "h": 435,
+    "desc": "",
+    "src": "https://commons.wikimedia.org/wiki/File:H_nana_LifeCycle.gif"
+   },
+   {
+    "title": "File:Helminths eggs (01).png",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "SusanA Secretariat Catalina Maya Rendón",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Helminths_eggs_%2801%29.png/960px-Helminths_eggs_%2801%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1098,
+    "h": 1032,
+    "desc": "Collage of various helminth eggs:  from left to right: Trichosomoides egg, Ascaris lumbricoides with larva hatching, sample of adult roundworms, Hymenolepis nana, Schistosoma mansoni and Toxocara cani",
+    "src": "https://commons.wikimedia.org/wiki/File:Helminths_eggs_(01).png"
+   },
+   {
+    "title": "File:Parasitic worm eggs.tif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Chandler, Asa Crawford, 1891-",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Parasitic_worm_eggs.tif/lossy-page1-960px-Parasitic_worm_eggs.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1438,
+    "h": 1517,
+    "desc": "Title: Animal parasites and human disease New York, J. Wiley, Cornell University Library. Fig. 61. Eggs of parasitic worms, drawn to scale. X 200. (After various authors.) A, Schistosoma haematobium, ",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasitic_worm_eggs.tif"
+   },
+   {
+    "title": "File:Hymenolepisegg.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Mahsa7414",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Hymenolepisegg.jpg/960px-Hymenolepisegg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2417,
+    "h": 1829,
+    "desc": "egg of hymenolepis nana",
+    "src": "https://commons.wikimedia.org/wiki/File:Hymenolepisegg.jpg"
+   }
+  ]
+ },
+ "diphyllobothrium-egg": {
+  "q": "Diphyllobothrium latum egg",
+  "cands": [
+   {
+    "title": "File:Diphyllobothrium latum egg.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Stefan Walkowski",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Diphyllobothrium_latum_egg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 800,
+    "h": 600,
+    "desc": "Diphyllobothrium latum - a fertilized egg with a visible operculum, opposite to the knob.",
+    "src": "https://commons.wikimedia.org/wiki/File:Diphyllobothrium_latum_egg.jpg"
+   },
+   {
+    "title": "File:Diphyllobothrium latum proglottid.png",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "커뷰",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Diphyllobothrium_latum_proglottid.png/960px-Diphyllobothrium_latum_proglottid.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1269,
+    "h": 1141,
+    "desc": "Diphyllobothrium latum, gravid proglottid showing the uterus to contain eggs and the genital pore.",
+    "src": "https://commons.wikimedia.org/wiki/File:Diphyllobothrium_latum_proglottid.png"
+   },
+   {
+    "title": "File:Diphyl eggA.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Diphyl_eggA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 200,
+    "h": 200,
+    "desc": "",
+    "src": "https://commons.wikimedia.org/wiki/File:Diphyl_eggA.jpg"
+   },
+   {
+    "title": "File:Яйцо широкого лентеца. х400.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Vladimir064",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/%D0%AF%D0%B9%D1%86%D0%BE_%D1%88%D0%B8%D1%80%D0%BE%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BB%D0%B5%D0%BD%D1%82%D0%B5%D1%86%D0%B0._%D1%85400.jpg/960px-%D0%AF%D0%B9%D1%86%D0%BE_%D1%88%D0%B8%D1%80%D0%BE%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BB%D0%B5%D0%BD%D1%82%D0%B5%D1%86%D0%B0._%D1%85400.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2955,
+    "h": 2915,
+    "desc": "Diphyllobothrium latum egg.х400",
+    "src": "https://commons.wikimedia.org/wiki/File:%D0%AF%D0%B9%D1%86%D0%BE_%D1%88%D0%B8%D1%80%D0%BE%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BB%D0%B5%D0%BD%D1%82%D0%B5%D1%86%D0%B0._%D1%85400.jpg"
+   }
+  ]
+ },
+ "fasciola-egg": {
+  "q": "Fasciola hepatica egg",
+  "cands": [
+   {
+    "title": "File:Fasciola hepatica egg (01).png",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Servier Medical Art",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/0/03/Fasciola_hepatica_egg_%2801%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 851,
+    "h": 931,
+    "desc": "Fasciola hepatica egg",
+    "src": "https://commons.wikimedia.org/wiki/File:Fasciola_hepatica_egg_(01).png"
+   },
+   {
+    "title": "File:Egg of Fasciola hepatica 08G0041 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Egg_of_Fasciola_hepatica_08G0041_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 531,
+    "h": 392,
+    "desc": "ID#:\t1540\nDescription:\tEgg of Fasciola hepatica.\nContent Providers(s):\tCDC/Dr. Mae Melvin\nCreation Date:\t1979\n\nCopyright Restrictions:\tNone - This image is in the public domain and thus free of any co",
+    "src": "https://commons.wikimedia.org/wiki/File:Egg_of_Fasciola_hepatica_08G0041_lores.jpg"
+   },
+   {
+    "title": "File:Fasciola hepatica egg embryonated (01).png",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Servier Medical Art",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/96/Fasciola_hepatica_egg_embryonated_%2801%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 812,
+    "h": 977,
+    "desc": "Fasciola hepatica embryonated",
+    "src": "https://commons.wikimedia.org/wiki/File:Fasciola_hepatica_egg_embryonated_(01).png"
+   },
+   {
+    "title": "File:Fasciola Hepatica egg (liverfluke) (15767790812).jpg",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "SuSanA Secretariat",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/4/47/Fasciola_Hepatica_egg_%28liverfluke%29_%2815767790812%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 129,
+    "h": 123,
+    "desc": "130 to 150 micro m long and 60 to 90 micro m wide. Each adult worm can produce up to 25,000 eggs per day, and, in a light infection, up to 500,000 eggs per day can be deposited onto pasture by a singl",
+    "src": "https://commons.wikimedia.org/wiki/File:Fasciola_Hepatica_egg_(liverfluke)_(15767790812).jpg"
+   },
+   {
+    "title": "File:Fasciola hepatica wm with eggs.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "The Other 95%",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Fasciola_hepatica_wm_with_eggs.jpg/960px-Fasciola_hepatica_wm_with_eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1280,
+    "h": 720,
+    "desc": "Fasciola hepatica w.m with eggs",
+    "src": "https://commons.wikimedia.org/wiki/File:Fasciola_hepatica_wm_with_eggs.jpg"
+   },
+   {
+    "title": "File:Fasciola hepatica wm (5) anterior with eggs.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "The Other 95%",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Fasciola_hepatica_wm_%285%29_anterior_with_eggs.jpg/960px-Fasciola_hepatica_wm_%285%29_anterior_with_eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1280,
+    "h": 720,
+    "desc": "Fasciola hepatica wm.  Anterior region with eggs",
+    "src": "https://commons.wikimedia.org/wiki/File:Fasciola_hepatica_wm_(5)_anterior_with_eggs.jpg"
+   },
+   {
+    "title": "File:EB1911 Trematodes - Fasciola hepatica.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "various",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/b/bf/EB1911_Trematodes_-_Fasciola_hepatica.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 773,
+    "h": 1047,
+    "desc": "A, Fasciola hepatica, from the ventral surface; the alimentary and nervous systems only shown on the left side of the figure, the excretory only on the right; a, right main branch of the intestine; c,",
+    "src": "https://commons.wikimedia.org/wiki/File:EB1911_Trematodes_-_Fasciola_hepatica.jpg"
+   },
+   {
+    "title": "File:Infectiology - Fasciola hepatica - Unembryonated egg -- Smart-Servier.png",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Laboratoires Servier",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Infectiology_-_Fasciola_hepatica_-_Unembryonated_egg_--_Smart-Servier.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 424,
+    "h": 391,
+    "desc": "Fasciola hepatica - Unembryonated egg",
+    "src": "https://commons.wikimedia.org/wiki/File:Infectiology_-_Fasciola_hepatica_-_Unembryonated_egg_--_Smart-Servier.png"
+   }
+  ]
+ },
+ "opisthorchis-egg": {
+  "q": "Opisthorchis egg",
+  "cands": [
+   {
+    "title": "File:Opisthorchis viverrini egg.png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "DPDx, a Web site developed and maintained by CDC’s Division of Parasitic Disease",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Opisthorchis_viverrini_egg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 77,
+    "h": 115,
+    "desc": "An egg of Opisthorchis_viverrini. 400× magnification.",
+    "src": "https://commons.wikimedia.org/wiki/File:Opisthorchis_viverrini_egg.png"
+   },
+   {
+    "title": "File:Opisthorchis LifeCycle.gif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Opisthorchis_LifeCycle.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 518,
+    "h": 435,
+    "desc": "Opisthorchiasis [Opisthorchis felineus] [Opisthorchis viverrini] \t\nCausal Agent:\nTrematodes (flukes) Opisthorchis viverrini (Southeast Asian liver fluke) and O. felineus (cat liver fluke).\nLife cycle ",
+    "src": "https://commons.wikimedia.org/wiki/File:Opisthorchis_LifeCycle.gif"
+   },
+   {
+    "title": "File:PMC2946733 tropmed-83-734-g002 (1).png",
+    "lic": "CC BY 2.5",
+    "licurl": "https://creativecommons.org/licenses/by/2.5",
+    "artist": "Tappe D, Triefenbach R",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/a/a0/PMC2946733_tropmed-83-734-g002_%281%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 500,
+    "h": 371,
+    "desc": "F2: Close-up of Opisthorchis sp. Multiple branches of the egg-filled uterus are visible, flanked by the paired ceca on this cross section through the midbody of the aspinous fluke. Eggs measure 32 × 1",
+    "src": "https://commons.wikimedia.org/wiki/File:PMC2946733_tropmed-83-734-g002_(1).png"
+   },
+   {
+    "title": "File:O viverrini egg.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "cdc",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/7/7d/O_viverrini_egg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 300,
+    "h": 300,
+    "desc": "Egg of O. viverrini in an unstained wet mount of concentrated stool",
+    "src": "https://commons.wikimedia.org/wiki/File:O_viverrini_egg.jpg"
+   },
+   {
+    "title": "File:Egg of Liver Fluke.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Egg_of_Liver_Fluke.jpg/960px-Egg_of_Liver_Fluke.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3264,
+    "h": 2448,
+    "desc": "Fasciola hepatica and Fasciola gigantica:\nSize: Larger than Clonorchis and Opisthorchis eggs; approximately 130-150 µm by 60-90 µm.\nShape: Oval to ellipsoidal.\nShell: Golden-brown and thick.\nContent: ",
+    "src": "https://commons.wikimedia.org/wiki/File:Egg_of_Liver_Fluke.jpg"
+   },
+   {
+    "title": "File:Parasitic worm eggs.tif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Chandler, Asa Crawford, 1891-",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Parasitic_worm_eggs.tif/lossy-page1-960px-Parasitic_worm_eggs.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1438,
+    "h": 1517,
+    "desc": "Title: Animal parasites and human disease New York, J. Wiley, Cornell University Library. Fig. 61. Eggs of parasitic worms, drawn to scale. X 200. (After various authors.) A, Schistosoma haematobium, ",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasitic_worm_eggs.tif"
+   },
+   {
+    "title": "File:Nema Fig5.gif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Division of Parasitic Diseases and Malaria of Centers for Disease Control and Pr",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/68/Nema_Fig5.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 650,
+    "h": 393,
+    "desc": "Eggs of digenean parasites of human.",
+    "src": "https://commons.wikimedia.org/wiki/File:Nema_Fig5.gif"
+   }
+  ]
+ },
+ "clonorchis-egg": {
+  "q": "Clonorchis sinensis egg",
+  "cands": [
+   {
+    "title": "File:Clonorchis sinensis egg 06G0049 jpg lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Photo Credit:\nContent Providers(s): CDC/Dr. Mae Melvin",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/5/51/Clonorchis_sinensis_egg_06G0049_jpg_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 673,
+    "h": 450,
+    "desc": "Clonorchis sinensis egg. Parasite.",
+    "src": "https://commons.wikimedia.org/wiki/File:Clonorchis_sinensis_egg_06G0049_jpg_lores.jpg"
+   },
+   {
+    "title": "File:Clonorchis sinensis LifeCycle.png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Clonorchis_sinensis_LifeCycle.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 562,
+    "h": 435,
+    "desc": "Clonorchiasis  [Clonorchis sinensis] \t\nCausal Agent:\nThe trematode Clonorchis sinensis (Chinese or oriental liver fluke).\nLife Cycle:\nLife cycle of Clonorchis sinensis\nEmbryonated eggs are discharged ",
+    "src": "https://commons.wikimedia.org/wiki/File:Clonorchis_sinensis_LifeCycle.png"
+   },
+   {
+    "title": "File:Clonorchis sinensis LifeCycle(French version).png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Clonorchis_sinensis_LifeCycle%28French_version%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 562,
+    "h": 435,
+    "desc": "Embryonated eggs are discharged in the biliary ducts and in the stool .  Eggs are ingested by a suitable snail intermediate host ; there are more than 100 species of snails that can serve as intermedi",
+    "src": "https://commons.wikimedia.org/wiki/File:Clonorchis_sinensis_LifeCycle(French_version).png"
+   },
+   {
+    "title": "File:Clonorchis sinensis LifeCycle-ar.png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Derivative: علاء",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Clonorchis_sinensis_LifeCycle-ar.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 562,
+    "h": 435,
+    "desc": "Clonorchiasis",
+    "src": "https://commons.wikimedia.org/wiki/File:Clonorchis_sinensis_LifeCycle-ar.png"
+   },
+   {
+    "title": "File:Clonorchis wm posterior to stoma.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "The Other 95%",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Clonorchis_wm_posterior_to_stoma.jpg/960px-Clonorchis_wm_posterior_to_stoma.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1280,
+    "h": 720,
+    "desc": "Shows ceca, ventral sucker, anterior ovaries with embryonated eggs, and yolk glands",
+    "src": "https://commons.wikimedia.org/wiki/File:Clonorchis_wm_posterior_to_stoma.jpg"
+   },
+   {
+    "title": "File:Clonorchis wm Anterior end with gonopore visible.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "The Other 95%",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Clonorchis_wm_Anterior_end_with_gonopore_visible.jpg/960px-Clonorchis_wm_Anterior_end_with_gonopore_visible.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1280,
+    "h": 720,
+    "desc": "Clonorchis  visiblle:  anterior and ventral sucker, pharynx, esophagus, and gonopore.  (There is an egg following the duct leading to it, just anterior to the ventral sucker.)",
+    "src": "https://commons.wikimedia.org/wiki/File:Clonorchis_wm_Anterior_end_with_gonopore_visible.jpg"
+   },
+   {
+    "title": "File:Clonorchis wm uterus and seminal vessicle.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "The Other 95%",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Clonorchis_wm_uterus_and_seminal_vessicle.jpg/960px-Clonorchis_wm_uterus_and_seminal_vessicle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1280,
+    "h": 720,
+    "desc": "Clonorchis wm uterus and seminal vessicle.  Anterior of animal to the right, with more embronated eggs.",
+    "src": "https://commons.wikimedia.org/wiki/File:Clonorchis_wm_uterus_and_seminal_vessicle.jpg"
+   },
+   {
+    "title": "File:Nema Fig5.gif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Division of Parasitic Diseases and Malaria of Centers for Disease Control and Pr",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/68/Nema_Fig5.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 650,
+    "h": 393,
+    "desc": "Eggs of digenean parasites of human.",
+    "src": "https://commons.wikimedia.org/wiki/File:Nema_Fig5.gif"
+   }
+  ]
+ },
+ "paragonimus-egg": {
+  "q": "Paragonimus westermani egg",
+  "cands": [
+   {
+    "title": "File:Paragonimus westermani 01.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Paragonimus_westermani_01.jpg/960px-Paragonimus_westermani_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1767,
+    "h": 1178,
+    "desc": "",
+    "src": "https://commons.wikimedia.org/wiki/File:Paragonimus_westermani_01.jpg"
+   },
+   {
+    "title": "File:Paragonimus westermani egg.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "DPDx Image Library",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Paragonimus_westermani_egg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 189,
+    "h": 195,
+    "desc": "Egg of lung fluke (Paragonimus wetermani).",
+    "src": "https://commons.wikimedia.org/wiki/File:Paragonimus_westermani_egg.jpg"
+   },
+   {
+    "title": "File:Paragonimus LifeCycle.gif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/0/03/Paragonimus_LifeCycle.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 519,
+    "h": 435,
+    "desc": "",
+    "src": "https://commons.wikimedia.org/wiki/File:Paragonimus_LifeCycle.gif"
+   },
+   {
+    "title": "File:Nema Fig5.gif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Division of Parasitic Diseases and Malaria of Centers for Disease Control and Pr",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/68/Nema_Fig5.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 650,
+    "h": 393,
+    "desc": "Eggs of digenean parasites of human.",
+    "src": "https://commons.wikimedia.org/wiki/File:Nema_Fig5.gif"
+   }
+  ]
+ },
+ "schistosoma-mansoni-egg": {
+  "q": "Schistosoma mansoni egg lateral spine",
+  "cands": [
+   {
+    "title": "File:Schistosoma mansoni egg 4841 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Schistosoma_mansoni_egg_4841_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 454,
+    "desc": "ID#:\t4841\nDescription:\tThis micrograph depicts an egg from the parasite Schistosoma mansoni, and reveals the egg’s characteristic lateral spine.\nS. mansoni eggs are large, measuring 114µm -180µm in le",
+    "src": "https://commons.wikimedia.org/wiki/File:Schistosoma_mansoni_egg_4841_lores.jpg"
+   }
+  ]
+ },
+ "schistosoma-haematobium-egg": {
+  "q": "Schistosoma haematobium egg terminal spine",
+  "cands": [
+   {
+    "title": "File:Schistosoma haematobium egg 4843 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC, Public Health Image Library (PHIL)",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Schistosoma_haematobium_egg_4843_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 460,
+    "desc": "ID#:4843\nThis micrograph depicts an egg from a Schistosoma haematobium trematode parasite; magnified 500x. Note the egg's posteriorly-protruding, terminal spine, unlike the spinal remnant, which protr",
+    "src": "https://commons.wikimedia.org/wiki/File:Schistosoma_haematobium_egg_4843_lores.jpg"
+   }
+  ]
+ },
+ "dicrocoelium-egg": {
+  "q": "Dicrocoelium dendriticum egg",
+  "cands": [
+   {
+    "title": "File:Dicrocoelium dendriticum (YPM IZ 094321).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Dicrocoelium_dendriticum_%28YPM_IZ_094321%29.jpeg/960px-Dicrocoelium_dendriticum_%28YPM_IZ_094321%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1421,
+    "desc": "\nPRESERVED_SPECIMEN; ; ; microslide; ; IZ number 94321; lot count 1; Microslide 01, balsam, whole mount; egg; other number P-5:I-5;",
+    "src": "https://commons.wikimedia.org/wiki/File:Dicrocoelium_dendriticum_(YPM_IZ_094321).jpeg"
+   },
+   {
+    "title": "File:Dicrocoelium dendriticum (YPM IZ 094353).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Dicrocoelium_dendriticum_%28YPM_IZ_094353%29.jpeg/960px-Dicrocoelium_dendriticum_%28YPM_IZ_094353%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1500,
+    "desc": "\nPRESERVED_SPECIMEN; ; ; microslide; ; IZ number 94353; lot count 1; Microslide 01, balsam, whole mount; egg; other number P-13:I-6;",
+    "src": "https://commons.wikimedia.org/wiki/File:Dicrocoelium_dendriticum_(YPM_IZ_094353).jpeg"
+   },
+   {
+    "title": "File:D dendriticum egg wtmt JCG C.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Dr. Juan Cuadros González",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c8/D_dendriticum_egg_wtmt_JCG_C.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 300,
+    "h": 300,
+    "desc": "Dicrocoelium dendriticum egg in an unstained stool wet mount slide.",
+    "src": "https://commons.wikimedia.org/wiki/File:D_dendriticum_egg_wtmt_JCG_C.jpg"
+   },
+   {
+    "title": "File:Dicrocoelium dendriticum (YPM IZ 094337).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Dicrocoelium_dendriticum_%28YPM_IZ_094337%29.jpeg/960px-Dicrocoelium_dendriticum_%28YPM_IZ_094337%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1422,
+    "desc": "\nPRESERVED_SPECIMEN; ; ; microslide; ; IZ number 94337; lot count 1; Microslide 01, balsam, whole mount; egg; other number P-9:I-6;",
+    "src": "https://commons.wikimedia.org/wiki/File:Dicrocoelium_dendriticum_(YPM_IZ_094337).jpeg"
+   },
+   {
+    "title": "File:Dicrocoelium dendriticum (YPM IZ 094336).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Dicrocoelium_dendriticum_%28YPM_IZ_094336%29.jpeg/960px-Dicrocoelium_dendriticum_%28YPM_IZ_094336%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1422,
+    "desc": "\nPRESERVED_SPECIMEN; ; ; microslide; ; IZ number 94336; lot count 1; Microslide 01, balsam, whole mount; egg; other number P-10:I-6;",
+    "src": "https://commons.wikimedia.org/wiki/File:Dicrocoelium_dendriticum_(YPM_IZ_094336).jpeg"
+   },
+   {
+    "title": "File:Dicrocoelium dendriticum (YPM IZ 094322).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Dicrocoelium_dendriticum_%28YPM_IZ_094322%29.jpeg/960px-Dicrocoelium_dendriticum_%28YPM_IZ_094322%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1421,
+    "desc": "\nPRESERVED_SPECIMEN; ; ; microslide; ; IZ number 94322; lot count 1; Microslide 01, balsam, whole mount; egg; other number P-4:I-5;",
+    "src": "https://commons.wikimedia.org/wiki/File:Dicrocoelium_dendriticum_(YPM_IZ_094322).jpeg"
+   },
+   {
+    "title": "File:Dicrocoelium dendriticum (YPM IZ 094355).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Dicrocoelium_dendriticum_%28YPM_IZ_094355%29.jpeg/960px-Dicrocoelium_dendriticum_%28YPM_IZ_094355%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1422,
+    "desc": "\nPRESERVED_SPECIMEN; ; ; microslide; ; IZ number 94355; lot count 1; Microslide 01, balsam, whole mount; egg; other number P-11:I-6;",
+    "src": "https://commons.wikimedia.org/wiki/File:Dicrocoelium_dendriticum_(YPM_IZ_094355).jpeg"
+   },
+   {
+    "title": "File:Dicrocoelium dendriticum (YPM IZ 094354).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Dicrocoelium_dendriticum_%28YPM_IZ_094354%29.jpeg/960px-Dicrocoelium_dendriticum_%28YPM_IZ_094354%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1422,
+    "desc": "\nPRESERVED_SPECIMEN; ; ; microslide; ; IZ number 94354; lot count 1; Microslide 01, balsam, whole mount; egg; other number P-12:I-6;",
+    "src": "https://commons.wikimedia.org/wiki/File:Dicrocoelium_dendriticum_(YPM_IZ_094354).jpeg"
+   }
+  ]
+ },
+ "giardia-troph": {
+  "q": "Giardia lamblia trophozoite",
+  "cands": [
+   {
+    "title": "File:Giardia lamblia culture.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Department of Health and Human Services",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Giardia_lamblia_culture.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 605,
+    "desc": "This is a scanning electron micrograph (SEM) of an in vitro Giardia lamblia culture, which had been cultivated in bile-free TYI-S-33 medium for 48 hrs, then incubated 24 hrs with 10 mg/ml bovine bile ",
+    "src": "https://commons.wikimedia.org/wiki/File:Giardia_lamblia_culture.jpg"
+   },
+   {
+    "title": "File:Giardia lamblia in a late stage of cell division.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Dr. Stan Erlandsen",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/21/Giardia_lamblia_in_a_late_stage_of_cell_division.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 648,
+    "h": 768,
+    "desc": "This digitally-colorized scanning electron micrograph (SEM) depicted a Giardia lamblia protozoan that was about to become two, separate organisms, as it was caught in a late stage of cell division, pr",
+    "src": "https://commons.wikimedia.org/wiki/File:Giardia_lamblia_in_a_late_stage_of_cell_division.jpg"
+   },
+   {
+    "title": "File:Giardia lamblia SEM 8698 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC / Mahmud Tari",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/0/08/Giardia_lamblia_SEM_8698_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 626,
+    "h": 737,
+    "desc": "This scanning electron micrograph (SEM) revealed some of the external ultrastructural details displayed by a flagellated Giardia lamblia protozoan parasite. G. lamblia is the organism responsible for ",
+    "src": "https://commons.wikimedia.org/wiki/File:Giardia_lamblia_SEM_8698_lores.jpg"
+   },
+   {
+    "title": "File:Giardia trophozoites Giemsa.tif",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Photo by  Eva Nohýnková, Department of Tropical Medicine, 1st Faculty of Medicin",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Giardia_trophozoites_Giemsa.tif/lossy-page1-960px-Giardia_trophozoites_Giemsa.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1188,
+    "h": 911,
+    "desc": "Trophozoites of Giardia lamblia (aka G. intestinalis and G. duodenalis) grown in culture and stained with Giemsa. 100x magnification.",
+    "src": "https://commons.wikimedia.org/wiki/File:Giardia_trophozoites_Giemsa.tif"
+   },
+   {
+    "title": "File:Giardia intestinalis - trophozoite.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Stefan Walkowski",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/21/Giardia_intestinalis_-_trophozoite.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 853,
+    "h": 849,
+    "desc": "Giardia intestinalis - trophozoite.\nIn the microscopic image, the following structures are well visible: nucleus, flagella, parabasal body (dark in the middle) and axonemes.",
+    "src": "https://commons.wikimedia.org/wiki/File:Giardia_intestinalis_-_trophozoite.jpg"
+   },
+   {
+    "title": "File:Giardia intestinalis trophozoite.png",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Servier Medical Art",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Giardia_intestinalis_trophozoite.png/960px-Giardia_intestinalis_trophozoite.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2704,
+    "h": 2636,
+    "desc": "Giardia intestinalis trophozoite",
+    "src": "https://commons.wikimedia.org/wiki/File:Giardia_intestinalis_trophozoite.png"
+   },
+   {
+    "title": "File:Giardia LifeCycle.gif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/91/Giardia_LifeCycle.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 435,
+    "h": 559,
+    "desc": "Giardiasis  [Giardia intestinalis (syn. Giardia lamblia)] \t\nLife cycle of Giardia intestinalis\n\nCysts are resistant forms and are responsible for transmission of giardiasis.  Both cysts and trophozoit",
+    "src": "https://commons.wikimedia.org/wiki/File:Giardia_LifeCycle.gif"
+   },
+   {
+    "title": "File:Giardia LifeCycle(French version).GIF",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Giardia_LifeCycle%28French_version%29.GIF?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 435,
+    "h": 559,
+    "desc": "Giardiasis  [Giardia intestinalis (syn. Giardia lamblia)] \t\ntraduction en français des légendes de l'image suivante :\nGiardia_LifeCycle.gif\ndescription du cycle parasitaite de giardia lamblia illustra",
+    "src": "https://commons.wikimedia.org/wiki/File:Giardia_LifeCycle(French_version).GIF"
+   }
+  ]
+ },
+ "entamoeba-cyst": {
+  "q": "Entamoeba histolytica cyst",
+  "cands": [
+   {
+    "title": "File:Entamoeba histolytica mature cyst.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Stefan Walkowski",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/20/Entamoeba_histolytica_mature_cyst.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 800,
+    "h": 600,
+    "desc": "Entamoeba histolytica mature cyst.",
+    "src": "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_mature_cyst.jpg"
+   },
+   {
+    "title": "File:Entamoeba histolytica binucleate cyst.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Stefan Walkowski",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Entamoeba_histolytica_binucleate_cyst.jpg/960px-Entamoeba_histolytica_binucleate_cyst.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1793,
+    "h": 1344,
+    "desc": "Entamoeba histolytica binucleate cyst with chromatoid bodies.",
+    "src": "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_binucleate_cyst.jpg"
+   },
+   {
+    "title": "File:Entamoeba histolytica quadrinucleate cyst.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Stefan Walkowski",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Entamoeba_histolytica_quadrinucleate_cyst.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 800,
+    "h": 600,
+    "desc": "Entamoeba histolytica quadrinucleate cyst with chromatoid bodies. The nucleus looks like a \"ring and dot\" - peripheral chromatin and central karyosome.",
+    "src": "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_quadrinucleate_cyst.jpg"
+   },
+   {
+    "title": "File:Cyst of Entamoeba histolytica at a magnification of 1600X.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Cyst_of_Entamoeba_histolytica_at_a_magnification_of_1600X.jpg/960px-Cyst_of_Entamoeba_histolytica_at_a_magnification_of_1600X.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3264,
+    "h": 2448,
+    "desc": "The cyst is a dormant and protective stage of the parasite. It is spherical to oval in shape and is typically about 10-20 micrometers in diameter. The cyst wall is thick and consists of a double-layer",
+    "src": "https://commons.wikimedia.org/wiki/File:Cyst_of_Entamoeba_histolytica_at_a_magnification_of_1600X.jpg"
+   },
+   {
+    "title": "File:Entamoeba histolytica cyst.jpg",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Yasser from Cairo",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Entamoeba_histolytica_cyst.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 474,
+    "desc": "This image is in the public domain and thus free of any copyright restrictions. Courtesy of CDC.gov\n\n\nprep4md",
+    "src": "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_cyst.jpg"
+   },
+   {
+    "title": "File:Entamoeba histolytica 01.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Photo Credit:\nContent Providers(s): CDC/ Dr. George Healy",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Entamoeba_histolytica_01.jpg/960px-Entamoeba_histolytica_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2945,
+    "h": 1979,
+    "desc": "This micrograph stained with chlorazol black, revealed an Entamoeba histolytica cyst.\nSeveral protozoan species in the genus Entamoeba infect humans, but not all of them are associated with disease. E",
+    "src": "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_01.jpg"
+   },
+   {
+    "title": "File:Entamoeba histolytica Amebiasis LifeCycle.gif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Entamoeba_histolytica_Amebiasis_LifeCycle.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 435,
+    "h": 548,
+    "desc": "Amebiasis \t[Entamoeba histolytica] \t\nLife Cycle of Entamoeba histolytica\n\nCysts and trophozoites are passed in feces .  Cysts are typically found in formed stool, whereas trophozoites are typically fo",
+    "src": "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_Amebiasis_LifeCycle.gif"
+   },
+   {
+    "title": "File:Ehistdisp cyst wtmt.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC’s Division of Parasitic Diseases",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Ehistdisp_cyst_wtmt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 300,
+    "h": 300,
+    "desc": "E. histolytica/E. dispar cyst in a concentrated wet mount stained with iodine.  The cysts are spherical and often have a halo.  The cyst appears uninucleate.",
+    "src": "https://commons.wikimedia.org/wiki/File:Ehistdisp_cyst_wtmt.jpg"
+   }
+  ]
+ },
+ "entamoeba-troph": {
+  "q": "Entamoeba histolytica trophozoite erythrocytes",
+  "cands": [
+   {
+    "title": "File:Entamoeba histolytica trophozoite.png",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Original micrograph: CDC/ Dr. Mae Melvin; Dr. Greene\nAnnotations by Mikael Häggs",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Entamoeba_histolytica_trophozoite.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 695,
+    "h": 680,
+    "desc": "This photomicrograph of a trichrome-stained specimen revealed the presence of an Entamoeba histolytica trophozoite, within which a number of phagocytized erythrocytes could be seen as dark, round incl",
+    "src": "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_trophozoite.png"
+   },
+   {
+    "title": "File:Trophozoites of Entamoeba histolytica with ingested erythrocytes.JPG",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Trophozoites_of_Entamoeba_histolytica_with_ingested_erythrocytes.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 282,
+    "h": 198,
+    "desc": "Trophozoites of Entamoeba histolytica with ingested erythrocytes (trichrome stain).  The ingested erythrocytes appear as dark inclusions.  Erythrophagocytosis is the only characteristic that can be us",
+    "src": "https://commons.wikimedia.org/wiki/File:Trophozoites_of_Entamoeba_histolytica_with_ingested_erythrocytes.JPG"
+   },
+   {
+    "title": "File:Micrograph of Entamoeba histolytica.jpg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "CDC/ Dr. Mae Melvin; Dr. Greene",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/17/Micrograph_of_Entamoeba_histolytica.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 461,
+    "desc": "This photomicrograph of a trichrome-stained specimen revealed the presence of an Entamoeba histolytica trophozoite, within which a number of phagocytized erythrocytes could be seen as dark, round incl",
+    "src": "https://commons.wikimedia.org/wiki/File:Micrograph_of_Entamoeba_histolytica.jpg"
+   }
+  ]
+ },
+ "balantidium": {
+  "q": "Balantidium coli trophozoite",
+  "cands": [
+   {
+    "title": "File:Balantidium coli trophozoite slide 2.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Sara Nabih",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Balantidium_coli_trophozoite_slide_2.jpg/960px-Balantidium_coli_trophozoite_slide_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4000,
+    "h": 3000,
+    "desc": "Balantidium coli trophozoit",
+    "src": "https://commons.wikimedia.org/wiki/File:Balantidium_coli_trophozoite_slide_2.jpg"
+   },
+   {
+    "title": "File:Balantidium coli trophozoite slide 1.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Sara Nabih",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Balantidium_coli_trophozoite_slide_1.jpg/960px-Balantidium_coli_trophozoite_slide_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4000,
+    "h": 3000,
+    "desc": "Balantidium coli trophozoit",
+    "src": "https://commons.wikimedia.org/wiki/File:Balantidium_coli_trophozoite_slide_1.jpg"
+   },
+   {
+    "title": "File:Balantidium coli trophozoite.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Roland Yao Wa Kouassi, Scott William McGraw, Patrick Kouassi Yao, Ahmed Abou-Bac",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Balantidium_coli_trophozoite.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 727,
+    "h": 567,
+    "desc": "Balantidium coli, found in a primate of the Taï National Park. Scale bar: 5 μm.",
+    "src": "https://commons.wikimedia.org/wiki/File:Balantidium_coli_trophozoite.jpg"
+   },
+   {
+    "title": "File:Balantidium coli trophozoite under microscope.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Nour Dawod",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Balantidium_coli_trophozoite_under_microscope.jpg/960px-Balantidium_coli_trophozoite_under_microscope.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3060,
+    "h": 4080,
+    "desc": "Balantidium coli trophozoite under microscope",
+    "src": "https://commons.wikimedia.org/wiki/File:Balantidium_coli_trophozoite_under_microscope.jpg"
+   },
+   {
+    "title": "File:Balantidium trophB.JPG",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "US gov",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Balantidium_trophB.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 200,
+    "h": 200,
+    "desc": "en:Balantidium Coli en:trophozoite.\nIt's from the US government (CDC) so it's cool to use.\nhttp://images.google.com/imgres?imgurl=http://www.dpd.cdc.gov/dpdx/images/ParasiteImages/A-F/Balantidiasis/Ba",
+    "src": "https://commons.wikimedia.org/wiki/File:Balantidium_trophB.JPG"
+   },
+   {
+    "title": "File:Parasite140080-fig2 Gastrointestinal parasites in seven primates of the Taï National Park - Protozoa.png",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Roland Yao Wa Kouassi, Scott William McGraw, Patrick Kouassi Yao, Ahmed Abou-Bac",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Parasite140080-fig2_Gastrointestinal_parasites_in_seven_primates_of_the_Ta%C3%AF_National_Park_-_Protozoa.png/960px-Parasite140080-fig2_Gastrointestinal_parasites_in_seven_primates_of_the_Ta%C3%AF_National_Park_-_Protozoa.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2009,
+    "h": 1787,
+    "desc": "Gastrointestinal parasites in seven primates of the Taï National Park - Protozoa\nFigure 2 of paper.\n\n(a) Giardia sp. (cyst),\n(b) Entamoeba hartmanni (cyst),\n(c) Chilomastix mesnili (cyst),\n(d) Entamoe",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasite140080-fig2_Gastrointestinal_parasites_in_seven_primates_of_the_Ta%C3%AF_National_Park_-_Protozoa.png"
+   }
+  ]
+ },
+ "trichomonas": {
+  "q": "Trichomonas vaginalis trophozoite",
+  "cands": [
+   {
+    "title": "File:Trichomonas vaginalis.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Stefan Walkowski",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Trichomonas_vaginalis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 420,
+    "h": 738,
+    "desc": "Trichomonas vaginalis - trophozoite",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichomonas_vaginalis.jpg"
+   },
+   {
+    "title": "File:Trichomonas Giemsa DPDx.JPG",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Trichomonas_Giemsa_DPDx.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 203,
+    "h": 197,
+    "desc": "Two trophozoites of Trichomonas vaginalis obtained from in vitro culture.  Smear was stained with Giemsa.",
+    "src": "https://commons.wikimedia.org/wiki/File:Trichomonas_Giemsa_DPDx.JPG"
+   },
+   {
+    "title": "File:Protozoan parasites and their viral endosymbionts.webp",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Barrow, P., Dujardin, J.C., Fasel, N. et al.",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Protozoan_parasites_and_their_viral_endosymbionts.webp/960px-Protozoan_parasites_and_their_viral_endosymbionts.webp?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1773,
+    "h": 2470,
+    "desc": "Protozoan parasites and their viral endosymbionts. The life stages in the human (or mammalian) host of Leishmania spp., Giardia duodenalis, Trichomonas vaginalis, Cryptosporidium spp, and Plasmodium s",
+    "src": "https://commons.wikimedia.org/wiki/File:Protozoan_parasites_and_their_viral_endosymbionts.webp"
+   }
+  ]
+ },
+ "toxoplasma": {
+  "q": "Toxoplasma gondii tachyzoites",
+  "cands": [
+   {
+    "title": "File:Toxoplasma gondii tachy.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "DPDx Image Library",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/39/Toxoplasma_gondii_tachy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 200,
+    "h": 200,
+    "desc": "Toxoplasma gondii tachyzoites, from de:Bild:T gondii tachy.jpg, originally from the DPDx Parasite Image Library, image entry.\nDescription: \"Toxoplasma gondii tachyzoites, stained with Giemsa, from a s",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxoplasma_gondii_tachy.jpg"
+   },
+   {
+    "title": "File:Toxoplasma gondii Tachyzoite (NIH BioArt 683).png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "NIH NIAID\n\nRyan Kissinger",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Toxoplasma_gondii_Tachyzoite_%28NIH_BioArt_683%29.png/960px-Toxoplasma_gondii_Tachyzoite_%28NIH_BioArt_683%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1325,
+    "h": 1321,
+    "desc": "Toxoplasma gondii is a globally distributed parasitic protozoan that causes toxoplasmosis. It can infect nearly all warm-blooded animals, including humans, birds, and other mammals. However, members o",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxoplasma_gondii_Tachyzoite_(NIH_BioArt_683).png"
+   },
+   {
+    "title": "File:Parasite150075-fig2 Toxoplasma gondii in Giant panda.tif",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Hongyu Ma (马宏宇), Zedong Wang (王泽东), Chengdong Wang (王承东), Caiwu Li (李才武), Feng W",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Parasite150075-fig2_Toxoplasma_gondii_in_Giant_panda.tif/lossy-page1-960px-Parasite150075-fig2_Toxoplasma_gondii_in_Giant_panda.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1171,
+    "h": 883,
+    "desc": "Toxoplasma gondii in lung of Giant panda.\nFigure 2 of paper. Immunofluorescence assay (IFA) conducted on the frozen tissues using monoclonal antibodies against tachyzoite-specific surface antigen SAG1",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasite150075-fig2_Toxoplasma_gondii_in_Giant_panda.tif"
+   },
+   {
+    "title": "File:Toxoplasma parasites (tachyzoites) in a fibroblast host cell.png",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Morne Arin (Ksena Longrin, previously known as Kseniia Bondarenko)",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Toxoplasma_parasites_%28tachyzoites%29_in_a_fibroblast_host_cell.png/960px-Toxoplasma_parasites_%28tachyzoites%29_in_a_fibroblast_host_cell.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1254,
+    "h": 1254,
+    "desc": "Image of five Toxoplasma gondii parasites (tachyzoites) in a human foreskin fibroblast, obtained using ultrastructure expansion microscopy",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxoplasma_parasites_(tachyzoites)_in_a_fibroblast_host_cell.png"
+   },
+   {
+    "title": "File:Parasite150075-fig1 Toxoplasma gondii in Giant panda.tif",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Hongyu Ma (马宏宇), Zedong Wang (王泽东), Chengdong Wang (王承东), Caiwu Li (李才武), Feng W",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Parasite150075-fig1_Toxoplasma_gondii_in_Giant_panda.tif/lossy-page1-960px-Parasite150075-fig1_Toxoplasma_gondii_in_Giant_panda.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1165,
+    "h": 877,
+    "desc": "Toxoplasma gondii in lung of Giant panda.\nFigure 1 of paper. Many macrophages containing Toxoplasma gondii tachyzoites (arrow) in the alveoli, and dilated capillaries (arrowhead) in the alveolar wall.",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasite150075-fig1_Toxoplasma_gondii_in_Giant_panda.tif"
+   },
+   {
+    "title": "File:T. gondii tachyzoites.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Persian Microbiologist",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/T._gondii_tachyzoites.jpg/960px-T._gondii_tachyzoites.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3264,
+    "h": 2448,
+    "desc": "فرم تاکی زوِییت توکسوپلاسماگوندی",
+    "src": "https://commons.wikimedia.org/wiki/File:T._gondii_tachyzoites.jpg"
+   },
+   {
+    "title": "File:T gondii IFA.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Unknown authorUnknown author",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/b/b1/T_gondii_IFA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 200,
+    "h": 200,
+    "desc": "Immunfluoreszenznachweis (IFT) von Tachyzoiten",
+    "src": "https://commons.wikimedia.org/wiki/File:T_gondii_IFA.jpg"
+   },
+   {
+    "title": "File:Toxoplasma LifeCycle CDC.gif",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Toxoplasma_LifeCycle_CDC.gif/960px-Toxoplasma_LifeCycle_CDC.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1130,
+    "h": 914,
+    "desc": "toxoplasma gondii life cycle CDC\n1. The only known definitive hosts for Toxoplasma gondii are members of family Felidae (domestic cats and their relatives). Unsporulated oocysts are shed in the cat’s ",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxoplasma_LifeCycle_CDC.gif"
+   }
+  ]
+ },
+ "plasmodium-falciparum": {
+  "q": "Plasmodium falciparum ring forms blood smear",
+  "cands": [
+   {
+    "title": "File:Plasmodium falciparum (malaria) parasite in blood.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "MichaelZahniser",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Plasmodium_falciparum_%28malaria%29_parasite_in_blood.jpg/960px-Plasmodium_falciparum_%28malaria%29_parasite_in_blood.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1024,
+    "h": 1024,
+    "desc": "\"Ring forms\" of the Plasmodium falciparum (malaria) parasite, inside red blood cells. Microscope image using 100x oil-immersion lens. From a blood smear, stained with hematoxylin. A 100x oil-immersion",
+    "src": "https://commons.wikimedia.org/wiki/File:Plasmodium_falciparum_(malaria)_parasite_in_blood.jpg"
+   },
+   {
+    "title": "File:P. falciparum thin smear ring forms and gametocyte.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Jenkayaks",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/P._falciparum_thin_smear_ring_forms_and_gametocyte.jpg/960px-P._falciparum_thin_smear_ring_forms_and_gametocyte.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1360,
+    "h": 1024,
+    "desc": "A Giemsa stained thin smear shows both ring forms and a gametocyte typical of P. falciparum",
+    "src": "https://commons.wikimedia.org/wiki/File:P._falciparum_thin_smear_ring_forms_and_gametocyte.jpg"
+   },
+   {
+    "title": "File:P. falciparum thin smear with ring forms.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Jenkayaks",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/P._falciparum_thin_smear_with_ring_forms.jpg/960px-P._falciparum_thin_smear_with_ring_forms.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1360,
+    "h": 1024,
+    "desc": "A Giemsa stained thin smear showing typical ring forms of P. falciparum",
+    "src": "https://commons.wikimedia.org/wiki/File:P._falciparum_thin_smear_with_ring_forms.jpg"
+   },
+   {
+    "title": "File:P. falciparum thick smear with ring forms.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Jenkayaks",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/P._falciparum_thick_smear_with_ring_forms.jpg/960px-P._falciparum_thick_smear_with_ring_forms.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1360,
+    "h": 1024,
+    "desc": "A Giemsa stained thick smear showing ring forms of P. falciparum",
+    "src": "https://commons.wikimedia.org/wiki/File:P._falciparum_thick_smear_with_ring_forms.jpg"
+   },
+   {
+    "title": "File:Plasmodium falciparum rings form parasites4885 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/94/Plasmodium_falciparum_rings_form_parasites4885_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 466,
+    "desc": "ID#:\t4885\nDescription:\tThis blood smear micrograph revealed the presence of numerous P. falciparum rings form parasites; Mag. 1150X.\nNote the RBCs that contain multiple parasites, which is more common",
+    "src": "https://commons.wikimedia.org/wiki/File:Plasmodium_falciparum_rings_form_parasites4885_lores.jpg"
+   }
+  ]
+ },
+ "plasmodium-vivax": {
+  "q": "Plasmodium vivax trophozoite blood smear",
+  "cands": [
+   {
+    "title": "File:Immature and mature trophozoites of the Plasmodium vivax parasite PHIL 2720 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Immature_and_mature_trophozoites_of_the_Plasmodium_vivax_parasite_PHIL_2720_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 468,
+    "desc": "ID#:\t2720\nDescription:\tThis photomicrograph of a blood smear contains both immature and mature trophozoites of the Plasmodium vivax parasite.\nAn immature trophozoite of P. vivax is shown at the top of",
+    "src": "https://commons.wikimedia.org/wiki/File:Immature_and_mature_trophozoites_of_the_Plasmodium_vivax_parasite_PHIL_2720_lores.jpg"
+   },
+   {
+    "title": "File:P vivax trophozoite4.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8c/P_vivax_trophozoite4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 200,
+    "h": 200,
+    "desc": "",
+    "src": "https://commons.wikimedia.org/wiki/File:P_vivax_trophozoite4.jpg"
+   },
+   {
+    "title": "File:19-0448-F1.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Gitte N. HartmeyerComments to Author , Christen R. Stensvold, Thilde Fabricius, ",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/19-0448-F1.jpg/960px-19-0448-F1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1500,
+    "h": 1101,
+    "desc": "Figure 1. Plasmodium cynomolgi parasites (arrows) in Giemsa-stained thin smears of blood from a traveler returning from Southeast Asia to Denmark. Overall, few parasites were visible in the thin film,",
+    "src": "https://commons.wikimedia.org/wiki/File:19-0448-F1.jpg"
+   }
+  ]
+ },
+ "leishmania": {
+  "q": "Leishmania amastigotes",
+  "cands": [
+   {
+    "title": "File:Leishmania donovani amastigotes in Giemsa stained smear of FNAC.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Leishmania_donovani_amastigotes_in_Giemsa_stained_smear_of_FNAC.jpg/960px-Leishmania_donovani_amastigotes_in_Giemsa_stained_smear_of_FNAC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4000,
+    "h": 2250,
+    "desc": "Leishmania donovani amastigotes are present intracellularly of macrophage as well as extracellularly  in Giemsa stained smear of FNAC",
+    "src": "https://commons.wikimedia.org/wiki/File:Leishmania_donovani_amastigotes_in_Giemsa_stained_smear_of_FNAC.jpg"
+   },
+   {
+    "title": "File:Leishmania amastigotes (02).jpg",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Michael Wunderli",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Leishmania_amastigotes_%2802%29.jpg/960px-Leishmania_amastigotes_%2802%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1024,
+    "h": 768,
+    "desc": "Leishmania amastigotes",
+    "src": "https://commons.wikimedia.org/wiki/File:Leishmania_amastigotes_(02).jpg"
+   },
+   {
+    "title": "File:Amastigotes of Leishmania donovani.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Amastigotes_of_Leishmania_donovani.jpg/960px-Amastigotes_of_Leishmania_donovani.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4000,
+    "h": 2250,
+    "desc": "Amastigotes of Leishmania donovani in patient sample of visceral leishmaniasis",
+    "src": "https://commons.wikimedia.org/wiki/File:Amastigotes_of_Leishmania_donovani.jpg"
+   },
+   {
+    "title": "File:Leishmania Amastigote (NIH BioArt 288).png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Courtesy of NIAID\n\nRyan Kissinger",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/23/Leishmania_Amastigote_%28NIH_BioArt_288%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 868,
+    "h": 602,
+    "desc": "Leishmania amastigote",
+    "src": "https://commons.wikimedia.org/wiki/File:Leishmania_Amastigote_(NIH_BioArt_288).png"
+   },
+   {
+    "title": "File:Leishmania Amastigote (NIH BioArt 287).png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Courtesy of NIAID\n\nRyan Kissinger",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Leishmania_Amastigote_%28NIH_BioArt_287%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 829,
+    "h": 845,
+    "desc": "Leishmania amastigote",
+    "src": "https://commons.wikimedia.org/wiki/File:Leishmania_Amastigote_(NIH_BioArt_287).png"
+   },
+   {
+    "title": "File:Extracellular Amastigotes of Leishmania donovani in Giemsa stained smear.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Extracellular_Amastigotes_of_Leishmania_donovani_in_Giemsa_stained_smear.jpg/960px-Extracellular_Amastigotes_of_Leishmania_donovani_in_Giemsa_stained_smear.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4000,
+    "h": 2250,
+    "desc": "Extracellular Amastigotes of Leishmania donovani in Giemsa stained smear of slit skin smear of cutaneous leishmaniasis",
+    "src": "https://commons.wikimedia.org/wiki/File:Extracellular_Amastigotes_of_Leishmania_donovani_in_Giemsa_stained_smear.jpg"
+   },
+   {
+    "title": "File:Leishmania amastigote.png",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Servier Medical Art",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Leishmania_amastigote.png/960px-Leishmania_amastigote.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1617,
+    "h": 2099,
+    "desc": "Leishmania amastigote",
+    "src": "https://commons.wikimedia.org/wiki/File:Leishmania_amastigote.png"
+   },
+   {
+    "title": "File:Leishmania amastigotes x100mag (2)UK NEQAS (7686985668).jpg",
+    "lic": "CC BY-SA 2.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "artist": "Vivien Rolfe",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Leishmania_amastigotes_x100mag_%282%29UK_NEQAS_%287686985668%29.jpg/960px-Leishmania_amastigotes_x100mag_%282%29UK_NEQAS_%287686985668%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2048,
+    "h": 1536,
+    "desc": "Set of parasite microscopic images",
+    "src": "https://commons.wikimedia.org/wiki/File:Leishmania_amastigotes_x100mag_(2)UK_NEQAS_(7686985668).jpg"
+   }
+  ]
+ },
+ "trypanosoma-brucei": {
+  "q": "Trypanosoma brucei blood smear",
+  "cands": [
+   {
+    "title": "File:Trypanosoma sp. PHIL 613 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Photo Credit:\nContent Providers: CDC/Dr. Myron G. Schultz",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/23/Trypanosoma_sp._PHIL_613_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 496,
+    "desc": "Trypanosoma forms in blood smear from patient with African trypanosomiasis. Parasite.",
+    "src": "https://commons.wikimedia.org/wiki/File:Trypanosoma_sp._PHIL_613_lores.jpg"
+   },
+   {
+    "title": "File:Trypanosoma sp. PHIL 613 lores (cropped).jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Photo Credit:\nContent Providers: CDC/Dr. Myron G. Schultz",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Trypanosoma_sp._PHIL_613_lores_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 536,
+    "h": 496,
+    "desc": "Trypanosoma forms in blood smear from patient with African trypanosomiasis. Parasite.",
+    "src": "https://commons.wikimedia.org/wiki/File:Trypanosoma_sp._PHIL_613_lores_(cropped).jpg"
+   },
+   {
+    "title": "File:Afric tryp 1a DPDxi.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "U.S. Centers for Disease Control and Prevention",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/67/Afric_tryp_1a_DPDxi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 396,
+    "h": 201,
+    "desc": "Two areas from a blood smear from a patient with African trypanosomiasis (sleeping sickness). Thin blood smear stained with Giemsa. Typical trypomastigote stages (the only stages found in patients), w",
+    "src": "https://commons.wikimedia.org/wiki/File:Afric_tryp_1a_DPDxi.jpg"
+   }
+  ]
+ },
+ "cryptosporidium": {
+  "q": "Cryptosporidium oocysts acid-fast stain",
+  "cands": [
+   {
+    "title": "File:Oocists de Cryptosporidium parvum 2.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC - DPDx - Laboratory Identification of Parasites of Public Health Concern",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Oocists_de_Cryptosporidium_parvum_2.jpg/960px-Oocists_de_Cryptosporidium_parvum_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1354,
+    "h": 1383,
+    "desc": "Cryptosporidium parvum oocysts stained with modified acid-fast. Against a blue-green background, the oocysts stand out in a bright red stain. Sporozoites are visible inside the two oocysts to the righ",
+    "src": "https://commons.wikimedia.org/wiki/File:Oocists_de_Cryptosporidium_parvum_2.jpg"
+   },
+   {
+    "title": "File:Cryptosporidium DPDxCrypto oo AF.JPG",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/0/05/Cryptosporidium_DPDxCrypto_oo_AF.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 308,
+    "h": 175,
+    "desc": "Cryptosporidiosis [Cryptosporidium spp.] \t\t\nC. parvum oocysts acid-fast\n\nOocysts of Cryptosporidium parvum stained by the modified acid-fast method.  Against a blue-green background, the oocysts stand",
+    "src": "https://commons.wikimedia.org/wiki/File:Cryptosporidium_DPDxCrypto_oo_AF.JPG"
+   },
+   {
+    "title": "File:7829 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8b/7829_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 714,
+    "desc": "This photomicrograph revealed the morphologic details of Cryptosporidium parvum oocysts, which had been stained using the modified acid-fast method. These oocysts exhibit a bright red coloration when ",
+    "src": "https://commons.wikimedia.org/wiki/File:7829_lores.jpg"
+   },
+   {
+    "title": "File:Stain and Reagents for Clinical Parasitology Laboratory.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Stain_and_Reagents_for_Clinical_Parasitology_Laboratory.jpg/960px-Stain_and_Reagents_for_Clinical_Parasitology_Laboratory.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3264,
+    "h": 2448,
+    "desc": "Here's a list of commonly used stains and reagents in a clinical parasitology laboratory:\nWet Mounts:\nSaline wet mount: Used to observe motile parasites and trophozoites. Simply uses a drop of saline ",
+    "src": "https://commons.wikimedia.org/wiki/File:Stain_and_Reagents_for_Clinical_Parasitology_Laboratory.jpg"
+   },
+   {
+    "title": "File:PMC2732451 01-0256-F1.png",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Gatei W, Ashford RW, Beeching NJ, Kamwati SK, Greensill J, Hart CA",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/d/d2/PMC2732451_01-0256-F1.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 512,
+    "h": 383,
+    "desc": "F1: Cryptosporidium muris oocysts (under oil X 1,000), stained by Kinyoun’s acid-fast staining.",
+    "src": "https://commons.wikimedia.org/wiki/File:PMC2732451_01-0256-F1.png"
+   }
+  ]
+ },
+ "sarcoptes": {
+  "q": "Sarcoptes scabiei mite",
+  "cands": [
+   {
+    "title": "File:Itch mite (247 32A).jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Doc. RNDr. Josef Reischig, CSc.",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Itch_mite_%28247_32A%29.jpg/960px-Itch_mite_%28247_32A%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3750,
+    "h": 2400,
+    "desc": "This image comes from the archive of Josef Reischig and is part of the 384 pictures kindly donated by the authorship heirs under CC BY SA 3.0 license as a part of Wikimedia Czech Republic's GLAM initi",
+    "src": "https://commons.wikimedia.org/wiki/File:Itch_mite_(247_32A).jpg"
+   },
+   {
+    "title": "File:Chromosomal spreads of single itch mite (Sarcoptes scabiei) cells.png",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Kate E Mounsey, Charlene Willis, Stewart TG Burgess, Deborah C Holt, James McCar",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Chromosomal_spreads_of_single_itch_mite_%28Sarcoptes_scabiei%29_cells.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 393,
+    "h": 875,
+    "desc": "Chromosomal spreads of single itch mite (Sarcoptes scabiei) cells. A) 17 chromosomes can be counted while B) shows 18 chromosomes. Chromosomes are highlighted in pink for clarification. Scale bar = 5 ",
+    "src": "https://commons.wikimedia.org/wiki/File:Chromosomal_spreads_of_single_itch_mite_(Sarcoptes_scabiei)_cells.png"
+   },
+   {
+    "title": "File:Chromosomal spreads of single itch mite (Sarcoptes scabiei) cell - 17 chromosomes.png",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Kate E Mounsey, Charlene Willis, Stewart TG Burgess, Deborah C Holt, James McCar",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Chromosomal_spreads_of_single_itch_mite_%28Sarcoptes_scabiei%29_cell_-_17_chromosomes.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 392,
+    "h": 378,
+    "desc": "Chromosomal spreads of single itch mite (Sarcoptes scabiei) cell. 17 chromosomes can be counted. Chromosomes are highlighted in pink for clarification. Scale bar = 5 μm. While the cause for the dispar",
+    "src": "https://commons.wikimedia.org/wiki/File:Chromosomal_spreads_of_single_itch_mite_(Sarcoptes_scabiei)_cell_-_17_chromosomes.png"
+   },
+   {
+    "title": "File:Sarcoptes-scabiei-adult-mite-2.JPG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "[[User:Alan R Walker (talk) 09:25, 28 January 2014 (UTC)]]",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/13/Sarcoptes-scabiei-adult-mite-2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 800,
+    "h": 993,
+    "desc": "Photograph of parasitic mite of domestic animals.",
+    "src": "https://commons.wikimedia.org/wiki/File:Sarcoptes-scabiei-adult-mite-2.JPG"
+   },
+   {
+    "title": "File:Sarcoptes scabiei and Acarus siro (Goeze, 1786).png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Johann August Ephraim Goeze (1731-1793)",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Sarcoptes_scabiei_and_Acarus_siro_%28Goeze%2C_1786%29.png/960px-Sarcoptes_scabiei_and_Acarus_siro_%28Goeze%2C_1786%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 6292,
+    "h": 1880,
+    "desc": "(A) Acarus siro — (B-D) Sarcoptes scabiei.\nFacsimile of Goeze’s figures published by Wichmann in 1786",
+    "src": "https://commons.wikimedia.org/wiki/File:Sarcoptes_scabiei_and_Acarus_siro_(Goeze,_1786).png"
+   },
+   {
+    "title": "File:Sarcoptes scabiei and Acarus siro (Bonomo - 1687).png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Giovanni Cosimo Bonomo (1666-1696)",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Sarcoptes_scabiei_and_Acarus_siro_%28Bonomo_-_1687%29.png/960px-Sarcoptes_scabiei_and_Acarus_siro_%28Bonomo_-_1687%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4724,
+    "h": 1086,
+    "desc": "(A-D) Sarcoptes scabiei — (E-G) Acarus siro.\nIllustration was made by Bonomo (1687) who knew the difference between A. siro occurring in large number in old cheese (``gran numero nel formaggio vecchio",
+    "src": "https://commons.wikimedia.org/wiki/File:Sarcoptes_scabiei_and_Acarus_siro_(Bonomo_-_1687).png"
+   },
+   {
+    "title": "File:Sarcoptes scabiei and Acarus siro (Geer, 1778).png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Charles de Geer (1720-1778)",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Sarcoptes_scabiei_and_Acarus_siro_%28Geer%2C_1778%29.png/960px-Sarcoptes_scabiei_and_Acarus_siro_%28Geer%2C_1778%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3299,
+    "h": 1054,
+    "desc": "(A-B) – Sarcoptes scabiei – C Acarus siro\nFacsimile of Geer’s (1778) plate 5",
+    "src": "https://commons.wikimedia.org/wiki/File:Sarcoptes_scabiei_and_Acarus_siro_(Geer,_1778).png"
+   },
+   {
+    "title": "File:Sarcoptes scabiei - Scabies (14215728679).jpg",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Michael Wunderli",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Sarcoptes_scabiei_-_Scabies_%2814215728679%29.jpg/960px-Sarcoptes_scabiei_-_Scabies_%2814215728679%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1024,
+    "h": 768,
+    "desc": "Female Scabies Mite",
+    "src": "https://commons.wikimedia.org/wiki/File:Sarcoptes_scabiei_-_Scabies_(14215728679).jpg"
+   }
+  ]
+ },
+ "pediculus": {
+  "q": "Pediculus humanus capitis louse",
+  "cands": [
+   {
+    "title": "File:Male human head louse.jpg",
+    "lic": "CC BY-SA 2.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "artist": "Gilles San Martin",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Male_human_head_louse.jpg/960px-Male_human_head_louse.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2570,
+    "h": 1720,
+    "desc": "Male human head louse, Pediculus humanus capitis.\nKeywords : louse lice Anoplura Phthiraptera pou poux kopflaus hoofdluis piojo parasite blood sucking ectoparasite Belgium\n\nTechnical settings : Focus ",
+    "src": "https://commons.wikimedia.org/wiki/File:Male_human_head_louse.jpg"
+   },
+   {
+    "title": "File:Inimese peatäi.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Janek Lass",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Inimese_peat%C3%A4i.jpg/960px-Inimese_peat%C3%A4i.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3243,
+    "h": 2594,
+    "desc": "A human head louse (Pediculus humanus capitis) photographed under a microscope using a 3.5x objective. The image was taken in March 2024. The picture clearly shows how the parasite has attached itself",
+    "src": "https://commons.wikimedia.org/wiki/File:Inimese_peat%C3%A4i.jpg"
+   },
+   {
+    "title": "File:The head louse (Pediculus humanus capitis) 07.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Korinna",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/The_head_louse_%28Pediculus_humanus_capitis%29_07.jpg/960px-The_head_louse_%28Pediculus_humanus_capitis%29_07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3840,
+    "h": 2160,
+    "desc": "The head louse (Pediculus humanus capitis)",
+    "src": "https://commons.wikimedia.org/wiki/File:The_head_louse_(Pediculus_humanus_capitis)_07.jpg"
+   },
+   {
+    "title": "File:The head louse (Pediculus humanus capitis) 19.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Korinna",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/The_head_louse_%28Pediculus_humanus_capitis%29_19.jpg/960px-The_head_louse_%28Pediculus_humanus_capitis%29_19.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 9248,
+    "h": 6936,
+    "desc": "The head louse (Pediculus humanus capitis)",
+    "src": "https://commons.wikimedia.org/wiki/File:The_head_louse_(Pediculus_humanus_capitis)_19.jpg"
+   },
+   {
+    "title": "File:The head louse (Pediculus humanus capitis) 21.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Korinna",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/The_head_louse_%28Pediculus_humanus_capitis%29_21.jpg/960px-The_head_louse_%28Pediculus_humanus_capitis%29_21.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 9248,
+    "h": 6936,
+    "desc": "The head louse (Pediculus humanus capitis)",
+    "src": "https://commons.wikimedia.org/wiki/File:The_head_louse_(Pediculus_humanus_capitis)_21.jpg"
+   },
+   {
+    "title": "File:The head louse (Pediculus humanus capitis) 12.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Korinna",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/The_head_louse_%28Pediculus_humanus_capitis%29_12.jpg/960px-The_head_louse_%28Pediculus_humanus_capitis%29_12.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 9248,
+    "h": 6936,
+    "desc": "The head louse (Pediculus humanus capitis)",
+    "src": "https://commons.wikimedia.org/wiki/File:The_head_louse_(Pediculus_humanus_capitis)_12.jpg"
+   },
+   {
+    "title": "File:The head louse (Pediculus humanus capitis) 09.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Korinna",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/The_head_louse_%28Pediculus_humanus_capitis%29_09.jpg/960px-The_head_louse_%28Pediculus_humanus_capitis%29_09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 9248,
+    "h": 6936,
+    "desc": "The head louse (Pediculus humanus capitis)",
+    "src": "https://commons.wikimedia.org/wiki/File:The_head_louse_(Pediculus_humanus_capitis)_09.jpg"
+   },
+   {
+    "title": "File:The head louse (Pediculus humanus capitis) 14.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Korinna",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/The_head_louse_%28Pediculus_humanus_capitis%29_14.jpg/960px-The_head_louse_%28Pediculus_humanus_capitis%29_14.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 9248,
+    "h": 6936,
+    "desc": "The head louse (Pediculus humanus capitis)",
+    "src": "https://commons.wikimedia.org/wiki/File:The_head_louse_(Pediculus_humanus_capitis)_14.jpg"
+   }
+  ]
+ },
+ "phthirus": {
+  "q": "Pthirus pubis",
+  "cands": [
+   {
+    "title": "File:Pthirus pubis - crab louse.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/27/Pthirus_pubis_-_crab_louse.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 519,
+    "desc": "",
+    "src": "https://commons.wikimedia.org/wiki/File:Pthirus_pubis_-_crab_louse.jpg"
+   },
+   {
+    "title": "File:Pubic louse (Pthirus pubis).jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Jbjensen1",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Pubic_louse_%28Pthirus_pubis%29.jpg/960px-Pubic_louse_%28Pthirus_pubis%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3024,
+    "h": 4032,
+    "desc": "Pubic louse (Pthirus pubis) under slide",
+    "src": "https://commons.wikimedia.org/wiki/File:Pubic_louse_(Pthirus_pubis).jpg"
+   },
+   {
+    "title": "File:Crab Louse (Phthirus pubis) (1856546189).jpg",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Ed Uthman from Houston, TX, USA",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Crab_Louse_%28Phthirus_pubis%29_%281856546189%29.jpg/960px-Crab_Louse_%28Phthirus_pubis%29_%281856546189%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2412,
+    "h": 1608,
+    "desc": "Fresh wet mount from pubic combing.\n\nPathological and histological images courtesy of Ed Uthman at flickr.",
+    "src": "https://commons.wikimedia.org/wiki/File:Crab_Louse_(Phthirus_pubis)_(1856546189).jpg"
+   },
+   {
+    "title": "File:Pthirus pubis, crab louse.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Noizyboy1961",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Pthirus_pubis%2C_crab_louse.jpg/960px-Pthirus_pubis%2C_crab_louse.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2436,
+    "h": 2349,
+    "desc": "Pthirus pubis, crab louse. Fresh, unstained, whole mounted specimen. Phase contrast image reveals trabeculae.",
+    "src": "https://commons.wikimedia.org/wiki/File:Pthirus_pubis,_crab_louse.jpg"
+   },
+   {
+    "title": "File:Pthirus pubis Oly,WA.jpg",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "artist": "Kendallnorcott",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Pthirus_pubis_Oly%2CWA.jpg/960px-Pthirus_pubis_Oly%2CWA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1329,
+    "h": 1019,
+    "desc": "P. pubis collected in Olympia, WA",
+    "src": "https://commons.wikimedia.org/wiki/File:Pthirus_pubis_Oly,WA.jpg"
+   },
+   {
+    "title": "File:Pthirus pubis (YPM IZ 093617).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Pthirus_pubis_%28YPM_IZ_093617%29.jpeg/960px-Pthirus_pubis_%28YPM_IZ_093617%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1421,
+    "desc": "\nPRESERVED_SPECIMEN; ; ADULT; microslide; ; IZ number 93617; lot count 1; Microslide 01, balsam, whole mount; adult;",
+    "src": "https://commons.wikimedia.org/wiki/File:Pthirus_pubis_(YPM_IZ_093617).jpeg"
+   },
+   {
+    "title": "File:Pthirus pubis (YPM IZ 093651).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Pthirus_pubis_%28YPM_IZ_093651%29.jpeg/960px-Pthirus_pubis_%28YPM_IZ_093651%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1421,
+    "desc": "\nPRESERVED_SPECIMEN; ; ADULT; microslide; ; IZ number 93651; lot count 1; Microslide 01, balsam, whole mount; adult;",
+    "src": "https://commons.wikimedia.org/wiki/File:Pthirus_pubis_(YPM_IZ_093651).jpeg"
+   },
+   {
+    "title": "File:Pthirus pubis (YPM IZ 093620).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Pthirus_pubis_%28YPM_IZ_093620%29.jpeg/960px-Pthirus_pubis_%28YPM_IZ_093620%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1421,
+    "desc": "\nPRESERVED_SPECIMEN; ; ADULT; microslide; ; IZ number 93620; lot count 1; Microslide 01, balsam, whole mount; adult;",
+    "src": "https://commons.wikimedia.org/wiki/File:Pthirus_pubis_(YPM_IZ_093620).jpeg"
+   }
+  ]
+ },
+ "ixodes": {
+  "q": "Ixodes ricinus tick",
+  "cands": [
+   {
+    "title": "File:Ixodus ricinus 5x.jpg",
+    "lic": "CC BY-SA 2.5",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "artist": "Richard Bartz",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Ixodus_ricinus_5x.jpg/960px-Ixodus_ricinus_5x.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2200,
+    "h": 1500,
+    "desc": "Chelicera of the sheep tick.",
+    "src": "https://commons.wikimedia.org/wiki/File:Ixodus_ricinus_5x.jpg"
+   },
+   {
+    "title": "File:Ixodes ricinus on dry grass.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "W.alter",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Ixodes_ricinus_on_dry_grass.jpg/960px-Ixodes_ricinus_on_dry_grass.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2155,
+    "h": 1616,
+    "desc": "Castor bean tick (Ixodes ricinus) female from Hochholz-Kapellenbruch, Germany at 3.5.2021",
+    "src": "https://commons.wikimedia.org/wiki/File:Ixodes_ricinus_on_dry_grass.jpg"
+   },
+   {
+    "title": "File:Garrapata común (Ixodes ricinus), Hartelholz, Múnich, Alemania, 2020-06-11, DD 16-29 FS.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Diego Delso",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Garrapata_com%C3%BAn_%28Ixodes_ricinus%29%2C_Hartelholz%2C_M%C3%BAnich%2C_Alemania%2C_2020-06-11%2C_DD_16-29_FS.jpg/960px-Garrapata_com%C3%BAn_%28Ixodes_ricinus%29%2C_Hartelholz%2C_M%C3%BAnich%2C_Alemania%2C_2020-06-11%2C_DD_16-29_FS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3846,
+    "h": 2791,
+    "desc": "Specimen of castor bean tick (Ixodes ricinus), Hartelholz, Munich, Germany",
+    "src": "https://commons.wikimedia.org/wiki/File:Garrapata_com%C3%BAn_(Ixodes_ricinus),_Hartelholz,_M%C3%BAnich,_Alemania,_2020-06-11,_DD_16-29_FS.jpg"
+   },
+   {
+    "title": "File:Garrapata común (Ixodes ricinus), Hartelholz, Múnich, Alemania, 2020-06-11, DD 01-15 FS.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Diego Delso",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Garrapata_com%C3%BAn_%28Ixodes_ricinus%29%2C_Hartelholz%2C_M%C3%BAnich%2C_Alemania%2C_2020-06-11%2C_DD_01-15_FS.jpg/960px-Garrapata_com%C3%BAn_%28Ixodes_ricinus%29%2C_Hartelholz%2C_M%C3%BAnich%2C_Alemania%2C_2020-06-11%2C_DD_01-15_FS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3214,
+    "h": 2339,
+    "desc": "Castor bean tick (Ixodes ricinus), Hartelholz, Munich, Germany",
+    "src": "https://commons.wikimedia.org/wiki/File:Garrapata_com%C3%BAn_(Ixodes_ricinus),_Hartelholz,_M%C3%BAnich,_Alemania,_2020-06-11,_DD_01-15_FS.jpg"
+   },
+   {
+    "title": "File:Ixodes ricinus.jpg",
+    "lic": "CC BY-SA 2.5",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "artist": "Richard Bartz, Munich Makro Freak",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Ixodes_ricinus.jpg/960px-Ixodes_ricinus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1000,
+    "h": 600,
+    "desc": "Description:  Makroshot of the upper Torso and Head of a Tick",
+    "src": "https://commons.wikimedia.org/wiki/File:Ixodes_ricinus.jpg"
+   },
+   {
+    "title": "File:Blood-Filled Sheep Tick (Ixodes ricinus).jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "MicrocosmicWorld",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Blood-Filled_Sheep_Tick_%28Ixodes_ricinus%29.jpg/960px-Blood-Filled_Sheep_Tick_%28Ixodes_ricinus%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 8208,
+    "h": 6238,
+    "desc": "Female Ixodes ricinus engorged after a blood meal. As an obligate ectoparasite, the tick expands dramatically while feeding on the blood of mammals, birds, or reptiles. Once fully engorged, the female",
+    "src": "https://commons.wikimedia.org/wiki/File:Blood-Filled_Sheep_Tick_(Ixodes_ricinus).jpg"
+   },
+   {
+    "title": "File:Spider and Tick (Ixodes ricinus) on a Leaf.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "MicrocosmicWorld",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Spider_and_Tick_%28Ixodes_ricinus%29_on_a_Leaf.jpg/960px-Spider_and_Tick_%28Ixodes_ricinus%29_on_a_Leaf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 5868,
+    "h": 3912,
+    "desc": "A spider shares a leaf with Ixodes ricinus, a widespread parasitic tick known for feeding on mammals, birds, and reptiles. Although both belong to the class Arachnida, spiders are predators, while tic",
+    "src": "https://commons.wikimedia.org/wiki/File:Spider_and_Tick_(Ixodes_ricinus)_on_a_Leaf.jpg"
+   },
+   {
+    "title": "File:Gemeine Holzbock Ixodes ricinus 3.jpg",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "artist": "Holger Krisp",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Gemeine_Holzbock_Ixodes_ricinus_3.jpg/960px-Gemeine_Holzbock_Ixodes_ricinus_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3000,
+    "h": 2000,
+    "desc": "Castor Bean Tick, Ixodes ricinus, Location: Germany, Erbach, Ringingen",
+    "src": "https://commons.wikimedia.org/wiki/File:Gemeine_Holzbock_Ixodes_ricinus_3.jpg"
+   }
+  ]
+ },
+ "anopheles": {
+  "q": "Anopheles mosquito female",
+  "cands": [
+   {
+    "title": "File:Anopheles stephensi.jpeg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Jim Gathany",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Anopheles_stephensi.jpeg/960px-Anopheles_stephensi.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3032,
+    "h": 2008,
+    "desc": "الأنوفيلة الاصْطِفانِيَّة",
+    "src": "https://commons.wikimedia.org/wiki/File:Anopheles_stephensi.jpeg"
+   },
+   {
+    "title": "File:Anopheles female Turkhud.png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Dr D.A. Turkhud (1863-?)",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Anopheles_female_Turkhud.png/960px-Anopheles_female_Turkhud.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2520,
+    "h": 3640,
+    "desc": "Key to the morphology of Anopheles",
+    "src": "https://commons.wikimedia.org/wiki/File:Anopheles_female_Turkhud.png"
+   },
+   {
+    "title": "File:Mosquito Anopheles 100x actual height about 2.4mm.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Tgru001",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Mosquito_Anopheles_100x_actual_height_about_2.4mm.jpg/960px-Mosquito_Anopheles_100x_actual_height_about_2.4mm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1400,
+    "h": 4008,
+    "desc": "Mosquito Anopheles 100x female eyes and mouth parts actual height about 2.4mm",
+    "src": "https://commons.wikimedia.org/wiki/File:Mosquito_Anopheles_100x_actual_height_about_2.4mm.jpg"
+   },
+   {
+    "title": "File:Anopheles female Turkhud (bw).png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Dr D.A. Turkhud (1863-?)",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Anopheles_female_Turkhud_%28bw%29.png/960px-Anopheles_female_Turkhud_%28bw%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2415,
+    "h": 3405,
+    "desc": "Key to the morphology of Anopheles",
+    "src": "https://commons.wikimedia.org/wiki/File:Anopheles_female_Turkhud_(bw).png"
+   },
+   {
+    "title": "File:Anopheles albimanus mosquito.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Photo Credit: James Gathany\nContent Providers(s): CDC",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Anopheles_albimanus_mosquito.jpg/960px-Anopheles_albimanus_mosquito.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2466,
+    "h": 1629,
+    "desc": "This 2005 photograph depicted a female Anopheles albimanus mosquito while she was feeding on a human host, thereby, becoming engorged with blood.\nLike other species in the genus Anopheles, A. albimanu",
+    "src": "https://commons.wikimedia.org/wiki/File:Anopheles_albimanus_mosquito.jpg"
+   },
+   {
+    "title": "File:Female anopheles mosquito.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Janakiraman janaki",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/19/Female_anopheles_mosquito.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 390,
+    "h": 513,
+    "desc": "masquito",
+    "src": "https://commons.wikimedia.org/wiki/File:Female_anopheles_mosquito.jpg"
+   },
+   {
+    "title": "File:Anopheles-female.JPG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Alan R Walker",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Anopheles-female.JPG/960px-Anopheles-female.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1862,
+    "h": 2007,
+    "desc": "Female mosquito of Anopheles genus, mounted on microscope slide.",
+    "src": "https://commons.wikimedia.org/wiki/File:Anopheles-female.JPG"
+   },
+   {
+    "title": "File:Mosquito on human skin.jpg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "James Gathany, USCDCP",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Mosquito_on_human_skin.jpg/960px-Mosquito_on_human_skin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4297,
+    "h": 2806,
+    "desc": "Image of mosquito",
+    "src": "https://commons.wikimedia.org/wiki/File:Mosquito_on_human_skin.jpg"
+   }
+  ]
+ },
+ "culex": {
+  "q": "Culex pipiens mosquito",
+  "cands": [
+   {
+    "title": "File:Culex pipiens 2007-1.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Alvesgaspar",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/35/Culex_pipiens_2007-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 523,
+    "h": 440,
+    "desc": "Mosquito (Culex pipiens)",
+    "src": "https://commons.wikimedia.org/wiki/File:Culex_pipiens_2007-1.jpg"
+   },
+   {
+    "title": "File:Diptera - Mosquito - Culex cf pipiens (3470380619).jpg",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Mick Talbot from Lincoln (U.K.), England",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Diptera_-_Mosquito_-_Culex_cf_pipiens_%283470380619%29.jpg/960px-Diptera_-_Mosquito_-_Culex_cf_pipiens_%283470380619%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1410,
+    "h": 932,
+    "desc": "Diptera - Mosquito - Culex cf pipiens",
+    "src": "https://commons.wikimedia.org/wiki/File:Diptera_-_Mosquito_-_Culex_cf_pipiens_(3470380619).jpg"
+   },
+   {
+    "title": "File:Culex pipiens male.jpg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Volkmar Becher",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Culex_pipiens_male.jpg/960px-Culex_pipiens_male.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2031,
+    "h": 1357,
+    "desc": "Stechmücke (m), Mosquito (m)\nCulex pipiens male, on the car",
+    "src": "https://commons.wikimedia.org/wiki/File:Culex_pipiens_male.jpg"
+   },
+   {
+    "title": "File:2013 Naturkundemuseum Berlin culex pipiens anagoria.JPG",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "artist": "Anagoria",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/2013_Naturkundemuseum_Berlin_culex_pipiens_anagoria.JPG/960px-2013_Naturkundemuseum_Berlin_culex_pipiens_anagoria.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4224,
+    "h": 2226,
+    "desc": "Museum of Natural History Berlin: a model of a mosquito(culex pipiens), made ​​by Alfred Keller in the year 1937",
+    "src": "https://commons.wikimedia.org/wiki/File:2013_Naturkundemuseum_Berlin_culex_pipiens_anagoria.JPG"
+   },
+   {
+    "title": "File:Gemeine Stechmücke - Culex pipiens (14250461312).jpg",
+    "lic": "CC BY-SA 2.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "artist": "gbohne from Berlin, Germany",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Gemeine_Stechm%C3%BCcke_-_Culex_pipiens_%2814250461312%29.jpg/960px-Gemeine_Stechm%C3%BCcke_-_Culex_pipiens_%2814250461312%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1800,
+    "h": 2400,
+    "desc": "Phylum: Arthropoda - Arthropods\nSubphylum: Hexapoda BLAINVILLE, 1816\nClass: Insecta (insects, Insekten)\nSubclass: Pterygota\nInfraclass: Neoptera MARTYNOV, 1923\nOrder: Diptera LINNAEUS, 1758 (true flie",
+    "src": "https://commons.wikimedia.org/wiki/File:Gemeine_Stechm%C3%BCcke_-_Culex_pipiens_(14250461312).jpg"
+   },
+   {
+    "title": "File:Culex pipiens.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Jedesto",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Culex_pipiens.jpg/960px-Culex_pipiens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3998,
+    "h": 2998,
+    "desc": "Culex pipiens, common house mosquito,",
+    "src": "https://commons.wikimedia.org/wiki/File:Culex_pipiens.jpg"
+   },
+   {
+    "title": "File:Culex Molestus.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Walkabout12",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Culex_Molestus.jpg/960px-Culex_Molestus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1424,
+    "h": 1005,
+    "desc": "London Underground Mosquito",
+    "src": "https://commons.wikimedia.org/wiki/File:Culex_Molestus.jpg"
+   },
+   {
+    "title": "File:Culex quinquefasciatus E-A-Goeldi 1905.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Own scan, slightly modified. Original by Emil August Goeldi (1859 - 1917).",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Culex_quinquefasciatus_E-A-Goeldi_1905.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 894,
+    "h": 701,
+    "desc": "Colour print of the southern house mosquito Culex quinquefasciatus (then called Culex fatigans, later also Culex pipiens quinquefasciatus). The male on the left, the female to the right.",
+    "src": "https://commons.wikimedia.org/wiki/File:Culex_quinquefasciatus_E-A-Goeldi_1905.jpg"
+   }
+  ]
+ },
+ "cimex": {
+  "q": "Cimex lectularius bed bug",
+  "cands": [
+   {
+    "title": "File:Bed bug, Cimex lectularius.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Content Providers(s): CDC/ Harvard University, Dr. Gary Alpert; Dr. Harold Harla",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Bed_bug%2C_Cimex_lectularius.jpg/960px-Bed_bug%2C_Cimex_lectularius.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1600,
+    "h": 1122,
+    "desc": "This 2006 photograph depicted an oblique-dorsal view of a bed bug nymph (Cimex lectularius) as it was in the process of ingesting a blood meal from the arm of a “voluntary” human host.\nBed bugs are no",
+    "src": "https://commons.wikimedia.org/wiki/File:Bed_bug,_Cimex_lectularius.jpg"
+   },
+   {
+    "title": "File:Adult bed bug, Cimex lectularius.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Content Providers(s): CDC/ Harvard University, Dr. Gary Alpert; Dr. Harold Harla",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Adult_bed_bug%2C_Cimex_lectularius.jpg/960px-Adult_bed_bug%2C_Cimex_lectularius.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2000,
+    "h": 1333,
+    "desc": "ID#: 9820\nThis 2006 photograph depicted a lateral view of an adult bed bug, Cimex lectularius, as it was in the process of ingesting a blood meal from the arm of a “voluntary” human host.\nBed bugs are",
+    "src": "https://commons.wikimedia.org/wiki/File:Adult_bed_bug,_Cimex_lectularius.jpg"
+   },
+   {
+    "title": "File:EB1911 Hemiptera - Fig. 8.—Bed-bug (Cimex lectularius).jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "AnonymousUnknown author",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/15/EB1911_Hemiptera_-_Fig._8.%E2%80%94Bed-bug_%28Cimex_lectularius%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 491,
+    "h": 340,
+    "desc": "Bed-bug (Cimex lectularius)",
+    "src": "https://commons.wikimedia.org/wiki/File:EB1911_Hemiptera_-_Fig._8.%E2%80%94Bed-bug_(Cimex_lectularius).jpg"
+   },
+   {
+    "title": "File:The Bed-Bug (Cimex lectularius).jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "unidentified illustrator",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/The_Bed-Bug_%28Cimex_lectularius%29.jpg/960px-The_Bed-Bug_%28Cimex_lectularius%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1311,
+    "h": 1224,
+    "desc": "\"Figure 11.—The Bed-Bug.—(Cimex lectularius.)\"",
+    "src": "https://commons.wikimedia.org/wiki/File:The_Bed-Bug_(Cimex_lectularius).jpg"
+   },
+   {
+    "title": "File:Cimex lectularius (bed bug) (5975917188).jpg",
+    "lic": "CC BY-SA 2.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "artist": "Gilles San Martin from Namur, Belgium",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Cimex_lectularius_%28bed_bug%29_%285975917188%29.jpg/960px-Cimex_lectularius_%28bed_bug%29_%285975917188%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4240,
+    "h": 2808,
+    "desc": "Larvae (Nymph) of the bed bug - Cimex lectularius - on the fur of one of its hosts, a bat.\nScale : bug length ~ 5 mm\nTechnical settings : \n- Focus stack of 22 images\n\n- Componon 28 mm f/4 at f/4 rever",
+    "src": "https://commons.wikimedia.org/wiki/File:Cimex_lectularius_(bed_bug)_(5975917188).jpg"
+   },
+   {
+    "title": "File:Bed bug, Cimex lectularius (9627010587).jpg",
+    "lic": "CC BY-SA 2.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "artist": "AJC1 from UK",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/35/Bed_bug%2C_Cimex_lectularius_%289627010587%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 600,
+    "h": 600,
+    "desc": "Bed bug, Cimex lectularius",
+    "src": "https://commons.wikimedia.org/wiki/File:Bed_bug,_Cimex_lectularius_(9627010587).jpg"
+   },
+   {
+    "title": "File:Karyotype of male bed bug (Cimex lectularius).png",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "David Sadílek, Robert B. Angus, František Šťáhlavský, Jitka Vilímová",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Karyotype_of_male_bed_bug_%28Cimex_lectularius%29.png/960px-Karyotype_of_male_bed_bug_%28Cimex_lectularius%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1402,
+    "h": 209,
+    "desc": "Karyotype of bed bug (Cimex lectularius). Male basic karyotype 2n = 26+X1X2Y.",
+    "src": "https://commons.wikimedia.org/wiki/File:Karyotype_of_male_bed_bug_(Cimex_lectularius).png"
+   },
+   {
+    "title": "File:Cimex lectularius (bed bug) (5975912718).jpg",
+    "lic": "CC BY-SA 2.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "artist": "Gilles San Martin from Namur, Belgium",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Cimex_lectularius_%28bed_bug%29_%285975912718%29.jpg/960px-Cimex_lectularius_%28bed_bug%29_%285975912718%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4528,
+    "h": 2999,
+    "desc": "Nymph of the bed bug - Cimex lectularius - on the fur of one of its hosts, a bat.\nScale : bug length ~ 3 mm\nTechnical settings : \n- Focus stack of 22 images\n\n- Componon 28 mm f/4 at f/4 reversed on ex",
+    "src": "https://commons.wikimedia.org/wiki/File:Cimex_lectularius_(bed_bug)_(5975912718).jpg"
+   }
+  ]
+ },
+ "musca": {
+  "q": "Musca domestica housefly",
+  "cands": [
+   {
+    "title": "File:Musca domestica September 2007-1.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Alvesgaspar",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Musca_domestica_September_2007-1.jpg/960px-Musca_domestica_September_2007-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1305,
+    "h": 1017,
+    "desc": "Common house fly (Musca domestica).",
+    "src": "https://commons.wikimedia.org/wiki/File:Musca_domestica_September_2007-1.jpg"
+   },
+   {
+    "title": "File:Sarcophagid fly Portrait.jpg",
+    "lic": "CC BY-SA 1.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/1.0",
+    "artist": "JJ Harrison (https://www.jjharrison.com.au/)",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Sarcophagid_fly_Portrait.jpg/960px-Sarcophagid_fly_Portrait.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1759,
+    "h": 1282,
+    "desc": "Blowfly, (Calliphoridae) female, Austin's Ferry, Tasmania, Australia",
+    "src": "https://commons.wikimedia.org/wiki/File:Sarcophagid_fly_Portrait.jpg"
+   },
+   {
+    "title": "File:Copulating flies.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Tomascastelazo",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Copulating_flies.jpg/960px-Copulating_flies.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2684,
+    "h": 1761,
+    "desc": "Musca domestica during copulation, Insect sex.",
+    "src": "https://commons.wikimedia.org/wiki/File:Copulating_flies.jpg"
+   },
+   {
+    "title": "File:Mosca común (Musca domestica), Múnich, Alemania, 2020-06-24, DD 61-75 FS.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Diego Delso",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Mosca_com%C3%BAn_%28Musca_domestica%29%2C_M%C3%BAnich%2C_Alemania%2C_2020-06-24%2C_DD_61-75_FS.jpg/960px-Mosca_com%C3%BAn_%28Musca_domestica%29%2C_M%C3%BAnich%2C_Alemania%2C_2020-06-24%2C_DD_61-75_FS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2927,
+    "h": 3709,
+    "desc": "Housefly (Musca domestica), Munich, Germany",
+    "src": "https://commons.wikimedia.org/wiki/File:Mosca_com%C3%BAn_(Musca_domestica),_M%C3%BAnich,_Alemania,_2020-06-24,_DD_61-75_FS.jpg"
+   },
+   {
+    "title": "File:Mosca común (Musca domestica), Múnich, Alemania, 2020-06-24, DD 01-31 FS.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Diego Delso",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Mosca_com%C3%BAn_%28Musca_domestica%29%2C_M%C3%BAnich%2C_Alemania%2C_2020-06-24%2C_DD_01-31_FS.jpg/960px-Mosca_com%C3%BAn_%28Musca_domestica%29%2C_M%C3%BAnich%2C_Alemania%2C_2020-06-24%2C_DD_01-31_FS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 7807,
+    "h": 5211,
+    "desc": "Housefly (Musca domestica), Munich, Germany",
+    "src": "https://commons.wikimedia.org/wiki/File:Mosca_com%C3%BAn_(Musca_domestica),_M%C3%BAnich,_Alemania,_2020-06-24,_DD_01-31_FS.jpg"
+   },
+   {
+    "title": "File:Macro portrait of a housefly Musca domestica.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Irina Petrova",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Macro_portrait_of_a_housefly_Musca_domestica.jpg/960px-Macro_portrait_of_a_housefly_Musca_domestica.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4106,
+    "h": 2683,
+    "desc": "Extremely sharp and detailed macro portrait of a Calliphora fly taken with two lenses MC Jupiter-37A, which was made in 1985, and a retro lens Zenitar-M 1,7/50, made in 1982, as one lens, stacked from",
+    "src": "https://commons.wikimedia.org/wiki/File:Macro_portrait_of_a_housefly_Musca_domestica.jpg"
+   }
+  ]
+ },
+ "ascaris-adult": {
+  "q": "Ascaris lumbricoides adult worms",
+  "cands": [
+   {
+    "title": "File:Ascaris lumbricoides adult worms.png",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "SuSanA Secretariat",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Ascaris_lumbricoides_adult_worms.png/960px-Ascaris_lumbricoides_adult_worms.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1046,
+    "h": 654,
+    "desc": "Ascaris lumbricoides adult worm",
+    "src": "https://commons.wikimedia.org/wiki/File:Ascaris_lumbricoides_adult_worms.png"
+   },
+   {
+    "title": "File:Ascaris lumbricoides.jpeg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Ascaris_lumbricoides.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 300,
+    "h": 300,
+    "desc": "An adult Ascaris lumbricoides worm.  Diagnostic characteristics: tapered ends; length 15 to 35 cm (the females tend to be the larger ones).  This worm is a female, as evidenced by the size and genital",
+    "src": "https://commons.wikimedia.org/wiki/File:Ascaris_lumbricoides.jpeg"
+   },
+   {
+    "title": "File:Ascaris lumbricoides (Round worm).JPG",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Department of Pathology, Calicut Medical College",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Ascaris_lumbricoides_%28Round_worm%29.JPG/960px-Ascaris_lumbricoides_%28Round_worm%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1758,
+    "h": 1479,
+    "desc": "Resected segment of small intestine which is partly cut opened showing multiple creamy white adult worms filling the lumen.",
+    "src": "https://commons.wikimedia.org/wiki/File:Ascaris_lumbricoides_(Round_worm).JPG"
+   },
+   {
+    "title": "File:Ascariasis LifeCycle lg.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "DPDx is an educational resource designed for health professionals and laboratory",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Ascariasis_LifeCycle_lg.jpg/960px-Ascariasis_LifeCycle_lg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2000,
+    "h": 1838,
+    "desc": "This is an illustration of the life cycle of Ascaris lumbricoides, the causal agent of ascariasis. Adult worms image live in the lumen of the small intestine. A female may produce approximately 200,00",
+    "src": "https://commons.wikimedia.org/wiki/File:Ascariasis_LifeCycle_lg.jpg"
+   }
+  ]
+ },
+ "echinococcus-hydatid": {
+  "q": "Echinococcus granulosus protoscolex",
+  "cands": [
+   {
+    "title": "File:Echinococcus granulosus scolex.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC/Dr. L.L.A. Moore, Jr",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Echinococcus_granulosus_scolex.jpg/960px-Echinococcus_granulosus_scolex.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3000,
+    "h": 2038,
+    "desc": "Protoscolex of Echinococcus granulosus from hydatid cyst. Parasite.",
+    "src": "https://commons.wikimedia.org/wiki/File:Echinococcus_granulosus_scolex.jpg"
+   },
+   {
+    "title": "File:E.granulosus-protoscolex.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Stefan Walkowski",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/E.granulosus-protoscolex.jpg/960px-E.granulosus-protoscolex.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1600,
+    "h": 1200,
+    "desc": "Protoscolex with well-developed hooks, arranged in 2 rows.",
+    "src": "https://commons.wikimedia.org/wiki/File:E.granulosus-protoscolex.jpg"
+   },
+   {
+    "title": "File:Parasite140085-fig3 Echinococcus granulosus cysts from boiled livers and lungs of sheep.tif",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Jun Li, Chuanchuan Wu, Hui Wang, Huanyuan Liu, Dominique Angèle Vuitton, Hao Wen",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Parasite140085-fig3_Echinococcus_granulosus_cysts_from_boiled_livers_and_lungs_of_sheep.tif/lossy-page1-960px-Parasite140085-fig3_Echinococcus_granulosus_cysts_from_boiled_livers_and_lungs_of_sheep.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2039,
+    "h": 2998,
+    "desc": "Haematoxylin-eosin (HE) staining of Echinococcus granulosus cysts from livers (A) and lungs (B) of sheep. \nI, normal cyst;\nII–V, cysts boiled for 5, 10, 20 and 30 min, respectively.\nGL, germinal layer",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasite140085-fig3_Echinococcus_granulosus_cysts_from_boiled_livers_and_lungs_of_sheep.tif"
+   },
+   {
+    "title": "File:Parasite140085-fig1 Boiling sheep livers containing hydatid cysts (Echinococcus granulosus).tif",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Jun Li, Chuanchuan Wu, Hui Wang, Huanyuan Liu, Dominique Angèle Vuitton, Hao Wen",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Parasite140085-fig1_Boiling_sheep_livers_containing_hydatid_cysts_%28Echinococcus_granulosus%29.tif/lossy-page1-960px-Parasite140085-fig1_Boiling_sheep_livers_containing_hydatid_cysts_%28Echinococcus_granulosus%29.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2067,
+    "h": 2925,
+    "desc": "Efficacy of killing Echinococcus granulosus protoscoleces (PSCs) by boiling sheep livers containing hydatid cysts. \nPanel I: (a) normal PSCs were collected from cysts before boiling; (b–e) PSCs were c",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasite140085-fig1_Boiling_sheep_livers_containing_hydatid_cysts_(Echinococcus_granulosus).tif"
+   },
+   {
+    "title": "File:Parasite140085-fig2 Boiling sheep lungs containing hydatid cysts (Echinococcus granulosus).tif",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Jun Li, Chuanchuan Wu, Hui Wang, Huanyuan Liu, Dominique Angèle Vuitton, Hao Wen",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Parasite140085-fig2_Boiling_sheep_lungs_containing_hydatid_cysts_%28Echinococcus_granulosus%29.tif/lossy-page1-960px-Parasite140085-fig2_Boiling_sheep_lungs_containing_hydatid_cysts_%28Echinococcus_granulosus%29.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2067,
+    "h": 3007,
+    "desc": "Efficacy of killing Echinococcus granulosus protoscoleces (PSCs) by boiling sheep lungs containing hydatid cysts. \nPanel I: (a) normal PSCs were collected from cysts before boiling; (b–e) PSCs were co",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasite140085-fig2_Boiling_sheep_lungs_containing_hydatid_cysts_(Echinococcus_granulosus).tif"
+   },
+   {
+    "title": "File:22809 lores.jpg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "CDC",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/7/75/22809_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 700,
+    "h": 1063,
+    "desc": "This photomicrograph revealed some of the ultrastructural details exhibited by a parasitic, Echinococcus granulosus protoscolex, or larval organism, which was harbored in the interior of a hydatid cys",
+    "src": "https://commons.wikimedia.org/wiki/File:22809_lores.jpg"
+   },
+   {
+    "title": "File:PZSL1852PlateAnnulosa29.png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Thomas H. Huxley &amp; Tuffen West",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/PZSL1852PlateAnnulosa29.png/960px-PZSL1852PlateAnnulosa29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1772,
+    "h": 2900,
+    "desc": "echinococcosis in:\n6: Dog Tapeworm, secondary hydratid cyst from a zebra, with remains of stalk (top left) and a degenerate external protoscolex (bottom)\n7: Dog Tapeworm, burst secondary hydratid cyst",
+    "src": "https://commons.wikimedia.org/wiki/File:PZSL1852PlateAnnulosa29.png"
+   },
+   {
+    "title": "File:PZSL1852PlateAnnulosa28.png",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "Thomas H. Huxley &amp; Tuffen West",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/PZSL1852PlateAnnulosa28.png/960px-PZSL1852PlateAnnulosa28.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1850,
+    "h": 2895,
+    "desc": "Dog Tapeworm echinococcosis in a zebra:\nMature protoscolex\nInner wall of primary hydratid cyst\nScolex hooks\nSecondary hydratid cyst budding from primary cyst wall, with attached and internal protoscol",
+    "src": "https://commons.wikimedia.org/wiki/File:PZSL1852PlateAnnulosa28.png"
+   }
+  ]
+ },
+ "echinococcus-cyst": {
+  "q": "hydatid cyst Echinococcus liver",
+  "cands": [
+   {
+    "title": "File:Echinococcus (hydatid) cyst involving liver and lung.jpg",
+    "lic": "CC BY-SA 2.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "artist": "Yale Rosen",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Echinococcus_%28hydatid%29_cyst_involving_liver_and_lung.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 665,
+    "h": 1000,
+    "desc": "Echinococcus (hydatid) cyst involving liver and lung\n\nThe involvement of both organs is the result of trans-diaphragmatic extension of the liver cyst into the lower lobe of the right lung.",
+    "src": "https://commons.wikimedia.org/wiki/File:Echinococcus_(hydatid)_cyst_involving_liver_and_lung.jpg"
+   },
+   {
+    "title": "File:Parasite140085-fig1 Boiling sheep livers containing hydatid cysts (Echinococcus granulosus).tif",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Jun Li, Chuanchuan Wu, Hui Wang, Huanyuan Liu, Dominique Angèle Vuitton, Hao Wen",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Parasite140085-fig1_Boiling_sheep_livers_containing_hydatid_cysts_%28Echinococcus_granulosus%29.tif/lossy-page1-960px-Parasite140085-fig1_Boiling_sheep_livers_containing_hydatid_cysts_%28Echinococcus_granulosus%29.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2067,
+    "h": 2925,
+    "desc": "Efficacy of killing Echinococcus granulosus protoscoleces (PSCs) by boiling sheep livers containing hydatid cysts. \nPanel I: (a) normal PSCs were collected from cysts before boiling; (b–e) PSCs were c",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasite140085-fig1_Boiling_sheep_livers_containing_hydatid_cysts_(Echinococcus_granulosus).tif"
+   },
+   {
+    "title": "File:Parasite140085-fig2 Boiling sheep lungs containing hydatid cysts (Echinococcus granulosus).tif",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Jun Li, Chuanchuan Wu, Hui Wang, Huanyuan Liu, Dominique Angèle Vuitton, Hao Wen",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Parasite140085-fig2_Boiling_sheep_lungs_containing_hydatid_cysts_%28Echinococcus_granulosus%29.tif/lossy-page1-960px-Parasite140085-fig2_Boiling_sheep_lungs_containing_hydatid_cysts_%28Echinococcus_granulosus%29.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2067,
+    "h": 3007,
+    "desc": "Efficacy of killing Echinococcus granulosus protoscoleces (PSCs) by boiling sheep lungs containing hydatid cysts. \nPanel I: (a) normal PSCs were collected from cysts before boiling; (b–e) PSCs were co",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasite140085-fig2_Boiling_sheep_lungs_containing_hydatid_cysts_(Echinococcus_granulosus).tif"
+   },
+   {
+    "title": "File:Parasite140085-fig3 Echinococcus granulosus cysts from boiled livers and lungs of sheep.tif",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Jun Li, Chuanchuan Wu, Hui Wang, Huanyuan Liu, Dominique Angèle Vuitton, Hao Wen",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Parasite140085-fig3_Echinococcus_granulosus_cysts_from_boiled_livers_and_lungs_of_sheep.tif/lossy-page1-960px-Parasite140085-fig3_Echinococcus_granulosus_cysts_from_boiled_livers_and_lungs_of_sheep.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2039,
+    "h": 2998,
+    "desc": "Haematoxylin-eosin (HE) staining of Echinococcus granulosus cysts from livers (A) and lungs (B) of sheep. \nI, normal cyst;\nII–V, cysts boiled for 5, 10, 20 and 30 min, respectively.\nGL, germinal layer",
+    "src": "https://commons.wikimedia.org/wiki/File:Parasite140085-fig3_Echinococcus_granulosus_cysts_from_boiled_livers_and_lungs_of_sheep.tif"
+   },
+   {
+    "title": "File:Liver cyst wall - intermed mag.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Nephron",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Liver_cyst_wall_-_intermed_mag.jpg/960px-Liver_cyst_wall_-_intermed_mag.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4272,
+    "h": 2848,
+    "desc": "Intermediate / High magnification micrograph of a liver cyst wall with laminations consistent with those seen in an Echinococcus infection (hydatid disease/cyst). Liver cystectomy. H&amp;E stain.\nNo o",
+    "src": "https://commons.wikimedia.org/wiki/File:Liver_cyst_wall_-_intermed_mag.jpg"
+   },
+   {
+    "title": "File:Liver cyst wall - low mag.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Nephron",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Liver_cyst_wall_-_low_mag.jpg/960px-Liver_cyst_wall_-_low_mag.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4272,
+    "h": 2848,
+    "desc": "Low magnification micrograph of a liver cyst wall with laminations consistent with those seen in an Echinococcus infection (hydatid disease/cyst). Liver cystectomy. H&amp;E stain.\nNo organisms are see",
+    "src": "https://commons.wikimedia.org/wiki/File:Liver_cyst_wall_-_low_mag.jpg"
+   },
+   {
+    "title": "File:Liver cyst wall - high mag.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Nephron",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Liver_cyst_wall_-_high_mag.jpg/960px-Liver_cyst_wall_-_high_mag.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4272,
+    "h": 2848,
+    "desc": "High magnification micrograph of a liver cyst wall with laminations consistent with those seen in an Echinococcus infection (hydatid disease/cyst). Liver cystectomy. H&amp;E stain.\nNo organisms are se",
+    "src": "https://commons.wikimedia.org/wiki/File:Liver_cyst_wall_-_high_mag.jpg"
+   },
+   {
+    "title": "File:Laminated liver cyst wall - high mag.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Nephron",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Laminated_liver_cyst_wall_-_high_mag.jpg/960px-Laminated_liver_cyst_wall_-_high_mag.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 4272,
+    "h": 2848,
+    "desc": "High magnification micrograph of a liver cyst wall with laminations consistent with those seen in an Echinococcus infection (hydatid disease/cyst). Liver cystectomy. H&amp;E stain.\nNo organisms are se",
+    "src": "https://commons.wikimedia.org/wiki/File:Laminated_liver_cyst_wall_-_high_mag.jpg"
+   }
+  ]
+ },
+ "strongyloides-larva": {
+  "q": "Strongyloides stercoralis larva stool",
+  "cands": [
+   {
+    "title": "File:Larva of Strongyloides in Saline wet mount of stool microscopy.jpg",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Larva_of_Strongyloides_in_Saline_wet_mount_of_stool_microscopy.jpg/960px-Larva_of_Strongyloides_in_Saline_wet_mount_of_stool_microscopy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3264,
+    "h": 2448,
+    "desc": "The laboratory technician will look for the characteristic features of Strongyloides larvae, which may include the following:\nRhabditiform Larvae: Strongyloides larvae have a rhabditiform morphology, ",
+    "src": "https://commons.wikimedia.org/wiki/File:Larva_of_Strongyloides_in_Saline_wet_mount_of_stool_microscopy.jpg"
+   }
+  ]
+ },
+ "trypanosoma-cruzi": {
+  "q": "Trypanosoma cruzi blood smear trypomastigotes",
+  "cands": [
+   {
+    "title": "File:T. cruzi trypomastigotes in peripheral blood smear.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/T._cruzi_trypomastigotes_in_peripheral_blood_smear.jpg/960px-T._cruzi_trypomastigotes_in_peripheral_blood_smear.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 3045,
+    "h": 2005,
+    "desc": "Under a magnification of 1200X, this photomicrograph of a blood sample specimen, revealed the presence of four flagellated, Trypanosoma cruzi parasites, referred to as trypomastigotes. The two parasit",
+    "src": "https://commons.wikimedia.org/wiki/File:T._cruzi_trypomastigotes_in_peripheral_blood_smear.jpg"
+   }
+  ]
+ },
+ "demodex": {
+  "q": "Demodex mite microscope",
+  "cands": [
+   {
+    "title": "File:Demodex-mite-scanning-electron-microscope-image-2.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "[[User:Alan R Walker (talk) 09:16, 28 January 2014 (UTC)]]",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Demodex-mite-scanning-electron-microscope-image-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 800,
+    "h": 646,
+    "desc": "Scanning electron microscope image of a parasitic mite of domestic animals.",
+    "src": "https://commons.wikimedia.org/wiki/File:Demodex-mite-scanning-electron-microscope-image-2.jpg"
+   },
+   {
+    "title": "File:Demodex mite 1.JPG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "artist": "Joel Mills",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Demodex_mite_1.JPG/960px-Demodex_mite_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1198,
+    "h": 917,
+    "desc": "Photo of Demodex canis taken through a microscope at 400x magnification.  Obtained from a skin scraping of a dog with demodecosis.",
+    "src": "https://commons.wikimedia.org/wiki/File:Demodex_mite_1.JPG"
+   },
+   {
+    "title": "File:Demodex mite.JPG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "artist": "No machine-readable author provided. PlusMinus assumed (based on copyright claim",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Demodex_mite.JPG/960px-Demodex_mite.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2592,
+    "h": 1944,
+    "desc": "Copy from en",
+    "src": "https://commons.wikimedia.org/wiki/File:Demodex_mite.JPG"
+   },
+   {
+    "title": "File:Demodex-in-follicle.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Alan R Walker",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Demodex-in-follicle.jpg/960px-Demodex-in-follicle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2126,
+    "h": 1490,
+    "desc": "Section of skin of monkey infested with Demodex mites - they show as the elongate irregular brown bodies within the inflamed hair follicles",
+    "src": "https://commons.wikimedia.org/wiki/File:Demodex-in-follicle.jpg"
+   },
+   {
+    "title": "File:Demodex Infestation - Skin (50196389113).jpg",
+    "lic": "CC BY-SA 2.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "artist": "Atlas of Medical Foreign Bodies",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Demodex_Infestation_-_Skin_%2850196389113%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 943,
+    "h": 718,
+    "desc": "Demodex mite is an obligate human ecto-parasite usually found in or near the pilo-sebaceous units of the face, head, and neck. They may also be found on the penis, mons veneris, buttocks, and in the e",
+    "src": "https://commons.wikimedia.org/wiki/File:Demodex_Infestation_-_Skin_(50196389113).jpg"
+   }
+  ]
+ },
+ "enterobius-adult": {
+  "q": "Enterobius vermicularis pinworm female microscope",
+  "cands": []
+ },
+ "taenia-cysticercus": {
+  "q": "cysticercus Taenia solium",
+  "cands": [
+   {
+    "title": "File:Taenia solium tapeworm scolex with its four suckers and two rows of hooks 5262 lores.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/36/Taenia_solium_tapeworm_scolex_with_its_four_suckers_and_two_rows_of_hooks_5262_lores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 688,
+    "h": 464,
+    "desc": "ID#:\t5262\nDescription:\tThis micrograph reveals the morphology of a Taenia solium tapeworm scolex with its four suckers, and two rows of hooks.\nIn the human intestine, the cysticercus, i.e. larval stag",
+    "src": "https://commons.wikimedia.org/wiki/File:Taenia_solium_tapeworm_scolex_with_its_four_suckers_and_two_rows_of_hooks_5262_lores.jpg"
+   },
+   {
+    "title": "File:Taenia solium scolex.JPG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "artist": "Roberto J. Galindo",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Taenia_solium_scolex.JPG/960px-Taenia_solium_scolex.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 2304,
+    "h": 1728,
+    "desc": "Сколекс свиного цепня (Оптический микроскоп 40×)",
+    "src": "https://commons.wikimedia.org/wiki/File:Taenia_solium_scolex.JPG"
+   },
+   {
+    "title": "File:Cysticercus cellulosae.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Bansal S, Suri A, Sharma MC, Kakkar A.",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Cysticercus_cellulosae.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 742,
+    "h": 349,
+    "desc": "Resected gross specimen of cysicercus from human brain, (a) and photomicrograph of hematoxylin and eosin stained section, (b) cysticercus cellulosae with an undulating bladder wall and scolex. Three s",
+    "src": "https://commons.wikimedia.org/wiki/File:Cysticercus_cellulosae.jpg"
+   },
+   {
+    "title": "File:40249 2021 823 Figa HTML.webp",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Zachary Nsadha, Chris Rutebarika, Chrisostom Ayebazibwe, Bukenya Aloys, M. Mwanj",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/21/40249_2021_823_Figa_HTML.webp?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 685,
+    "h": 480,
+    "desc": "Presence of Taenia solium cysticercus in the muscle tissue of an infected pig",
+    "src": "https://commons.wikimedia.org/wiki/File:40249_2021_823_Figa_HTML.webp"
+   },
+   {
+    "title": "File:Taenia solium scolex1.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Taenia_solium_scolex1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 305,
+    "h": 200,
+    "desc": "Scoleces of T. solium. Note the four large suckers and rostellum containing two rows of hooks",
+    "src": "https://commons.wikimedia.org/wiki/File:Taenia_solium_scolex1.jpg"
+   },
+   {
+    "title": "File:Taenia solium life cycle.jpg",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Teresa Julieta Simões Steyn, Amalia Naita Awala, Anja de Lange, Joseph Valentino",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/34/Taenia_solium_life_cycle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 670,
+    "h": 371,
+    "desc": "The life cycle of Taenia solium.",
+    "src": "https://commons.wikimedia.org/wiki/File:Taenia_solium_life_cycle.jpg"
+   },
+   {
+    "title": "File:Taenia solium cyst.jpg",
+    "lic": "Public domain",
+    "licurl": "",
+    "artist": "CDC",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Taenia_solium_cyst.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 300,
+    "h": 300,
+    "desc": "Close-up (100x magnification) of the cyst of the pork tapeworm, Taenia solium. The black oval in the middle is the beginning of a sucker in the tapeworm's scolex.",
+    "src": "https://commons.wikimedia.org/wiki/File:Taenia_solium_cyst.jpg"
+   },
+   {
+    "title": "File:Taenia solium scolex x400.jpg",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "커뷰",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Taenia_solium_scolex_x400.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 324,
+    "h": 478,
+    "desc": "Taenia solium(T. solium) scolex",
+    "src": "https://commons.wikimedia.org/wiki/File:Taenia_solium_scolex_x400.jpg"
+   }
+  ]
+ },
+ "toxocara-egg": {
+  "q": "Toxocara egg",
+  "cands": [
+   {
+    "title": "File:Toxocara embryonated eggs.jpg",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "artist": "Flukeman",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Toxocara_embryonated_eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 797,
+    "h": 600,
+    "desc": "Toxocara canis embryonated eggs. Photo taken through a microscope at 400x.\nOn the left side: T. canis egg containig morula, On the right side: T. canis egg containing fully developed infectious larva ",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxocara_embryonated_eggs.jpg"
+   },
+   {
+    "title": "File:Toxocara leonina egg with scale.png",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Juan de Vojníkov (author of the formar image Joel Mills)",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/8/88/Toxocara_leonina_egg_with_scale.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 720,
+    "h": 471,
+    "desc": "A canine roundworm (Toxascaris leonina) egg. Photo taken through a microscope at 400x. Scale bar is  50 micrometres",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxocara_leonina_egg_with_scale.png"
+   },
+   {
+    "title": "File:Toxocara canis.JPG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "artist": "Joel Mills",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Toxocara_canis.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 943,
+    "h": 620,
+    "desc": "A canine roundworm (Toxocara canis) egg.  Photo taken through a microscope at 400x.",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxocara_canis.JPG"
+   },
+   {
+    "title": "File:Toxocara cati 1.JPG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "artist": "Joel Mills",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Toxocara_cati_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 943,
+    "h": 619,
+    "desc": "A feline roundworm (Toxocara cati) egg.  Photo taken through a microscope at 400x.",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxocara_cati_1.JPG"
+   },
+   {
+    "title": "File:Toxocara larva.jpg",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "artist": "Flukeman",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Toxocara_larva.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "w": 797,
+    "h": 600,
+    "desc": "Toxocara canis egg with fully devoloped larva L3 (Numarski contrast)",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxocara_larva.jpg"
+   },
+   {
+    "title": "File:Toxocara Larva (15518236248).jpg",
+    "lic": "CC BY 2.0",
+    "licurl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "SuSanA Secretariat",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Toxocara_Larva_%2815518236248%29.jpg/960px-Toxocara_Larva_%2815518236248%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1024,
+    "h": 768,
+    "desc": "This fertile egg has developed a larva; this larva will hatch when the egg is ingested by its host.",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxocara_Larva_(15518236248).jpg"
+   },
+   {
+    "title": "File:Toxocara cati (YPM IZ 095297).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Toxocara_cati_%28YPM_IZ_095297%29.jpeg/960px-Toxocara_cati_%28YPM_IZ_095297%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1423,
+    "desc": "\nPRESERVED_SPECIMEN; ; ; microslide; ; IZ number 95297; lot count 1; Microslide 01, glycerin, whole mount; egg; other number N-18:III-7;",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxocara_cati_(YPM_IZ_095297).jpeg"
+   },
+   {
+    "title": "File:Toxocara cati (YPM IZ 095299).jpeg",
+    "lic": "CC0",
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daniel J. Drew",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Toxocara_cati_%28YPM_IZ_095299%29.jpeg/960px-Toxocara_cati_%28YPM_IZ_095299%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "w": 1920,
+    "h": 1423,
+    "desc": "\nPRESERVED_SPECIMEN; ; ; microslide; ; IZ number 95299; lot count 1; Microslide 01, glycerin, whole mount; egg; other number N-16:III-7;",
+    "src": "https://commons.wikimedia.org/wiki/File:Toxocara_cati_(YPM_IZ_095299).jpeg"
+   }
+  ]
+ }
+}

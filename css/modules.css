@@ -267,3 +267,19 @@ html.tg footer{padding-bottom:24px}
 .rbody{padding:0 0 14px;font-size:14px;line-height:1.5}.rbody p{margin:0 0 6px}.rbody ul{margin:0 0 6px 18px;padding:0}
 .mnemo{background:var(--accent-soft);border-radius:10px;padding:8px 12px;font-size:14px}
 @media(max-width:900px){.extimer{position:fixed;top:64px;right:12px;z-index:6;box-shadow:0 2px 8px rgba(0,0,0,.25)}}
+
+/* ---- Мікроскоп (js/micro.js) ---- */
+.mlist{display:flex;flex-direction:column;gap:8px;max-width:900px}
+.mcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:0 14px}
+.mcard summary{display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;list-style:none}
+.mcard summary::-webkit-details-marker{display:none}
+.mcard summary img{width:72px;height:54px;object-fit:cover;border-radius:8px;flex:none;background:var(--canvas)}
+.mcard .mt{display:flex;flex-direction:column;min-width:0;flex:1}
+.mcard .mt i{font-family:var(--serif);font-size:16px}
+.mcard .mt span{font-size:14px}.mcard .mt small{font-size:12px}
+.mbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;padding:4px 0 14px;font-size:14px;line-height:1.5}
+.mbody img{width:100%;border-radius:10px;background:var(--canvas)}
+.mbody p{margin:0 0 8px}
+@media(max-width:640px){.mbody{grid-template-columns:1fr}}
+.mquiz{text-align:center}
+.mquiz img{max-width:100%;max-height:52vh;border-radius:12px;background:var(--canvas);object-fit:contain}
