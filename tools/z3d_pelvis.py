@@ -54,7 +54,7 @@ def build(S):
     for i, (b, m) in enumerate(meshes):
         m.apply_translation(-c); m.apply_scale(s); m.merge_vertices(); m.visual = trimesh.visual.ColorVisuals(m, face_colors=[236, 229, 212, 255])
         scene.add_geometry(m, node_name=f'{b}#{i}', geom_name=f'{b}#{i}')
-    R = trimesh.transformations.rotation_matrix(np.pi, [0, 1, 0]) if S.get('rot') else np.eye(4)   # таз: передом до камери (у Z-Anatomy перед = -z)
+    R = trimesh.transformations.rotation_matrix(np.pi, [0, 1, 0]) if S.get('rot') else np.eye(4)   # у Z-Anatomy перед = +z, поворот не потрібен (rot лишено як опцію)
     for _, m in meshes: m.apply_transform(R)
     whole = trimesh.util.concatenate([m for _, m in meshes])
     for nm, pt in markers:
@@ -64,6 +64,10 @@ def build(S):
         lim = 0.3 if nm in SPACE else 0.2 if nm in WHOLE else 0.12   # маркери Z-Anatomy стоять поруч зі структурою; для цілих кісток допуск більший
         if dist > lim: print('  drop', nm, round(float(dist), 3)); continue
         seen.add(nm); la, uk = LA[nm]; items.append({'n': len(items) + 1, 'la': la, 'uk': uk, 'pts': [proj(cp)], 'p3': [round(float(x), 4) for x in cp]})
+    for nm, fn in S.get('synth', {}).items():   # точки без маркерів у Z-Anatomy — з геометрії
+        v = fn(whole.vertices)
+        if v is None: continue
+        la, uk = LA[nm]; items.append({'n': len(items) + 1, 'la': la, 'uk': uk, 'pts': [proj(v)], 'p3': [round(float(x), 4) for x in v]})
     os.makedirs('glb', exist_ok=True); out = f"glb/{S['id']}.glb"; scene.export(out); shutil.copy(out, A + f"models/{S['id']}.glb")
     print(S['id'], os.path.getsize(out) // 1024, 'KB; meshes', len(meshes), 'items', len(items), '; маркерів без назви:', sorted({nm for nm, _ in markers if nm not in LA})[:12])
     return {'id': S['id'], 'title': S['title'], 'cat': 'Нижня кінцівка', 'file': f"models/{S['id']}.glb", 'model': True, 'w': 1000, 'h': 1000, 'items': items, 'thumb': f"models/{S['id']}.jpg", 'rel2d': S['rel2d'],
@@ -71,12 +75,17 @@ def build(S):
 
 SETS = [
  dict(id='v3-hip', title='Кульшова кістка — 3D', rel2d='ll-132', parts=[dict(groups=['Hip bone.r'], mesh_re=r'Hip bone\.r', markers=['Hip bone.r'])]),
- dict(id='v3-pelvis', title='Таз (кістковий) — 3D', rel2d='ll-134', rot=True, parts=[
+ dict(id='v3-pelvis', title='Таз (кістковий) — 3D', rel2d='ll-134', parts=[
    dict(groups=['Hip bone.r'], mesh_re=r'Hip bone\.r', markers=['Hip bone.r'], keys=HIP_KEYS),
    dict(groups=['Hip bone.l'], mesh_re=r'Hip bone\.l'),
    dict(groups=['Sacrum'], mesh_re=r'Sacrum', markers=['Sacrum']),
    dict(groups=['Coccyx'], mesh_re=r'Coccyx', markers=['Coccyx']),
-   dict(groups=['Bony pelvis.g'], mesh_re=r'(?!)', markers=['Bony pelvis.g', 'Pelvic girdle.g'])]),
+   dict(groups=['Bony pelvis.g'], mesh_re=r'(?!)', markers=['Bony pelvis.g', 'Pelvic girdle.g'])],
+   synth={
+    'Subpubic angle': lambda V: (lambda m: V[m][np.argmin(V[m][:, 1])] if m.any() else None)((np.abs(V[:, 0]) < 0.05) & (V[:, 2] > 0.1)),     # найнижча точка біля симфізу спереду
+    'Pubic arch': lambda V: (lambda m: V[m][np.argmin(V[m][:, 1])] if m.any() else None)((V[:, 0] > 0.09) & (V[:, 0] < 0.16) & (V[:, 2] > 0.1)),  # нижній край гілки праворуч від симфізу
+   }),
+ dict(id='v3-femur', title='Стегнова кістка — 3D', rel2d='ll-137', parts=[dict(groups=['Femur.r'], mesh_re=r'Femur\.r', markers=['Femur.r'])]),
 ]
 new = {S['id']: build(S) for S in SETS}
 # встановити в data.js (замінити наявні, вставити нові після v3-hip)
