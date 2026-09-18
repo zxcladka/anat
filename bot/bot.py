@@ -120,7 +120,7 @@ def handle(msg, users):
                 [("М’язи руки", "set/v3-musc-arm/study"), ("М’язи ноги", "set/v3-musc-leg/study")], [("М’язи спини", "set/v3-musc-back/study"), ("Груди й живіт", "set/v3-musc-thorax-abd/study")],
                 [("Голова й шия", "set/v3-musc-head-neck/study")],
                 [("Плечова кістка", "set/v3-humerus/study"), ("Лопатка", "set/v3-scapula/study")], [("Ключиця", "set/v3-clavicle/study"), ("Променева й ліктьова", "set/v3-radius-ulna/study")],
-                [("Кістки кисті", "set/v3-hand/study"), ("Кульшова кістка", "set/v3-hip/study")], [("Стегнова кістка", "set/v3-femur/study"), ("Гомілка", "set/v3-tibia-fibula/study")], [("Кістки стопи", "set/v3-foot/study")]]
+                [("Кістки кисті", "set/v3-hand/study"), ("Кульшова кістка", "set/v3-hip/study")], [("Таз", "set/v3-pelvis/study"), ("Стегнова кістка", "set/v3-femur/study")], [("Гомілка", "set/v3-tibia-fibula/study"), ("Кістки стопи", "set/v3-foot/study")]]
         kb = {"inline_keyboard": [[{"text": t, "web_app": {"url": APP_URL + "#/" + path}} for t, path in row] for row in rows]}
         send(chat, "3D-моделі: крутіть пальцем, наближайте щипком, кнопка ◐ робить модель прозорою, щоб побачити глибокі структури.", kb)
     elif cmd == "/krok":

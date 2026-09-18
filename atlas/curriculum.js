@@ -64,6 +64,7 @@ window.CURRICULUM={
         "th-35",
         "th-36",
         "v3-sacrum",
+        "v3-pelvis",
         "v3-coccyx"
        ],
        "control": false
@@ -119,7 +120,8 @@ window.CURRICULUM={
         "ll-140",
         "ll-141",
         "v3-femur",
-        "v3-hip"
+        "v3-hip",
+        "v3-pelvis"
        ],
        "control": false
       },

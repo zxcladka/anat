@@ -1,5 +1,5 @@
 'use strict';
-const ATLAS_IMG_V = '19'; // кеш-бастер для atlas/*.png|jpg — підняти після заміни картинок
+const ATLAS_IMG_V = '20'; // кеш-бастер для atlas/*.png|jpg — підняти після заміни картинок
 function imgUrl(f) { return f && !/[?]/.test(f) && /^(atlas|models)\//.test(f) ? f + '?v=' + ATLAS_IMG_V : f; }
 const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => [...r.querySelectorAll(s)];
